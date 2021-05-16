@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+<!--    <typeAliases>-->
+<!--        <typeAlias alias="member" type="model.MemberBean" /> -->
+<!--    </typeAliases>-->
+
+    <mappers>
+        <mapper resource="sql/admin.xml" />
+        <mapper resource="sql/adminChannel.xml" />
+        <mapper resource="sql/channel.xml" />
+        <mapper resource="sql/contentsUpload.xml" />
+        <mapper resource="sql/dmChat.xml" />
+        <mapper resource="sql/main.xml" />
+        <mapper resource="sql/multiChat.xml" />
+        <mapper resource="sql/myPick.xml" />
+        <mapper resource="sql/purchased.xml" />
+        <mapper resource="sql/search.xml" />
+        <mapper resource="sql/user.xml" />
+    </mappers>
+
+</configuration>
+
+
+
+
+
+
+
+
+
+
