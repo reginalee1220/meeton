@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,8 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0, user-scalable=yes, target-densitydpi=medium-dpi" />
     <title>좋아요 한 영상</title>
     <!-- css -->
-    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/import.css">
-    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/likedvideo.css">
+    <link rel="stylesheet" type="text/css" href="/css/default/import.css">
+    <link rel="stylesheet" type="text/css" href="/css/mypick/likedvideo.css">
 
     <!-- js -->
 
