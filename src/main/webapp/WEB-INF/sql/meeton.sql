@@ -94,46 +94,19 @@ ALTER TABLE `user`
 
 -- 회원 유니크 인덱스
 CREATE UNIQUE INDEX `aka`
-	ON `user` ( -- 회원
-		`aka` ASC -- 닉네임
-	);
+    ON `user` ( -- 회원
+               `aka` ASC -- 닉네임
+        );
 
--- 구독
-CREATE TABLE `subscriptions` (
-                                 `userid`       VARCHAR(20) NOT NULL COMMENT '회원id', -- 회원id
-                                 `channelnum`   INT         NOT NULL COMMENT '채널번호', -- 채널번호
-                                 `purchasednum` INT         NOT NULL COMMENT '결제번호', -- 결제번호
-                                 `startdate`    TIMESTAMP   NOT NULL COMMENT '구독시작날짜' -- 구독시작날짜
+-- 구독즐겨찾기
+CREATE TABLE `favorite` (
+                            `userid`       VARCHAR(20) NOT NULL COMMENT '회원id', -- 회원id
+                            `channelnum`   INT         NOT NULL COMMENT '채널번호', -- 채널번호
+                            `type`         VARCHAR(20) NOT NULL COMMENT '타입', -- 타입
+                            `startdate`    TIMESTAMP   NOT NULL COMMENT '시작날짜', -- 시작날짜
+                            `purchasednum` INT         NULL     COMMENT '결제번호' -- 결제번호
 )
-    COMMENT '구독';
-
--- 즐겨찾기
-CREATE TABLE `bookmark` (
-                            `userid`     VARCHAR(20) NOT NULL COMMENT '회원id', -- 회원id
-                            `channelnum` INT         NOT NULL COMMENT '채널번호' -- 채널번호
-)
-    COMMENT '즐겨찾기';
-
--- 좋아요한영상
-CREATE TABLE `likedvideo` (
-                              `userid`   VARCHAR(20) NOT NULL COMMENT '회원id', -- 회원id
-                              `videonum` INT         NOT NULL COMMENT '영상번호' -- 영상번호
-)
-    COMMENT '좋아요한영상';
-
--- 나중에볼영상
-CREATE TABLE `watchlater` (
-                              `userid`   VARCHAR(20) NOT NULL COMMENT '회원id', -- 회원id
-                              `videonum` INT         NOT NULL COMMENT '영상번호' -- 영상번호
-)
-    COMMENT '나중에볼영상';
-
--- 최근에본영상
-CREATE TABLE `history` (
-                           `userid`   VARCHAR(20) NOT NULL COMMENT '회원id', -- 회원id
-                           `videonum` INT         NOT NULL COMMENT '영상번호' -- 영상번호
-)
-    COMMENT '최근에본영상';
+    COMMENT '구독즐겨찾기';
 
 -- 결제
 CREATE TABLE `purchased` (
@@ -190,6 +163,23 @@ ALTER TABLE `dmchat`
     ADD CONSTRAINT `PK_dmchat` -- DM 기본키
         PRIMARY KEY (
                      `dmnum` -- DM번호
+            );
+
+-- 내플레이리스트
+CREATE TABLE `myplaylist` (
+                              `myplaylistnum` INT         NOT NULL COMMENT '내플레이이스트번호', -- 내플레이이스트번호
+                              `userid`        VARCHAR(20) NOT NULL COMMENT '회원id', -- 회원id
+                              `videonum`      INT         NOT NULL COMMENT '영상번호', -- 영상번호
+                              `type`          VARCHAR(20) NOT NULL COMMENT '타입', -- 타입
+                              `typedate`      TIMESTAMP   NOT NULL COMMENT '타입지정날짜' -- 타입지정날짜
+)
+    COMMENT '내플레이리스트';
+
+-- 내플레이리스트
+ALTER TABLE `myplaylist`
+    ADD CONSTRAINT `PK_myplaylist` -- 내플레이리스트 기본키
+        PRIMARY KEY (
+                     `myplaylistnum` -- 내플레이이스트번호
             );
 
 -- 영상
@@ -252,9 +242,9 @@ ALTER TABLE `comment`
                                 `videonum` -- 영상번호
                 );
 
--- 구독
-ALTER TABLE `subscriptions`
-    ADD CONSTRAINT `FK_user_TO_subscriptions` -- 회원 -> 구독
+-- 구독즐겨찾기
+ALTER TABLE `favorite`
+    ADD CONSTRAINT `FK_user_TO_favorite` -- 회원 -> 구독즐겨찾기
         FOREIGN KEY (
                      `userid` -- 회원id
             )
@@ -262,9 +252,9 @@ ALTER TABLE `subscriptions`
                                `userid` -- 회원id
                 );
 
--- 구독
-ALTER TABLE `subscriptions`
-    ADD CONSTRAINT `FK_channel_TO_subscriptions` -- 채널 -> 구독
+-- 구독즐겨찾기
+ALTER TABLE `favorite`
+    ADD CONSTRAINT `FK_channel_TO_favorite` -- 채널 -> 구독즐겨찾기
         FOREIGN KEY (
                      `channelnum` -- 채널번호
             )
@@ -272,94 +262,14 @@ ALTER TABLE `subscriptions`
                                   `channelnum` -- 채널번호
                 );
 
--- 구독
-ALTER TABLE `subscriptions`
-    ADD CONSTRAINT `FK_purchased_TO_subscriptions` -- 결제 -> 구독
+-- 구독즐겨찾기
+ALTER TABLE `favorite`
+    ADD CONSTRAINT `FK_purchased_TO_favorite` -- 결제 -> 구독즐겨찾기
         FOREIGN KEY (
                      `purchasednum` -- 결제번호
             )
             REFERENCES `purchased` ( -- 결제
                                     `purchasednum` -- 결제번호
-                );
-
--- 즐겨찾기
-ALTER TABLE `bookmark`
-    ADD CONSTRAINT `FK_user_TO_bookmark` -- 회원 -> 즐겨찾기
-        FOREIGN KEY (
-                     `userid` -- 회원id
-            )
-            REFERENCES `user` ( -- 회원
-                               `userid` -- 회원id
-                );
-
--- 즐겨찾기
-ALTER TABLE `bookmark`
-    ADD CONSTRAINT `FK_channel_TO_bookmark` -- 채널 -> 즐겨찾기
-        FOREIGN KEY (
-                     `channelnum` -- 채널번호
-            )
-            REFERENCES `channel` ( -- 채널
-                                  `channelnum` -- 채널번호
-                );
-
--- 좋아요한영상
-ALTER TABLE `likedvideo`
-    ADD CONSTRAINT `FK_user_TO_likedvideo` -- 회원 -> 좋아요한영상
-        FOREIGN KEY (
-                     `userid` -- 회원id
-            )
-            REFERENCES `user` ( -- 회원
-                               `userid` -- 회원id
-                );
-
--- 좋아요한영상
-ALTER TABLE `likedvideo`
-    ADD CONSTRAINT `FK_video_TO_likedvideo` -- 영상 -> 좋아요한영상
-        FOREIGN KEY (
-                     `videonum` -- 영상번호
-            )
-            REFERENCES `video` ( -- 영상
-                                `videonum` -- 영상번호
-                );
-
--- 나중에볼영상
-ALTER TABLE `watchlater`
-    ADD CONSTRAINT `FK_user_TO_watchlater` -- 회원 -> 나중에볼영상
-        FOREIGN KEY (
-                     `userid` -- 회원id
-            )
-            REFERENCES `user` ( -- 회원
-                               `userid` -- 회원id
-                );
-
--- 나중에볼영상
-ALTER TABLE `watchlater`
-    ADD CONSTRAINT `FK_video_TO_watchlater` -- 영상 -> 나중에볼영상
-        FOREIGN KEY (
-                     `videonum` -- 영상번호
-            )
-            REFERENCES `video` ( -- 영상
-                                `videonum` -- 영상번호
-                );
-
--- 최근에본영상
-ALTER TABLE `history`
-    ADD CONSTRAINT `FK_user_TO_history` -- 회원 -> 최근에본영상
-        FOREIGN KEY (
-                     `userid` -- 회원id
-            )
-            REFERENCES `user` ( -- 회원
-                               `userid` -- 회원id
-                );
-
--- 최근에본영상
-ALTER TABLE `history`
-    ADD CONSTRAINT `FK_video_TO_history` -- 영상 -> 최근에본영상
-        FOREIGN KEY (
-                     `videonum` -- 영상번호
-            )
-            REFERENCES `video` ( -- 영상
-                                `videonum` -- 영상번호
                 );
 
 -- 알람채널
@@ -420,4 +330,24 @@ ALTER TABLE `dmchat`
             )
             REFERENCES `user` ( -- 회원
                                `userid` -- 회원id
+                );
+
+-- 내플레이리스트
+ALTER TABLE `myplaylist`
+    ADD CONSTRAINT `FK_user_TO_myplaylist` -- 회원 -> 내플레이리스트
+        FOREIGN KEY (
+                     `userid` -- 회원id
+            )
+            REFERENCES `user` ( -- 회원
+                               `userid` -- 회원id
+                );
+
+-- 내플레이리스트
+ALTER TABLE `myplaylist`
+    ADD CONSTRAINT `FK_video_TO_myplaylist` -- 영상 -> 내플레이리스트
+        FOREIGN KEY (
+                     `videonum` -- 영상번호
+            )
+            REFERENCES `video` ( -- 영상
+                                `videonum` -- 영상번호
                 );

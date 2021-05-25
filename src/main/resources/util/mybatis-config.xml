@@ -4,18 +4,16 @@
 <configuration>
 
     <typeAliases>
-        <typeAlias alias="bookmark" type="model.Bookmark" />
         <typeAlias alias="channel" type="model.Channel" />
         <typeAlias alias="channelalarm" type="model.Channelalarm" />
         <typeAlias alias="comment" type="model.Comment" />
+        <typeAlias alias="comment" type="model.Commentalarm" />
         <typeAlias alias="dmchat" type="model.DmChat" />
-        <typeAlias alias="history" type="model.History" />
-        <typeAlias alias="likedvideo" type="model.Likedvideo" />
+        <typeAlias alias="subscriptions" type="model.Favorite" />
+        <typeAlias alias="history" type="model.MyPlayList" />
         <typeAlias alias="purchased" type="model.Purchased" />
-        <typeAlias alias="subscriptions" type="model.Subscriptions" />
         <typeAlias alias="model" type="model.User" />
         <typeAlias alias="video" type="model.Video" />
-        <typeAlias alias="watchlater" type="model.Watchlater" />
     </typeAliases>
 
     <mappers>
