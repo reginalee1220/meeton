@@ -1,11 +1,13 @@
 package model;
 
+import java.sql.Timestamp;
+
 public class Commentalarm {
     private int alarmnum;
 	private int commentnum;
 	private String actuser;
-	private String commentregister;
-	private String likeregister;
+	private Timestamp commentregister;
+	private Timestamp likeregister;
 	private String state;
 
     public int getAlarmnum() {
@@ -32,19 +34,19 @@ public class Commentalarm {
         this.actuser = actuser;
     }
 
-    public String getCommentregister() {
+    public Timestamp getCommentregister() {
         return commentregister;
     }
 
-    public void setCommentregister(String commentregister) {
+    public void setCommentregister(Timestamp commentregister) {
         this.commentregister = commentregister;
     }
 
-    public String getLikeregister() {
+    public Timestamp getLikeregister() {
         return likeregister;
     }
 
-    public void setLikeregister(String likeregister) {
+    public void setLikeregister(Timestamp likeregister) {
         this.likeregister = likeregister;
     }
 

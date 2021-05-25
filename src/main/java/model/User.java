@@ -1,5 +1,7 @@
 package model;
 
+import java.sql.Timestamp;
+
 public class User {
     private String userid;
     private String passwd;
@@ -15,9 +17,9 @@ public class User {
     private String day;
     private String profile;
     private String aka;
-    private String joindate;
+    private Timestamp joindate;
     private String state;
-    private String userdeldate;
+    private Timestamp userdeldate;
 
     public String getUserid() {
         return userid;
@@ -131,11 +133,11 @@ public class User {
         this.aka = aka;
     }
 
-    public String getJoindate() {
+    public Timestamp getJoindate() {
         return joindate;
     }
 
-    public void setJoindate(String joindate) {
+    public void setJoindate(Timestamp joindate) {
         this.joindate = joindate;
     }
 
@@ -147,11 +149,11 @@ public class User {
         this.state = state;
     }
 
-    public String getUserdeldate() {
+    public Timestamp getUserdeldate() {
         return userdeldate;
     }
 
-    public void setUserdeldate(String userdeldate) {
+    public void setUserdeldate(Timestamp userdeldate) {
         this.userdeldate = userdeldate;
     }
 }
