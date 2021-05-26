@@ -58,7 +58,7 @@
                         </div><!-- // my_video_check -->
                         <div class="main_video"><!-- main_video -->
                             <div class="main_video_img"><!-- main_video_img -->
-                                <img src="images/videobackground.png" />
+                                <img src="/images/videobackground.png" />
                                 <div class="main_video_time">22:00</div>
                             </div>
                             <div class="desc"><!-- desc -->
