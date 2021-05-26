@@ -1,12 +1,14 @@
 package model;
 
+import java.sql.Timestamp;
+
 public class Comment {
     private int commentnum;
 	private int videonum;
 	private String userid;
 	private String content;
 	private int likes;
-	private String register;
+	private Timestamp register;
 	private String pinned;
 	private int ref;
 	private int lev;
@@ -53,11 +55,11 @@ public class Comment {
         this.likes = likes;
     }
 
-    public String getRegister() {
+    public Timestamp getRegister() {
         return register;
     }
 
-    public void setRegister(String register) {
+    public void setRegister(Timestamp register) {
         this.register = register;
     }
 

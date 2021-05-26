@@ -19,7 +19,10 @@
     <!--    <context:annotation-config/>-->
     <!-- 컴포넌트 스캔 -->
     <context:component-scan base-package="controller,dao,model,service" />
-
+    
+    <mvc:resources mapping="/css/**" location="/css/" />
+    <mvc:resources mapping="/js/**" location="/js/" />
+    <mvc:resources mapping="/images/**" location="/images/" />
     <bean id="viewResolver"
           class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/views/" />
