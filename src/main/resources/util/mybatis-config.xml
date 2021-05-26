@@ -7,12 +7,12 @@
         <typeAlias alias="channel" type="model.Channel" />
         <typeAlias alias="channelalarm" type="model.Channelalarm" />
         <typeAlias alias="comment" type="model.Comment" />
-        <typeAlias alias="comment" type="model.Commentalarm" />
+        <typeAlias alias="commentalarm" type="model.Commentalarm" />
         <typeAlias alias="dmchat" type="model.DmChat" />
-        <typeAlias alias="subscriptions" type="model.Favorite" />
-        <typeAlias alias="history" type="model.MyPlayList" />
+        <typeAlias alias="favorite" type="model.Favorite" />
+        <typeAlias alias="myplaylist" type="model.MyPlayList" />
         <typeAlias alias="purchased" type="model.Purchased" />
-        <typeAlias alias="model" type="model.User" />
+        <typeAlias alias="user" type="model.User" />
         <typeAlias alias="video" type="model.Video" />
     </typeAliases>
 
