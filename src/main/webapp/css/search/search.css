@@ -1,0 +1,185 @@
+/* 검색css */
+*{margin:0; padding:0; box-sizing: border-box;}
+/*===========================================================================*/
+/* ------- 상단 타이틀 ------- */
+.search_title{
+    width:100%;
+    height:165px;
+    background:#fff;
+    border-bottom:1px solid #eaeaea;
+}
+.search_title .search_title_inner{
+    width:1200px;
+    margin:0 auto;
+    padding-top:110px;
+}
+.search_title .searchResults_keywords{
+    font-size:22px;
+    color:#4ba9e1;
+    font-weight: 700;
+}
+.search_title .searchResults_fix{
+    font-size:22px;
+    color:#3c3c3c;
+}
+/*===========================================================================*/
+/* ------- 메인 레이아웃 ------- */
+.my_content{
+    width:100%;
+    padding-top:88px;
+    padding-bottom:150px;
+    background-color:#f5f6f7;
+}
+/*===========================================================================*/
+/* ------- 전체, 영상, 채널 순 버튼 ------- */
+.btn_search_bmk{
+    display:flex;
+    align-content: center;
+    flex-direction: row;
+    justify-content:flex-start;
+    flex-wrap: nowrap;
+    margin:0 auto;
+    width: 1200px;
+    height: 30px;
+    text-align: center;
+}
+.btn_search_bmk .btn .btn_all{
+    width: 105px;
+    height: 30px;
+    background: #fff;
+    border:1px solid #b3b6be;
+    font-size:13px;
+    color:#727272;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.btn_search_bmk .btn .btn_video{
+    width: 105px;
+    height: 30px;
+    background: #fff;
+    border:1px solid #b3b6be;
+    border-left:0px;
+    font-size:13px;
+    color:#727272;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.btn_search_bmk .btn .btn_channel{
+    width: 105px;
+    height: 30px;
+    background: #fff;
+    border:1px solid #b3b6be;
+    border-left:0px;
+    font-size:13px;
+    color:#727272;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.btn_search_bmk .btn input[type="button"]:hover{
+    background:linear-gradient(90deg, rgba(76,168,223,1) 0%, rgba(160,255,180,1) 100%);
+    font-size:13px;
+    color:#fff;
+    cursor: pointer;
+}
+/*===========================================================================*/
+/* ------- 검색결과 컨텐츠 ------- */
+.search_wrap{
+    *zoom: 1;
+    -ms-touch-action: pan-y;
+    touch-action: pan-y;
+    width: 1200px;
+    margin:0 auto;
+    margin-top:65px;
+    padding-top:21px;
+    background-color:#fff;
+    /* border:1px solid orange; */
+}
+/*===========================================================================*/
+/* ------- 영상 리스트 ------- */
+.search_wrap .search_list{
+    display:flex;
+    margin:0 auto;
+    width: 1158px;
+}
+.search_wrap .search_list .search_video_view{
+    display:flex;
+    /* align-content:center; 줄이 여러개일 때 한 줄에 대한 세로축 높이가 똑같을 때 사용 */
+    align-items:flex-start; /* 한줄에대한 높이가 다를 때 세로축 */
+    flex-direction:column; /* 기본값 */
+    justify-content: flex-start; /* 가록 축 정렬에 대한 설정값 */
+    flex-wrap: wrap;
+    width: 579px;
+    height: auto;
+}
+/* 동영상 썸네일 + 동영상 설명 */
+.search_wrap .search_list .search_video_view .main_video{
+    display:flex;
+    /* align-content:center; 줄이 여러개일 때 한 줄에 대한 세로축 높이가 똑같을 때 사용 */
+    align-items:center; /* 한줄에대한 높이가 다를 때 세로축 */
+    flex-direction:row; /* 기본값 */
+    justify-content:space-between; /* 가록 축 정렬에 대한 설정값 */
+    flex-wrap: nowrap;
+    width: 100%;
+    margin-bottom: 21px;
+}
+/* 동영상썸네일 */
+.search_wrap .search_list .search_video_view .main_video .main_video_img{
+    position: relative;
+    width: 50%;
+    height: 110px;
+}
+.search_wrap .search_list .search_video_view .main_video .main_video_img img{
+    width: 190px;
+    height: 100%;
+}
+.search_wrap .search_list .search_video_view .main_video .main_video_time {
+    position: absolute;
+    right: 38px;
+    bottom: 6px;
+    width: 55px;
+    background-color: #2b2b2b;
+    text-align: center;
+    font-size: 12px;
+    color: #ffffff;
+    line-height: 2;
+    opacity: 0.7;
+}
+/* 동영상설명 */
+.search_wrap .search_list .search_video_view .main_video .desc{
+    width: 80%;
+    height: 110px;
+    padding-top:15px;
+}
+.search_wrap .search_list .search_video_view .main_video .desc .desc_inner{
+    text-align: left;
+}
+.search_wrap .search_list .search_video_view .main_video .desc .desc_inner a{
+    font-size: 14px;
+    color:#343434;
+}
+.search_wrap .search_list .search_video_view .main_video .desc .desc_inner .ch_txt a{
+    font-size: 14px;
+    color:#4ba9e1;
+}
+.search_wrap .search_list .search_video_view .main_video .desc .desc_inner .play_like_date{
+    padding-top:10px;
+    font-size:13px;
+}
+.search_wrap .search_list .search_video_view .main_video .desc .desc_inner .play_like_date .cnp{
+    margin-right:10px;
+}
+.search_wrap .search_list .search_video_view .main_video .desc .desc_inner .play_like_date .cnp .bx{
+    font-size:20px;
+    vertical-align:-4px;
+    background: linear-gradient(to right, #a0ffb4, #4ca8df);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.search_wrap .search_list .search_video_view .desc .desc_inner .play_like_date .bch .bx{
+    margin-right:3px;
+    font-size:13px;
+}
+.search_wrap .search_list .search_video_view .desc .desc_inner .play_like_date .date{
+    margin-left:13px;
+    font-size:13px;
+}
