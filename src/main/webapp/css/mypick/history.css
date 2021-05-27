@@ -1,19 +1,25 @@
 /* history.css */
 *{margin:0; padding:0; box-sizing: border-box;}
+a {color: #fff; text-decoration: none; outline: none}
+/*a:hover, a:active {text-decoration: none; color:#fff; background-color:#ffffff;}*/
+ul, ol, li {list-style: none;}
+img {border: 0 none; font-size: 0;line-height: 0;}
+
+
 /*===========================================================================*/
 /* ------- 상단 타이틀 ------- */
-.likevideo_title{
+.history_title{
     width:100%;
     height:165px;
     background:#fff;
     border-bottom:1px solid #eaeaea;
 }
-.likevideo_title .likevideo_title_inner{
+.history_title .history_title_inner{
     width:1200px;
     margin:0 auto;
     padding-top:123px;
 }
-.likevideo_title_inner h2{
+.history_title h2{
     font-size:22px;
     color:#3c3c3c;
 }
@@ -29,7 +35,7 @@
 .btn_video_nav{
     margin:0 auto;
     width: 1200px;
-    height: 27px;
+    height: 30px;
 }
 .btn_video_nav .tablist{
     width: 347px;
@@ -45,11 +51,13 @@
 .btn_video_nav .tablist li a{
     font-size:13px;
     color:#727272;
+    transition: 0.3s;
 }
 .btn_video_nav .tablist li{
     width: 116px;
     height: 100%;
     text-align: center;
+    transition: 0.5s;
 }
 .btn_video_nav .tablist li:nth-child(1){
     background:linear-gradient(90deg, rgba(76,168,223,1) 0%, rgba(160,255,180,1) 100%);
@@ -60,6 +68,7 @@
 }
 .btn_video_nav .tablist li:nth-child(2){
     border-right: 1px solid #b3b6be;
+    transition: 0.5s;
 }
 /* .btn_video_nav .tablist li:nth-child(3){
     background:linear-gradient(90deg, rgba(76,168,223,1) 0%, rgba(160,255,180,1) 100%);
@@ -78,6 +87,8 @@
     margin-top:65px;
     background-color:#fff;
 }
+/*===========================================================================*/
+
 /* ------- 편집 버튼 ------- */
 .myplaylist_wrap .edit_btn{
     display: flex;
@@ -101,24 +112,35 @@
     text-align: center;
     font-size:14px;
     color:#727272;
+    background-color: #fff;
 }
 .myplaylist_wrap .edit_btn .btn_all{
     width: 75px;
-    height: 30px;
-    border-radius: 3px;
-    border:1px solid #dadada;
-    padding-top:3px;
-    text-align: center;
-    font-size:14px;
-    color:#727272;
 }
 .myplaylist_wrap .edit_btn .btn:hover{
     background:#dadada;
     color: #fff;
 }
+.myplaylist_wrap .edit_btn .btn_mod{
+    cursor: pointer;
+    transition: 0.5s;
+}
+.myplaylist_wrap .edit_btn .btn_all{
+    cursor: pointer;
+    transition: 0.5s;
+}
+.myplaylist_wrap .edit_btn .btn_delete{
+    cursor: pointer;
+    transition: 0.5s;
+}
+
 /*===========================================================================*/
 /* ------- 영상 리스트 ------- */
-.myplaylist_wrap .video_view{
+.myplaylist_wrap .video_list{
+    width: 100%;
+    height: auto;
+}
+.myplaylist_wrap .video_list .video_view{
     display:flex;
     /* align-content:center; 줄이 여러개일 때 한 줄에 대한 세로축 높이가 똑같을 때 사용 */
     align-items:center; /* 한줄에대한 높이가 다를 때 세로축 */
@@ -133,74 +155,79 @@
     /* border:1px  solid red; */
 }
 /* 체크박스 */
-.myplaylist_wrap .my_video_check{
-    width:3%;
-    height:100%;
-    padding-top:42px;
+.myplaylist_wrap .video_list .video_view .my_video_check{
+    width:45px;
 }
-.myplaylist_wrap .my_video_check label[for="mycheck"]{
-    display:none;
-}
-.myplaylist_wrap .my_video_check input[type="checkbox"]{
+.myplaylist_wrap .video_list .video_view .my_video_check input[type="checkbox"]{
     width: 24px;
     height: 24px;
     border:1px solid #dadada;
 }
-/* 보여질 부분의 스타일을 추가하면 된다. */
-/* .myplaylist_wrap .my_video_check input[type="checkbox"]:checked{
-    width: 24px;
-    height: 24px;
-    background-color:#dadada;
-} */
-
+/* 동영상 썸네일 + 동영상 설명 */
+.myplaylist_wrap .video_list .video_view .main_video{
+    display: flex;
+    /* align-content:center; 줄이 여러개일 때 한 줄에 대한 세로축 높이가 똑같을 때 사용 */
+    align-items:center; /* 한줄에대한 높이가 다를 때 세로축 */
+    flex-direction:row; /* 기본값 */
+    justify-content: flex-start; /* 가록 축 정렬에 대한 설정값 */
+    flex-wrap: nowrap;
+    width: 1130px;
+    transition: margin-left .5s;
+}
 /* 동영상썸네일 */
-.myplaylist_wrap .video{
+.myplaylist_wrap .video_list .video_view .main_video .main_video_img{
+    position: relative;
     width: 20%;
     height: 110px;
 }
-.myplaylist_wrap .video .img{
+.myplaylist_wrap .video_list .video_view .main_video .main_video_img img{
     width: 190px;
     height: 100%;
-    background: #e6c7c7;
 }
-.myplaylist_wrap .video span{
-    width: 60px;
-    height: 25px;
-    background: #2b2b2b;
-    opacity: 0.7;
-    font-size:11px;
-    color:#fff;
-    position:absolute;
-    padding-top:3px;
-    margin-top:80px;
-    margin-left:125px;
+.myplaylist_wrap .video_list .video_view .main_video .main_video_time {
+    position: absolute;
+    right: 42px;
+    bottom: 6px;
+    width: 55px;
+    background-color: #2b2b2b;
     text-align: center;
+    font-size: 12px;
+    color: #ffffff;
+    line-height: 2;
+    opacity: 0.7;
 }
 /* 동영상설명 */
-.myplaylist_wrap .desc{
-    width: 75%;
+.myplaylist_wrap .video_list .video_view .main_video .desc{
+    width: 80%;
     height: 110px;
     padding-top:15px;
 }
-.myplaylist_wrap .desc dt a{
+.myplaylist_wrap .video_list .video_view .main_video .desc .desc_inner{
+    text-align: left;
+}
+.myplaylist_wrap .video_list .video_view .main_video .desc .desc_inner a{
     font-size: 14px;
     color:#343434;
 }
-.myplaylist_wrap .desc dd .ch_txt a{
+.myplaylist_wrap .video_list .video_view .main_video .desc .desc_inner .ch_txt a{
     font-size: 14px;
     color:#4ba9e1;
 }
-.myplaylist_wrap .desc dd:last-child{
+.myplaylist_wrap .video_list .video_view .main_video .desc .desc_inner .play_like{
     padding-top:10px;
     font-size:13px;
 }
-.myplaylist_wrap .desc dd .cnp{
+.myplaylist_wrap .video_list .video_view .main_video .desc .desc_inner .play_like .cnp{
     margin-right:10px;
 }
-.myplaylist_wrap .desc dd .bx{
+.myplaylist_wrap .video_list .video_view .main_video .desc .desc_inner .play_like .cnp .bx{
     font-size:20px;
-    width: 15px;
+    vertical-align:-4px;
+    background: linear-gradient(to right, #a0ffb4, #4ca8df);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
-.myplaylist_wrap .desc dd .bxs-heart{
+.myplaylist_wrap .video_list .video_view .desc .desc_inner .play_like .bch .bx{
+    margin-right:3px;
     font-size:13px;
 }
