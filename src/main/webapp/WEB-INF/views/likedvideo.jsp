@@ -14,7 +14,7 @@
 
     <!-- js -->
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src="/js/mypick/button.js"></script>
+    <script src="js/mypick/button.js"></script>
 
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -58,7 +58,9 @@
                         </div><!-- // my_video_check -->
                         <div class="main_video"><!-- main_video -->
                             <div class="main_video_img"><!-- main_video_img -->
-                                <img src="/images/videobackground.png" />
+                                <a href="#">
+                                    <img src="images/videobackground.png" />
+                                </a>
                                 <div class="main_video_time">22:00</div>
                             </div>
                             <div class="desc"><!-- desc -->
@@ -95,7 +97,9 @@
                         </div><!-- // my_video_check -->
                         <div class="main_video"><!-- main_video -->
                             <div class="main_video_img"><!-- main_video_img -->
-                                <img src="images/videobackground.png" />
+                                <a href="#">
+                                    <img src="images/videobackground.png" />
+                                </a>
                                 <div class="main_video_time">22:00</div>
                             </div>
                             <div class="desc"><!-- desc -->
@@ -132,7 +136,9 @@
                         </div><!-- // my_video_check -->
                         <div class="main_video"><!-- main_video -->
                             <div class="main_video_img"><!-- main_video_img -->
-                                <img src="images/videobackground.png" />
+                                <a href="#">
+                                    <img src="images/videobackground.png" />
+                                </a>
                                 <div class="main_video_time">22:00</div>
                             </div>
                             <div class="desc"><!-- desc -->
@@ -169,7 +175,9 @@
                         </div><!-- // my_video_check -->
                         <div class="main_video"><!-- main_video -->
                             <div class="main_video_img"><!-- main_video_img -->
-                                <img src="images/videobackground.png" />
+                                <a href="#">
+                                    <img src="images/videobackground.png" />
+                                </a>
                                 <div class="main_video_time">22:00</div>
                             </div>
                             <div class="desc"><!-- desc -->
@@ -206,7 +214,9 @@
                         </div><!-- // my_video_check -->
                         <div class="main_video"><!-- main_video -->
                             <div class="main_video_img"><!-- main_video_img -->
-                                <img src="images/videobackground.png" />
+                                <a href="#">
+                                    <img src="images/videobackground.png" />
+                                </a>
                                 <div class="main_video_time">22:00</div>
                             </div>
                             <div class="desc"><!-- desc -->
@@ -243,7 +253,9 @@
                         </div><!-- // my_video_check -->
                         <div class="main_video"><!-- main_video -->
                             <div class="main_video_img"><!-- main_video_img -->
-                                <img src="images/videobackground.png" />
+                                <a href="#">
+                                    <img src="images/videobackground.png" />
+                                </a>
                                 <div class="main_video_time">22:00</div>
                             </div>
                             <div class="desc"><!-- desc -->
@@ -280,7 +292,9 @@
                         </div><!-- // my_video_check -->
                         <div class="main_video"><!-- main_video -->
                             <div class="main_video_img"><!-- main_video_img -->
-                                <img src="images/videobackground.png" />
+                                <a href="#">
+                                    <img src="images/videobackground.png" />
+                                </a>
                                 <div class="main_video_time">22:00</div>
                             </div>
                             <div class="desc"><!-- desc -->
@@ -309,6 +323,7 @@
                             </div><!-- // desc -->
                         </div><!-- // main_video -->
                     </div><!-- // video_view -->
+
                 </div><!-- // video_list -->
             </form>
         </section><!-- // myplaylist_wrap -->
