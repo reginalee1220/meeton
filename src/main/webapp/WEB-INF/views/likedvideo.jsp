@@ -59,7 +59,7 @@
                         <div class="main_video"><!-- main_video -->
                             <div class="main_video_img"><!-- main_video_img -->
                                 <a href="#">
-                                    <img src="images/videobackground.png" />
+                                    <img src="/images/mypick/videobackground.png" />
                                 </a>
                                 <div class="main_video_time">22:00</div>
                             </div>
@@ -98,7 +98,7 @@
                         <div class="main_video"><!-- main_video -->
                             <div class="main_video_img"><!-- main_video_img -->
                                 <a href="#">
-                                    <img src="images/videobackground.png" />
+                                    <img src="/images/mypick/videobackground.png" />
                                 </a>
                                 <div class="main_video_time">22:00</div>
                             </div>
@@ -137,7 +137,7 @@
                         <div class="main_video"><!-- main_video -->
                             <div class="main_video_img"><!-- main_video_img -->
                                 <a href="#">
-                                    <img src="images/videobackground.png" />
+                                    <img src="/images/mypick/videobackground.png" />
                                 </a>
                                 <div class="main_video_time">22:00</div>
                             </div>
@@ -176,7 +176,7 @@
                         <div class="main_video"><!-- main_video -->
                             <div class="main_video_img"><!-- main_video_img -->
                                 <a href="#">
-                                    <img src="images/videobackground.png" />
+                                    <img src="/images/mypick/videobackground.png" />
                                 </a>
                                 <div class="main_video_time">22:00</div>
                             </div>
@@ -215,7 +215,7 @@
                         <div class="main_video"><!-- main_video -->
                             <div class="main_video_img"><!-- main_video_img -->
                                 <a href="#">
-                                    <img src="images/videobackground.png" />
+                                    <img src="/images/mypick/videobackground.png" />
                                 </a>
                                 <div class="main_video_time">22:00</div>
                             </div>
@@ -254,7 +254,7 @@
                         <div class="main_video"><!-- main_video -->
                             <div class="main_video_img"><!-- main_video_img -->
                                 <a href="#">
-                                    <img src="images/videobackground.png" />
+                                    <img src="/images/mypick/videobackground.png" />
                                 </a>
                                 <div class="main_video_time">22:00</div>
                             </div>
@@ -293,7 +293,7 @@
                         <div class="main_video"><!-- main_video -->
                             <div class="main_video_img"><!-- main_video_img -->
                                 <a href="#">
-                                    <img src="images/videobackground.png" />
+                                    <img src="/images/mypick/videobackground.png" />
                                 </a>
                                 <div class="main_video_time">22:00</div>
                             </div>
