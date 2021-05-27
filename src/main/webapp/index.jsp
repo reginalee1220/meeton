@@ -6,7 +6,7 @@
 <body>
 <script>
 
-  location.href="watrchlater.do";
+  location.href="main.do";
 </script>
 
 </body>
