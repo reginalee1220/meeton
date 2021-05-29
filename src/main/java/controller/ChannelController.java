@@ -14,13 +14,13 @@ public class ChannelController {
     }
 
     // videoPage : 비디오 게시글
-    @RequestMapping("videoPage")
+    @RequestMapping("/videoPage.do")
     public String videoPage(){
 
 
 
 
-        return "videoPage";   //redirect:videoPage는 주소가 바뀐다.
+        return "videoPage";
     }
     
     // video : 비디오
@@ -31,7 +31,5 @@ public class ChannelController {
         
         return "video";
     }
-
-
 
 }
