@@ -1,4 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="path" value="${pageContext.request.contextPath}" />
+
+
 <!DOCTYPE html>
 <html lang="en">
 <heade>
@@ -47,8 +52,8 @@
             </div><!-- // direct_msg -->
             <div class="kategorie"><!-- kategorie -->
                 <ul class="kategorie_title">
-                    <a href="#"><li class="upload_video">업로드 영상보기</li></a>
-                    <a href="#" class="allVideo"><li class="all_video">전체영상</li></a>
+                    <a href="${path}/videoPage.do"><li class="upload_video">업로드 영상보기</li></a>
+                    <a href="${path}/videoPage.do" class="allVideo"><li class="all_video">전체영상</li></a>
                 </ul>
             </div><!-- // kategorie -->
         </div><!-- //side_inner -->

@@ -6,7 +6,7 @@
 <body>
 <script>
 
-  location.href="video.do";
+  location.href="channel.do";
 </script>
 
 </body>

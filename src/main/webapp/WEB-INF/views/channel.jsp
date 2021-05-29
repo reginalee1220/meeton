@@ -1,4 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="path" value="${pageContext.request.contextPath}" />
+
 <!DOCTYPE html>
 <html lang="en">
 <heade>
@@ -19,7 +23,7 @@
 
 </heade>
 <body>
-<header>헤드자리</header>
+<%--<%@ include file="header.jsp" %>--%>
 <div id="channel_wrap" class="channel">
     <!-- side_wrap -->
     <div class="side_wrap">
@@ -46,8 +50,8 @@
             </div><!-- // direct_msg -->
             <div class="kategorie"><!-- kategorie -->
                 <ul class="kategorie_title">
-                    <a href="#"><li class="upload_video">업로드 영상보기</li></a>
-                    <a href="#" class="allVideo"><li class="all_video">전체영상</li></a>
+                    <a href="videoPage"><li class="upload_video">업로드 영상보기</li></a>
+                    <a href="${path}videoPage.do" class="allVideo"><li class="all_video">전체영상</li></a>
                 </ul>
             </div><!-- // kategorie -->
         </div><!-- //side_inner -->
@@ -118,7 +122,7 @@
                 <div class="preview_B"><!-- preview_B -->
                     <div class="video_pview"><!-- video_pview -->
                         <div class="main_video_img"><!-- main_video_img -->
-                            <a href="#">
+                            <a href="video">
                                 <video muted="muted" poster=" " preload="metadata" controls ><!-- controls : 동영상 체크  -->
                                     <source src="./images/video/testvideo.mp4" type="video/mp4" />
                                     <source src="./images/video/testvideo.mp4" type="video/webm" />
@@ -145,7 +149,7 @@
                 <div class="preview_s"><!-- preview_s -->
                     <div class="video_pview"><!-- video_pview -->
                         <div class="main_video_img"><!-- main_video_img -->
-                            <a href="#">
+                            <a href="video">
                                 <video muted="muted" poster=" " preload="metadata" controls ><!-- controls : 동영상 체크  -->
                                     <source src="./images/video/testvideo.mp4" type="video/mp4" />
                                     <source src="./images/video/testvideo.mp4" type="video/webm" />
@@ -170,7 +174,7 @@
                     </div><!-- // video_pview-->
                     <div class="video_pview"><!-- video_pview -->
                         <div class="main_video_img"><!-- main_video_img -->
-                            <a href="#">
+                            <a href="video">
                                 <video muted="muted" poster=" " preload="metadata" controls ><!-- controls : 동영상 체크  -->
                                     <source src="./images/video/testvideo.mp4" type="video/mp4" />
                                     <source src="./images/video/testvideo.mp4" type="video/webm" />
