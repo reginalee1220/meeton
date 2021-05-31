@@ -6,7 +6,7 @@
 <body>
 <script>
 
-  location.href="videoPage.do";
+  location.href="signUp.do";
 </script>
 
 </body>

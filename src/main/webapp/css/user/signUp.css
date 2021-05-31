@@ -1,0 +1,371 @@
+/* signUp.css */
+/* video.css */
+*{margin:0; padding:0; box-sizing: border-box;}
+ul, ol, li {list-style: none;}
+a {color: #333; text-decoration: none; line-height: 1;}
+a:hover, a:focus, a:active {text-decoration:none;}
+/*===========================================================================*/
+/* ------- 메인 레이아웃 ------- */
+/* 전체 layout */
+.wrap{width:100%; height:100vh; box-sizing: border-box;}
+.null {display: none;} /* 더미 숨기기 */
+legend{display: none;} /* 더미 숨기기 */
+/* 유효성 검사 메세지 */
+.text_red {font-size: 13px; line-height: 14px; margin:10px 0 10px 120px; color: #bc3838; text-align: left;}
+.text_purple {font-size: 13px; line-height: 14px;  margin:10px 0 10px 120px; color: #9b52c7; text-align: left;}
+/*===========================================================================*/
+/* ------- VIVERSE 회원가입 타이틀 ------- */
+.top-title{
+    width: 100%;
+    height: 235px;
+    background-color: #fafbfc;
+    border-bottom: 2px solid #d8d8d8;
+}
+.top-inner{
+    max-width: 970px;
+    margin: 0 auto;
+}
+h1{
+    padding-top:144px;
+    font-size: 30px;
+    font-weight: bold;
+    color:#4e4e4e;
+}
+.border{width: 32px; height: 3px; margin-top:31px;background-color: #d1d1d1;}
+/*===========================================================================*/
+/* ------- 회원가입 form ------- */
+.signup_section{
+    max-width: 970px;
+    height:100vh;
+    margin: 0 auto;
+    margin-top:120px;
+}
+/* 회원가입 */
+.signup_section .form_group{
+    width: 100%;
+    margin-bottom: 20px;
+}
+.signup_section .form_group .frg{
+    display: flex;
+    /* align-content:center; 줄이 여러개일 때 한 줄에 대한 세로축 높이가 똑같을 때 사용 */
+    align-items:center; /* 한줄에대한 높이가 다를 때 세로축 */
+    flex-direction:row; /* 기본값 */
+    justify-content:space-between; /* 가록 축 정렬에 대한 설정값 */
+    flex-wrap: wrap;
+    width: 100%;
+}
+.signup_section .form_group .mem_info{
+    display: flex;
+    /* align-content:center; 줄이 여러개일 때 한 줄에 대한 세로축 높이가 똑같을 때 사용 */
+    align-items:center; /* 한줄에대한 높이가 다를 때 세로축 */
+    flex-direction:row; /* 기본값 */
+    justify-content:flex-start; /* 가록 축 정렬에 대한 설정값 */
+    flex-wrap: wrap;
+    width: 80%;
+}
+.signup_section .form_group .mem_info .info_name{
+    width: 110px;
+}
+.signup_section .form_group .mem_info .info_name > span{
+    font-size:13px;
+    color:#bc3838;
+}
+.signup_section .form_group .mem_info .info_name > label{
+    font-size:15px;
+    color:#263139; /* 4e4e4e */
+}
+.signup_section .form_group .mem_info .info_word{
+    color: #4e4e4e;
+}
+/* 중복체크 */
+.signup_section .form_group .btn_check{
+    width:20%;
+
+}
+/* 중복 버튼 */
+.signup_section .form_group .btn_check button{
+    float:right;
+    width:183px;
+    height:50px;
+    border-radius: 100px;
+    border:1px solid #d7d7dd;
+    background-color: #fff;
+    font-size: 13px;
+    color: #666666;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.signup_section .form_group .btn_check button a{
+    color: #666666;
+    text-align: center;
+    transition: 0.3s;
+}
+.signup_section .form_group .btn_check button:hover{
+    width: 183px;
+    height: 50px;
+    background:linear-gradient(312deg, rgba(76,168,223,1) 0%, rgba(160,255,180,1) 100%);
+    border-radius: 100px;
+    box-shadow: 3px 3px 3px 1px rgba(76, 76, 76, .2);
+    border:1px solid #f2f2f3;
+    color: #fff;
+}
+.signup_section .form_group .btn_check button a:hover{
+    color: #fff;
+    text-align: center;
+}
+/* === form input 요소 === */
+/* 아이디, 이름, 닉네임, 패스워드, 핸드폰 input 요소 */
+.mem_info input[type="text"],
+.mem_info input[type="password"],
+.mem_info input[type="tel"]{
+    width:600px;
+    height:65px;
+    padding-left:1em; font-family: inherit; background-color:#fff; border: 2px solid #f0f3f6; border-radius: 5px; /* iSO 둥근모서리 제거 */ outline-style: none; -webkit-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -moz-appearance: none; /* 브라우저별 기본 스타일링 제거 */ appearance: none;
+}
+/* focus */
+.mem_info input[type="text"]:focus,
+.mem_info input[type="password"]:focus,
+.mem_info02 input[type="password"]:focus,
+.mem_info input[type="tel"]:focus{
+    width:600px;
+    height:65px;
+    line-height : normal; padding-left:1em; font-family: inherit; background-color:#fff;/* iSO 둥근모서리 제거 */ /* outline-style: none; */ border: solid 2px #9efdb5;border-radius: 5px;  -webkit-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -moz-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -webkit-transition: 0.5s; transition: 0.5s; appearance: none;
+}
+/* ------- 이메일 ------- */
+.signup_section .form_group .mem_info .info_word_ema{
+    display: flex;
+    /* align-content:center; 줄이 여러개일 때 한 줄에 대한 세로축 높이가 똑같을 때 사용 */
+    align-items:center; /* 한줄에대한 높이가 다를 때 세로축 */
+    flex-direction:row; /* 기본값 */
+    justify-content:space-between; /* 가록 축 정렬에 대한 설정값 */
+    flex-wrap: wrap;
+    color: #4e4e4e;
+}
+.signup_section .form_group .mem_info .email{
+    margin-right: 10px;
+}
+.signup_section .form_group .mem_info .email > span{
+    margin-left: 8px;
+}
+.signup_section .form_group .mem_info .domain{
+    margin-right: 10px;
+}
+/* 이메일 input 요소 */
+.info_word_ema input[type="text"]{
+    width:190px;
+    height:65px;
+    padding-left:1em; font-family: inherit; background-color:#fff; border: 2px solid #f0f3f6; border-radius: 5px; /* iSO 둥근모서리 제거 */ outline-style: none; -webkit-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -moz-appearance: none; /* 브라우저별 기본 스타일링 제거 */ appearance: none;
+}
+.info_word_ema select{
+    width:170px;
+    height:65px;
+    padding-left:1em; font-family: inherit; background-color:#fff; border: 2px solid #f0f3f6; border-radius: 5px; /* iSO 둥근모서리 제거 */ outline-style: none; -webkit-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -moz-appearance: none; /* 브라우저별 기본 스타일링 제거 */ appearance: none;
+}
+/* focus */
+.info_word_ema input[type="text"]:focus{
+    width:190px;
+    height:65px;
+    line-height : normal; padding-left:1em; font-family: inherit; background-color:#fff;/* iSO 둥근모서리 제거 */ /* outline-style: none; */ border: solid 2px #9efdb5;border-radius: 5px;  -webkit-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -moz-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -webkit-transition: 0.5s; transition: 0.5s; appearance: none;
+}
+.info_word_ema select:focus{
+    width:170px;
+    height:65px;
+    line-height : normal; padding-left:1em; font-family: inherit; background-color:#fff;/* iSO 둥근모서리 제거 */ /* outline-style: none; */ border: solid 2px #9efdb5;border-radius: 5px;  -webkit-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -moz-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -webkit-transition: 0.5s; transition: 0.5s; appearance: none;
+}
+/* ------- 주소 ------- */
+/* 우편번호 */
+.signup_section .form_group .frg_ad{
+    display: flex;
+    /* align-content:center; 줄이 여러개일 때 한 줄에 대한 세로축 높이가 똑같을 때 사용 */
+    align-items:center; /* 한줄에대한 높이가 다를 때 세로축 */
+    flex-direction:row; /* 기본값 */
+    justify-content:flex-start; /* 가록 축 정렬에 대한 설정값 */
+    flex-wrap: wrap;
+    width: 100%;
+}
+.signup_section .form_group .frg_ad .mem_info{
+    display: flex;
+    /* align-content:center; 줄이 여러개일 때 한 줄에 대한 세로축 높이가 똑같을 때 사용 */
+    align-items:center; /* 한줄에대한 높이가 다를 때 세로축 */
+    flex-direction:row; /* 기본값 */
+    justify-content:flex-start; /* 가록 축 정렬에 대한 설정값 */
+    flex-wrap: wrap;
+    width: 40%;
+}
+.signup_section .form_group .frg_ad .mem_info .info_name{
+    width: 110px;
+}
+.signup_section .form_group .frg_ad .mem_info .info_name > span{
+    font-size:13px;
+    color:#bc3838;
+}
+.signup_section .form_group .frg_ad .mem_info .info_name > label{
+    font-size:15px;
+    color:#263139; /* 4e4e4e */
+}
+.signup_section .form_group .frg_ad .mem_info .info_word{
+    color: #4e4e4e;
+}
+/* 우편번호 검색 */
+.signup_section .form_group .frg_ad .btn_ZIPcheck{
+    width:20%;
+}
+/* 우편번호 검색 버튼 */
+.signup_section .form_group .frg_ad .btn_ZIPcheck button{
+    float:right;
+    width:183px;
+    height:50px;
+    border-radius: 100px;
+    border:1px solid #d7d7dd;
+    background-color: #fff;
+    font-size:15px;
+    color: #666666;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.signup_section .form_group .frg_ad .btn_ZIPcheck button a{
+    color: #666666;
+    text-align: center;
+    transition: 0.3s;
+}
+.signup_section .form_group .frg_ad .btn_ZIPcheck button:hover{
+    width: 183px;
+    height: 50px;
+    background:linear-gradient(312deg, rgba(76,168,223,1) 0%, rgba(160,255,180,1) 100%);
+    border-radius: 100px;
+    box-shadow: 3px 3px 3px 1px rgba(76, 76, 76, .2);
+    border:1px solid #f2f2f3;
+    color: #fff;
+}
+.signup_section .form_group .frg_ad .btn_ZIPcheck button a:hover{
+    color: #fff;
+    text-align: center;
+}
+/* 우편번호 input 요소 */
+.frg_ad input[type="text"]{
+    width:219px;
+    height: 65px;
+    padding-left:1em; font-family: inherit; background-color:#fff; border: 2px solid #f0f3f6; border-radius: 5px; /* iSO 둥근모서리 제거 */ outline-style: none; -webkit-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -moz-appearance: none; /* 브라우저별 기본 스타일링 제거 */ appearance: none;
+}
+/* focus */
+.frg_ad input[type="text"]:focus{
+    width:219px;
+    height:65px;
+    line-height : normal; padding-left:1em; font-family: inherit; background-color:#fff;/* iSO 둥근모서리 제거 */ /* outline-style: none; */ border: solid 2px #9efdb5;border-radius: 5px;  -webkit-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -moz-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -webkit-transition: 0.5s; transition: 0.5s; appearance: none;
+}
+/* ------- 상세주소 ------- */
+.signup_section .form_group .mem_info .info_word_ads{
+    display: flex;
+    /* align-content:center; 줄이 여러개일 때 한 줄에 대한 세로축 높이가 똑같을 때 사용 */
+    align-items:center; /* 한줄에대한 높이가 다를 때 세로축 */
+    flex-direction:row; /* 기본값 */
+    justify-content:space-between; /* 가록 축 정렬에 대한 설정값 */
+    flex-wrap: wrap;
+    color: #4e4e4e;
+}
+.signup_section .form_group .mem_info .info_word_ads > .address1{
+    margin-right: 10px;
+}
+/* 상세주소 input 요소 */
+.info_word_ads input[type="text"]{
+    width:324px;
+    height: 65px;
+    padding-left:1em; font-family: inherit; background-color:#fff; border: 2px solid #f0f3f6; border-radius: 5px; /* iSO 둥근모서리 제거 */ outline-style: none; -webkit-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -moz-appearance: none; /* 브라우저별 기본 스타일링 제거 */ appearance: none;
+}
+/* focus */
+.info_word_ads input[type="text"]:focus{
+    width:324px;
+    height:65px;
+    line-height : normal; padding-left:1em; font-family: inherit; background-color:#fff;/* iSO 둥근모서리 제거 */ /* outline-style: none; */ border: solid 2px #9efdb5;border-radius: 5px;  -webkit-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -moz-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -webkit-transition: 0.5s; transition: 0.5s; appearance: none;
+}
+/* ------- 생일 ------- */
+.signup_section .form_group .mem_info .info_word_bth{
+    display: flex;
+    /* align-content:center; 줄이 여러개일 때 한 줄에 대한 세로축 높이가 똑같을 때 사용 */
+    align-items:center; /* 한줄에대한 높이가 다를 때 세로축 */
+    flex-direction:row; /* 기본값 */
+    justify-content:space-between; /* 가록 축 정렬에 대한 설정값 */
+    flex-wrap: wrap;
+    color: #4e4e4e;
+}
+.signup_section .form_group .mem_info .year{
+    margin-right: 15px;
+}
+.signup_section .form_group .mem_info .month{
+    margin-right: 15px;
+}
+/* 이메일 input 요소 */
+.info_word_bth input[type="text"]{
+    width:210px;
+    height:65px;
+    padding-left:1em; font-family: inherit; background-color:#fff; border: 2px solid #f0f3f6; border-radius: 5px; /* iSO 둥근모서리 제거 */ outline-style: none; -webkit-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -moz-appearance: none; /* 브라우저별 기본 스타일링 제거 */ appearance: none;
+}
+.info_word_bth select{
+    width:210px;
+    height:65px;
+    padding-left:1em; font-family: inherit; background-color:#fff; border: 2px solid #f0f3f6; border-radius: 5px; /* iSO 둥근모서리 제거 */ outline-style: none; -webkit-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -moz-appearance: none; /* 브라우저별 기본 스타일링 제거 */ appearance: none;
+}
+/* focus */
+.info_word_bth input[type="text"]:focus{
+    width:210px;
+    height:65px;
+    line-height : normal; padding-left:1em; font-family: inherit; background-color:#fff;/* iSO 둥근모서리 제거 */ /* outline-style: none; */ border: solid 2px #9efdb5;border-radius: 5px;  -webkit-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -moz-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -webkit-transition: 0.5s; transition: 0.5s; appearance: none;
+}
+.info_word_bth select:focus{
+    width:210px;
+    height:65px;
+    line-height : normal; padding-left:1em; font-family: inherit; background-color:#fff;/* iSO 둥근모서리 제거 */ /* outline-style: none; */ border: solid 2px #9efdb5;border-radius: 5px;  -webkit-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -moz-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -webkit-transition: 0.5s; transition: 0.5s; appearance: none;
+}
+/*===========================================================================*/
+/* ------- 회원가입,취소 버튼 ------- */
+.complete{
+    display: flex;
+    /* align-content:center; 줄이 여러개일 때 한 줄에 대한 세로축 높이가 똑같을 때 사용 */
+    align-items:center; /* 한줄에대한 높이가 다를 때 세로축 */
+    flex-direction:row; /* 기본값 */
+    justify-content:flex-start; /* 가록 축 정렬에 대한 설정값 */
+    flex-wrap: wrap;
+    width: 100%;
+    height: 300px;
+    padding-left: 290px;
+}
+.complete .cmp{
+    width:183px;
+    height:50px;
+    border-radius: 100px;
+    border:1px solid #f2f2f3;
+    background-color: #fff;
+    box-shadow: 3px 3px 3px 1px rgba(76, 76, 76, .2);
+    font-size:13px;
+    color: #666666;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.complete .join_box{
+    margin-left: 15px;
+}
+.signup_section .form_group .btn_check button a{
+    color: #666666;
+    text-align: center;
+    transition: 0.3s;
+}
+.complete .cmp:hover{
+    width: 183px;
+    height: 50px;
+    background:linear-gradient(312deg, rgba(76,168,223,1) 0%, rgba(160,255,180,1) 100%);
+    border-radius: 100px;
+    box-shadow: 3px 3px 3px 1px rgba(76, 76, 76, .2);
+    border:1px solid #f2f2f3;
+    color: #fff;
+}
+.complete button a:hover{
+    color: #fff;
+    text-align: center;
+}
+/* ========================================================================== */
+
+
+
