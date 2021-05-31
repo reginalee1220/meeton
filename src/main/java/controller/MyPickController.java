@@ -19,7 +19,7 @@ public class MyPickController {
 
     }
 
-    @RequestMapping("/mypick.do")
+    @RequestMapping("/likedvideo.do")
     public String test(){
 
         return "likedvideo";

@@ -6,7 +6,7 @@
 <body>
 <script>
 
-  location.href="mypick.do";
+  location.href="likedvideo.do";
 </script>
 
 </body>
