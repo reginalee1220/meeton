@@ -29,7 +29,7 @@ public class MyPickController {
     @RequestMapping("/history.do")
     public String history() {
 
-        
+
         return "history";
 
     }

@@ -20,6 +20,13 @@ public class MainController {
     @Autowired
     private MainService main;
 
+    /* Sidebar TEST */
+    @RequestMapping("/sidebar.do")
+    public String sidebar(){
+
+        return "sidebar";
+    }
+
     /* Main 목록 */
     @RequestMapping("/main.do")
     public String main(Model model, HttpServletRequest request, HttpSession session) {
