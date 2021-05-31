@@ -3,6 +3,18 @@
 
 <mapper namespace="adminChannel">
 
+    <!-- 최신 동영상 실적 -->
+    <select id="ac_getVideo" parameterType="String" resultType="video">
+        select * from video where userid=#{userid} order by register desc limit 1
+    </select>
 
+    <!-- 채널 분석 -->
+    <select id="ac_getChannel" parameterType="String" resultType="channel">
+        select * from channel where userid=#{userid}
+    </select>
 
+    <!-- 총 조회수 -->
+    <select id="ac_getViews" parameterType="String" resultType="int">
+        select sum(views) from video where userid=#{userid};
+    </select>
 </mapper>

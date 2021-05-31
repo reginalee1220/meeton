@@ -5,8 +5,8 @@
 </head>
 <body>
 <script>
-
-  location.href="history.do";
+<%session.setAttribute("userid","runa");%>
+  location.href="adminChannel.do";
 </script>
 
 </body>
