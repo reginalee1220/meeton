@@ -18,24 +18,38 @@ public class AdminChannelController {
     private AdminChannelService adChannel;
 
     @RequestMapping("/adminChannel.do")
-    public String adminChannel(Model model, HttpSession session, HttpServletRequest request){
+    public String adminChannel(String state, Model model, HttpSession session, HttpServletRequest request){
         String userid = (String)session.getAttribute("userid");
 
-        // 최신 동영상 실적
-        Video video = adChannel.getVideo(userid);
-        System.out.println("video: " + video);
-        model.addAttribute("video", video);
+        String page = state;
 
-        // 채널분석
-        Channel channel = adChannel.getChannel(userid);
-        System.out.println("channel: " + channel);
-        model.addAttribute("channel", channel);
+        if(page.equals("dashboard")){
+            // 최신 동영상 실적
+            Video video = adChannel.getVideo(userid);
+            System.out.println("video: " + video);
+            model.addAttribute("video", video);
 
-        // 총 조회수
-        int totalviews = adChannel.getViews(userid);
-        System.out.println("totalviews: " + totalviews );
-        model.addAttribute("totalviews",totalviews);
+            // 채널분석
+            Channel channel = adChannel.getChannel(userid);
+            System.out.println("channel: " + channel);
+            model.addAttribute("channel", channel);
 
+            // 총 조회수
+            int totalviews = adChannel.getViews(userid);
+            System.out.println("totalviews: " + totalviews );
+            model.addAttribute("totalviews",totalviews);
+
+
+        }else if(page.equals("content")){
+
+        }else if(page.equals("analysis")){
+
+        }else if(page.equals("subscribe")){
+
+        }
+
+
+        model.addAttribute("page",page);
         return "adminChannel";
     }
 

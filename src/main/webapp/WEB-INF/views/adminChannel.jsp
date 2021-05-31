@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="kr">
 <head>
@@ -10,7 +11,7 @@
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="./css/admin/adminChannel.css">
     <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script src="./js/adminChannel.js"></script>
+    <script src="./js/adminChannel/adminChannel.js"></script>
 </head>
 <body>
 <div class="ca-container">
@@ -60,8 +61,15 @@
         </div>
     </div><!--ca-sidebar end-->
     <div class="ca-main">
-        <%@include file="adminChannelDashboard.jsp"%>
-
+        <c:if test="${page == 'dashboard'}">
+            <%@include file="adminChannelDashboard.jsp"%>
+        </c:if>
+        <c:if test="${page == 'content'}">
+            <%@include file="adminChannelContent.jsp"%>
+        </c:if>
+        <c:if test="${page == 'analysis'}">
+            <%@include file="adminChannelAnalysis.jsp"%>
+        </c:if>
 
     </div><!--ca-main end-->
 </div><!--ca-container end-->
