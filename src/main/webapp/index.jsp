@@ -5,8 +5,8 @@
 </head>
 <body>
 <script>
-
-  location.href="test.do";
+<%session.setAttribute("userid","runa");%>
+  location.href="main.do";
 </script>
 
 </body>

@@ -1,0 +1,69 @@
+/*  anaylsis  */
+.ca-analysis{
+    background-color: #f5f6f7;
+    width: 100%;
+    height: 100vh;
+    padding: 10px 20px;
+}
+.ca-analysis-content > h3{
+    margin: 20px 0;
+}
+.ca-analysis-box{
+    width: 900px;
+    margin: 10px 0;
+    padding: 20px 20px;
+    box-shadow: 2px 5px 5px 1px rgba(91, 91, 91, .1);
+    background-color: #fff;
+    position: relative;
+    font-size: 0;
+}
+.ca-analysis-box > input{
+    display: none;
+}
+.ca-analysis-box > input + label{
+    border-top: 1px solid #d9dddf;
+    border-right: 1px solid #d9dddf;
+    border-bottom: 1px solid #d9dddf;
+    display: inline-block;
+    padding: 20px;
+    cursor: pointer;
+    width: 33.33%;
+    font-size: 15px;
+    text-align: center;
+    background-color: #f5f6f7;
+}
+.ca-analysis-box > input:first-child + label{
+    border-left: 1px solid #d9dddf;
+}
+.ca-analysis-box > input:checked + label{
+    border-bottom: none;
+    background-color: #fff;
+}
+.conbox{
+    display: none;
+    padding: 20px;
+    border-left: 1px solid #d9dddf;
+    border-right: 1px solid #d9dddf;
+    border-bottom: 1px solid #d9dddf;
+    font-size: 15px;
+}
+
+#subscriber:checked ~ .subscriber{
+    display: block;
+}
+#bookmark:checked ~ .bookmark{
+    display: block;
+}
+#views:checked ~ .views{
+    display: block;
+}
+.conbox > span{
+    font-size: 13px;
+    color: #a0a0a0;
+}
+
+/* chart */
+.chart-container{
+    height: 50%;
+
+}
