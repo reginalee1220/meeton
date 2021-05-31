@@ -6,9 +6,9 @@
     <title>meeton</title>
     <!--Boxicons CDN Link-->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="/css/default/base.css">
     <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script src="js/base.js"></script>
+    <script src="/js/main/base.js"></script>
 </head>
 <body>
 <header>
