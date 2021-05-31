@@ -11,7 +11,7 @@ public class Video {
     private String description;
     private String thumbnail;
     private String visibility;
-    private Timestamp register;
+    private String register;
     private int views;
     private int comments;
     private int likes;
@@ -75,11 +75,11 @@ public class Video {
         this.visibility = visibility;
     }
 
-    public Timestamp getRegister() {
+    public String getRegister() {
         return register;
     }
 
-    public void setRegister(Timestamp register) {
+    public void setRegister(String register) {
         this.register = register;
     }
 
