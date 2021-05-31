@@ -1,3 +1,8 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java"  %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
+
 <!DOCTYPE html>
 <html lang="kr">
 <head>
@@ -14,7 +19,7 @@
 <header>
     <div class="header-bar">
         <div class="header-logo">
-            <a href="#"><img src="image/LOGO.png" /></a>
+            <a href="#"><img src="/images/logo/LOGO.png" /></a>
         </div>
         <div class="header-search">
             <form id="header-form">
