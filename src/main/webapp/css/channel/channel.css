@@ -1,0 +1,429 @@
+/* channel.css */
+/* Google Font CDN Link */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+/* deafault */
+*{margin: 0; padding: 0; box-sizing: border-box; font-family: "Poppins" , sans-serif; font-size:13px;}
+body{ width: 100%; height: auto;}
+ul, ol, li {list-style: none;}
+a {color: #333; text-decoration: none; line-height: 1;}
+a:hover, a:focus, a:active {text-decoration:none;}
+/* ::selection{ color: #fff; background: #11101d;} */
+/* ====================================================================================
+======================================================================================= */
+/* ------- 채널 ------- */
+.channel{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin:0 auto;
+    width: 1200px;
+}
+/* ------- 채널 소개 ------- */
+.channel .side_wrap{
+    width:260px;
+    height: 1320px;
+    background: #f8fafc;
+    border:1px solid #f0f0f0;
+    padding-top:120px;
+}
+.channel .side_wrap .side_inner{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content:flex-start;
+    flex-wrap:wrap;
+    margin: 0 auto;
+    width: 190px;
+}
+.channel .side_wrap .side_inner .channel_profile{
+    max-width: 190px;
+    height: 220px;
+}
+/* 프로필 이미지 */
+.channel .side_wrap .side_inner .channel_profile .profile_img{
+    width: 120px;
+    height: 120px;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    background-image:
+            linear-gradient(#fff, #fff),
+            linear-gradient(to top, #4ba9e1, #a0ffb4);
+    background-origin: border-box;/*이미지 시작 위치*/
+    background-clip: content-box, border-box; /*이미지 잘릴 위치*/
+    box-shadow: 2px 2px 7px 2px rgba(91, 91, 91, .1);
+    overflow: hidden;
+}
+.channel .side_wrap .side_inner .channel_profile .profile_img img{
+    width:100%;
+}
+/* 채널 닉네임, 아이디 */
+.channel .side_wrap .side_inner .channel_profile .channel_name{
+    margin-top:10px;
+    font-size: 15px;
+    color: #3c3c3c;
+    text-align: center;
+}
+.channel .side_wrap .side_inner .channel_profile .channel_name dd{
+    margin-top:5px;
+    font-size: 13px;
+    color: #666666;
+}
+/* 다이렉트 메시지 버튼 */
+.channel .side_wrap .side_inner .direct_msg button{
+    width: 191px;
+    height: 50px;
+    background-color: #fff;
+    border-radius: 5px;
+    border:1px solid #f2f2f3;
+    font-size: 13px;
+    color: #666666;
+    font-weight:700;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.channel .side_wrap .side_inner .direct_msg button a{
+    color: #666666;
+    text-align: center;
+    transition: 0.3s;
+}
+.channel .side_wrap .side_inner .direct_msg button:hover{
+    width: 191px;
+    height: 50px;
+    background:linear-gradient(312deg, rgba(76,168,223,1) 0%, rgba(160,255,180,1) 100%);
+    border-radius: 5px;
+    box-shadow: 2px 5px 5px 1px rgba(91, 91, 91, .2);
+    border:1px solid #f2f2f3;
+    color: #fff;
+    font-weight:700;
+}
+.channel .side_wrap .side_inner .direct_msg button a:hover{
+    color: #fff;
+    text-align: center;
+    transition: 0.3s;
+}
+/* 채널 카테고리 */
+.channel .side_wrap .side_inner .kategorie{
+    width:190px;
+    padding-top:30px;
+}
+.channel .side_wrap .side_inner .kategorie .allVideo{
+    font-size:13px;
+}
+.channel .side_wrap .side_inner .kategorie .all_video{
+    color:#4a4a4a;
+    padding-top:15px;
+    margin-left: 15px;
+}
+/* ==================================================================================== */
+/* ------- 채널 메인 ------- */
+.channel .main_wrap{
+    width: 940px;
+    height: 1320px;
+    background: #ffff;
+    padding-top:120px;
+}
+/* ==================================================================================== */
+/* ------- 채널 이름 & 채널알람,즐겨찾기,구독 버튼 ------- */
+.main_wrap .channel_info{
+    display:flex;
+    /* align-content:center; 줄이 여러개일 때 한 줄에 대한 세로축 높이가 똑같을 때 사용 */
+    align-items:center; /* 한줄에대한 높이가 다를 때 세로축 */
+    flex-direction:row; /* 기본값 */
+    justify-content:flex-start; /* 가록 축 정렬에 대한 설정값 */
+    flex-wrap: wrap;
+    margin:0 auto;
+    width: 860px;
+    height: 60px;
+}
+/* 채널 이름 */
+.main_wrap .channel_info .channelName{
+    width: 50%;
+    height: auto;
+    font-size:30px;
+    color:#2b2b2b;
+}
+/* 채널알람,즐겨찾기,구독 버튼 */
+.main_wrap .channel_info .ch_alam_bkm_subs{
+    width: 50%;
+    height: auto;
+    font-size:14px;
+    color:#2b2b2b;
+    display: flex;
+    align-content: center;
+}
+.main_wrap .channel_info .ch_alam_bkm_subs .chBTN{
+    width: 98px;
+    height: 50px;
+    border:1px solid #e4e4e4;
+    border-radius: 5px;
+    text-align: center;
+    padding-top:15px;
+    margin-left: 8px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.main_wrap .channel_info .ch_alam_bkm_subs .chBTN:hover{
+    width: 98px;
+    height: 50px;
+    border:1px solid #e4e4e4;
+    background:linear-gradient(312deg, rgba(76,168,223,1) 0%, rgba(160,255,180,1) 100%);
+    border-radius: 5px;
+    box-shadow: 2px 5px 5px 1px rgba(91, 91, 91, .2);
+    color:#fff;
+}
+/* 알람 */
+.main_wrap .channel_info .ch_alam_bkm_subs .btn_alam{
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+.main_wrap .channel_info .ch_alam_bkm_subs .btn_alam .bx{
+    font-size:20px;
+    color:#4ca8df;
+}
+/* 즐겨찾기 */
+.main_wrap .channel_info .ch_alam_bkm_subs .btn_bookmark .btn_bkm_list{
+    display:flex;
+    margin:0 auto;
+    width: 70px;
+}
+.main_wrap .channel_info .ch_alam_bkm_subs .btn_bookmark .btn_bkm_list .bx{
+    font-size:20px;
+    color:#4ca8df;
+    margin-right:3px;
+}
+/* 구독 */
+.main_wrap .channel_info .ch_alam_bkm_subs .btn_subscript .btn_subs_list{
+    display:flex;
+    margin:0 auto;
+    width: 70px;
+    padding-left:7px;
+}
+.main_wrap .channel_info .ch_alam_bkm_subs .btn_subscript .btn_subs_list .bx{
+    font-size:20px;
+    color:#4ca8df;
+    margin-right:3px;
+}
+/* ------- 채널 이메일 & 멀티채팅 버튼 ------- */
+.main_wrap .channel_em_chat{
+    display:flex;
+    /* align-content:center; 줄이 여러개일 때 한 줄에 대한 세로축 높이가 똑같을 때 사용 */
+    align-items:center; /* 한줄에대한 높이가 다를 때 세로축 */
+    flex-direction:row; /* 기본값 */
+    justify-content:flex-start; /* 가록 축 정렬에 대한 설정값 */
+    flex-wrap: wrap;
+    margin:0 auto;
+    width: 860px;
+    height: 60px;
+}
+/* 채널 이메일 */
+.main_wrap .channel_em_chat .channelEmail{
+    width: 50%;
+    height: auto;
+}
+.main_wrap .channel_em_chat .channelEmail span{
+    font-size:16px;
+    color:#777777;
+}
+/* 채널 멀티 채팅 버튼 */
+.main_wrap .channel_em_chat .ch_chatting{
+    width: 50%;
+    height: auto;
+    font-size:14px;
+    color:#2b2b2b;
+    display: flex;
+    align-content: center;
+    padding-left:6px;
+}
+.main_wrap .channel_em_chat .ch_chatting button{
+    width: 262px;
+    height: 50px;
+    background:linear-gradient(312deg, rgba(76,168,223,1) 0%, rgba(160,255,180,1) 100%);
+    border-radius: 5px;
+    box-shadow: 2px 5px 5px 1px rgba(91, 91, 91, .2);
+    border:1px solid #f2f2f3;
+    color: #fff;
+    font-weight:700;
+    transition: 0.3s;
+    cursor: pointer;
+}
+/* ------- 채널관리 ------- */
+.main_wrap .channel_adminSET{
+    width: 940px;
+    height: 70px;
+    margin-top:20px;
+    border-bottom: 1px solid #f0f0f0;
+}
+.main_wrap .channel_adminSET button{
+    width: 190px;
+    height: 50px;
+    margin-left:40px;
+    font-weight: 700;
+    color: #4a4a4a;
+    background: #f8fafc;
+    border:1px solid #f2f2f3;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.main_wrap .channel_adminSET button:hover{
+    width: 190px;
+    height: 50px;
+    margin-left:40px;
+    background:linear-gradient(312deg, rgba(76,168,223,1) 0%, rgba(160,255,180,1) 100%);
+    border-radius: 5px;
+    box-shadow: 2px 5px 5px 1px rgba(91, 91, 91, .2);
+    border:1px solid #f2f2f3;
+    color: #fff;
+    font-weight:700;
+}
+/* ==================================================================================== */
+/* ------- 채널 다시보기 ------- */
+.main_wrap .vod{
+    width: 940px;
+    height: 980px;
+    padding-left: 40px;
+}
+/* 타이틀 */
+.main_wrap .vod .vod_title{
+    margin-top:80px;
+}
+.main_wrap .vod .vod_title .bx{
+    font-size:20px;
+    background: linear-gradient(to right, rgba(76,168,223,1) 0%, rgba(160,255,180,1));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.main_wrap .vod .vod_title .text{
+    font-size:20px;
+}
+/* ------- 미리보기 ------- */
+.main_wrap .vod .vod_preview{
+    display: flex;
+    /* align-content:center; 줄이 여러개일 때 한 줄에 대한 세로축 높이가 똑같을 때 사용 */
+    align-items:center; /* 한줄에대한 높이가 다를 때 세로축 */
+    flex-direction:row; /* 기본값 */
+    justify-content:space-between; /* 가록 축 정렬에 대한 설정값 */
+    flex-wrap: wrap;
+    width: 900px;
+    height: auto;
+}
+/* 빅 프리뷰 */
+.main_wrap .vod .vod_preview .preview_B{
+    width: 65%;
+    height: 500px;
+}
+.main_wrap .vod .vod_preview .preview_B .video_pview{
+    width: 589px;
+    height: 331px;
+    position: relative;
+}
+.main_wrap .vod .vod_preview .preview_B .video_pview .main_video_img{
+    position: relative;
+    overflow: hidden;
+}
+.main_wrap .vod .vod_preview .preview_B .video_pview .main_video_img  > a {
+    display: block;
+    width: 589px;
+    height: 331px;
+    border: 2px solid transparent;
+    border-radius: 10px;
+}
+.main_wrap .vod .vod_preview .preview_B .video_pview .main_video_img  > a  > video{
+    width: 100%;
+    height: 331px;
+}
+.main_wrap .vod .vod_preview .preview_B .video_pview .main_video_img .main_video_desc{
+    position: absolute;
+    padding:10px;
+    top:331px;
+    right: 0;
+    /* transition: translate(-50%, -50%); */
+    width: 100%;
+    transition: 0.5s;
+}
+.main_wrap .vod .vod_preview .preview_B .video_pview .main_video_img .main_video_desc .video_data{
+    display: flex;
+    align-items:center;
+    flex-direction:row;
+    justify-content:flex-start;
+    flex-wrap: wrap;
+}
+.main_wrap .vod .vod_preview .preview_B .video_pview .main_video_img .main_video_desc .video_data .play_sq{
+    margin-right: 20px;
+}
+.main_wrap .vod .vod_preview .preview_B .video_pview .main_video_img > a:hover+.main_video_desc{
+    background: #2b2b2b;
+    color: #ffffff;
+    top:200px;
+}
+.main_wrap .vod .vod_preview .preview_B .video_pview .main_video_img > a:hover+.main_video_desc *{
+    color: #ffffff;
+}
+/* 스몰 프리뷰 */
+.main_wrap .vod .vod_preview .preview_s{
+    width: 33%;
+    height: 500px;
+    display: flex;
+    flex-direction:column;
+    align-items:flex-end;
+    justify-content:flex-start;
+    padding-top:8px;
+
+}
+.main_wrap .vod .vod_preview .preview_s .video_pview{
+    width: 280px;
+    height: 158px;
+    margin-bottom:9px;
+    position: relative;
+}
+.main_wrap .vod .vod_preview .preview_s .video_pview .main_video_img{
+    position: relative;
+    overflow: hidden;
+}
+.main_wrap .vod .vod_preview .preview_s .video_pview .main_video_img  > a {
+    display: block;
+    width: 280px;
+    height: 158px;
+    border: 2px solid transparent;
+    border-radius: 10px;
+
+}
+.main_wrap .vod .vod_preview .preview_s .video_pview .main_video_img  > a  > video{
+    height: 158px;
+}
+.main_wrap .vod .vod_preview .preview_s .video_pview .main_video_img .main_video_desc{
+    position: absolute;
+    padding:10px;
+    top:158px;
+    right: 0;
+    /* transition: translate(-50%, -50%); */
+    width: 100%;
+    transition: 0.5s;
+    font-size: 13px;
+}
+.main_wrap .vod .vod_preview .preview_s .video_pview .main_video_img .main_video_desc .video_data{
+    display: flex;
+    align-items:center;
+    flex-direction:row;
+    justify-content:flex-start;
+    flex-wrap: wrap;
+    width: 190px;
+}
+.main_wrap .vod .vod_preview .preview_s .video_pview .main_video_img .main_video_desc .video_data .play_sq{
+    padding-right: 20px;
+
+}
+.main_wrap .vod .vod_preview .preview_s .video_pview .main_video_img > a:hover+.main_video_desc{
+    background: #2b2b2b;
+    color: #ffffff;
+    top:90px;
+    overflow: hidden;
+}
+.main_wrap .vod .vod_preview .preview_s .video_pview .main_video_img > a:hover+.main_video_desc *{
+    color: #ffffff;
+}
