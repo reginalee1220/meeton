@@ -8,12 +8,21 @@ public class MyPickController {
 
     @RequestMapping("/watrchlater.do")
     public String wartchlater() {
+
         return "watrchlater";
     }
 
     @RequestMapping("/bookmark.do")
-    public String bookmark(){
+    public String bookmark() {
+
         return "bookmark";
+
+    }
+
+    @RequestMapping("/mypick.do")
+    public String test(){
+
+        return "likedvideo";
 
     }
 }

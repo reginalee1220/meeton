@@ -6,7 +6,7 @@
 <body>
 <script>
 
-  location.href="signUp.do";
+  location.href="mypick.do";
 </script>
 
 </body>
