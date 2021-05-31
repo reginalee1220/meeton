@@ -47,7 +47,7 @@
     </div>
     <main id="main-wrap"><!-- main-wrap 시작 -->
         <section class="signup_section"><!-- 회원가입 signup_section 시작 -->
-            <form id="signupForm" method="post" action="/signUp.do"><!-- 전체 form 요소 시작 -->
+            <form id="signupForm" method="post" action="<%=request.getContextPath() %>/signUp.do"><!-- 전체 form 요소 시작 -->
                 <fieldset>
                     <legend>SignUp Form</legend>
                     <!-- 아이디 -->
