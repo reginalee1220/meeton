@@ -5,8 +5,8 @@
 </head>
 <body>
 <script>
-<%session.setAttribute("userid","runa");%>
-  location.href="main.do";
+<%--<%session.setAttribute("userid","runa");%>--%>
+  location.href="withdrawal.do";
 </script>
 
 </body>
