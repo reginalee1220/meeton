@@ -1,5 +1,8 @@
 package model;
 
+import java.sql.Time;
+import java.sql.Timestamp;
+
 public class Video {
     private int videonum;
     private int channelnum;
@@ -14,7 +17,7 @@ public class Video {
     private int likes;
     private int report;
     private String videofile;
-    private String videotime;
+    private Time videotime;
 
     public int getVideonum() {
         return videonum;
@@ -120,11 +123,11 @@ public class Video {
         this.videofile = videofile;
     }
 
-    public String getVideotime() {
+    public Time getVideotime() {
         return videotime;
     }
 
-    public void setVideotime(String videotime) {
+    public void setVideotime(Time videotime) {
         this.videotime = videotime;
     }
 }

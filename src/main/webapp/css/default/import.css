@@ -1,0 +1,5 @@
+/* import.css(공통문서) */
+/* reset.css(전체문서의 활용,태그여백제거,테두리제어,특정태그 화면 숨기기,테이블 속성,기본제어등)*/
+@import url("reset.css");
+/* base.css(모든 문서에 활용) */
+@import url("base.css");

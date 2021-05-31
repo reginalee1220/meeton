@@ -1,8 +1,10 @@
 package model;
 
+import java.sql.Timestamp;
+
 public class Purchased {
     private int purchasednum;
-	private String paydate;
+	private Timestamp paydate;
 	private int payment;
 	private String method;
 
@@ -14,11 +16,11 @@ public class Purchased {
         this.purchasednum = purchasednum;
     }
 
-    public String getPaydate() {
+    public Timestamp getPaydate() {
         return paydate;
     }
 
-    public void setPaydate(String paydate) {
+    public void setPaydate(Timestamp paydate) {
         this.paydate = paydate;
     }
 

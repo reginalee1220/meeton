@@ -3,9 +3,18 @@
 
 <configuration>
 
-<!--    <typeAliases>-->
-<!--        <typeAlias alias="member" type="model.MemberBean" /> -->
-<!--    </typeAliases>-->
+    <typeAliases>
+        <typeAlias alias="channel" type="model.Channel" />
+        <typeAlias alias="channelalarm" type="model.Channelalarm" />
+        <typeAlias alias="comment" type="model.Comment" />
+        <typeAlias alias="commentalarm" type="model.Commentalarm" />
+        <typeAlias alias="dmchat" type="model.DmChat" />
+        <typeAlias alias="favorite" type="model.Favorite" />
+        <typeAlias alias="myplaylist" type="model.MyPlayList" />
+        <typeAlias alias="purchased" type="model.Purchased" />
+        <typeAlias alias="user" type="model.User" />
+        <typeAlias alias="video" type="model.Video" />
+    </typeAliases>
 
     <mappers>
         <mapper resource="sql/admin.xml" />
