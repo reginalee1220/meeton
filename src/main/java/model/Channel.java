@@ -5,6 +5,7 @@ public class Channel {
 	private String userid;
 	private String aka;
 	private int subscribers;
+    private int bookmarkers;
 
     public int getChannelnum() {
         return channelnum;
@@ -36,5 +37,13 @@ public class Channel {
 
     public void setSubscribers(int subscribers) {
         this.subscribers = subscribers;
+    }
+
+    public int getBookmarkers() {
+        return bookmarkers;
+    }
+
+    public void setBookmarkers(int bookmarkers) {
+        this.bookmarkers = bookmarkers;
     }
 }

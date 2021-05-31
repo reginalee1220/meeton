@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class MainService {
     @Autowired
-    private MainDAO mainDAO;
+    private MainDAO main;
     public int getcount(){
-        return mainDAO.getcount();
+        return main.getcount();
     }
 }
