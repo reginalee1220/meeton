@@ -4,9 +4,9 @@
   <title>테스트</title>
 </head>
 <body>
-<%session.setAttribute("userid","runa");%>
 <script>
-  location.href="main.do";
+
+  location.href="search.do";
 </script>
 
 </body>
