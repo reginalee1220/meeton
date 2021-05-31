@@ -3,6 +3,13 @@
 
 <mapper namespace="adminChannel">
 
+    <!-- 최신 동영상 실적 -->
+    <select id="getVideo" parameterType="String" resultType="video">
+        select * from video where userid=#{userid} order by register desc limit 1
+    </select>
 
-
+    <!-- 채널 분석 -->
+    <select id="getChannel" parameterType="String" resultType="channel">
+        select * from channel where userid=#{userid}
+    </select>
 </mapper>

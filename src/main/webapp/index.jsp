@@ -6,7 +6,7 @@
 <body>
 <script>
 
-  location.href="test.do";
+  location.href="adminChannel.do";
 </script>
 
 </body>
