@@ -21,4 +21,9 @@ public class AdminChannelService {
         return adChannelDAO.getChannel(userid);
     }
 
+    // 총 조회수
+    public int getViews(String userid){
+        return  adChannelDAO.getViews(userid);
+    }
+
 }

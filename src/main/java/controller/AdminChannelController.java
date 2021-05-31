@@ -31,6 +31,11 @@ public class AdminChannelController {
         System.out.println("channel: " + channel);
         model.addAttribute("channel", channel);
 
+        // 총 조회수
+        int totalviews = adChannel.getViews(userid);
+        System.out.println("totalviews: " + totalviews );
+        model.addAttribute("totalviews",totalviews);
+
         return "adminChannel";
     }
 

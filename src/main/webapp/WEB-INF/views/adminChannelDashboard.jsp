@@ -24,11 +24,11 @@
       <img src="image/videobackground.png" />
       <div class="ca-dash-video-desc">
         <div>업로드 날짜</div>
-        <div class="ca-dash-video-value">2021-05-22</div>
+        <div class="ca-dash-video-value">${video.register}</div>
         <div>조회수</div>
-        <div class="ca-dash-video-value">10</div>
+        <div class="ca-dash-video-value">${video.views}</div>
         <div>댓글수</div>
-        <div class="ca-dash-video-value">13</div>
+        <div class="ca-dash-video-value">${video.comments}</div>
       </div>
       <div class="ca-dashboard-move">
         <a href="#">동영상분석으로 이동</a>
@@ -40,17 +40,17 @@
       <ul class="ca-dash-channel-desc">
         <li>
           <span>현재 구독자수</span>
-          <div class="ca-dash-channel-subsc">2</div>
+          <div class="ca-dash-channel-subsc">${channel.subscribers}</div>
         </li>
         <li>
           <span>요약</span>
           <div class="ca-dash-video-desc">
             <div>구독자수</div>
-            <div class="ca-dash-video-value">2</div>
+            <div class="ca-dash-video-value">${channel.subscribers}</div>
             <div>즐겨찾기 시청자수</div>
-            <div class="ca-dash-video-value">10</div>
+            <div class="ca-dash-video-value">0</div>
             <div>총 조회수</div>
-            <div class="ca-dash-video-value">13</div>
+            <div class="ca-dash-video-value">${totalviews}</div>
           </div>
         </li>
         <li>

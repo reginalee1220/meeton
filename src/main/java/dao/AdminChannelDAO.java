@@ -13,11 +13,16 @@ public class AdminChannelDAO {
 
     // 최신 동영상 실적
     public Video getVideo(String userid){
-        return sst.selectOne("adminChannel.getVideo",userid);
+        return sst.selectOne("adminChannel.ac_getVideo",userid);
     }
 
     // 채널분석
     public Channel getChannel(String userid){
-        return sst.selectOne("adminChannel.getChannel",userid);
+        return sst.selectOne("adminChannel.ac_getChannel",userid);
+    }
+
+    // 총 조회수
+    public int getViews(String userid){
+        return  sst.selectOne("ac_getViews", userid);
     }
 }
