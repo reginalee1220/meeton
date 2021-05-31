@@ -20,9 +20,17 @@ public class MyPickController {
     }
 
     @RequestMapping("/likedvideo.do")
-    public String test(){
+    public String test() {
 
         return "likedvideo";
+
+    }
+
+    @RequestMapping("/history.do")
+    public String history() {
+
+        
+        return "history";
 
     }
 }

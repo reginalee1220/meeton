@@ -14,7 +14,6 @@ $(function(){
             state=0
             $(".my_video_check").hide();
             $("#btn_success").hide();
-
         }
     });
 });
