@@ -6,7 +6,7 @@
 <body>
 <script>
 <%session.setAttribute("userid","runa");%>
-  location.href="adminChannel.do";
+  location.href="main.do";
 </script>
 
 </body>
