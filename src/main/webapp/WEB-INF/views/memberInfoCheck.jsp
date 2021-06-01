@@ -15,8 +15,8 @@
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 
     <!-- css -->
-    <link rel="stylesheet" href="./css/default/import.css">
-    <link rel="stylesheet" href="./css/user/userinfoCheck.css">
+    <link rel="stylesheet" href="/css/default/import.css">
+    <link rel="stylesheet" href="/css/user/userinfoCheck.css">
 
     <!-- js -->
     <script src="http://code.jquery.com/jquery-latest.js"></script>
@@ -92,7 +92,8 @@
                                 <div class="upload_profile">
                                     <div class="proview"><!-- 현재 프로필 -->
                                         <span>
-                                            <img src="/images/profile/profile-img.jpeg"/>
+<%--                                            <img src="/images/profile/profile-img.jpeg"/>--%>
+                                            ${user.profile}
                                         </span>
                                     </div>
                                     <div class="img_upload">

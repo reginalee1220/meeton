@@ -44,18 +44,12 @@
 
     </select>
 
-    <!-- 닉네임 인증 -->
-    <select id="login_check" parameterType="String" resultType="user">
-        select * from user where aka=#{aka} and state=1
-
-    </select>
-
     <!-- 회원수정 -->
     <update id="user_edit" parameterType="user">
     update user set passwd=#{passwd}, name=#{name}, aka=#{aka},
                     zip=#{zip}, address1=#{address1}, address2=#{address2},
                     phone=#{phone},
-                    email=#{email}, domain =#{domain },
+                    email=#{email}, domain =#{domain},
                     profile=#{profile, jdbcType=VARCHAR2}
                     where userid=#{userid}
     </update>

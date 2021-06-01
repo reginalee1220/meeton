@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<% String contextPath = request.getContextPath(); %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,7 +34,7 @@
         }
     </script>
 
-    <script src="<%=request.getContextPath()%>/js/user/signUp.js"></script>
+    <script src="./js/user/signUp.js"></script>
 
 </head>
 <body>

@@ -9,8 +9,8 @@
 <%--  <%--%>
 <%--	response.sendRedirect("main.do");--%>
 <%--  %>--%>
-<%--<%session.setAttribute("userid","runa");%>--%>
-  location.href="signUp.do";
+<%session.setAttribute("userid","coco");%>
+  location.href="memberInfoCheck.do";
 </script>
 
 </body>

@@ -211,13 +211,13 @@ public class UserController {
 
     // 회원정보 수정 (fileupload)
     @RequestMapping(value = "/memberInfoCheck_ok.do", method = RequestMethod.POST)
-    public String memberInfoCheck_ok(@RequestParam("userUp_profile") MultipartFile mf,
+    public String memberInfoCheck_ok(@RequestParam("userUp_profile") MultipartFile userUp_profile,
                                      User user,
                                      HttpServletRequest request,
                                      HttpSession session,
                                      Model model) throws Exception{
-        String filename = mf.getOriginalFilename();
-        int size = (int) mf.getSize();
+        String filename = userUp_profile.getOriginalFilename();
+        int size = (int) userUp_profile.getSize();
 
         String path = request.getRealPath("upload");
 
@@ -252,7 +252,7 @@ public class UserController {
         }
         
         if (size > 0){      // 첨부파일이 전송된 경우
-            mf.transferTo(new File(path + "/" + filename));
+            userUp_profile.transferTo(new File(path + "/" + filename));
         }
 
         String userid = (String) session.getAttribute("userid");

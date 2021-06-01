@@ -75,12 +75,12 @@ function post_check(){
 
 
 // 아이디 중복 체크
-function idCheck(){
+function id_check(){
     //$("#idMsg").hide();//idcheck span 아이디 영역을 숨긴다.
     var userid=$("#userid").val();
     //1.입력글자 길이 체크
     if($.trim($("#userid").val()).length < 5){
-        var newtext='<font color="#bc3838" size="13px">영문 소문자/숫자 5~20자리로만 사용 가능합니다.</font>';
+        var newtext='영문 소문자/숫자 5~20자리로만 사용 가능합니다.';
         $("#idMsg").text('');
         $("#idMsg").show();
         $("#idMsg").append(newtext);//span 아이디 영역에 경고문자 추가
@@ -88,7 +88,7 @@ function idCheck(){
         return false;
     };
     if($.trim($("#userid").val()).length >20){
-        var newtext='<font color="#bc3838" size="13px">영문 소문자/숫자 5~20자리로만 사용 가능합니다.</font>';
+        var newtext='영문 소문자/숫자 5~20자리로만 사용 가능합니다.';
         $("#idMsg").text('');
         $("#idMsg").show();
         $("#idMsg").append(newtext);//span 아이디 영역에 경고문자 추가
@@ -97,7 +97,7 @@ function idCheck(){
     };
     //입력아이디 유효성 검사
     if(!(validate_userid(userid))){
-        var newtext='<font color="#bc3838" size="13px">영문 소문자/숫자 5~20자리로만 사용 가능합니다.</font>';
+        var newtext='영문 소문자/숫자 5~20자리로만 사용 가능합니다.';
         $("#idMsg").text('');//문자 초기화
         $("#idMsg").show();//span 아이디 영역을 보이게 한다.
         $("#idMsg").append(newtext);
@@ -116,7 +116,7 @@ function idCheck(){
         success: function (data) {
             alert("return success="+data);
             if(data==1){	//중복 ID
-                var newtext='<font color="#bc3838" size="13px">중복 아이디입니다.</font>';
+                var newtext='중복 아이디입니다.';
                 $("#idMsg").text('');
                 $("#idMsg").show();
                 $("#idMsg").append(newtext);
@@ -124,10 +124,10 @@ function idCheck(){
                 return false;
 
             }else{	//사용 가능한 ID
-                var newtext='<font color="#4da9de" size="13px">사용가능한 아이디입니다.</font>';
-                $("#idMsg").text('');
-                $("#idMsg").show();
-                $("#idMsg").append(newtext);
+                var newtext='사용가능한 아이디입니다.';
+                $("#idPass").text('');
+                $("#idPass").show();
+                $("#idPass").append(newtext);
                 $("#passwd").focus();
             }
         }
