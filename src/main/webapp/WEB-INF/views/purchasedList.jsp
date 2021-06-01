@@ -31,9 +31,9 @@
         <div class="katego"><!-- katego -->
             <nav class="userinfo_nav">
                 <ul class="nav_list">
-                    <a href="/memberinfoCheck.jsp"><li class="my_info"> 내 정보 관리</li></a>
-                    <a href="#"><li class="purchasedList"> 구독 결제 리스트</li></a>
-                    <a href="withdrawal.jsp"><li class="withdrawal">회원탈퇴</li></a>
+                    <li class="my_info"><button type="button" value="정보수정" onclick="location='memberinfoCheck.do'" > 내 정보 관리</button></li>
+                    <li class="purchasedList"><button type="button" value="구독결제리스트" onclick="location='purchasedList.do'"  >구독 결제 리스트</button></li>
+                    <li class="withdrawal"><button type="button" value="회원탈퇴" onclick="location='withdrawal.do'"   >회원탈퇴</button></li>
                 </ul>
             </nav>
         </div><!-- // katego -->

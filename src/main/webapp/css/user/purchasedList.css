@@ -39,24 +39,34 @@ fieldset{border:none;} /* 더미 숨기기 */
     margin: 0 auto;
     padding-top:65px;
 }
-.userinfo_top .katego .userinfo_nav > ul > a > li {
+.userinfo_top .katego .userinfo_nav > ul > li {
     display: inline;
     width: 120px;
     height: 35px;
     margin-right: 10px;
 }
-.userinfo_top .katego .userinfo_nav > ul > a {
+.userinfo_top .katego .userinfo_nav > ul > li.purchasedList > button {
+    width: 120px;
+    height: 35px;
+    color:#53afdc;
+    font-size:15px;
+}
+.userinfo_top .katego .userinfo_nav > ul > li > button {
+    width: 120px;
+    height: 35px;
+    background: #fafbfc;
+    border:#fff;
     color:#4e4e4e;
     font-size:15px;
-    transition: 0.5s;
+    transition: 0.3s;
+    cursor: pointer;
 }
-.userinfo_top .katego .userinfo_nav > ul > a > .purchasedList {
+.userinfo_top .katego .userinfo_nav > ul > li > button:hover {
+    width: 120px;
+    height: 35px;
     color:#53afdc;
     font-size:15px;
-}
-.userinfo_top .katego .userinfo_nav > ul > a:hover {
-    color:#53afdc;
-    font-size:15px;
+    border-bottom: 1px solid #53afdc;
 }
 /*===========================================================================*/
 /* ------- 결제내역 리스트 ------- */
