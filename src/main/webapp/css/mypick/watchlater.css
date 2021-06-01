@@ -178,14 +178,40 @@ a:hover, a:focus, a:active {text-decoration:none;}
     width: 20%;
     height: 110px;
 }
-.myplaylist_wrap .video_list .video_view .main_video .main_video_img img{
+/* ------- 비디오 ------- */
+.main_video_img .video_play_view{
+    width: 190px;
+    height: 110px;
+    padding-top:3px;
+}
+.main_video_img .video_play_view .video_play{
+    width: 190px;
+    height: 110px;
+    overflow: hidden;
+    position: absolute;
+
+}
+.main_video_img > .video_play_view .video_play #background_video{
+    /* z-index: -1; */
+    width: 190px;
+
+    /* background: #4ba9e1; */
+    position: absolute;
+}
+@media screen and (max-aspect-ratio: 190/120) {
+    #background_video {
+        width: auto;
+        height: 100vh;
+    }
+}
+/* .myplaylist_wrap .video_list .video_view .main_video .main_video_img img{
     width: 190px;
     height: 100%;
-}
+} */
 .myplaylist_wrap .video_list .video_view .main_video .main_video_time {
     position: absolute;
     right: 42px;
-    bottom: 6px;
+    bottom: 11px;
     width: 55px;
     background-color: #2b2b2b;
     text-align: center;

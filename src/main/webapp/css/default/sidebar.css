@@ -46,8 +46,8 @@ a:hover, a:focus, a:active {text-decoration:none;}
     z-index: 99;
     color: #4ba9e1;
     font-size: 22px;
-    border:1px solid red;
-    transition: all 0.5 ease;
+
+    transition: all 0.5s;
 }
 .menu_content .menu .menu_name{
     display: none;
@@ -129,7 +129,7 @@ a:hover, a:focus, a:active {text-decoration:none;}
     z-index: 99;
     color: #3c3c3c;
     font-size: 22px;
-    transition: all 0.5 ease;
+    transition: all 0.5s;
 }
 .sidebar ul li .bx-search:hover{
     background: #fff;
