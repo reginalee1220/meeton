@@ -176,6 +176,13 @@ public class UserController {
         }
     }
 
+    @RequestMapping("/memberInfoCheck.do")
+    public String memberinfoCheck(){
+
+
+        return "memberInfoCheck";
+    }
+
 
 
 
