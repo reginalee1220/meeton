@@ -5,6 +5,10 @@
 </head>
 <body>
 <script>
+
+<%--  <%--%>
+<%--	response.sendRedirect("main.do");--%>
+<%--  %>--%>
 <%--<%session.setAttribute("userid","runa");%>--%>
   location.href="signUp.do";
 </script>

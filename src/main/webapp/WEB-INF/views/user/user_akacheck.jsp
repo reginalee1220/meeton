@@ -3,14 +3,12 @@
 <%
     request.setCharacterEncoding("utf-8");
 
-    String userid=request.getParameter("userid");
-    String passwd=request.getParameter("passwd");
-    System.out.println("userid="+userid);
-    System.out.println("passwd="+passwd);
+    String aka=request.getParameter("aka");
+    System.out.println("aka="+aka);
 
     UserDAO userDAO =new UserDAO();
 
-    int re = userDAO.checkUserId(userid);
+    int re = userDAO.checkUserAka(aka);
     //1이면 중복 -1이면 사용가능 아이디
 
     out.println(re);

@@ -23,10 +23,20 @@ public class UserDAO {
         return re;
     }
 
+    // 닉네임 중복 체크
+    public int checkUserAka(String aka) throws Exception{
+        int re = -1;    // 사용가능한 닉네임
+        User user = (User) sst.selectOne("login_check", aka);
+        if (user != null)
+            re = 1;     // 중복 닉네임
+
+        return re;
+    }
+
     // 회원정보저장
     public void insertMember(User user) throws Exception{
 
-        sst.insert("user.signUp", user);
+        sst.insert("user_signUp", user);
     }
 
     // 로그인 인증 체크
@@ -40,18 +50,15 @@ public class UserDAO {
         return (User) sst.selectOne("pwd_find", pwd);
     }
 
-    /* 회원수정 */
-//	@Transactional
+    // 회원수정
     public void updateMember(User user) throws Exception {
-//		getSession();
-        sst.update("member_edit", user);
+        sst.update("user_edit", user);
     }
 
-    /* 회원삭제 */
-//	@Transactional
+    // 회원삭제
     public void deleteMember(User delm) throws Exception {
 //		getSession();
-        sst.update("member_delete", delm);
+        sst.update("user_delete", delm);
     }
 
 }

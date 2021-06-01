@@ -15,6 +15,11 @@ public class UserService {
         return userDao.checkUserId(userid);
     }
 
+    // 닉네임 중복 검사
+    public int checkUserAka(String aka) throws Exception{
+        return userDao.checkUserAka(aka);
+    }
+
     // 회원정보저장
     public void insertMember(User user) throws Exception{
         userDao.insertMember(user);

@@ -123,7 +123,7 @@
                     <span>회원이 아니신가요? </span>
                 </div>
                 <div class="signup_btn">
-                    <button type="button" value="회원가입" onClick="signUp">회원가입</button>
+                    <button type="button" value="회원가입" onclick="location='signUp.do'">회원가입</button>
                 </div>
             </div>
         </div>

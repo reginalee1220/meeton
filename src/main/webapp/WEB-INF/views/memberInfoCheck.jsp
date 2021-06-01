@@ -15,8 +15,8 @@
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 
     <!-- css -->
-    <link rel="stylesheet" href="/css/default/import.css">
-    <link rel="stylesheet" href="/css/user/userinfoCheck.css">
+    <link rel="stylesheet" href="./css/default/import.css">
+    <link rel="stylesheet" href="./css/user/userinfoCheck.css">
 
     <!-- js -->
     <script src="http://code.jquery.com/jquery-latest.js"></script>
@@ -36,9 +36,19 @@
         }
     </script>
 
-    <!-- <script src="/js/member.js"></script> -->
+    <script src="./js/user/userInfoCheck.js"></script>
+
+
 </head>
 <body>
+<c:if test="${sessionScope.userid == null }">
+    <script>
+        alert("로그인 후 사용가능한 페이지 입니다.");
+        location.href="<%=request.getContextPath()%>/login.do";
+    </script>
+</c:if>
+
+<c:if test="${sessionScope.userid != null }">
 <!-- header -->
 
 <div class="wrap"><!-- wrap 시작 -->
@@ -50,9 +60,9 @@
         <div class="katego"><!-- katego -->
             <nav class="userinfo_nav">
                 <ul class="nav_list">
-                    <a href="#"><li class="my_info"> 내 정보 관리</li></a>
-                    <a href="/purchasedList.jsp"><li class="purchasedList"> 구독 결제 리스트</li></a>
-                    <a href="withdrawal.jsp"><li class="withdrawal">회원탈퇴</li></a>
+                    <li class="my_info"><button type="button" value="정보수정" onclick="location='memberinfoCheck.do'" > 내 정보 관리</button></li>
+                    <li class="purchasedList"><button type="button" value="구독결제리스트" onclick="location='purchasedList.do'"  >구독 결제 리스트</button></li>
+                    <li class="withdrawal"><button type="button" value="회원탈퇴" onclick="location='withdrawal.do'"   >회원탈퇴</button></li>
                 </ul>
             </nav>
         </div><!-- // katego -->
@@ -62,7 +72,9 @@
         <section class="userinfo_section"><!-- userinfo_section -->
             <h6>회원가입 시 입력하신 정보를 확인, 수정할 수 있습니다.</h6>
             <div class="user_check" ><!-- user_check -->
-                <form id="memberinfoCheck" method="post" action="<%= request.getContextPath() %>/Update.do"><!-- 전체 form 요소 시작 -->
+                <form id="memberInfoCheck" method="post" action="/memberInfoCheck_ok.do"
+                      onsubmit="return edit_check()" enctype="multipart/form-data"><!-- 전체 form 요소 시작 -->
+                        <!-- 이진파일을 업로드 할려면 enctype 속성을 지정 -->
                     <fieldset>
                         <legend>회원정보 수정 폼</legend>
 
@@ -84,7 +96,7 @@
                                         </span>
                                     </div>
                                     <div class="img_upload">
-                                        <input type="file" name="userup_profile" />
+                                        <input type="file" name="userUp_profile" />
                                         <button type="button">이미지 업로드</button>
                                     </div>
                                 </div>
@@ -104,13 +116,17 @@
                                     <span>닉네임 설정</span>
                                 </div>
                                 <div class="aka_upl">
-                                    <div class="proview"><!-- 닉네임 설정 -->
-                                        <label for="aka"></label>
-                                        <input id="aka" type="text" name="aka" value="${member.aka}" />
+                                    <div class="test">
+                                        <div class="proview"><!-- 닉네임 설정 -->
+                                            <label for="aka"></label>
+                                            <input id="aka" type="text" name="aka" value="${editm.name}" />
+                                        </div>
+                                        <div class="btn_check">
+                                            <button type="button" value="닉네임 중복 확인" id="akaCheck">닉네임 중복 확인</button>
+                                        </div>
                                     </div>
-                                    <div class="btn_check">
-                                        <button type="button" value="닉네임" id="idCheck">닉네임 중복 확인</button>
-                                    </div>
+                                    <!-- 닉네임 입력 메세지 : 중복 닉네임 입니다.-->
+                                    <div id="akaError" class="text_red">중복 닉네임 입니다.</div>
                                 </div>
                             </div>
 
@@ -161,7 +177,8 @@
                                 <div class="ads_de">
                                     <div class="info_word"><!-- 우편번호 -->
                                         <div class="zip_wd">
-                                            <input id="zip" type="text" name="zip" placeholder="우편번호">
+                                            <input id="zip" type="text" name="zip" placeholder="우편번호"
+                                                   readonly onclick="post_search()" value="${editm.zip}">
                                         </div>
                                         <div class="btn_ZIPcheck"><!-- 우편번호 검색 버튼  -->
                                             <button type="button" value="우편번호검색" onClick="openDaumPostcode()" id="addressCheck" class="address_check_box" >우편번호 검색</button>
@@ -169,11 +186,13 @@
                                     </div><!-- // 우편번호 -->
                                     <div class="address1">
                                         <label for="address1"></label>
-                                        <input id="address1" type="text" name="address1" placeholder="상세주소">
+                                        <input id="address1" type="text" name="address1" placeholder="상세주소"
+                                               readonly value="${editm.address1}" onclick="post_search()">
                                     </div>
                                     <div class="address2">
                                         <label for="address2"></label>
-                                        <input id="address2" type="text" name="address2" placeholder="동/호수 입력">
+                                        <input id="address2" type="text" name="address2" placeholder="동/호수 입력"
+                                               value="${editm.address2}" >
                                     </div>
                                 </div>
                             </div>
@@ -195,7 +214,7 @@
                                     <div class="info_word"><!-- 핸드폰번호 -->
                                         <div class="ph_wd">
                                             <label for="phone"></label>
-                                            <input id="phone" type="tel" name="phone" value="${member.phone}" placeholder="ex) 010-0000-0000">
+                                            <input id="phone" type="tel" name="phone" value="${phone}" placeholder="ex) 010-0000-0000" />
                                         </div>
                                     </div><!-- // 핸드폰번호 -->
                                 </div>
@@ -217,20 +236,30 @@
                                 <div class="em_de">
                                     <div class="info_word"><!-- 이메일 -->
                                         <div class="email">
-                                            <input id="email" type="text" name="email" value="${member.emailId}" placeholder="email">
+                                            <input id="email" type="text" name="email" value="${email}" />
                                             <span>
                                                 @
                                             </span>
                                         </div>
                                         <div class="domain">
-                                            <input id="domain" type="text" name="domain" placeholder="doamin">
+                                            <input id="domain" type="text" name="domain" value="${domain}">
                                         </div>
                                         <div class="selectd">
-                                            <select id="domains" name="domains" class="sel" aria-label="이메일 입력">
-                                                <option value="" selected="selected">직접 입력</option>
-                                                <option value="naver.com">naver.com</option>
-                                                <option value="gmail.com">gmail.com</option>
-                                                <option value="nate.com">nate.com</option>
+                                            <select id="mail_list" name="mail_list" onchange="domain_list()" class="sel" aria-label="이메일 입력">
+                                                <option value="" selected="selected">이메일 선택</option>
+                                                <option value="0">직접입력</option>
+                                                <option value="daum.net"
+                                                    <c:if test="${domain == 'daum.net'}">${'selected'}
+                                                    </c:if>>daum.net</option>
+                                                <option value="nate.com"
+                                                        <c:if test="${domain == 'nate.com'}">${'selected'}
+                                                        </c:if>>nate.com</option>
+                                                <option value="naver.com"
+                                                        <c:if test="${domain == 'naver.com'}">${'selected'}
+                                                        </c:if>>naver.com</option>
+                                                <option value="gmail.com"
+                                                        <c:if test="${domain == 'gmail.com'}">${'selected'}
+                                                        </c:if>>gmail.com</option>
                                             </select>
                                         </div>
                                     </div><!-- // 이메일 -->
@@ -251,5 +280,6 @@
 
     </main><!-- //main_wrap -->
 </div><!-- //wrap -->
+</c:if>
 </body>
 </html>

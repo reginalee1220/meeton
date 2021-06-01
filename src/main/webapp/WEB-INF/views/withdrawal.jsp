@@ -31,9 +31,9 @@
         <div class="katego"><!-- katego -->
             <nav class="userinfo_nav">
                 <ul class="nav_list">
-                    <a href="/memberinfoCheck.jsp"><li class="my_info"> 내 정보 관리</li></a>
-                    <a href="/purchasedList.jsp"><li class="purchasedList"> 구독 결제 리스트</li></a>
-                    <a href="#"><li class="withdrawal">회원탈퇴</li></a>
+                    <li class="my_info"><button type="button" value="정보수정" onclick="location='memberinfoCheck.do'" > 내 정보 관리</button></li>
+                    <li class="purchasedList"><button type="button" value="구독결제리스트" onclick="location='purchasedList.do'"  >구독 결제 리스트</button></li>
+                    <li class="withdrawal"><button type="button" value="회원탈퇴" onclick="location='withdrawal.do'"   >회원탈퇴</button></li>
                 </ul>
             </nav>
         </div><!-- // katego -->
@@ -42,7 +42,7 @@
     <main id="main_wrap"><!-- main_wrap 시작 -->
         <section class="with"><!-- with -->
             <h6>회원탈퇴</h6>
-            <form method="post" action="member_del_ok.nhn" onsubmit="return check()">
+            <form method="post" action="user_del_ok.do" onsubmit="return check()">
                 <div class="delete_member">
                     <input type="hidden" name="id" value="${sessionScope.id}">
                     <legend>회원 삭제 폼</legend>

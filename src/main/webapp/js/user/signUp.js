@@ -7,12 +7,12 @@ function check(){
     }
     if($.trim($("#passwd").val())==""){
         alert("회원비번을 입력하세요!");
-        $("#join_pwd1").val("").focus();
+        $("#passwd").val("").focus();
         return false;
     }
     if($.trim($("#passwdConfirm").val())==""){
         alert("회원비번확인을 입력하세요!");
-        $("#join_pwd2").val("").focus();
+        $("#passwdConfirm").val("").focus();
         return false;
     }
     if($.trim($("#passwd").val()) != $.trim($("#passwdConfirm").val())){
@@ -25,7 +25,7 @@ function check(){
     }
     if($.trim($("#name").val())==""){
         alert("회원이름을 입력하세요!");
-        $("#join_name").val("").focus();
+        $("#name").val("").focus();
         return false;
     }
 
@@ -68,7 +68,7 @@ function post_search(){
 }
 
 function post_check(){
-    window.open("zipcode_find.nhn","우편번호검색",
+    window.open("zipcode_find.do","우편번호검색",
         "width=420,height=200,scrollbars=yes");
     //폭이 420이고 높이가 200,스크롤바가 생성되는 새로운 공지창을 만듬
 }
@@ -76,31 +76,31 @@ function post_check(){
 
 // 아이디 중복 체크
 function idCheck(){
-    $("#idCheck").hide();//idcheck span 아이디 영역을 숨긴다.
-    var memid=$("#userid").val();
+    //$("#idMsg").hide();//idcheck span 아이디 영역을 숨긴다.
+    var userid=$("#userid").val();
     //1.입력글자 길이 체크
     if($.trim($("#userid").val()).length < 5){
         var newtext='<font color="#bc3838" size="13px">영문 소문자/숫자 5~20자리로만 사용 가능합니다.</font>';
-        $("#idCheck").text('');
-        $("#idCheck").show();
-        $("#idCheck").append(newtext);//span 아이디 영역에 경고문자 추가
+        $("#idMsg").text('');
+        $("#idMsg").show();
+        $("#idMsg").append(newtext);//span 아이디 영역에 경고문자 추가
         $("#userid").val("").focus();
         return false;
     };
     if($.trim($("#userid").val()).length >20){
         var newtext='<font color="#bc3838" size="13px">영문 소문자/숫자 5~20자리로만 사용 가능합니다.</font>';
-        $("#idCheck").text('');
-        $("#idCheck").show();
-        $("#idCheck").append(newtext);//span 아이디 영역에 경고문자 추가
+        $("#idMsg").text('');
+        $("#idMsg").show();
+        $("#idMsg").append(newtext);//span 아이디 영역에 경고문자 추가
         $("#userid").val("").focus();
         return false;
     };
     //입력아이디 유효성 검사
-    if(!(validate_userid(memid))){
+    if(!(validate_userid(userid))){
         var newtext='<font color="#bc3838" size="13px">영문 소문자/숫자 5~20자리로만 사용 가능합니다.</font>';
-        $("#idCheck").text('');//문자 초기화
-        $("#idCheck").show();//span 아이디 영역을 보이게 한다.
-        $("#idCheck").append(newtext);
+        $("#idMsg").text('');//문자 초기화
+        $("#idMsg").show();//span 아이디 영역을 보이게 한다.
+        $("#idMsg").append(newtext);
         $("#userid").val("").focus();
         return false;
     };
@@ -111,23 +111,23 @@ function idCheck(){
     //아이디 중복확인
     $.ajax({
         type:"POST",
-        url:"user_idcheck.do",
-        data: {"memid":memid},
+        url:"user_idCheck.do",
+        data: {"userid":userid},
         success: function (data) {
             alert("return success="+data);
             if(data==1){	//중복 ID
                 var newtext='<font color="#bc3838" size="13px">중복 아이디입니다.</font>';
-                $("#idCheck").text('');
-                $("#idCheck").show();
-                $("#idCheck").append(newtext);
+                $("#idMsg").text('');
+                $("#idMsg").show();
+                $("#idMsg").append(newtext);
                 $("#userid").val('').focus();
                 return false;
 
             }else{	//사용 가능한 ID
                 var newtext='<font color="#4da9de" size="13px">사용가능한 아이디입니다.</font>';
-                $("#idCheck").text('');
-                $("#idCheck").show();
-                $("#idCheck").append(newtext);
+                $("#idMsg").text('');
+                $("#idMsg").show();
+                $("#idMsg").append(newtext);
                 $("#passwd").focus();
             }
         }
@@ -140,11 +140,11 @@ function idCheck(){
 // 아이디 중복 체크 끝
 
 // 정규식 표현식
-function validate_userid(memid)
+function validate_userid(userid)
 {
     var pattern= new RegExp(/^[a-z0-9_]+$/);
     //영문 소문자,숫자 ,_가능,정규표현식
-    return pattern.test(memid);
+    return pattern.test(userid);
 };
 
 // 메일 도메인 표현식
@@ -159,20 +159,20 @@ function domain_list() {
     if(f.mail_list.value=="0") // 직접입력
     {
         /*리스트에서 직접입력을 선택했을때*/
-        f.join_maildomain.value="";
+        f.domain.value="";
         //@뒤의 도메인입력란을 빈공간시켜라.
-        f.join_maildomain.readOnly=false;
+        f.domain.readOnly=false;
         //@뒤의 도메인입력란을 쓰기 가능
-        f.join_maildomain.focus();
+        f.domain.focus();
         //도메인입력란으로 입력대기상태
     }
 
     else {
         //리스트목록을 선택했을때
 
-        f.join_maildomain.value=f.mail_list.options[num].value;
+        f.domain.value=f.mail_list.options[num].value;
         /*num변수에는 해당리스트 목록번호가 저장되어있다.해당리스트 번호의 option value값이 도메인입력란에 선택된다.options속성은 select객체의 속성으로서 해당리스트번호의 value값을 가져온다
         */
-        f.join_maildomain.readOnly=true;
+        f.domain.readOnly=true;
     }
 }

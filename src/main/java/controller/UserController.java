@@ -10,12 +10,16 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import scala.util.parsing.combinator.testing.Str;
 import service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.File;
 import java.io.PrintWriter;
+import java.util.StringTokenizer;
 
 @Controller
 public class UserController {
@@ -23,8 +27,8 @@ public class UserController {
     private UserService userService;
 
     // ID중복검사 ajax 함수로 처리 부분
-    @RequestMapping(value = "/user_idcheck.do", method = RequestMethod.POST)
-    public String user_idcheck(@RequestParam("userid") String userid, Model model) throws Exception{
+    @RequestMapping(value = "/user_idCheck.do", method = RequestMethod.POST)
+    public String user_idCheck(@RequestParam("userid") String userid, Model model) throws Exception{
 
         int result = userService.checkUserId(userid);
         model.addAttribute("result", result);
@@ -60,16 +64,9 @@ public class UserController {
 
         userService.insertMember(user);
 
-        return "redirect:login";
+        return "redirect:login.do";
     }
-
-    @RequestMapping("/withdrawal.do")
-    public String withdrawal(){
-
-        return "withdrawal";
-    }
-
-
+    
     // 로그인 view
     @RequestMapping("/login.do")
     public String login() {
@@ -93,7 +90,7 @@ public class UserController {
             model.addAttribute("result", result);
 
             return "user/loginResult";
-        } else {
+        } else {    // 등록된 회원일때
             if (user.getPasswd().equals(passwd)) {  // 비번이 같을때
                 session.setAttribute("userid", userid);
 
@@ -120,12 +117,12 @@ public class UserController {
 
     // 비밀번호 찾기
     @RequestMapping(value = "/pwd_find_ok.do", method = RequestMethod.POST)
-    public String pwd_find_ok(@ModelAttribute User user, HttpServletResponse response, Model model)
+    public String pwd_find_ok(@ModelAttribute User use, HttpServletResponse response, Model model)
         throws Exception{
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
-        User upwd = userService.findpwd(user);
+        User user = userService.findpwd(use);
 
         if (user == null) { // 값이 없는 경우
             return "user/pwdResult";
@@ -176,16 +173,169 @@ public class UserController {
         }
     }
 
-    @RequestMapping("/memberInfoCheck.do")
-    public String memberinfoCheck(){
+    // 닉네임 중복 검사 ajax 함수로 처리 부분
+    @RequestMapping(value = "/user_akaCheck.do", method = RequestMethod.POST)
+    public String user_akaCheck(@RequestParam("userid") String userid, Model model) throws Exception{
 
+        int result = userService.checkUserId(userid);
+        model.addAttribute("result", result);
+
+        return "user/akaCheckResult";
+    }
+
+    // 회원정보 수정 view
+    @RequestMapping("/memberInfoCheck.do")
+    public String memberInfoCheck(HttpSession session, Model model) throws Exception{
+
+        String userid = (String) session.getAttribute("userid");
+
+        User editm = userService.userCheck(userid);
+
+//        StringTokenizer st02 = new StringTokenizer(join_phone, "-");
+//        // java.util 패키지의 StringTokenizer 클래스는 첫번째 전달인자를
+//        // 두번째 -를 기준으로 문자열을 파싱해준다.
+//        String join_phone1 = st02.nextToken();// 첫번째 전화번호 저장
+//        String join_phone2 = st02.nextToken(); // 두번째 전번 저장
+//        String join_phone3 = st02.nextToken();// 세번째 전번 저장
+
+        String email = editm.getEmail();
+        StringTokenizer st03 = new StringTokenizer(email, "@");
+        String domain = st03.nextToken();
+
+        model.addAttribute("editm", editm);
+        model.addAttribute("email",email);
+        model.addAttribute("domain", domain);
 
         return "memberInfoCheck";
     }
 
+    // 회원정보 수정 (fileupload)
+    @RequestMapping(value = "/memberInfoCheck_ok.do", method = RequestMethod.POST)
+    public String memberInfoCheck_ok(@RequestParam("userUp_profile") MultipartFile mf,
+                                     User user,
+                                     HttpServletRequest request,
+                                     HttpSession session,
+                                     Model model) throws Exception{
+        String filename = mf.getOriginalFilename();
+        int size = (int) mf.getSize();
 
+        String path = request.getRealPath("upload");
 
+        int result = 0;
+        String file[] = new String[2];
+        //		file = filename.split(".");
+//		System.out.println(file.length);
+//		System.out.println("file0="+file[0]);
+//		System.out.println("file1="+file[1]);
 
+        if (filename != ""){    // 첨부파일이 전송된 경우
+            
+            StringTokenizer st = new StringTokenizer(filename, ".");
+            file[0] = st.nextToken();
+            file[1] = st.nextToken();   // 확장자
+
+            if (size > 100000){
+                result = 1;
+                model.addAttribute("result", result);
+
+                return "user/uploadResult";
+            } else if (!file[1].equals("jpg") &&
+                        !file[1].equals("gif") &&
+                        !file[1].equals("png") ){
+
+                result = 2;
+                model.addAttribute("result", result);
+
+                return "user/uploadResult";
+            }
+            
+        }
+        
+        if (size > 0){      // 첨부파일이 전송된 경우
+            mf.transferTo(new File(path + "/" + filename));
+        }
+
+        String userid = (String) session.getAttribute("userid");
+
+        String aka = request.getParameter("aka").trim();
+        String phone = request.getParameter("phone").trim();
+        String email = request.getParameter("email").trim();
+        String domain = request.getParameter("domain").trim();
+
+        User editm = this.userService.userCheck(userid);
+        
+        if (size > 0){      // 첨부파일이 수정되면
+            user.setProfile(filename);
+        } else {            // 첨부파일이 수정되지 않으면
+            user.setProfile(editm.getProfile());
+        }
+
+        user.setUserid(userid);
+        user.setAka(aka);
+        user.setPhone(phone);
+        user.setEmail(email);
+        user.setDomain(domain);
+
+        userService.updateMember(user);     // 수정 메소드 호출
+
+        model.addAttribute("name", user.getName());
+        model.addAttribute("profile", user.getProfile());
+
+        return "main";
+
+    }
+
+    // 회원탈퇴 view
+    @RequestMapping("/withdrawal.do")
+    public String withdrawal(HttpSession session, Model dm) throws Exception{
+        String userid = (String) session.getAttribute("userid");
+        User delUser = userService.userCheck(userid);
+        dm.addAttribute("userid", userid);
+        dm.addAttribute("name", delUser.getName());
+
+        return "withdrawal";
+    }
+    
+    // 회원탈퇴 완료
+    @RequestMapping(value = "/user_del_ok", method = RequestMethod.POST)
+    public String user_del_ok(@RequestParam("passwd") String passwd,
+                              HttpSession session) throws Exception{
+
+        String userid = (String) session.getAttribute("userid");
+        User user = this.userService.userCheck(userid);
+
+        if (!user.getPasswd().equals(passwd)){
+
+            return "user/deleteResult";
+        } else {        // 비번이 같을 경우
+            String up = session.getServletContext().getRealPath("upload");
+            String fname = user.getProfile();
+            System.out.println("up : " + up );
+            
+            // 디비에 저장된 기존 이진파일명을 가져옴
+            if (fname != null){     // 기존 이진파일이 존재하면
+                File delFile = new File(up + "/" + fname);
+                delFile.delete();   // 기존 이진파일을 삭제
+            }
+            User delm = new User();
+            delm.setUserid(userid);
+
+            userService.deleteMember(delm);     // 삭제 메서드 호출 
+            
+            session.invalidate();       // 세션만료
+
+            return "redirect:login.do";
+            
+        }
+    }
+
+    // 로그아웃
+    @RequestMapping("logout.do")
+    public String logout(HttpSession session){
+        session.invalidate();
+
+        return "logout";
+    }
 
 
 

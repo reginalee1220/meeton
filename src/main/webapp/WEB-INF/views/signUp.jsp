@@ -65,7 +65,7 @@
                                 </div>
                             </div><!-- // mem_info -->
                             <div class="btn_check">
-                                <button type="button" value="ID중복검사" id="idCheck" onclick="idCheck()" >ID 중복 확인</button>
+                                <button type="button" value="ID중복검사" id="idCheck" onclick="id_check()" >ID 중복 확인</button>
                             </div>
                         </div><!-- // frg -->
 
