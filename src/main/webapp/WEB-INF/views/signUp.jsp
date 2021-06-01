@@ -39,15 +39,17 @@
 </head>
 <body>
 <!-- header -->
+<%@ include file="header.jsp" %>
 <div class="wrap"><!-- wrap 시작 -->
-    <div class="top-title">
-        <div class="top-inner">
+    <div class="top_title">
+        <div class="top_inner">
             <h1>MEETON 회원가입</h1>
         </div>
     </div>
     <main id="main-wrap"><!-- main-wrap 시작 -->
         <section class="signup_section"><!-- 회원가입 signup_section 시작 -->
-            <form id="signupForm" method="post" action="<%=request.getContextPath() %>/signUp.do"><!-- 전체 form 요소 시작 -->
+            <form id="signupForm" method="post" action="/user_signup_ok.do"
+                    onsubmit="return check()" enctype="multipart/form-data"><!-- 전체 form 요소 시작 -->
                 <fieldset>
                     <legend>SignUp Form</legend>
                     <!-- 아이디 -->
@@ -63,7 +65,7 @@
                                 </div>
                             </div><!-- // mem_info -->
                             <div class="btn_check">
-                                <button type="button" value="ID중복검사" id="idCheck">ID 중복 확인</button>
+                                <button type="button" value="ID중복검사" id="idCheck" onclick="idCheck()" >ID 중복 확인</button>
                             </div>
                         </div><!-- // frg -->
 
@@ -195,17 +197,18 @@
                                 </div>
                                 <div class="info_word_ema">
                                     <div class="email">
-                                        <input id="email" type="text" name="email" placeholder="email">
+                                        <input id="email" type="text" name="email" placeholder="email" />
                                         <span>
                                             @
                                         </span>
                                     </div>
                                     <div class="domain">
-                                        <input id="domain" type="text" name="domain" placeholder="doamin">
+                                        <input id="domain" type="text" name="domain" placeholder="doamin" />
                                     </div>
                                     <div class="selectd">
-                                        <select id="domains" name="domains" class="sel" aria-label="이메일 입력">
-                                            <option value="" selected="selected">직접 입력</option>
+                                        <select id="mail_list" name="mail_list" onchange="domain_list()" class="sel" aria-label="이메일 입력">
+                                            <option value="" selected="selected">이메일 선택</option>
+                                            <option value="0">직접입력</option>
                                             <option value="naver.com">naver.com</option>
                                             <option value="gmail.com">gmail.com</option>
                                             <option value="nate.com">nate.com</option>
@@ -234,7 +237,7 @@
                                     <label for="zip">주소</label>
                                 </div>
                                 <div class="info_word">
-                                    <input id="zip" type="text" name="zip" placeholder="우편번호">
+                                    <input id="zip" type="text" name="zip" placeholder="우편번호" readonly onclick="post_search() ">
                                 </div>
                             </div><!-- // mem_info -->
                             <div class="btn_ZIPcheck"><!-- 우편번호 검색 버튼  -->
@@ -254,7 +257,8 @@
                                 </div>
                                 <div class="info_word_ads">
                                     <div class="address1">
-                                        <input id="address1" type="text" name="address1" placeholder="상세주소">
+                                        <input id="address1" type="text" name="address1" placeholder="상세주소"
+                                               readonly onclick="post_search()">
                                     </div>
                                     <div class="address2">
                                         <input id="address2" type="text" name="address2" placeholder="동/호수 입력">
@@ -318,7 +322,7 @@
 
                     <!-- 회원가입,취소 버튼 -->
                     <div class="complete"><!-- complete 시작 -->
-                        <button type="reset" value="회원가입취소" id="exit" class="exit_box cmp">취소</button>
+                        <button type="reset" value="회원가입취소" id="exit" class="exit_box cmp" onclick="$('#userid').focus();" >취소</button>
                         <button type="submit" value="회원가입완료" id="join" class="join_box cmp">회원가입</button>
                     </div><!-- //complete -->
                 </fieldset>
@@ -327,5 +331,8 @@
 
     </main><!-- //main-wrap -->
 </div><!-- //wrap -->
+
+<!-- footer -->
+<%--<%@ include file="footer.jsp" %>--%>
 </body>
 </html>

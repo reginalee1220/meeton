@@ -3,6 +3,59 @@
 
 <mapper namespace="user">
 
+    <!-- 비번 검색 -->
+    <select id="pwd_find" resultType="user" parameterType="user">
+        select * from user where userid=#{userid} and name = #{name }
+    </select>
+    <!-- 회원저장 -->
+    <insert id="signUp" parameterType="user">
+        insert into user (userid,
+                          passwd,
+                            name,
+                            phone,
+                            email,domain,
+                            zip,address1,address2,
+                            year,month,day,
+                            joindate,
+                            state)
+        values (
+                #{userid},
+                #{passwd},
+                #{name},
+                #{phone},
+                #{email},
+                #{domain},
+                #{zip},
+                #{address1},
+                #{address2},
+                #{year},
+                #{month},
+                #{day},
+                sysdate()
+                )
+    </insert>
 
+    <!-- 로그인 인증 -->
+    <select id="login_check" parameterType="String" resultType="user">
+        select * from user where userid=#{userid} and state=1
+
+    </select>
+
+    <!-- 회원수정 -->
+    <update id="member_edit" parameterType="user">
+
+    update user set passwd=#{passwd}, name=#{name}, aka=#{aka},
+                    zip=#{zip}, address1=#{address1}, address2=#{address2},
+                    phone=#{phone},
+                    email=#{email}, domain =#{domain },
+                    profile=#{profile, jdbcType=VARCHAR2}
+                    where userid=#{userid}
+    </update>
+
+    <!-- 회원삭제 -->
+    <update id="member_delete" parameterType="user">
+        update user set userdeldate=#{userdeldate}, state = 2,
+                        userdeldate=sysdate() where userid=#{userid}
+    </update>
 
 </mapper>
