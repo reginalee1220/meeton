@@ -191,7 +191,7 @@ a:hover, a:focus, a:active {text-decoration:none;}
     position: absolute;
 
 }
-.main_video_img > .video_play_view .video_play #background_video{
+.main_video_img > .video_play_view .video_play .background_video{
     /* z-index: -1; */
     width: 190px;
 
@@ -199,7 +199,7 @@ a:hover, a:focus, a:active {text-decoration:none;}
     position: absolute;
 }
 @media screen and (max-aspect-ratio: 190/120) {
-    #background_video {
+    .background_video {
         width: auto;
         height: 100vh;
     }

@@ -102,7 +102,7 @@
                                 <div class="video_play_view"><!-- video_play_view -->
                                     <div class="video_play">
                                         <!-- <video muted="muted" poster=" " preload="metadata" controls ></video> -->
-                                        <video id="background_video" preload="auto" autoplay="autoplay" loop="loop" muted="muted" volume="0" controls><!-- controls : 동영상 체크  -->
+                                        <video class="background_video" preload="auto" autoplay="autoplay" loop="loop" muted="muted" volume="0" controls><!-- controls : 동영상 체크  -->
                                             <source src="./images/video/testvideo.mp4" type="video/mp4" />
                                             <source src="./images/video/testvideo.mp4" type="video/webm" />
                                             <source src="./images/video/testvideo.mp4" type="video/ogg" />
@@ -149,7 +149,7 @@
                                 <div class="video_play_view"><!-- video_play_view -->
                                     <div class="video_play">
                                         <!-- <video muted="muted" poster=" " preload="metadata" controls ></video> -->
-                                        <video id="background_video" preload="auto" autoplay="autoplay" loop="loop" muted="muted" volume="0" controls><!-- controls : 동영상 체크  -->
+                                        <video class="background_video" preload="auto" autoplay="autoplay" loop="loop" muted="muted" volume="0" controls><!-- controls : 동영상 체크  -->
                                             <source src="./images/video/testvideo.mp4" type="video/mp4" />
                                             <source src="./images/video/testvideo.mp4" type="video/webm" />
                                             <source src="./images/video/testvideo.mp4" type="video/ogg" />
@@ -196,7 +196,7 @@
                                 <div class="video_play_view"><!-- video_play_view -->
                                     <div class="video_play">
                                         <!-- <video muted="muted" poster=" " preload="metadata" controls ></video> -->
-                                        <video id="background_video" preload="auto" autoplay="autoplay" loop="loop" muted="muted" volume="0" controls><!-- controls : 동영상 체크  -->
+                                        <video class="background_video" preload="auto" autoplay="autoplay" loop="loop" muted="muted" volume="0" controls><!-- controls : 동영상 체크  -->
                                             <source src="./images/video/testvideo.mp4" type="video/mp4" />
                                             <source src="./images/video/testvideo.mp4" type="video/webm" />
                                             <source src="./images/video/testvideo.mp4" type="video/ogg" />
@@ -243,7 +243,7 @@
                                 <div class="video_play_view"><!-- video_play_view -->
                                     <div class="video_play">
                                         <!-- <video muted="muted" poster=" " preload="metadata" controls ></video> -->
-                                        <video id="background_video" preload="auto" autoplay="autoplay" loop="loop" muted="muted" volume="0" controls><!-- controls : 동영상 체크  -->
+                                        <video class="background_video" preload="auto" autoplay="autoplay" loop="loop" muted="muted" volume="0" controls><!-- controls : 동영상 체크  -->
                                             <source src="./images/video/testvideo.mp4" type="video/mp4" />
                                             <source src="./images/video/testvideo.mp4" type="video/webm" />
                                             <source src="./images/video/testvideo.mp4" type="video/ogg" />
@@ -290,7 +290,7 @@
                                 <div class="video_play_view"><!-- video_play_view -->
                                     <div class="video_play">
                                         <!-- <video muted="muted" poster=" " preload="metadata" controls ></video> -->
-                                        <video id="background_video" preload="auto" autoplay="autoplay" loop="loop" muted="muted" volume="0" controls><!-- controls : 동영상 체크  -->
+                                        <video class="background_video" preload="auto" autoplay="autoplay" loop="loop" muted="muted" volume="0" controls><!-- controls : 동영상 체크  -->
                                             <source src="./images/video/testvideo.mp4" type="video/mp4" />
                                             <source src="./images/video/testvideo.mp4" type="video/webm" />
                                             <source src="./images/video/testvideo.mp4" type="video/ogg" />
@@ -337,7 +337,7 @@
                                 <div class="video_play_view"><!-- video_play_view -->
                                     <div class="video_play">
                                         <!-- <video muted="muted" poster=" " preload="metadata" controls ></video> -->
-                                        <video id="background_video" preload="auto" autoplay="autoplay" loop="loop" muted="muted" volume="0" controls><!-- controls : 동영상 체크  -->
+                                        <video class="background_video" preload="auto" autoplay="autoplay" loop="loop" muted="muted" volume="0" controls><!-- controls : 동영상 체크  -->
                                             <source src="./images/video/testvideo.mp4" type="video/mp4" />
                                             <source src="./images/video/testvideo.mp4" type="video/webm" />
                                             <source src="./images/video/testvideo.mp4" type="video/ogg" />
