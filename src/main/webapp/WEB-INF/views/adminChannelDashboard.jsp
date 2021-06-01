@@ -22,18 +22,25 @@
     <!--    최신 동영상 실적    -->
     <div class="ca-dash-video">
       <div class="ca-dashboard-subject">최신 동영상 실적</div>
-      <img src="image/videobackground.png" />
+      <video muted="muted" poster="./imgUpload/${video.thumbnail}" preload="metadata">
+        <source src="./videoUpload/${video.videofile}" type="video/mp4" />
+        <source src="./videoUpload/${video.videofile}" type="video/webm" />
+        <source src="./videoUpload/${video.videofile}" type="video/ogg" />
+      </video>
       <div class="ca-dash-video-desc">
         <div>업로드 날짜</div>
-        <div class="ca-dash-video-value">${video.register}</div>
+        <div class="ca-dash-video-value">
+          <fmt:parseDate value="${video.register}" var="date" pattern="yyyy-MM-dd HH:mm:ss" /><!--string을 date로형 변환-->
+          <fmt:formatDate value="${date}" pattern="yyyy.MM.dd" /><!--pattern 값으로 변경 출력 -->
+        </div>
         <div>조회수</div>
         <div class="ca-dash-video-value">${video.views}</div>
         <div>댓글수</div>
         <div class="ca-dash-video-value">${video.comments}</div>
       </div>
-      <div class="ca-dashboard-move">
-        <a href="#">동영상분석으로 이동</a>
-      </div>
+<%--      <div class="ca-dashboard-move">--%>
+<%--        <a href="#">동영상분석으로 이동</a>--%>
+<%--      </div>--%>
     </div><!--ca-dash-video end-->
     <!--    채널 분석    -->
     <div class="ca-dash-channel">
@@ -49,7 +56,7 @@
             <div>구독자수</div>
             <div class="ca-dash-video-value">${channel.subscribers}</div>
             <div>즐겨찾기 시청자수</div>
-            <div class="ca-dash-video-value">0</div>
+            <div class="ca-dash-video-value">${channel.bookmarkers}</div>
             <div>총 조회수</div>
             <div class="ca-dash-video-value">${totalviews}</div>
           </div>
@@ -58,17 +65,23 @@
           <span>인기동영상</span>
           <div class="ca-dash-channel-video">
             <div class="ca-dash-channel-video-img">
-              <img src="image/videobackground2.png" />
-              <div class="main-video-time">22:00</div>
+              <video muted="muted" poster="image/LOGO.png" preload="metadata">
+                <source src="image/viverse.mp4" type="video/mp4" />
+                <source src="image/viverse.mp4" type="video/webm" />
+                <source src="image/viverse.mp4" type="video/ogg" />
+              </video>
             </div>
             <div class="ca-dash-channel-video-desc">
               <ul>
-                <li>영상제목</li>
-                <li>업로드 날짜</li>
+                <li>${topvideo.title}</li><!--영상제목-->
+                <li><!--영상 업로드 날짜 -->
+                  <fmt:parseDate value="${topvideo.register}" var="date2" pattern="yyyy-MM-dd HH:mm:ss" /><!--string을 date로형 변환-->
+                  <fmt:formatDate value="${date2}" pattern="yyyy.MM.dd" /><!--pattern 값으로 변경 출력 -->
+                </li>
                 <li>
                   <div>
-                    <span><img src="image/views.png" />12500</span>
-                    <span><img src="image/heart-solid.png" />25700</span>
+                    <span><img src="image/views.png" />${topvideo.views}</span><!--조회수-->
+                    <span><img src="image/heart-solid.png" />${topvideo.likes}</span><!--좋아요수-->
                   </div>
                 </li>
               </ul>
@@ -77,7 +90,7 @@
         </li>
       </ul>
       <div class="ca-dashboard-move">
-        <a href="#" >채널분석으로 이동</a>
+        <a href="adminChannel.do?state=analysis" >채널분석으로 이동</a>
       </div>
     </div><!--ca-dash-channel end-->
   </div><!--ca-dashboard-content end-->

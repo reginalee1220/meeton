@@ -35,6 +35,10 @@
             linear-gradient(to right, #4ba9e1, #a0ffb4);
     background-origin: border-box;/*이미지 시작 위치*/
     background-clip: content-box, border-box; /*이미지 잘릴 위치*/
+    overflow: hidden;
+}
+.ca-side-profile img{
+    height: 100%;
 }
 .ca-side-info span{
     display: inline-block;

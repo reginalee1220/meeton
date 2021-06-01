@@ -1,4 +1,3 @@
-/*  content */
 .ca-content{
     background-color: #f5f6f7;
     width: 100%;
@@ -80,8 +79,8 @@
     display: flex;
     align-items: center;
 }
-.ca-content-video-img{
-    height: 100px;
+.ca-content-video-video{
+    width: 150px;
 }
 .ca-content-video-desc{
     height: 100px;
@@ -120,7 +119,7 @@ input[id="ca-content-popup"] + label:hover{
 input[id="ca-content-popup"] + label + div{
     opacity: 0;
     visibility: hidden;
-    transition: all 1s;
+    transition: all 0.5s;
     position: fixed;
     top: 0;
     left: 0;
@@ -146,7 +145,7 @@ input[id="ca-content-popup"] + label + div > div{
 input[id="ca-content-popup"] + label + div > div > label{
     position: absolute;
     top: 0;
-    right: 0;
+    left: 0;
     padding: 5px;
     width: 50px;
     height: 50px;
