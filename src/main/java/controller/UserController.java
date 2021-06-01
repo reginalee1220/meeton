@@ -63,6 +63,12 @@ public class UserController {
         return "redirect:login";
     }
 
+    @RequestMapping("/withdrawal.do")
+    public String withdrawal(){
+
+        return "withdrawal";
+    }
+
 
     // 로그인 view
     @RequestMapping("/login.do")
