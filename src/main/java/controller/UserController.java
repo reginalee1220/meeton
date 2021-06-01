@@ -20,5 +20,11 @@ public class UserController {
 
     }
 
+    @RequestMapping("/withdrawal.do")
+    public String withdrawal(){
+
+        return "withdrawal";
+    }
+
 
 }
