@@ -6,7 +6,7 @@
 <body>
 <script>
 <%--<%session.setAttribute("userid","runa");%>--%>
-  location.href="main.do";
+  location.href="memberInfoCheck.do";
 </script>
 
 </body>
