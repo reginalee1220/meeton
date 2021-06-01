@@ -57,9 +57,16 @@
                         </div><!-- // my_video_check -->
                         <div class="main_video"><!-- main_video -->
                             <div class="main_video_img"><!-- main_video_img -->
-                                <a href="#">
-                                    <img src="/images/mypick/videobackground.png" />
-                                </a>
+                                <div class="video_play_view"><!-- video_play_view -->
+                                    <div class="video_play">
+                                        <!-- <video muted="muted" poster=" " preload="metadata" controls ></video> -->
+                                        <video class="background_video" preload="auto" autoplay="autoplay" loop="loop" muted="muted" volume="0" controls><!-- controls : 동영상 체크  -->
+                                            <source src="./images/video/testvideo.mp4" type="video/mp4" />
+                                            <source src="./images/video/testvideo.mp4" type="video/webm" />
+                                            <source src="./images/video/testvideo.mp4" type="video/ogg" />
+                                        </video>
+                                    </div>
+                                </div><!-- // video_play_view -->
                                 <div class="main_video_time">22:00</div>
                             </div>
                             <div class="desc"><!-- desc -->
@@ -88,6 +95,7 @@
                             </div><!-- // desc -->
                         </div><!-- // main_video -->
                     </div><!-- // video_view -->
+
                     <div class="video_view"><!-- video_view -->
                         <div class="my_video_check"><!-- my_video_check -->
                             <label>
@@ -96,9 +104,16 @@
                         </div><!-- // my_video_check -->
                         <div class="main_video"><!-- main_video -->
                             <div class="main_video_img"><!-- main_video_img -->
-                                <a href="#">
-                                    <img src="/images/mypick/videobackground.png" />
-                                </a>
+                                <div class="video_play_view"><!-- video_play_view -->
+                                    <div class="video_play">
+                                        <!-- <video muted="muted" poster=" " preload="metadata" controls ></video> -->
+                                        <video class="background_video" preload="auto" autoplay="autoplay" loop="loop" muted="muted" volume="0" controls><!-- controls : 동영상 체크  -->
+                                            <source src="./images/video/testvideo.mp4" type="video/mp4" />
+                                            <source src="./images/video/testvideo.mp4" type="video/webm" />
+                                            <source src="./images/video/testvideo.mp4" type="video/ogg" />
+                                        </video>
+                                    </div>
+                                </div><!-- // video_play_view -->
                                 <div class="main_video_time">22:00</div>
                             </div>
                             <div class="desc"><!-- desc -->
@@ -127,6 +142,7 @@
                             </div><!-- // desc -->
                         </div><!-- // main_video -->
                     </div><!-- // video_view -->
+
                     <div class="video_view"><!-- video_view -->
                         <div class="my_video_check"><!-- my_video_check -->
                             <label>
@@ -135,165 +151,16 @@
                         </div><!-- // my_video_check -->
                         <div class="main_video"><!-- main_video -->
                             <div class="main_video_img"><!-- main_video_img -->
-                                <a href="#">
-                                    <img src="/images/mypick/videobackground.png" />
-                                </a>
-                                <div class="main_video_time">22:00</div>
-                            </div>
-                            <div class="desc"><!-- desc -->
-                                <ul class="desc_inner">
-                                    <li class="vd_text">
-                                        <a href="#" data-event="clickTitle" data-clickcode="#" data-move_uri="#">
-                                            영상 제목
-                                        </a>
-                                    </li>
-                                    <li class="ch_txt">
-                                        <a href="#" data-event="clickChannel" data-clickcode="#" data-move_uri="#">
-                                            영상 채널명
-                                        </a>
-                                    </li>
-                                    <li class="play_like">
-                                            <span class="cds_ifc cnp">
-                                                <i class='bx bx-play' style='color:#4ba9e1' ></i>
-                                                158,079
-                                            </span>
-                                        <span class="cds_ifc bch">
-                                                <i class='bx bxs-heart' style='color:#e14b4b'  ></i>
-                                                    1,405
-                                            </span>
-                                    </li>
-                                </ul>
-                            </div><!-- // desc -->
-                        </div><!-- // main_video -->
-                    </div><!-- // video_view -->
-                    <div class="video_view"><!-- video_view -->
-                        <div class="my_video_check"><!-- my_video_check -->
-                            <label>
-                                <input type="checkbox" name="myplaylist" value="영상체크" />
-                            </label>
-                        </div><!-- // my_video_check -->
-                        <div class="main_video"><!-- main_video -->
-                            <div class="main_video_img"><!-- main_video_img -->
-                                <a href="#">
-                                    <img src="/images/mypick/videobackground.png" />
-                                </a>
-                                <div class="main_video_time">22:00</div>
-                            </div>
-                            <div class="desc"><!-- desc -->
-                                <ul class="desc_inner">
-                                    <li class="vd_text">
-                                        <a href="#" data-event="clickTitle" data-clickcode="#" data-move_uri="#">
-                                            영상 제목
-                                        </a>
-                                    </li>
-                                    <li class="ch_txt">
-                                        <a href="#" data-event="clickChannel" data-clickcode="#" data-move_uri="#">
-                                            영상 채널명
-                                        </a>
-                                    </li>
-                                    <li class="play_like">
-                                            <span class="cds_ifc cnp">
-                                                <i class='bx bx-play' style='color:#4ba9e1' ></i>
-                                                158,079
-                                            </span>
-                                        <span class="cds_ifc bch">
-                                                <i class='bx bxs-heart' style='color:#e14b4b'  ></i>
-                                                    1,405
-                                            </span>
-                                    </li>
-                                </ul>
-                            </div><!-- // desc -->
-                        </div><!-- // main_video -->
-                    </div><!-- // video_view -->
-                    <div class="video_view"><!-- video_view -->
-                        <div class="my_video_check"><!-- my_video_check -->
-                            <label>
-                                <input type="checkbox" name="myplaylist" value="영상체크" />
-                            </label>
-                        </div><!-- // my_video_check -->
-                        <div class="main_video"><!-- main_video -->
-                            <div class="main_video_img"><!-- main_video_img -->
-                                <a href="#">
-                                    <img src="/images/mypick/videobackground.png" />
-                                </a>
-                                <div class="main_video_time">22:00</div>
-                            </div>
-                            <div class="desc"><!-- desc -->
-                                <ul class="desc_inner">
-                                    <li class="vd_text">
-                                        <a href="#" data-event="clickTitle" data-clickcode="#" data-move_uri="#">
-                                            영상 제목
-                                        </a>
-                                    </li>
-                                    <li class="ch_txt">
-                                        <a href="#" data-event="clickChannel" data-clickcode="#" data-move_uri="#">
-                                            영상 채널명
-                                        </a>
-                                    </li>
-                                    <li class="play_like">
-                                            <span class="cds_ifc cnp">
-                                                <i class='bx bx-play' style='color:#4ba9e1' ></i>
-                                                158,079
-                                            </span>
-                                        <span class="cds_ifc bch">
-                                                <i class='bx bxs-heart' style='color:#e14b4b'  ></i>
-                                                    1,405
-                                            </span>
-                                    </li>
-                                </ul>
-                            </div><!-- // desc -->
-                        </div><!-- // main_video -->
-                    </div><!-- // video_view -->
-                    <div class="video_view"><!-- video_view -->
-                        <div class="my_video_check"><!-- my_video_check -->
-                            <label>
-                                <input type="checkbox" name="myplaylist" value="영상체크" />
-                            </label>
-                        </div><!-- // my_video_check -->
-                        <div class="main_video"><!-- main_video -->
-                            <div class="main_video_img"><!-- main_video_img -->
-                                <a href="#">
-                                    <img src="/images/mypick/videobackground.png" />
-                                </a>
-                                <div class="main_video_time">22:00</div>
-                            </div>
-                            <div class="desc"><!-- desc -->
-                                <ul class="desc_inner">
-                                    <li class="vd_text">
-                                        <a href="#" data-event="clickTitle" data-clickcode="#" data-move_uri="#">
-                                            영상 제목
-                                        </a>
-                                    </li>
-                                    <li class="ch_txt">
-                                        <a href="#" data-event="clickChannel" data-clickcode="#" data-move_uri="#">
-                                            영상 채널명
-                                        </a>
-                                    </li>
-                                    <li class="play_like">
-                                            <span class="cds_ifc cnp">
-                                                <i class='bx bx-play' style='color:#4ba9e1' ></i>
-                                                158,079
-                                            </span>
-                                        <span class="cds_ifc bch">
-                                                <i class='bx bxs-heart' style='color:#e14b4b'  ></i>
-                                                    1,405
-                                            </span>
-                                    </li>
-                                </ul>
-                            </div><!-- // desc -->
-                        </div><!-- // main_video -->
-                    </div><!-- // video_view -->
-                    <div class="video_view"><!-- video_view -->
-                        <div class="my_video_check"><!-- my_video_check -->
-                            <label>
-                                <input type="checkbox" name="myplaylist" value="영상체크" />
-                            </label>
-                        </div><!-- // my_video_check -->
-                        <div class="main_video"><!-- main_video -->
-                            <div class="main_video_img"><!-- main_video_img -->
-                                <a href="#">
-                                    <img src="/images/mypick/videobackground.png" />
-                                </a>
+                                <div class="video_play_view"><!-- video_play_view -->
+                                    <div class="video_play">
+                                        <!-- <video muted="muted" poster=" " preload="metadata" controls ></video> -->
+                                        <video class="background_video" preload="auto" autoplay="autoplay" loop="loop" muted="muted" volume="0" controls><!-- controls : 동영상 체크  -->
+                                            <source src="./images/video/testvideo.mp4" type="video/mp4" />
+                                            <source src="./images/video/testvideo.mp4" type="video/webm" />
+                                            <source src="./images/video/testvideo.mp4" type="video/ogg" />
+                                        </video>
+                                    </div>
+                                </div><!-- // video_play_view -->
                                 <div class="main_video_time">22:00</div>
                             </div>
                             <div class="desc"><!-- desc -->
