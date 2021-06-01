@@ -33,7 +33,8 @@
                     <h3>MEETON 입니다.</h3>
                     <p>기존회원이시면 아이디와 비밀번호를 입력해주세요.</p>
                 </div>
-                <form id="loginForm" method="post" action="<%=request.getContextPath() %>/Login.do"><!-- 전체 form 요소 시작 -->
+                <form id="loginForm" method="post" action="/user_login_ok.do"
+                        onsubmit="return check()"><!-- 전체 form 요소 시작 -->
                     <fieldset>
                         <legend>Login Form</legend>
                         <div class="user_infoen"><!-- user_infoen -->
@@ -82,7 +83,7 @@
                                 <ul>
                                     <li class="member_title">비밀번호를 잊으셨나요?</li>
                                     <li class="pw_searchBt">
-                                        <button type="button" id="pwSearch" value="비밀번호 찾기">비밀번호 찾기</button>
+                                        <button type="button" id="pwSearch" value="비밀번호 찾기" onclick="pwd_find()">비밀번호 찾기</button>
                                     </li>
                                 </ul>
                             </div>
@@ -122,7 +123,7 @@
                     <span>회원이 아니신가요? </span>
                 </div>
                 <div class="signup_btn">
-                    <button type="button" value="회원가입" onClick="location.href='<%=request.getContextPath()%>/signUp.do' ">회원가입</button>
+                    <button type="button" value="회원가입" onclick="location='signUp.do'">회원가입</button>
                 </div>
             </div>
         </div>

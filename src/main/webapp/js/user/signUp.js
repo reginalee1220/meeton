@@ -1,196 +1,178 @@
 // 회원가입 유효성
-$(document).ready(function (){
-
-    // User_ID 중복검사
-    $("#idCheck").click(function (){
-        $('#idError').hide();
-
-        if($("#userId").val() == ""){
-            //           alert("ID를 입력 해주세요.");
-            $('#idError').text("ID를 입력 해주세요.");
-            $("#userId").focus();
-            return false;
-        }else {
-            var userId = $("#userId").val();
-            $.ajax({
-                type:"post",
-                url:"/IdCheck.do",
-                data:{"userId":userId},
-                datatype:"text",
-                success:function (data){
-                    // alert(data);
-                    if(data == 1){  // 중복 ID0
-                        $('#idError').show();
-                        $('#idError').text('');
-                        $("#idError").text("중복 ID 입니다.");
-                        $("#userId").val("").focus();
-                    }else {     // 사용 가능한 ID
-                        $('#idError').show();
-                        $('#idError').text('');
-                        $("#idError").text("사용 가능한 ID 입니다.");
-                        $("#idError").css("color", "#9b52c7");
-                        $("#aka").focus();
-                    }
-                }
-            });
-        }
-
-    })// User_ID 중복검사 end
-
-    // 닉네임 중복검사
-    $("#akaCheck").click(function (){
-//        $("#akaMsg").hide();
-
-        if($("#aka").val() == ""){
-            // alert("닉네임을 입력 해주세요.");
-            $("#akaError").text("닉네임을 입력 해주세요.");
-            $("#aka").focus();
-            return false;
-        }else {
-            var aka = $("#aka").val();
-            $.ajax({
-                type:"post",
-                url:"/AkaCheck.do",
-                data:{"aka":aka},
-                datatype:"text",
-                success:function (data){
-                    // alert(data);
-                    if(data == 1){  // 중복 닉네임
-                        $('#akaError').show();
-                        $('#akaError').text('');
-                        $("#akaError").text("중복 닉네임 입니다.");
-                        $("#aka").val("").focus();
-                    }else {     // 사용 가능한 닉네임
-                        $('#akaError').show();
-                        $('#akaError').text('');
-                        $("#akaError").text("사용 가능한 닉네임 입니다.");
-                        $("#akaError").css("color", "#9b52c7");
-                        $("#userPw").focus();
-                    }
-                }
-            });
-        }
-
-    })// User_ID 중복검사 end
-
-    // 도메인 선택
-    $("#email").change(function(){
-        if($("#email").val() == ""){	// 직접 입력 선택
-//			$("#domain").attr("readonly", false);
-            $("#domain").removeAttr("readonly");
-            $("#domain").val("").focus();
-        }else{							// 도메인명 선택
-            $("#domain").val($("#email").val());
-            $("#domain").attr("readonly","readonly");
-        }
-    });
-
-    $("#firstName").keyup(function (){
-        if($('#firstName').val().length < 2){
-            $('#firstMsg').text("Family Name (성)을 입력해주세요");
-        }
-    });
+function check(){
+    if($.trim($("#userid").val())==""){
+        alert("회원아이디를 입력하세요!");
+        $("#userid").val("").focus();
+        return false;
+    }
+    if($.trim($("#passwd").val())==""){
+        alert("회원비번을 입력하세요!");
+        $("#passwd").val("").focus();
+        return false;
+    }
+    if($.trim($("#passwdConfirm").val())==""){
+        alert("회원비번확인을 입력하세요!");
+        $("#passwdConfirm").val("").focus();
+        return false;
+    }
+    if($.trim($("#passwd").val()) != $.trim($("#passwdConfirm").val())){
+        //!=같지않다 연산. 비번이 다를 경우
+        alert("비번이 다릅니다!");
+        $("#passwd").val("");
+        $("#passwdConfirm").val("");
+        $("#passwd").focus();
+        return false;
+    }
+    if($.trim($("#name").val())==""){
+        alert("회원이름을 입력하세요!");
+        $("#name").val("").focus();
+        return false;
+    }
 
 
+    if($.trim($("#phone").val())==""){
+        alert("휴대전화번호를 입력하세요!");
+        $("#phone").val("").focus();
+        return false;
+    }
+
+    if($.trim($("#email").val())==""){
+        alert("메일 아이디를 입력하세요!");
+        $("#email").val("").focus();
+        return false;
+    }
+    if($.trim($("#domain").val())==""){
+        alert("메일 주소를 입력하세요!");
+        $("#domain").val("").focus();
+        return false;
+    }
+
+    if($.trim($("#address1").val())==""){
+        alert("주소를 입력하세요!");
+
+        $("#address1").val("").focus();
+        return false;
+    }
+    if($.trim($("#address2").val())==""){
+        alert("나머지 주소를 입력하세요!");
+
+        $("#address2").val("").focus();
+        return false;
+    }
+
+}
+
+// 우편번호 검색 버튼
+function post_search(){
+    alert("우편번호 검색 버튼을 클릭하세요!");
+}
+
+function post_check(){
+    window.open("zipcode_find.do","우편번호검색",
+        "width=420,height=200,scrollbars=yes");
+    //폭이 420이고 높이가 200,스크롤바가 생성되는 새로운 공지창을 만듬
+}
 
 
-    $("#signupForm").submit(function(){
-        if($("#firstName").val() == ""){
-            alert("Family Name (성) 입력하세요.");
-            $("#lastName").focus();
-            return false;
-        }
-        if($("#lastName").val()==""){
-            alert("Name(이름)을 입력해주세요.");
-            $("#userId").focus();
-            return false;
-        }
-        if($("#userId").val()==""){
-            alert("ID를 입력해주세요.");
-            $("#aka").focus();
-            return false;
-        }
-        if($("#aka").val()==""){
-            alert("닉네임을 입력해주세요.");
-            $("#userPw").focus();
-            return false;
-        }
-        if($("#userPw").val()==""){
-            alert("비밀번호 입력해주세요.");
-            $("#userPwConfirm").focus();
-            return false;
-        }
-        if($("#userPwConfirm").val()==""){
-            alert("비밀번호 다시 입력해주세요.");
-            $("#phone").focus();
-            return false;
-        }
-        if($('#userPw').val() != $('#userPwConfirm').val()){
-            alert("비밀번호가 일치하지 않습니다.");
-            $('#userPwConfirm').val('');
-            $('#userPwConfirm').focus();
+// 아이디 중복 체크
+function id_check(){
+    //$("#idMsg").hide();//idcheck span 아이디 영역을 숨긴다.
+    var userid=$("#userid").val();
+    //1.입력글자 길이 체크
+    if($.trim($("#userid").val()).length < 5){
+        var newtext='영문 소문자/숫자 5~20자리로만 사용 가능합니다.';
+        $("#idMsg").text('');
+        $("#idMsg").show();
+        $("#idMsg").append(newtext);//span 아이디 영역에 경고문자 추가
+        $("#userid").val("").focus();
+        return false;
+    };
+    if($.trim($("#userid").val()).length >20){
+        var newtext='영문 소문자/숫자 5~20자리로만 사용 가능합니다.';
+        $("#idMsg").text('');
+        $("#idMsg").show();
+        $("#idMsg").append(newtext);//span 아이디 영역에 경고문자 추가
+        $("#userid").val("").focus();
+        return false;
+    };
+    //입력아이디 유효성 검사
+    if(!(validate_userid(userid))){
+        var newtext='영문 소문자/숫자 5~20자리로만 사용 가능합니다.';
+        $("#idMsg").text('');//문자 초기화
+        $("#idMsg").show();//span 아이디 영역을 보이게 한다.
+        $("#idMsg").append(newtext);
+        $("#userid").val("").focus();
+        return false;
+    };
 
-            return false;
 
-        }
-        if($("#phone").val().length != 11){
-            alert("핸드폰번호를 전부 입력하세요");
-            $("#phone").val("").focus();
-            return false;
-        }
-        if(isNaN($("#phone").val())){
-            alert("숫자만 입력하세요");
-            $("#phone").val("").focus();
-            return false;
-        }
-        if($("#emailId").val()==""){
-            alert("EMail 주소를 입력하세요");
-            $("#emailId").focus();
-            return false;
-        }
-        if($("#domain").val()==""){
-            alert("도메인을 입력하세요");
-            $("#domain").focus();
-            return false;
-        }
-        if($("#zip").val()==""){
-            alert("우편번호를 입력하세요");
-            $("#zip").focus();
-            return false;
-        }
-        if($("#address").val()==""){
-            alert("주소를 입력하세요");
-            $("#address").focus();
-            return false;
-        }
-        if($("#yyyy").val().length != 4){
-            alert("년도4자리 입력해주세요.");
-            $("#yyyy").val("").focus();
-            return false;
-        }
-        if(isNaN($("#yyyy").val())){
-            alert("숫자만 입력하세요");
-            $("#yyyy").val("").focus();
-            return false;
-        }
-        if($("#mm").val()==""){
-            alert("월을 선택하세요");
-            return false;
-        }
-        if($("#dd").val().length != 2){
-            alert("일을 입력해주세요.");
-            $("#dd").val("").focus();
-            return false;
-        }
-        if(isNaN($("#dd").val())){
-            alert("숫자만 입력하세요");
-            $("#dd").val("").focus();
-            return false;
-        }
-        if($("#job").val()==""){
-            alert("직업을 선택하세요");
-            return false;
-        }
 
-    }); // submit() end
-});// ready() end
+
+    //아이디 중복확인
+    $.ajax({
+        type:"POST",
+        url:"user_idCheck.do",
+        data: {"userid":userid},
+        success: function (data) {
+            alert("return success="+data);
+            if(data==1){	//중복 ID
+                var newtext='중복 아이디입니다.';
+                $("#idMsg").text('');
+                $("#idMsg").show();
+                $("#idMsg").append(newtext);
+                $("#userid").val('').focus();
+                return false;
+
+            }else{	//사용 가능한 ID
+                var newtext='사용가능한 아이디입니다.';
+                $("#idPass").text('');
+                $("#idPass").show();
+                $("#idPass").append(newtext);
+                $("#passwd").focus();
+            }
+        }
+        ,
+        error:function(e){
+            alert("data error"+e);
+        }
+    });//$.ajax
+};
+// 아이디 중복 체크 끝
+
+// 정규식 표현식
+function validate_userid(userid)
+{
+    var pattern= new RegExp(/^[a-z0-9_]+$/);
+    //영문 소문자,숫자 ,_가능,정규표현식
+    return pattern.test(userid);
+};
+
+// 메일 도메인 표현식
+function domain_list() {
+    var num=f.mail_list.selectedIndex;
+    /*selectedIndex속성은 select객체하위의 속성으로서 해당리스트 목록번호를 반환
+    */
+    if ( num == -1 ) {
+        //num==-1은 해당 리스트목록이 없다
+        return true;
+    }
+    if(f.mail_list.value=="0") // 직접입력
+    {
+        /*리스트에서 직접입력을 선택했을때*/
+        f.domain.value="";
+        //@뒤의 도메인입력란을 빈공간시켜라.
+        f.domain.readOnly=false;
+        //@뒤의 도메인입력란을 쓰기 가능
+        f.domain.focus();
+        //도메인입력란으로 입력대기상태
+    }
+
+    else {
+        //리스트목록을 선택했을때
+
+        f.domain.value=f.mail_list.options[num].value;
+        /*num변수에는 해당리스트 목록번호가 저장되어있다.해당리스트 번호의 option value값이 도메인입력란에 선택된다.options속성은 select객체의 속성으로서 해당리스트번호의 value값을 가져온다
+        */
+        f.domain.readOnly=true;
+    }
+}
