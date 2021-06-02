@@ -111,7 +111,7 @@ a:hover, a:focus, a:active {text-decoration:none;}
     padding-top:10px;
     padding-left:3px;
     overflow: hidden;
-    /* border:1px solid blue; */
+     /*border:1px solid blue;*/
 }
 .my_chbmk_wrap .my_chbmk .chbmk_item{
     width: 250px;
@@ -121,6 +121,7 @@ a:hover, a:focus, a:active {text-decoration:none;}
     background:#ffffff;
     transition: 0.7s;
     cursor: pointer;
+
 }
 .my_chbmk_wrap .my_chbmk .chbmk_item .profile_img{
     margin: 10px auto;
@@ -137,7 +138,7 @@ a:hover, a:focus, a:active {text-decoration:none;}
     overflow: hidden;
 
 }
-.my_chbmk_wrap .my_chbmk .chbmk_item .profile_img img{
+.my_chbmk_wrap .my_chbmk .chbmk_item .profile_img > img{
     width:100%;
 }
 .my_chbmk_wrap .my_chbmk .chbmk_item a{

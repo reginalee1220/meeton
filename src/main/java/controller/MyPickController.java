@@ -1,5 +1,6 @@
 package controller;
 
+import model.Favorite;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,9 +21,14 @@ public class MyPickController {
 
     // 최근에 본 영상
     @RequestMapping("/history.do")
-    public String history(Model model, HttpServletRequest request,
+    public String history(Model model,
+                          HttpServletRequest request,
                           HttpSession session) {
+
         // 최근에 본 영상
+        String userid = (String) session.getAttribute("userid");
+        myPickService.getVideoList(userid);
+
 
 
 
@@ -42,7 +48,7 @@ public class MyPickController {
                            HttpServletRequest request,
                            HttpSession session) {
         // MY 즐겨찾기 채널
-        List<Favorite> favoriteList = new ArrayList<~>();
+        List<Favorite> favoriteList = new ArrayList<>();
             String userid = (String) session.getAttribute("userid");
             System.out.println("userid : " + userid);
 

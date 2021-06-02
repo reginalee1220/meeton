@@ -1,9 +1,12 @@
 package service;
 
 import dao.MyPickDAO;
+import model.Favorite;
 import model.Video;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class MyPickService {
@@ -18,10 +21,10 @@ public class MyPickService {
     }
 
     // 최근에 본 영상
-    public List<Video> getVideoList() {
+    public List<Video> getVideoList(String userid) {
 
 
-        return MyPickDAO.getvideoList();
+        return myPickDAO.getVideoList(userid);
     }
 
 

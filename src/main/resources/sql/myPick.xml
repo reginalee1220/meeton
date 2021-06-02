@@ -3,25 +3,24 @@
 
 <mapper namespace="myPick">
 
-    <select id="my_bookmark">
-        select * from favorite where userid=#{userid} and type='bookmark'
-    </select>
+<!--    <select id="my_bookmark" >-->
+<!--        select * from favorite where userid=#{userid} and type='bookmark'-->
+<!--    </select>-->
 
     <!-- 즐겨찾기 채널 목록 -->
-    <select id="favoriteList" parameterType="String" resultType="Favorite">
+    <select id="favoriteList" parameterType="String" resultType="mainDTO">
         select profile, r.* from user inner join
-            (select channel.*, favorite.type form channel
-                                    inner join favorite on channel.channelnum = favorite.channelnum
-                where favorite.userid = #{userid}) r on user.userid = r.userid
-
+                                 (select channel.*, favorite.type from channel
+                                                                           inner join favorite on channel.channelnum = favorite.channelnum
+                                  where favorite.userid = #{userid} and favorite.type = 'bookmark') r on user.userid = r.userid
     </select>
 
     <!-- 최근에 본 영상 목록 -->
-    <select id="historyList" resultType="video">
+    <select id="history" parameterType="String" resultType="video">
         select videonum, channelnum, userid, title, description, thumbnail, visibility,
                (TIMESTAMPDIFF(HOUR, register, CURDATE())) register , views, likes, videofile, videotime
         from video
-        where favorite.userid = #{userid}) r on user.userid = r.userid
+        where myplaylist.userid = #{userid}) r on user.userid = r.userid
 
     </select>
 
