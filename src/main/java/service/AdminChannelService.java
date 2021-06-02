@@ -39,6 +39,11 @@ public class AdminChannelService {
         return adChannelDAO.getTopVideo(userid);
     }
 
+    // 총 동영상 갯수 구해오기
+    public int getListCount(String userid){
+        return adChannelDAO.getListCount(userid);
+    }
+
     // 동영상 리스트 가져오기
     public List<Video> getVideoList(String userid){
         return adChannelDAO.getVideoList(userid);

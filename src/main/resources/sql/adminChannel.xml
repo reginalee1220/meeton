@@ -27,8 +27,13 @@
         select * from video where userid=#{userid} order by views desc limit 1
     </select>
 
+    <!--총 동영상 갯수 구해오기-->
+    <select id="ac_getListCount" parameterType="String" resultType="int">
+        select count(videonum) from video where userid=#{userid}
+    </select>
+
     <!-- 동영상 리스트 -->
     <select id="ac_getVideoList" parameterType="String" resultType="video">
-        select * from video where userid=#{userid};
+        select * from video where userid=#{userid} order by register desc
     </select>
 </mapper>

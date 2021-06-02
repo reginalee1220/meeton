@@ -1,6 +1,6 @@
 .ca-content{
-    background-color: #f5f6f7;
-    width: 100%;
+    float: right;
+    width: 85%;
     height: 100vh;
     padding: 10px 20px;
 }
@@ -22,8 +22,8 @@
 }
 /*input*/
 .ca-content-filter-chk{
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     vertical-align: middle;
     cursor: pointer;
     margin-right: 15px;
@@ -55,24 +55,39 @@
     color: #a0a0a0;
 }
 /*li 세부*/
-.ca-content-content > li:nth-child(2), .ca-content-content > li:nth-child(3){
+.ca-content-content > li{
     display: grid;
     grid-template-columns: 4fr 1fr 1fr 1fr 1fr 1fr;
 }
-.ca-content-content > li:nth-child(2) > div,
-.ca-content-content > li:nth-child(3) > div{
+.ca-content-content > li > div{
     text-align: center;
 }
-.ca-content-content > li:nth-child(2) > div:first-child,
-.ca-content-content > li:nth-child(3) > div:first-child{
+.ca-content-content > li > div:first-child{
     text-align: start;
 }
-.ca-content-content > li:nth-child(3) span{
-    color: #2c2c2c;
-}
+
 .ca-content-content > li:last-child{
-    border-bottom: 1px solid rgba(91, 91, 91, .1);
+    display: block;
     text-align: center;
+    border-bottom: 1px solid rgba(91, 91, 91, .1);
+}
+.ca-content-content > li:last-child > div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+.ca-content-content > li:last-child span{
+    display: inline-block;
+    padding: 0 10px;
+}
+.ca-content-content > li:last-child span a{
+    font-size: 14px;
+    color: #2c2c2c;
+    cursor: pointer;
+}
+.ca-content-content > li:last-child span img{
+    vertical-align: text-bottom;
 }
 /*video*/
 .ca-content-video{
@@ -111,6 +126,7 @@ input[id="ca-content-popup"] + label{
     font-size: 14px;
     line-height: 40px;
     text-align: center;
+    float: right;
 }
 input[id="ca-content-popup"] + label:hover{
     border: 1px solid #4ba9e1;
@@ -137,8 +153,8 @@ input[id="ca-content-popup"] + label + div > div{
     left: 50%;
     border-radius: 5px;
     transform: translate(-50%, -50%);
-    width: 60%;
-    height: 60%;
+    width: 80%;
+    height: 80%;
     background-color: #f5f6f7;
     z-index: 2;
 }

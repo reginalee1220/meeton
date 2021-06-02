@@ -24,12 +24,16 @@
             <div class="ca-upload-desc">
                 <div class="ca-upload-box"><!--영상제목-->
                     <div class="ca-upload-title">영상제목</div>
-                    <input class="ca-upload-text" type="text" name="title" />
+                    <div class="ca-upload-text">
+                        <input type="text" name="title" />
+                    </div>
                     <div class="ca-upload-ajax">글자수</div>
                 </div>
                 <div class="ca-upload-box"><!--영상설명-->
                     <div class="ca-upload-title">영상설명</div>
-                    <textarea class="ca-upload-text" name="description"></textarea>
+                    <div class="ca-upload-text">
+                        <textarea name="description" rows="6"></textarea>
+                    </div>
                     <div class="ca-upload-ajax">글자수</div>
                 </div>
                 <div class="ca-upload-box"><!--공개여부--><!--1(공개)이 기본값-->
@@ -42,16 +46,19 @@
             </div><!--ca-upload-desc end-->
 
             <div class="ca-upload-video">
-                <div class="ca-upload-box"><!--영상업로드-->
+                <div class="ca-upload-box ca-vup"><!--영상업로드-->
                     <div class="ca-upload-title">영상업로드</div>
                     <video poster="" preload="metadata" autoplay controls  >
                         <source src="image/viverse.mp4" type="video/mp4">
                     </video>
-                    <input type="file" name="videofile" />
+                    <input id="ca-video" type="file" name="videofile" />
+                    <label class="ca-button" for="ca-video">업로드</label>
                 </div>
-                <div class="ca-upload-box"><!--썸네일-->
+                <div class="ca-upload-box ca-thumb"><!--썸네일-->
                     <div class="ca-upload-title">썸네일</div>
-                    <input type="file" name="thumbnail" />
+                    <img src="" />
+                    <input id="ca-th" type="file" name="thumbnail" />
+                    <label class="ca-button" for="ca-th">업로드</label>
                 </div>
             </div><!--ca-upload-video end-->
         </div><!--ca-upload-info end-->

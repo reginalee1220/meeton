@@ -35,7 +35,7 @@ input[type="submit"]:hover{
 }
 .ca-upload-title{
     margin-bottom: 10px;
-    font-size: 12px;
+    font-size: 14px;
     color: #a0a0a0;
 }
 
@@ -47,10 +47,17 @@ input[type="submit"]:hover{
     width: 100%;
     gap: 10px;
 }
-.ca-upload-text{
+.ca-upload-text *{
     border: 1px solid #d9dddf;
     width: 100%;
     font-size: 15px;
+}
+input[type=text]{
+    width: 100%;
+    padding: 10px;
+}
+textarea{
+    padding: 10px;
 }
 .ca-upload-ajax{
     text-align: right;
@@ -59,7 +66,7 @@ input[type="submit"]:hover{
 }
 .ca-upload-desc input[type="radio"] + label{
     font-size: 14px;
-    color: #2c2c2c;
+    color: #a0a0a0;
     margin: 0 15px 0 5px;
 }
 /*ca-upload-video*/
@@ -70,10 +77,34 @@ input[type="submit"]:hover{
     width: 100%;
     gap: 10px;
 }
+.ca-vup{
+    height: 60%;
+}
 .ca-upload-video video{
     width: 30%;
 }
 .ca-upload-video input{
-    display: block;
     margin-top: 10px;
+    display: none;
+}
+.ca-thumb{
+    height: 40%;
+}
+.ca-button{
+    display: block;
+    background-color: #f8fafc;
+    width: 120px;
+    height: 40px;
+    margin: 10px 0;
+    border: 1px solid #d9dddf;
+    border-radius: 2px;
+    cursor: pointer;
+    color: #a0a0a0;
+    font-size: 14px;
+    line-height: 40px;
+    text-align: center;
+}
+.ca-button:hover{
+    border: 1px solid #4ba9e1;
+    color: #4ba9e1;
 }

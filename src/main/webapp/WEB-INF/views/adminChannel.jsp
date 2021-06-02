@@ -17,7 +17,9 @@
 <div class="ca-container">
     <div class="ca-sidebar">
         <div class="ca-side-info">
-            <div class="ca-side-profile"><img src="<%=request.getContextPath()%>/imgUpload/${user.profile}" /></div>
+            <div class="ca-side-profile">
+                <img src="./imgUpload/${user.profile}" /><!--프로필 사진-->
+            </div>
             <span>${user.aka}</span><!--채널이름-->
         </div>
         <ul class="ca-side-menu">
@@ -55,19 +57,19 @@
             </li>
         </ul>
         <div class="ca-back">
-            <a href="main.do">
+            <a href="main.do"><!--메인으로 돌아가기 -->
                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAABZElEQVRIS+2W0U3DMBCG7yznmW5CN4AVmADYoK/xJVKQcnNQNmAD2g3SDcoGsEAOOYpRCKE9p4QIqX5Koos/23f/70OYaeBMXPhfYGZeIuKF9rQQ8TVN0303PmrHRVEskiR5AYClFtqJWxPRfXiPApdluUbE2xHQ5hdEvHHOPTfPMZMw8wYArkRkJyIr7b/GGH9KfjwQUTEaDABbIrrWgplZzuCDOW6ruCCiJp8hx5MetdcqAPii2IV8+m91XS+MMW9EVP16jpn5DgAe24mjCmloMariGtBqhYhq6Tjntn34QfCJrvTJIqJvdXMUbK3dIOKlNndDcdHgMEn/qGNdKs9z725fhirHrWz+vrjCUls5+dVXXTn561BE3ieRU4DPYiA/6LG5nSZ1rjO4d0lEuZmIBImNawRma318lY91NxF5yrLM+0Mzonqursb99ai1Vmvt/qT2VgvSxI3asWbiYzGzgT8Aukn5HxTmoAsAAAAASUVORK5CYII="/>
             </a>
         </div>
     </div><!--ca-sidebar end-->
     <div class="ca-main">
-        <c:if test="${page == 'dashboard'}">
+        <c:if test="${state == 'dashboard'}">
             <%@include file="adminChannelDashboard.jsp"%>
         </c:if>
-        <c:if test="${page == 'content'}">
+        <c:if test="${state == 'content'}">
             <%@include file="adminChannelContent.jsp"%>
         </c:if>
-        <c:if test="${page == 'analysis'}">
+        <c:if test="${state == 'analysis'}">
             <%@include file="adminChannelAnalysis.jsp"%>
         </c:if>
 

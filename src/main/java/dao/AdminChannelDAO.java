@@ -31,17 +31,23 @@ public class AdminChannelDAO {
 
     // 총 조회수
     public int getViews(String userid){
-        return  sst.selectOne("ac_getViews", userid);
+        return  sst.selectOne("adminChannel.ac_getViews", userid);
     }
 
     // 인기 동영상
     public Video getTopVideo(String userid){
-        return sst.selectOne("ac_getTopVideo", userid);
+        return sst.selectOne("adminChannel.ac_getTopVideo", userid);
+    }
+
+    // 총 동영상 갯수 구해오기
+    public int getListCount(String userid){
+        return sst.selectOne("adminChannel.ac_getListCount",userid);
     }
 
     // 동영상 리스트 가져오기
     public List<Video> getVideoList(String userid){
-        return sst.selectList("ac_getVideoList", userid);
+        return sst.selectList("adminChannel.ac_getVideoList", userid);
     }
+
 
 }

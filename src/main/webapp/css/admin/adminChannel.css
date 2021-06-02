@@ -13,10 +13,10 @@
 }
 /*  ca-sidebar  */
 .ca-sidebar{
+    position: fixed;
     border-right: 1px solid #f0f0f0;
-    width: 250px;
+    width: 15%;
     height: 100vh;
-    position: relative;
     background-color: #f8fafc;
 }
 /*  ca-side-info  */
