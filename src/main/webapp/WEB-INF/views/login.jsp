@@ -8,13 +8,19 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-signin-client_id" content="782094082285-7afs1ko8fgkammjnvdqnrdb5a725j0oo.apps.googleusercontent.com">
     <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0, user-scalable=yes, target-densitydpi=medium-dpi" />
     <title>로그인</title>
+
+    <!-- css -->
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/default/import.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/user/login.css">
 
+    <!-- js -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script><!-- 구글 API -->
     <script src="<%=request.getContextPath()%>/js/user/login.js"></script>
+
 </head>
 <body>
 <!-- header -->
@@ -92,12 +98,15 @@
                         <!-- 다른계정 로그인 -->
                         <div class="account_linking">
                             <div class="google_btn">
-                                <button type="button" value="구글계정">
-                                    <ul>
-                                        <li><img src="/images/login/google.png" alt="구글"></li>
-                                        <li>Google 계정 로그인</li>
-                                    </ul>
-                                </button>
+<%--                                <button type="button" value="구글계정">--%>
+<%--                                    <ul>--%>
+<%--                                        <li><img src="/images/login/google.png" alt="구글"></li>--%>
+<%--                                        <li>Google 계정 로그인</li>--%>
+<%--                                    </ul>--%>
+<%--                                </button>--%>
+                                <!-- Google 로그인 버튼 추가 -->
+                                <div class="g-signin2" data-onsuccess="onSignIn" id="googleBtn"></div>
+
                             </div>
                             <div class="naver_btn">
                                 <button type="button" value="네이버계정">

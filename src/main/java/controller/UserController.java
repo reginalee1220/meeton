@@ -1,24 +1,27 @@
 package controller;
 
+import com.fasterxml.jackson.core.JsonFactory;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import model.User;
 import org.apache.commons.mail.HtmlEmail;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import scala.util.parsing.combinator.testing.Str;
+import scala.util.parsing.json.JSONObject;
 import service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.File;
+import java.io.IOException;
 import java.io.PrintWriter;
+import java.security.GeneralSecurityException;
+import java.util.Collections;
 import java.util.StringTokenizer;
 
 @Controller
@@ -337,6 +340,44 @@ public class UserController {
         return "logout";
     }
 
+    // 구글 로그인
+//    @RequestMapping(value="member/google_login", method=POST)
+//    public String googleLogin(String idtoken, Model model) throws GeneralSecurityException, IOException {
+//        HttpTransport transport = Utils.getDefaultTransport();
+//        JsonFactory jsonFactory = Utils.getDefaultJsonFactory();
+//
+//        GoogleIdTokenVerifier verifier = new GoogleIdTokenVerifier.Builder(transport, jsonFactory)
+//                .setAudience(Collections.singletonList("클라이언트 ID")).build();
+//
+////        JSONObject json = new JSONObject();
+//
+//        GoogleIdToken idToken = verifier.verify(idtoken);
+//        if (idToken != null) {
+//            Payload payload = idToken.getPayload();
+//
+//            if (dupId((String) payload.get("email")).contains("false")) { //회원가입이 안 되어 있는 경우
+//                SocialJoinVO sjVO = new SocialJoinVO();
+//                sjVO.setId((String) payload.get("email"));
+//                sjVO.setAuth_email((String) payload.get("email"));
+//                sjVO.setNickname((String) payload.get("given_name"));
+//                sjVO.setBlog_name((String) payload.get("given_name"));
+//                sjVO.setProfile_img((String) payload.get("picture"));
+//                sjVO.setPlatform("google");
+//                sjVO.setAccess_token(idtoken);
+//
+//                new MemberService().googleJoin(sjVO);
+//            }//end if
+//
+//            model.addAttribute("id", (String) payload.get("email"));
+//            json.put("login_result", "success");
+//
+//        } else { //유효하지 않은 토큰
+//            json.put("login_result", "fail");
+//        }//end else
+//
+//        return "login";
+//
+//    }//googleLogin
 
 
 
