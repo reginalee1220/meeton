@@ -191,14 +191,12 @@ img {border: 0 none; font-size: 0;line-height: 0;}
     height: 110px;
     overflow: hidden;
     position: absolute;
-    padding-top:7px;
-    border:1px solid red;
+    /*border:1px solid red;*/
 
 }
 .main_video_img > .video_play_view .video_play .background_video{
-    /* z-index: -1; */
-    width: 190px;
-
+     /*z-index: -1;*/
+    width: 100%;
     /* background: #4ba9e1; */
     position: absolute;
 }
@@ -215,8 +213,8 @@ img {border: 0 none; font-size: 0;line-height: 0;}
 /* time 위치 크기 수정 - 최근에 본 영상 , 나중에 볼 영상, 좋아요 한 영상 수정해야함 */
 .myplaylist_wrap .video_list .video_view .main_video .main_video_img > .main_video_time {
     position: absolute;
-    right: 30px;
-    bottom: 70px;
+    right: 40px;
+    bottom: 10px;
     width: 60px;
     background-color: #2b2b2b;
     text-align: center;
@@ -243,13 +241,14 @@ img {border: 0 none; font-size: 0;line-height: 0;}
     color:#4ba9e1;
 }
 .myplaylist_wrap .video_list .video_view .main_video .desc .desc_inner .play_like{
+    display: flex;
     padding-top:10px;
     font-size:13px;
 }
 .myplaylist_wrap .video_list > .video_view .main_video .desc .desc_inner .play_like > .cnp{
     margin-right:10px;
-    width: 130px;
-    border:1px solid blue;
+    width: 100px;
+    /*border:1px solid blue;*/
 }
 .myplaylist_wrap .video_list .video_view .main_video .desc .desc_inner .play_like .cnp .bx{
     font-size:20px;

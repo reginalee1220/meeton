@@ -90,14 +90,18 @@
                                         </a>
                                     </li>
                                     <li class="play_like">
-                                            <span class="cds_ifc cnp">
+                                        <div class="cnp">
+                                            <span class="cds_ifc ">
                                                 <i class='bx bx-play' style='color:#4ba9e1' ></i>
                                                 ${h.views} <!-- 158,079 조회수 -->
                                             </span>
-                                            <span class="cds_ifc bch">
+                                        </div>
+                                        <div class="bch">
+                                            <span class="cds_ifc ">
                                                 <i class='bx bxs-heart' style='color:#e14b4b'  ></i>
                                                 ${h.likes} <!-- 1,405 좋아요 수 -->
                                             </span>
+                                        </div>
                                     </li>
                                 </ul>
                             </div><!-- // desc -->
