@@ -184,13 +184,15 @@ img {border: 0 none; font-size: 0;line-height: 0;}
 .main_video_img .video_play_view{
     width: 190px;
     height: 110px;
-    padding-top:3px;
+
 }
-.main_video_img .video_play_view .video_play{
+.main_video_img > .video_play_view .video_play{
     width: 190px;
     height: 110px;
     overflow: hidden;
     position: absolute;
+    padding-top:7px;
+    border:1px solid red;
 
 }
 .main_video_img > .video_play_view .video_play .background_video{
@@ -210,16 +212,17 @@ img {border: 0 none; font-size: 0;line-height: 0;}
     width: 190px;
     height: 100%;
 } */
-.myplaylist_wrap .video_list .video_view .main_video .main_video_time {
+/* time 위치 크기 수정 - 최근에 본 영상 , 나중에 볼 영상, 좋아요 한 영상 수정해야함 */
+.myplaylist_wrap .video_list .video_view .main_video .main_video_img > .main_video_time {
     position: absolute;
-    right: 42px;
-    bottom: 11px;
-    width: 55px;
+    right: 30px;
+    bottom: 70px;
+    width: 60px;
     background-color: #2b2b2b;
     text-align: center;
     font-size: 12px;
     color: #ffffff;
-    line-height: 2;
+    /*line-height: 2;*/
     opacity: 0.7;
 }
 /* 동영상설명 */
@@ -243,8 +246,10 @@ img {border: 0 none; font-size: 0;line-height: 0;}
     padding-top:10px;
     font-size:13px;
 }
-.myplaylist_wrap .video_list .video_view .main_video .desc .desc_inner .play_like .cnp{
+.myplaylist_wrap .video_list > .video_view .main_video .desc .desc_inner .play_like > .cnp{
     margin-right:10px;
+    width: 130px;
+    border:1px solid blue;
 }
 .myplaylist_wrap .video_list .video_view .main_video .desc .desc_inner .play_like .cnp .bx{
     font-size:20px;

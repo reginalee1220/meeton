@@ -2,6 +2,7 @@ package service;
 
 import dao.MyPickDAO;
 import model.Favorite;
+import model.HistoryDTO;
 import model.Video;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,10 +22,26 @@ public class MyPickService {
     }
 
     // 최근에 본 영상
-    public List<Video> getVideoList(String userid) {
+    public List<HistoryDTO> getMy_historyList(String userid) {
+        System.out.println("MyPickService");
 
 
-        return myPickDAO.getVideoList(userid);
+        return myPickDAO.getMy_historyList(userid);
+    }
+
+    // 나중에 볼 영상
+    public List<Video> getMy_watchLaterList(String userid) {
+        System.out.println("MyPickService");
+
+        return myPickDAO.getMy_watchLaterList(userid);
+    }
+
+
+    // 좋아요 한 영상
+    public List<Video> getMy_likedVideoList(String userid) {
+        System.out.println("MyPickService");
+
+        return myPickDAO.getMy_likedVideoList(userid);
     }
 
 

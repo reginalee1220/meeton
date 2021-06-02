@@ -1,6 +1,8 @@
 package controller;
 
 import model.Favorite;
+import model.HistoryDTO;
+import model.MyPlayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,29 +20,6 @@ public class MyPickController {
 
     @Autowired
     private MyPickService myPickService;
-
-    // 최근에 본 영상
-    @RequestMapping("/history.do")
-    public String history(Model model,
-                          HttpServletRequest request,
-                          HttpSession session) {
-
-        // 최근에 본 영상
-        String userid = (String) session.getAttribute("userid");
-        myPickService.getVideoList(userid);
-
-
-
-
-        return "history";
-
-    }
-
-    @RequestMapping("/watrchlater.do")
-    public String wartchlater() {
-
-        return "watrchlater";
-    }
 
     // 채널 즐겨찾기
     @RequestMapping("/bookmark.do")
@@ -61,8 +40,38 @@ public class MyPickController {
 
     }
 
+    // 최근에 본 영상
+    @RequestMapping("/history.do")
+    public String history(Model model,
+                          HttpServletRequest request,
+                          HttpSession session) {
+
+        // 최근에 본 영상
+        List<HistoryDTO> my_historyList = new ArrayList<>();
+        String userid = (String) session.getAttribute("userid");
+        System.out.println("userid : " + userid );
+
+        my_historyList = myPickService.getMy_historyList(userid);
+        System.out.println("my_historyList : " + my_historyList);
+        model.addAttribute("my_historyList", my_historyList);
+
+
+
+        return "history";
+
+    }
+
+    // 나중에 볼 영상
+    @RequestMapping("/watrchlater.do")
+    public String wartchlater() {
+
+        return "watrchlater";
+    }
+
+    // 좋아요 한 영상
     @RequestMapping("/likedvideo.do")
-    public String test() {
+    public String likedvideo() {
+
 
         return "likedvideo";
 

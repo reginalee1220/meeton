@@ -1,5 +1,7 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +12,7 @@
     <title>최근에 본 영상</title>
     <!-- css -->
     <link rel="stylesheet" type="text/css" href="/css/default/import.css">
-    <link rel="stylesheet" type="text/css" href="/css/mypick/history.css">
+    <link rel="stylesheet" type="text/css" href="<%= request.getContextPath()%>/css/mypick/history.css">
 
     <!-- js -->
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
@@ -18,8 +20,10 @@
 
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
 </head>
 <body>
+<%= session.getAttribute("userid") %>
 <div id="mypick"><!-- mypick -->
     <div class="history_title"><!-- history_title -->
         <div class="history_title_inner">
@@ -50,27 +54,28 @@
                     </div>
                 </div><!-- // edit_btn -->
                 <div class="video_list"><!-- video_list -->
+
+                    <c:forEach var="h" items="${my_historyList}">
                     <div class="video_view"><!-- video_view -->
                         <div class="my_video_check"><!-- my_video_check -->
                             <label>
                                 <input type="checkbox" name="myplaylist" value="영상체크" />
                             </label>
                         </div><!-- // my_video_check -->
-                        <c:set var="history" value="1">
-                            <c:forEach var="h" items="${historyList}" begin="0" end="2" step="1">
+
                         <div class="main_video"><!-- main_video -->
                             <div class="main_video_img"><!-- main_video_img -->
                                 <div class="video_play_view"><!-- video_play_view -->
                                     <div class="video_play">
-                                        <!-- <video muted="muted" poster=" " preload="metadata" controls ></video> -->
-                                        <video class="background_video" preload="auto" autoplay="autoplay" loop="loop" muted="muted" volume="0" controls><!-- controls : 동영상 체크  -->
-                                            <source src="${h.videofile}" type="video/mp4" />
-                                            <source src="${h.videofile}" type="video/webm" />
-                                            <source src="${h.videofile}" type="video/ogg" />
+                                        <!-- <video muted="muted" poster=" " preload="metadata" autoplay="autoplay" loop="loop"  controls ></video> -->
+                                        <video class="background_video" poster="/imgUpload/${h.thumbnail}" preload="metadata" muted="muted" volume="0" controls><!-- controls : 동영상 체크  -->
+                                            <source src="/videoUpload/${h.videofile}" type="video/mp4" />
+                                            <source src="/videoUpload/${h.videofile}" type="video/webm" />
+                                            <source src="/videoUpload/${h.videofile}" type="video/ogg" />
                                         </video>
                                     </div>
                                 </div><!-- // video_play_view -->
-                                <div class="main_video_time">22:00</div>
+                                <div class="main_video_time">${h.videotime}</div><!-- 22:00 -->
                             </div>
                             <div class="desc"><!-- desc -->
                                 <ul class="desc_inner">
@@ -81,7 +86,7 @@
                                     </li>
                                     <li class="ch_txt">
                                         <a href="channelnum.do?channelnum=${h.channelnum}" data-event="clickChannel" data-clickcode="#" data-move_uri="#">
-                                                ${h.aka} <!-- 영상 채널명 -->
+                                                ${h.userid} <!-- 영상 채널명 -->
                                         </a>
                                     </li>
                                     <li class="play_like">
@@ -89,7 +94,7 @@
                                                 <i class='bx bx-play' style='color:#4ba9e1' ></i>
                                                 ${h.views} <!-- 158,079 조회수 -->
                                             </span>
-                                        <span class="cds_ifc bch">
+                                            <span class="cds_ifc bch">
                                                 <i class='bx bxs-heart' style='color:#e14b4b'  ></i>
                                                 ${h.likes} <!-- 1,405 좋아요 수 -->
                                             </span>
@@ -97,103 +102,11 @@
                                 </ul>
                             </div><!-- // desc -->
                         </div><!-- // main_video -->
-                            </c:forEach>
-                        </c:set>
-                    </div><!-- // video_view -->
 
-                    <div class="video_view"><!-- video_view -->
-                        <div class="my_video_check"><!-- my_video_check -->
-                            <label>
-                                <input type="checkbox" name="myplaylist" value="영상체크" />
-                            </label>
-                        </div><!-- // my_video_check -->
-                        <div class="main_video"><!-- main_video -->
-                            <div class="main_video_img"><!-- main_video_img -->
-                                <div class="video_play_view"><!-- video_play_view -->
-                                    <div class="video_play">
-                                        <!-- <video muted="muted" poster=" " preload="metadata" controls ></video> -->
-                                        <video class="background_video" preload="auto" autoplay="autoplay" loop="loop" muted="muted" volume="0" controls><!-- controls : 동영상 체크  -->
-                                            <source src="./images/video/testvideo.mp4" type="video/mp4" />
-                                            <source src="./images/video/testvideo.mp4" type="video/webm" />
-                                            <source src="./images/video/testvideo.mp4" type="video/ogg" />
-                                        </video>
-                                    </div>
-                                </div><!-- // video_play_view -->
-                                <div class="main_video_time">22:00</div>
-                            </div>
-                            <div class="desc"><!-- desc -->
-                                <ul class="desc_inner">
-                                    <li class="vd_text">
-                                        <a href="#" data-event="clickTitle" data-clickcode="#" data-move_uri="#">
-                                            영상 제목
-                                        </a>
-                                    </li>
-                                    <li class="ch_txt">
-                                        <a href="#" data-event="clickChannel" data-clickcode="#" data-move_uri="#">
-                                            영상 채널명
-                                        </a>
-                                    </li>
-                                    <li class="play_like">
-                                            <span class="cds_ifc cnp">
-                                                <i class='bx bx-play' style='color:#4ba9e1' ></i>
-                                                158,079
-                                            </span>
-                                        <span class="cds_ifc bch">
-                                                <i class='bx bxs-heart' style='color:#e14b4b'  ></i>
-                                                    1,405
-                                            </span>
-                                    </li>
-                                </ul>
-                            </div><!-- // desc -->
-                        </div><!-- // main_video -->
                     </div><!-- // video_view -->
+                    </c:forEach>
 
-                    <div class="video_view"><!-- video_view -->
-                        <div class="my_video_check"><!-- my_video_check -->
-                            <label>
-                                <input type="checkbox" name="myplaylist" value="영상체크" />
-                            </label>
-                        </div><!-- // my_video_check -->
-                        <div class="main_video"><!-- main_video -->
-                            <div class="main_video_img"><!-- main_video_img -->
-                                <div class="video_play_view"><!-- video_play_view -->
-                                    <div class="video_play">
-                                        <!-- <video muted="muted" poster=" " preload="metadata" controls ></video> -->
-                                        <video class="background_video" preload="auto" autoplay="autoplay" loop="loop" muted="muted" volume="0" controls><!-- controls : 동영상 체크  -->
-                                            <source src="./images/video/testvideo.mp4" type="video/mp4" />
-                                            <source src="./images/video/testvideo.mp4" type="video/webm" />
-                                            <source src="./images/video/testvideo.mp4" type="video/ogg" />
-                                        </video>
-                                    </div>
-                                </div><!-- // video_play_view -->
-                                <div class="main_video_time">22:00</div>
-                            </div>
-                            <div class="desc"><!-- desc -->
-                                <ul class="desc_inner">
-                                    <li class="vd_text">
-                                        <a href="#" data-event="clickTitle" data-clickcode="#" data-move_uri="#">
-                                            영상 제목
-                                        </a>
-                                    </li>
-                                    <li class="ch_txt">
-                                        <a href="#" data-event="clickChannel" data-clickcode="#" data-move_uri="#">
-                                            영상 채널명
-                                        </a>
-                                    </li>
-                                    <li class="play_like">
-                                            <span class="cds_ifc cnp">
-                                                <i class='bx bx-play' style='color:#4ba9e1' ></i>
-                                                158,079
-                                            </span>
-                                        <span class="cds_ifc bch">
-                                                <i class='bx bxs-heart' style='color:#e14b4b'  ></i>
-                                                    1,405
-                                            </span>
-                                    </li>
-                                </ul>
-                            </div><!-- // desc -->
-                        </div><!-- // main_video -->
-                    </div><!-- // video_view -->
+
 
                 </div><!-- // video_list -->
             </form>
