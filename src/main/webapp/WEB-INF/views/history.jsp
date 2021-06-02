@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,15 +56,17 @@
                                 <input type="checkbox" name="myplaylist" value="영상체크" />
                             </label>
                         </div><!-- // my_video_check -->
+                        <c:set var="history" value="1">
+                            <c:forEach var="h" items="${historyList}" begin="0" end="2" step="1">
                         <div class="main_video"><!-- main_video -->
                             <div class="main_video_img"><!-- main_video_img -->
                                 <div class="video_play_view"><!-- video_play_view -->
                                     <div class="video_play">
                                         <!-- <video muted="muted" poster=" " preload="metadata" controls ></video> -->
                                         <video class="background_video" preload="auto" autoplay="autoplay" loop="loop" muted="muted" volume="0" controls><!-- controls : 동영상 체크  -->
-                                            <source src="./images/video/testvideo.mp4" type="video/mp4" />
-                                            <source src="./images/video/testvideo.mp4" type="video/webm" />
-                                            <source src="./images/video/testvideo.mp4" type="video/ogg" />
+                                            <source src="${h.videofile}" type="video/mp4" />
+                                            <source src="${h.videofile}" type="video/webm" />
+                                            <source src="${h.videofile}" type="video/ogg" />
                                         </video>
                                     </div>
                                 </div><!-- // video_play_view -->
@@ -72,28 +75,30 @@
                             <div class="desc"><!-- desc -->
                                 <ul class="desc_inner">
                                     <li class="vd_text">
-                                        <a href="#" data-event="clickTitle" data-clickcode="#" data-move_uri="#">
-                                            영상 제목
+                                        <a href="video.do?videonum=${h.videonum}" data-event="clickTitle" data-clickcode="#" data-move_uri="#">
+                                                ${h.title} <!-- 영상 제목 -->
                                         </a>
                                     </li>
                                     <li class="ch_txt">
-                                        <a href="#" data-event="clickChannel" data-clickcode="#" data-move_uri="#">
-                                            영상 채널명
+                                        <a href="channelnum.do?channelnum=${h.channelnum}" data-event="clickChannel" data-clickcode="#" data-move_uri="#">
+                                                ${h.aka} <!-- 영상 채널명 -->
                                         </a>
                                     </li>
                                     <li class="play_like">
                                             <span class="cds_ifc cnp">
                                                 <i class='bx bx-play' style='color:#4ba9e1' ></i>
-                                                158,079
+                                                ${h.views} <!-- 158,079 조회수 -->
                                             </span>
                                         <span class="cds_ifc bch">
                                                 <i class='bx bxs-heart' style='color:#e14b4b'  ></i>
-                                                    1,405
+                                                ${h.likes} <!-- 1,405 좋아요 수 -->
                                             </span>
                                     </li>
                                 </ul>
                             </div><!-- // desc -->
                         </div><!-- // main_video -->
+                            </c:forEach>
+                        </c:set>
                     </div><!-- // video_view -->
 
                     <div class="video_view"><!-- video_view -->

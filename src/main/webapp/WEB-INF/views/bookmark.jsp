@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,6 +22,7 @@
 
 </head>
 <body>
+<%= session.getAttribute("userid") %>
 <div id="mypick"><!-- mypick -->
     <div class="bookmark_title"><!-- bookmark_title -->
         <div class="bookmark_title_inner">
@@ -52,15 +55,19 @@
                 });
             </script>
             <section class="my_chbmk_wrap"><!-- my_chbmk_wrap -->
+                <c:forEach var="bk" items="${favoriteList}">
                 <div class="my_chbmk"><!-- my_chbmk -->
                     <div class="chbmk_item">
+                        <c:if test="${bk.type == 'bookmark'}">
                         <a href="#">
                             <div class="profile_img">
-                                <img src="/images/mypick/profile-img.jpeg" />
+                                <img src="./upload/${bk.profile}" alt="${bk.profile}" /> <!-- 프로필 -->
+                                <!-- <img src="/images/mypick/profile-img.jpeg" /> -->
                             </div>
-                            <div class="chbmk_mybox_name">채널이름</div>
+                            <div class="chbmk_mybox_name">${bk.aka}</div><!-- 채널이름 -->
                         </a>
-                        <div class="chbmk_mybox_desc">최근업로드 2021-11-15</div>
+                        <div class="chbmk_mybox_desc">최근업로드 ${bk.video.register}</div><!-- 채널 영상 업로드 날짜 2021-11-15 -->
+                        </c:if>
                     </div>
                     <div class="chbmk_item">
                         <a href="#">
@@ -118,6 +125,7 @@
                     </div>
 
                 </div><!-- // my_chbmk -->
+                </c:forEach>
             </section><!-- // my_chbmk_wrap -->
         </form>
     </main><!-- // my_content -->
