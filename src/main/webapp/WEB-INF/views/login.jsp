@@ -98,14 +98,14 @@
                         <!-- 다른계정 로그인 -->
                         <div class="account_linking">
                             <div class="google_btn">
-<%--                                <button type="button" value="구글계정">--%>
-<%--                                    <ul>--%>
-<%--                                        <li><img src="/images/login/google.png" alt="구글"></li>--%>
-<%--                                        <li>Google 계정 로그인</li>--%>
-<%--                                    </ul>--%>
-<%--                                </button>--%>
+                                <button type="button" value="구글계정">
+                                    <ul>
+                                        <li><img src="/images/login/google.png" alt="구글"></li>
+                                        <li>Google 계정 로그인</li>
+                                    </ul>
+                                </button>
                                 <!-- Google 로그인 버튼 추가 -->
-                                <div class="g-signin2" data-onsuccess="onSignIn" id="googleBtn"></div>
+<%--                                <div class="g-signin2" data-onsuccess="onSignIn" id="googleBtn"></div>--%>
 
                             </div>
                             <div class="naver_btn">
