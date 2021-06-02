@@ -8,7 +8,7 @@
 <!--    </select>-->
 
     <!-- 즐겨찾기 채널 목록 -->
-    <select id="favoriteList" parameterType="String" resultType="mainDTO">
+    <select id="bookmark_favoriteList" parameterType="String" resultType="mainDTO">
         select profile, r.* from user inner join
                                  (select channel.*, favorite.type from channel
                                                                            inner join favorite on channel.channelnum = favorite.channelnum
@@ -16,7 +16,7 @@
     </select>
 
     <!-- 최근에 본 영상 목록 -->
-    <select id="history" parameterType="String" resultType="video">
+    <select id="my_history" parameterType="String" resultType="video">
         select videonum, channelnum, userid, title, description, thumbnail, visibility,
                (TIMESTAMPDIFF(HOUR, register, CURDATE())) register , views, likes, videofile, videotime
         from video

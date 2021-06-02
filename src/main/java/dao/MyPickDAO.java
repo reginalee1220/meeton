@@ -17,10 +17,10 @@ public class MyPickDAO {
 
 
     // 채널 즐겨찾기 목록
-    public List<Favorite> getFavoriteList(String userid){
+    public List<Favorite> getBookmark_favoriteList(String userid){
         System.out.println("MyPickDAO");
 
-        return sst.selectList("myPick.favoriteList", userid);
+        return sst.selectList("myPick.bookmark_favoriteList", userid);
     }
 
     // 최근에 본 영상

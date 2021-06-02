@@ -58,7 +58,7 @@
             <section class="my_chbmk_wrap"><!-- my_chbmk_wrap -->
 
                 <div class="my_chbmk"><!-- my_chbmk -->
-                    <c:forEach var="bk" items="${favoriteList}">
+                    <c:forEach var="bk" items="${bookmark_favoriteList}">
                     <div class="chbmk_item">
 
                         <a href="#">

@@ -48,13 +48,13 @@ public class MyPickController {
                            HttpServletRequest request,
                            HttpSession session) {
         // MY 즐겨찾기 채널
-        List<Favorite> favoriteList = new ArrayList<>();
+        List<Favorite> bookmark_favoriteList = new ArrayList<>();
             String userid = (String) session.getAttribute("userid");
             System.out.println("userid : " + userid);
 
-            favoriteList = myPickService.getFavoriteList(userid);
-            System.out.println("favoriteList: " + favoriteList);
-            model.addAttribute("favoriteList", favoriteList);
+        bookmark_favoriteList = myPickService.getBookmark_favoriteList(userid);
+            System.out.println("bookmark_favoriteList: " + bookmark_favoriteList);
+            model.addAttribute("bookmark_favoriteList", bookmark_favoriteList);
 
 
         return "bookmark";
