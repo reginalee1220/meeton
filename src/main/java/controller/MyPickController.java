@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import scala.collection.mutable.ArrayLike;
 import service.MyPickService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -56,21 +55,43 @@ public class MyPickController {
         model.addAttribute("my_historyList", my_historyList);
 
 
-
         return "history";
 
     }
 
     // 나중에 볼 영상
-    @RequestMapping("/watrchlater.do")
-    public String wartchlater() {
+    @RequestMapping("/watchlater.do")
+    public String watchlater(Model model,
+                              HttpServletRequest request,
+                              HttpSession session) {
 
-        return "watrchlater";
+        // 나중에 볼 영상
+        List<HistoryDTO> my_watchLaterList = new ArrayList<>();
+        String userid = (String) session.getAttribute("userid");
+        System.out.println("userid : " + userid );
+
+        my_watchLaterList = myPickService.getMy_watchLaterList(userid);
+        System.out.println("my_watchLaterList:" + my_watchLaterList);
+        model.addAttribute("my_watchLaterList", my_watchLaterList);
+
+
+        return "watchlater";
+
     }
 
     // 좋아요 한 영상
     @RequestMapping("/likedvideo.do")
-    public String likedvideo() {
+    public String likedvideo(Model model,
+                             HttpServletRequest request,
+                             HttpSession session) {
+        // 좋아요 한 영상
+        List<HistoryDTO> my_likedVideoList = new ArrayList<>();
+        String userid = (String) session.getAttribute("userid");
+        System.out.println("userid : " + userid);
+
+        my_likedVideoList = myPickService.getMy_likedVideoList(userid);
+        System.out.println("my_likedVideo:" + my_likedVideoList);
+        model.addAttribute("my_likedVideoList", my_likedVideoList);
 
 
         return "likedvideo";

@@ -40,9 +40,9 @@
         <li><!-- home -->
             <a href="#" class="nav-home">
                 <i class='bx bx-home' ></i>
-                <span class="links_name">홈</span>
+                <span class="links_name">Home</span>
             </a>
-            <span class="tooltip">Home</span>
+            <span class="tooltip">홈</span>
         </li><!-- //home -->
         <li><!-- MY -->
             <a href="#" class="nav-my">
@@ -51,12 +51,19 @@
             </a>
             <span class="tooltip">MY</span>
         </li><!-- //MY -->
+        <li><!-- PlayList -->
+            <a href="#" class="nav-my">
+                <i class='bx bx-list-check'></i>
+                <span class="links_name">PlayList</span>
+            </a>
+            <span class="tooltip">시청기록</span>
+        </li><!-- //MY -->
         <li><!-- 구독 -->
             <a href="#" class="nav-subs">
                 <i class='bx bx-movie-play' ></i>
-                <span class="links_name">구독</span>
+                <span class="links_name">Subscription</span>
             </a>
-            <span class="tooltip">Subscription</span>
+            <span class="tooltip">구독</span>
         </li><!-- //구독 -->
     </ul>
 </div>

@@ -69,7 +69,7 @@
                             <div class="chbmk_mybox_name">${bk.aka}</div><!-- 채널이름 -->
                         </a>
                         <div class="chbmk_mybox_desc">
-                            최근업로드
+                            채널 바로가기
 
 
                             <!-- 추후 반영 예정 -->

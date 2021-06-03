@@ -211,11 +211,14 @@ a:hover, a:focus, a:active {text-decoration:none;}
     color:#4ba9e1;
 }
 .myplaylist_wrap .video_list .video_view .main_video .desc .desc_inner .play_like{
+    display: flex;
     padding-top:10px;
     font-size:13px;
 }
-.myplaylist_wrap .video_list .video_view .main_video .desc .desc_inner .play_like .cnp{
+.myplaylist_wrap .video_list > .video_view .main_video .desc .desc_inner .play_like > .cnp{
     margin-right:10px;
+    width: 100px;
+    /*border:1px solid blue;*/
 }
 .myplaylist_wrap .video_list .video_view .main_video .desc .desc_inner .play_like .cnp .bx{
     font-size:20px;
@@ -228,5 +231,3 @@ a:hover, a:focus, a:active {text-decoration:none;}
     margin-right:3px;
     font-size:13px;
 }
-
-

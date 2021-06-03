@@ -18,25 +18,21 @@
     <!-- 최근에 본 영상 목록 -->
     <select id="my_historyList" parameterType="String" resultType="historyDTO">
         select video.*, h.* from video inner join
-                                              (select * from myplaylist where userid = #{userid} and type = 'history') h on video.videonum= h.videonum;
+                                              (select * from myplaylist where userid = #{userid} and type = 'history') h on video.videonum= h.videonum
 
     </select>
 
     <!-- 나중에 볼 영상 목록 -->
-    <select id="my_watchLaterList" parameterType="String" resultType="video">
-        select videonum, channelnum, userid, title, description, thumbnail, visibility,
-               (TIMESTAMPDIFF(HOUR, register, CURDATE())) register , views, likes, videofile, videotime
-        from video
-        where myplaylist.userid = #{userid}) r on user.userid = r.userid
+    <select id="my_watchLaterList" parameterType="String" resultType="historyDTO">
+        select video.*, w.* from video inner join
+                                     (select * from myplaylist where userid = #{userid} and type = 'watchlater') w on video.videonum= w.videonum
 
     </select>
 
     <!-- 좋아요 한 영상 목록 -->
-    <select id="my_likedVideoList" parameterType="String" resultType="video">
-        select videonum, channelnum, userid, title, description, thumbnail, visibility,
-               (TIMESTAMPDIFF(HOUR, register, CURDATE())) register , views, likes, videofile, videotime
-        from video
-        where myplaylist.userid = #{userid}) r on user.userid = r.userid
+    <select id="my_likedVideoList" parameterType="String" resultType="historyDTO">
+        select video.*, l.* from video inner join
+                                     (select * from myplaylist where userid = #{userid} and type = 'likedvideo') l on video.videonum= l.videonum
 
     </select>
 

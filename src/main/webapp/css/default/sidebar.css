@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
 /* deafault */
 *{margin:0; padding:0; box-sizing: border-box; font-family:'Noto Sans KR', sans-serif; font-size:15px;}
-body{ position: relative; min-height: 100vh; width: 100%; overflow: hidden;}
+body{ position: relative; min-height: 100vh; width: 100%;}
 ::selection{ color: #fff; background: #11101d;}
 ul, ol, li {list-style: none;}
 a {color: #333; text-decoration: none; line-height: 1;}
@@ -83,8 +83,11 @@ a:hover, a:focus, a:active {text-decoration:none;}
     line-height: 50px;
     margin: 5px 0;
 }
+.sidebar ul li .bx-list-check{
+    font-size:22px;
+}
 /* ------- right gide tip ------- */
-.sidebar ul li .tooltip{
+.sidebar ul li > span.tooltip{
     position: absolute;
     width: 120px;
     height: 35px;
@@ -101,10 +104,10 @@ a:hover, a:focus, a:active {text-decoration:none;}
     pointer-events: none;
     display: block;
 }
-.sidebar.active ul li .tooltip{
+.sidebar.active ul li > span.tooltip{
     display: none;
 }
-.sidebar ul li:hover .tooltip{
+.sidebar ul li:hover > span.tooltip{
     transition: all 0.5s ease;
     opacity: 1;
     top: 50%;

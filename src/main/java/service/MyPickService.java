@@ -30,7 +30,7 @@ public class MyPickService {
     }
 
     // 나중에 볼 영상
-    public List<Video> getMy_watchLaterList(String userid) {
+    public List<HistoryDTO> getMy_watchLaterList(String userid) {
         System.out.println("MyPickService");
 
         return myPickDAO.getMy_watchLaterList(userid);
@@ -38,7 +38,7 @@ public class MyPickService {
 
 
     // 좋아요 한 영상
-    public List<Video> getMy_likedVideoList(String userid) {
+    public List<HistoryDTO> getMy_likedVideoList(String userid) {
         System.out.println("MyPickService");
 
         return myPickDAO.getMy_likedVideoList(userid);
