@@ -33,9 +33,10 @@
       </div><!--pop-up page end-->
       <label></label><!--두번째 닫기버튼-->
     </div><!--업로드 팝업페이지 끝-->
-  </div>
+  </div><!--ca-main-title end-->
 
   <!--          영상 리스트 내역          -->
+  <form method="post" name="ca-updateForm" action="update.do"><!--수정할 영상 넘기는 form tag -->
   <ul class="ca-content-content">
     <li class="ca-content-list">
       <img class="ca-content-filter-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAA5UlEQVRIS+2TQQ6CMBBFW0pYewO5gR5BjwUNcQxpOJZ6A70B3sA1AWpmh4iWwWJZdJZN57/Om5QzR8UdcZkH/828V+1WdZ7nOyGEtvWKNE0v/azBHSulrEERKKV84ywLjKptacacLMvOo1TbhH7KMv5jAFhFUbShPKaqqhsAPL71GMGoPQiCEwXctu1+SG83Y7lgVC2E2FImbprm+rNqCpBy16i6H1YURay1Xr/si/N7kiTlrGClFDDGDj3IUUqJ56OLPLEzMKqu6zrujhaGYTm76tEuDRfJqj14qgGveqo5cp8z1U+m6UsfvsKjaAAAAABJRU5ErkJggg=="/>
@@ -50,8 +51,11 @@
     </li>
     <li class="ca-content-list"><!-- 상위 분류 해더 -->
       <div>
-        <input class="ca-content-filter-chk" id type="checkbox"/>
-        <span>동영상</span>
+        <div class="ca-filter-nav">
+            <input class="ca-filter-button" type="button" value="편집"/>
+            <input class="ca-filter-button" id="ca-update" type="submit" value="수정"/>
+            <span>동영상</span>
+        </div>
       </div>
       <div>
         <span>공개상태</span>
@@ -73,8 +77,8 @@
     <c:forEach var="vl" items="${acvideoList}" begin="${startPage}" end ="${endPage}" >
     <li class="ca-content-list"><!-- 동영상 리스트 -->
       <div class="ca-content-video">
-        <input class="ca-content-filter-chk" type="checkbox"/>
-        <a href="video.do?videonum=${vl.videonum}">
+        <input class="ca-filter-chk" type="radio" name="videonum" value="${vl.videonum}"/>
+        <a href="video.do?videonum=${vl.videonum}&page=${pageNum}">
           <video class="ca-content-video-video" muted="muted" poster="./imgUpload/${vl.thumbnail}" preload="metadata">
             <source src="./videoUpload/${vl.videofile}" type="video/mp4" />
             <source src="./videoUpload/${vl.videofile}" type="video/webm" />
@@ -165,7 +169,9 @@
       </div>
     </li>
   </ul><!--ca-content-content end-->
+  </form>
 </div><!--ca-content end-->
+
 
 </body>
 </html>

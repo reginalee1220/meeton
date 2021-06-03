@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import service.AdminChannelService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -67,7 +68,7 @@ public class AdminChannelController {
 
             /* currentPage 일때 보여야할 navNum 구하기 */
             int navBegin = currentPage - currentPage%navNum + 1;
-            if(currentPage%navNum == 0){ // 5의 배수일 때
+            if(currentPage%navNum == 0){ // navNum의 배수일 때
                 navBegin = currentPage - currentPage%navNum - 4;
             }
             int navEnd = navBegin + 4;
@@ -103,6 +104,10 @@ public class AdminChannelController {
             model.addAttribute("acvideoList", acvideoList);
 
 
+
+
+
+
         }else if(state.equals("analysis")){ // analysis Page
 
         }else if(state.equals("subscribe")){
@@ -114,4 +119,11 @@ public class AdminChannelController {
         return "adminChannel";
     }
 
+
+    // 영상 업로드 하기
+    @RequestMapping("/upload.do")
+    public String upload(MultipartHttpServletRequest mpRequest,
+                               Model model, HttpSession session, HttpServletRequest request){
+        return "videoUpload";
+    }
 }
