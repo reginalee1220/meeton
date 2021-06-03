@@ -12,7 +12,7 @@
     <title>좋아요 한 영상</title>
     <!-- css -->
     <link rel="stylesheet" type="text/css" href="/css/default/import.css">
-    <link rel="stylesheet" type="text/css" href="/css/mypick/watchlater.css">
+    <link rel="stylesheet" type="text/css" href="/css/mypick/likedvideo.css">
     <link rel="stylesheet" type="text/css" href="/css/default/sidebar.css">
 
     <!-- js -->
