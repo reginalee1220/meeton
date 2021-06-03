@@ -25,11 +25,8 @@ public class PurchasedController {
 
     // 구독버튼 누르면 popup 창으로 이동
     @RequestMapping("/purchase.do")
-    public String purchase(int channelNum, Model model){
-        String aka = purchase.getAka(channelNum);
-        model.addAttribute("aka",aka);
+    public String purchase(){
 
-        purchase.updateSubscribers(channelNum);
 
         return "purchasingPopUp";
     }
@@ -37,7 +34,7 @@ public class PurchasedController {
     // 카카오페이 버튼 누르면 카카오페이 연결
     @RequestMapping("/kakaoPay.do")
 //    @ResponseBody  // json 값을 돌려 주는 역할 (list, DTO 포함)
-    public String kakaoPay(Model model,int channelNum) {
+    public String kakaoPay(Model model) {
         System.out.println("kakaoPay");
         try{
             URL address = new URL("https://kapi.kakao.com/v1/payment/ready");
