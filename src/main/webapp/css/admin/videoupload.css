@@ -1,109 +1,62 @@
-.ca-upload-page{
+.uploadpage{
+    margin: 30px auto;
+    width: 40%;
+    border: 1px solid #d9dddf;
+    padding: 30px;
+    box-shadow: 2px 5px 5px 1px rgba(91, 91, 91, .1);
+}
+.upload-title{
     width: 100%;
-    height: 100%;
-    padding: 100px 200px;
-}
-.ca-upload-info{
-    border: 1px solid #d9dddf;
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    padding: 10px;
-}
-input[type="submit"]{
-    display: block;
-    background-color: #f8fafc;
-    width: 120px;
-    height: 40px;
-    margin: 10px 0;
-    border: 1px solid #d9dddf;
-    border-radius: 2px;
-    cursor: pointer;
-    color: #a0a0a0;
-    font-size: 14px;
-    line-height: 40px;
     text-align: center;
-    float: right;
+    margin-bottom: 10px;
 }
-input[type="submit"]:hover{
-    border: 1px solid #4ba9e1;
-    color: #4ba9e1;
-}
-.ca-upload-box{
+.upload-info{
     width: 100%;
-    height: 30%;
+    display: flex;
+    gap: 20px;
+}
+.upload-desc{
+    width: 50%;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.upload-video{
+    width: 50%;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.upload-box{
     border: 1px solid #d9dddf;
     padding: 10px;
-    position: relative;
     background-color: #f8fafc;
 }
-.ca-upload-title{
+.upload-sub{
     margin-bottom: 10px;
     font-size: 14px;
     color: #a0a0a0;
 }
-
-/*ca-upload-desc*/
-.ca-upload-desc{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    width: 100%;
-    gap: 10px;
+.up-t, .up-v{
+    height: 20%;
 }
-.ca-upload-text *{
-    border: 1px solid #d9dddf;
-    width: 100%;
-    font-size: 15px;
+.up-d{
+    height: 50%;
 }
-input[type=text]{
-    width: 100%;
-    padding: 10px;
-}
-textarea{
-    padding: 10px;
-}
-.ca-upload-ajax{
-    text-align: right;
-    font-size: 10px;
-    color: #a0a0a0;
-}
-.ca-upload-desc input[type="radio"] + label{
+.up-t input, .up-d textarea{
+    width: 95%;
+    padding: 5px;
     font-size: 14px;
-    color: #a0a0a0;
-    margin: 0 15px 0 5px;
 }
-.ca-t{
-    height: 100px;
+.up-vup{
+    height: 42%;
 }
-.ca-d{
-    height: 200px;
+.up-thumb{
+    height: 42%;
 }
-.ca-v{
-    height: 75px;
-}
-/*ca-upload-video*/
-.ca-upload-video{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 100%;
-    gap: 10px;
-}
-.ca-vup{
-    height: 60%;
-}
-.ca-upload-video video{
-    width: 30%;
-}
-.ca-upload-video input{
-    margin-top: 10px;
-    /*display: none;*/
-}
-.ca-thumb{
-    height: 40%;
-}
-.ca-button{
+input[type=submit]{
     display: block;
     background-color: #f8fafc;
     width: 120px;
@@ -117,7 +70,7 @@ textarea{
     line-height: 40px;
     text-align: center;
 }
-.ca-button:hover{
+input[type=submit]:hover{
     border: 1px solid #4ba9e1;
     color: #4ba9e1;
 }

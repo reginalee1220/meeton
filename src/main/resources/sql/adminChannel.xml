@@ -36,9 +36,17 @@
     <select id="ac_getVideoList" parameterType="String" resultType="video">
         select * from video where userid=#{userid} order by register desc
     </select>
-    
+
+    <!--최신동영상 번호-->
+    <select id="ac_latestvideo" resultType="int">
+        select videonum from video order by videonum desc limit 1;
+    </select>
+
+    <!--동영상 업로드-->
     <insert id="adminChannel.ac_insertVideo" parameterType="video">
         insert into video (videonum,channelnum, userid,title,description,thumbnail,visibility,register,videofile) values
-            (100,#{channelnum},#{userid},#{title},#{description},#{thumbnail,jdbcType=VARCHAR},#{visibility},sysdate(),#{videofile,jdbcType=VARCHAR})
+            (#{videonum} ,#{channelnum},#{userid},#{title},#{description},#{thumbnail,jdbcType=VARCHAR},#{visibility},sysdate(),#{videofile,jdbcType=VARCHAR})
     </insert>
+
+
 </mapper>

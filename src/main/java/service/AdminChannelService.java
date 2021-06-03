@@ -54,4 +54,9 @@ public class AdminChannelService {
         adChannelDAO.insertVideo(video);
     }
 
+    // 최신동영상 번호 가져오기
+    public int getlatestVideo(){
+        return adChannelDAO.getlatestVideo();
+    }
+
 }

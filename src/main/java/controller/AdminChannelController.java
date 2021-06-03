@@ -202,12 +202,15 @@ public class AdminChannelController {
         /*===============================================================================*/
         String userid = (String)session.getAttribute("userid");
         Channel channel = adChannel.getChannel(userid);
+        int videoNo = adChannel.getlatestVideo();
+        videoNo = videoNo+1;
         String title = request.getParameter("title").trim();
         String description = request.getParameter("description").trim();
         String visibility = request.getParameter("visibility").trim();
 
         video.setChannelnum(channel.getChannelnum());
         video.setUserid(userid);
+        video.setVideonum(videoNo);
         video.setTitle(title);
         video.setDescription(description);
         video.setVisibility(visibility);
@@ -216,6 +219,6 @@ public class AdminChannelController {
 
         adChannel.insertVideo(video);
 
-        return "main";
+        return "redirect:adminChannel.do?state=content";
     }
 }

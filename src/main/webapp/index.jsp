@@ -5,7 +5,7 @@
 </head>
 <body>
 <script>
-<%--<%session.setAttribute("userid","runa");%>--%>
+<%session.setAttribute("userid","runa");%>
   location.href="main.do";
 </script>
 
