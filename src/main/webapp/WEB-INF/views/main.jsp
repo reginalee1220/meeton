@@ -562,7 +562,7 @@
                 <source src="${v.videofile}" type="video/ogg" />
               </video>
             </a>
-            <div class="main-video-time">${v.videotime}</div>
+<%--            <div class="main-video-time">${v.videotime}</div>--%>
           </div>
           <div class="main-video-rank-ver2">${vrank}</div><!--순위-->
           <c:set var="vrank" value="${vrank + 1}" />
