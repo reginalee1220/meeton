@@ -19,14 +19,14 @@
                             email,domain,
                             zip,address1,address2,
                             year,month,day,
-
+                            profile,
                             joindate,
                             state)
         values (
                 #{userid},
                 #{passwd},
                 #{name},
-                #{aka},
+                #{aka, jdbcType=VARCHAR},
                 #{phone},
                 #{email},
                 #{domain},
@@ -36,6 +36,7 @@
                 #{year},
                 #{month},
                 #{day},
+                #{profile, jdbcType=VARCHAR},
                 sysdate(),
                 1
                 )
@@ -60,7 +61,7 @@
                     phone=#{phone},
                     email=#{email},
                     domain = #{domain},
-                    profile=#{profile}
+                    profile=#{profile, jdbcType=VARCHAR}
                     where userid=#{userid}
     </update>
 

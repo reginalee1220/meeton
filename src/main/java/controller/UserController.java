@@ -203,8 +203,7 @@ public class UserController {
 //        String join_phone3 = st02.nextToken();// 세번째 전번 저장
 
         String email = editm.getEmail();
-        StringTokenizer st03 = new StringTokenizer(email, "@");
-        String domain = st03.nextToken();
+        String domain = editm.getDomain();
 
         model.addAttribute("editm", editm);
         model.addAttribute("email",email);
