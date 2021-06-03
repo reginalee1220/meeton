@@ -16,14 +16,14 @@
     <link rel="stylesheet" type="text/css" href="./css/channel/channel.css">
 
     <!-- js -->
-
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
 
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 
 </heade>
 <body>
-<%--<%@ include file="header.jsp" %>--%>
+<%@ include file="header.jsp" %>
 <div id="channel_wrap" class="channel">
     <!-- side_wrap -->
     <div class="side_wrap">
@@ -80,14 +80,16 @@
                 </div>
                 <div class="btn_subscript chBTN"><!-- 구독 -->
                     <ul class="btn_subs_list">
+                        <a href="/purchase.do?channelNum=1">
                         <li>
                             <box-icon name='donate-heart' >
                                 <i class='bx bx-donate-heart' ></i>
                             </box-icon>
                         </li>
                         <li>
-                            <span>290</span>
+                            <span>${channel.subscribers}</span>
                         </li>
+                        </a>
                     </ul>
                 </div>
             </div><!-- // 채널 알람,즐겨찾기,구독 버튼 -->

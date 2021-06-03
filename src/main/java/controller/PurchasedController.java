@@ -2,15 +2,20 @@ package controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import scala.util.parsing.json.JSONObject;
 import service.PurchasedService;
 
 
-
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+
 
 
 @Controller
@@ -20,13 +25,19 @@ public class PurchasedController {
 
     // 구독버튼 누르면 popup 창으로 이동
     @RequestMapping("/purchase.do")
-    public String purchase(){
-       return "purchasingPopUp";
+    public String purchase(int channelNum, Model model){
+        String aka = purchase.getAka(channelNum);
+        model.addAttribute("aka",aka);
+
+        purchase.updateSubscribers(channelNum);
+
+        return "purchasingPopUp";
     }
 
     // 카카오페이 버튼 누르면 카카오페이 연결
     @RequestMapping("/kakaoPay.do")
-    public String kakaopay() {
+//    @ResponseBody  // json 값을 돌려 주는 역할 (list, DTO 포함)
+    public String kakaoPay(Model model,int channelNum) {
         System.out.println("kakaoPay");
         try{
             URL address = new URL("https://kapi.kakao.com/v1/payment/ready");
@@ -54,18 +65,34 @@ public class PurchasedController {
 
             InputStreamReader reader = new InputStreamReader(recipient);
             BufferedReader change = new BufferedReader(reader);
-            System.out.println("change");
-            return change.readLine();
+
+            String choose = change.readLine();
+
+            String result[] = choose.split(",");
+            String result1 = new String(result[4]);
+            System.out.println("result1:" + result1);
+            String result2[] = result1.split(":");
+            String pageUrl = new String(result2[1]+":"+result2[2]);
+            pageUrl = pageUrl.replace("\"","");
+
+            System.out.println("pageUrl: " + pageUrl);
+
+            model.addAttribute("pageUrl", pageUrl);
+            return "pageUrl";
 
         }catch(MalformedURLException e){
             e.printStackTrace();
-        }catch (IOException e) {
+        }catch (Exception e) {
             e.printStackTrace();
         }
         return "null";
     }
 
-
+    // 결제 성공
+    @RequestMapping("/success.do")
+    public String success(Model model, HttpSession session){
+        return "main";
+    }
 
 
     // 결제 리스트 불러오기

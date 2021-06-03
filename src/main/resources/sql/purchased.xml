@@ -3,6 +3,12 @@
 
 <mapper namespace="purchased">
 
+    <select id="p_getAka" parameterType="int" resultType="String">
+        select aka from channel where channelnum=#{channelNum}
+    </select>
 
+    <update id="p_updatesub" parameterType="int">
+        update channel set subscribers=subscribers+1 where channelnum=#{channelNum}
+    </update>
 
 </mapper>
