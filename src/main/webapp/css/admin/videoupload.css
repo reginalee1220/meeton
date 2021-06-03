@@ -1,0 +1,76 @@
+.uploadpage{
+    margin: 30px auto;
+    width: 40%;
+    border: 1px solid #d9dddf;
+    padding: 30px;
+    box-shadow: 2px 5px 5px 1px rgba(91, 91, 91, .1);
+}
+.upload-title{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.upload-info{
+    width: 100%;
+    display: flex;
+    gap: 20px;
+}
+.upload-desc{
+    width: 50%;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.upload-video{
+    width: 50%;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.upload-box{
+    border: 1px solid #d9dddf;
+    padding: 10px;
+    background-color: #f8fafc;
+}
+.upload-sub{
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #a0a0a0;
+}
+.up-t, .up-v{
+    height: 20%;
+}
+.up-d{
+    height: 50%;
+}
+.up-t input, .up-d textarea{
+    width: 95%;
+    padding: 5px;
+    font-size: 14px;
+}
+.up-vup{
+    height: 42%;
+}
+.up-thumb{
+    height: 42%;
+}
+input[type=submit]{
+    display: block;
+    background-color: #f8fafc;
+    width: 120px;
+    height: 40px;
+    margin: 10px 0;
+    border: 1px solid #d9dddf;
+    border-radius: 2px;
+    cursor: pointer;
+    color: #a0a0a0;
+    font-size: 14px;
+    line-height: 40px;
+    text-align: center;
+}
+input[type=submit]:hover{
+    border: 1px solid #4ba9e1;
+    color: #4ba9e1;
+}

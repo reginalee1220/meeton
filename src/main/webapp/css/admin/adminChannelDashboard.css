@@ -1,7 +1,7 @@
 /*  dash-board  */
 .ca-dashboard{
-    background-color: #f5f6f7;
-    width: 100%;
+    float: right;
+    width: 85%;
     height: 100vh;
     padding: 10px 20px;
 }
@@ -35,7 +35,8 @@
     bottom: 10px;
 }
 /* ca-dash-video */
-.ca-dash-video img{
+.ca-dash-video video{
+    display: inline-block;
     margin: 10px 0;
     width: 100%;
 }
@@ -79,8 +80,10 @@
     display: flex;
     justify-content: space-between;
 }
-.ca-dash-channel-video-img{
-    position: relative;
+.ca-dash-channel-video-img video{
+    display: inline-block;
+    margin: 10px 0;
+    width: 100%;
 }
 .ca-dash-channel-video-img div{
     position: absolute;
