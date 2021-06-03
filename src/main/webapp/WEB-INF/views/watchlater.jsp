@@ -26,6 +26,8 @@
 </head>
 <body>
 <%= session.getAttribute("userid") %>
+<!-- header -->
+<%@ include file="header.jsp"%>
 <div class="sidebar">
     <div class="menu_content">
         <div class="menu">

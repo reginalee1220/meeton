@@ -6,7 +6,7 @@
 <body>
 <script>
 <%session.setAttribute("userid","coco");%>
-  location.href="likedvideo.do";
+  location.href="bookmark.do";
 </script>
 
 </body>

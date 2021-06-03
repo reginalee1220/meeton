@@ -13,10 +13,12 @@
     <!-- css -->
     <link rel="stylesheet" type="text/css" href="/css/default/import.css">
     <link rel="stylesheet" type="text/css" href="<%= request.getContextPath()%>/css/mypick/history.css">
+    <link rel="stylesheet" type="text/css" href="/css/default/sidebar.css">
 
     <!-- js -->
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="/js/mypick/button.js"></script>
+    <script src="/js/main/testmain.js"></script>
 
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -24,6 +26,53 @@
 </head>
 <body>
 <%= session.getAttribute("userid") %>
+<!-- header -->
+<%@ include file="header.jsp"%>
+<div class="sidebar">
+    <div class="menu_content">
+        <div class="menu">
+            <div class="menu_name">메뉴</div>
+        </div>
+        <i class='bx bx-menu' id="btn" ></i>
+    </div>
+    <ul class="nav_list">
+        <li>
+            <i class='bx bx-search' ></i>
+            <!-- <input type="text" placeholder="Search..."> -->
+            <span class="tooltip">Search</span>
+        </li>
+        <li><!-- home -->
+            <a href="#" class="nav-home">
+                <i class='bx bx-home' ></i>
+                <span class="links_name">Home</span>
+            </a>
+            <span class="tooltip">홈</span>
+        </li><!-- //home -->
+        <li><!-- MY -->
+            <a href="#" class="nav-my">
+                <i class='bx bx-star' ></i>
+                <span class="links_name">MY</span>
+            </a>
+            <span class="tooltip">MY</span>
+        </li><!-- //MY -->
+        <li><!-- PlayList -->
+            <a href="#" class="nav-my">
+                <i class='bx bx-list-check'></i>
+                <span class="links_name">PlayList</span>
+            </a>
+            <span class="tooltip">시청기록</span>
+        </li><!-- //MY -->
+        <li><!-- 구독 -->
+            <a href="#" class="nav-subs">
+                <i class='bx bx-movie-play' ></i>
+                <span class="links_name">Subscription</span>
+            </a>
+            <span class="tooltip">구독</span>
+        </li><!-- //구독 -->
+    </ul>
+</div>
+
+<div class="home_content"><!-- home_content -->
 <div id="mypick"><!-- mypick -->
     <div class="history_title"><!-- history_title -->
         <div class="history_title_inner">
@@ -120,6 +169,25 @@
 
 
 </div><!-- // mypick -->
+</div><!-- // home_content -->
+<script type="text/javascript">
+    let btn = document.querySelector("#btn");
+    let sidebar = document.querySelector(".sidebar");
+    let searchBtn = document.querySelector(".bx-search");
 
+    btn.onclick = function() {
+        sidebar.classList.toggle("active");
+        if(btn.classList.contains("bx-menu")){
+            btn.classList.replace("bx-menu" , "bx-menu-alt-left");
+        }else{
+            btn.classList.replace("bx-menu-alt-left", "bx-menu");
+        }
+    }
+
+    searchBtn.onclick = function() {
+        sidebar.classList.toggle("active");
+    }
+
+</script>
 </body>
 </html>
