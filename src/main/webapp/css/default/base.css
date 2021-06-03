@@ -68,12 +68,14 @@ header{
     margin: 5px;
 }
 .header-nav{
-    width: 235px;
+    width: 200px;
     height: 100%;
     display: inline-flex;
     align-items: center;
     flex-wrap: nowrap;
-    justify-content: space-between;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 10px;
 }
 .header-nav > li{
     width: 30px;
