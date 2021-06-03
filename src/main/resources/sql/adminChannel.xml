@@ -36,4 +36,9 @@
     <select id="ac_getVideoList" parameterType="String" resultType="video">
         select * from video where userid=#{userid} order by register desc
     </select>
+    
+    <insert id="adminChannel.ac_insertVideo" parameterType="video">
+        insert into video (channelnum, userid,title,description,thumbnail,visibility,register,videofile) values
+            (#{channelnum},#{userid},#{title},#{description},#{thumbnail,jdbcType=VARCHAR},#{visibility},#{sysdate()},#{videofile,jdbcType=VARCHAR})
+    </insert>
 </mapper>

@@ -85,7 +85,7 @@ textarea{
 }
 .ca-upload-video input{
     margin-top: 10px;
-    display: none;
+    /*display: none;*/
 }
 .ca-thumb{
     height: 40%;

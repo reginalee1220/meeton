@@ -48,4 +48,10 @@ public class AdminChannelService {
     public List<Video> getVideoList(String userid){
         return adChannelDAO.getVideoList(userid);
     }
+
+    // 동영상 업로드 하기
+    public void insertVideo(Video video){
+        adChannelDAO.insertVideo(video);
+    }
+
 }

@@ -49,5 +49,9 @@ public class AdminChannelDAO {
         return sst.selectList("adminChannel.ac_getVideoList", userid);
     }
 
+    // 동영상 업로드 하기
+    public void insertVideo(Video video){
+        sst.insert("adminChannel.ac_insertVideo", video);
+    }
 
 }

@@ -7,13 +7,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.MultipartRequest;
 import service.AdminChannelService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
 
 @Controller
 public class AdminChannelController {
@@ -104,10 +110,6 @@ public class AdminChannelController {
             model.addAttribute("acvideoList", acvideoList);
 
 
-
-
-
-
         }else if(state.equals("analysis")){ // analysis Page
 
         }else if(state.equals("subscribe")){
@@ -118,12 +120,102 @@ public class AdminChannelController {
         model.addAttribute("state",state);
         return "adminChannel";
     }
-
+    @RequestMapping("/videoUploadgo.do")
+    public String videoUploadgo(){
+        System.out.println("videoUploadgo");
+        return "videoUpload";
+    }
 
     // 영상 업로드 하기
-    @RequestMapping("/upload.do")
-    public String upload(MultipartHttpServletRequest mpRequest,
-                               Model model, HttpSession session, HttpServletRequest request){
-        return "videoUpload";
+    @RequestMapping(value = "/videoUpload.do", method = RequestMethod.POST)
+    public String upload(@RequestParam("videofile1") MultipartFile mf1,
+                         @RequestParam("thumbnail1") MultipartFile mf2,
+                         Video video,
+                         HttpServletRequest request,
+                         HttpSession session,
+                         Model model) throws Exception{
+        System.out.println("upload");
+        String filename1 = mf1.getOriginalFilename();  // 첨부파일명 (사용자가 올린)
+        String filename2 = mf2.getOriginalFilename();  // 첨부파일명 (사용자가 올린)
+        int size1 = (int) mf1.getSize();               // 첨부파일 크기 (사용자가 올린) 단위: byte
+        int size2 = (int) mf2.getSize();               // 첨부파일 크기 (사용자가 올린) 단위: byte
+
+        String path = request.getRealPath("videoUpload");  // videoUpload 절대경로 구하기
+
+        System.out.println("mf=" + mf1);
+        System.out.println("filename=" + filename1);
+        System.out.println("size=" + size1);
+
+        System.out.println("mf=" + mf2);
+        System.out.println("filename=" + filename2);
+        System.out.println("size=" + size2);
+
+        System.out.println("Path=" + path);
+
+        int result=0;
+
+        String file1[] = new String[2];
+        String file2[] = new String[2];
+
+        /* video 파일 */
+        StringTokenizer st = new StringTokenizer(filename1, ".");
+        file1[0] = st.nextToken();      // 파일명
+        file1[1] = st.nextToken();		// 확장자
+
+        if(size1 > 1000000000){                   // 사이즈가 초과되면 업로드 되지 못하도록 막는다
+            result=1;
+            model.addAttribute("result", result);
+            return "videoUploadResult";
+        }else if(!file1[1].equals("mp4") &&   // 동영상 확장자가 아니면 업로드 되지 못하도록 막는다
+                 !file1[1].equals("webm") &&
+                 !file1[1].equals("ogg") ){
+            result=2;
+            model.addAttribute("result", result);
+            return "videoUploadResult";
+        }
+        if (size1 > 0) {    // 첨부파일이 있으면
+            mf1.transferTo(new File(path + "/" + filename1));  // 첨부파일을 업로드 해라
+                                    // 절대경로값
+        }
+
+        /* thumbnail 파일 */
+        StringTokenizer st2 = new StringTokenizer(filename2, ".");
+        file2[0] = st2.nextToken();      // 파일명
+        file2[1] = st2.nextToken();		// 확장자
+
+        if(size2 > 100000){                   // 사이즈가 초과되면 업로드 되지 못하도록 막는다
+            result=1;
+            model.addAttribute("result", result);
+            return "videoUploadResult";
+        }else if(!file2[1].equals("jpg") &&   // 동영상 확장자가 아니면 업로드 되지 못하도록 막는다
+                !file2[1].equals("gif") &&
+                !file2[1].equals("png") ){
+            result=2;
+            model.addAttribute("result", result);
+            return "videoUploadResult";
+        }
+        if (size2 > 0) {    // 첨부파일이 있으면
+            mf2.transferTo(new File(path + "/" + filename2));  // 첨부파일을 업로드 해라
+            // 절대경로값
+        }
+
+        /*===============================================================================*/
+        String userid = (String)session.getAttribute("userid");
+        Channel channel = adChannel.getChannel(userid);
+        String title = request.getParameter("title").trim();
+        String description = request.getParameter("description").trim();
+        String visibility = request.getParameter("visibility").trim();
+
+        video.setChannelnum(channel.getChannelnum());
+        video.setUserid(userid);
+        video.setTitle(title);
+        video.setDescription(description);
+        video.setVisibility(visibility);
+        video.setVideofile(filename1);
+        video.setThumbnail(filename2);
+
+        adChannel.insertVideo(video);
+
+        return "main";
     }
 }

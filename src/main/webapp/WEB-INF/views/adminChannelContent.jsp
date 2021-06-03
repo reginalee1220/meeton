@@ -18,21 +18,7 @@
 <div class="ca-content">
   <div class="ca-main-title">
     <span>채널 콘텐츠</span>
-    <input id="ca-content-popup" type="checkbox" />
-    <label for="ca-content-popup">영상 업로드</label>
-    <div><!--업로드 팝업페이지-->
-      <div><!--pop-up page start-->
-        <label for="ca-content-popup">
-          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAABHklEQVRYR+2WUQ6DIAyGiyfbTrJ5DvRJPcf0JNvJZMGNhRikf0ETl8ArFj6+0oqikw11Mh4qQFxGiqFiiDPAzf/3Heq67tK27Ys7pT8vjYENDcNwJ6IHEY1a6xqB6vt+VErdiKjWWo9IDARkT1lV1dNbkIXyYJaweZ6viF0IyC643iBmav2tMWZqmsYaZgcMhELlwNg9REAcVC5MEtAWlDFGfS/wkhZJmvw8ig254MCd+q2bCpNsKAaVA3MIkKRPhUrukJTlQCUBhapp0f3pym6wzXMXQ7HSljTPrQ4pMoT0mVwoGAiBiVQfnD4IaP1zRUr78J+re34gMAFT+z4/3AbSx5aNk8ZAKWPfDDt+UIA4mcVQMcQZ4ObLHeIMvQEbv8ElmHXsTQAAAABJRU5ErkJggg=="/>
-        </label><!--첫번째 닫기버튼-->
-        <div class="ca-content-upload">
-
-          <%@ include file="videoUpload.jsp"%>
-
-        </div><!--ca-content-upload end-->
-      </div><!--pop-up page end-->
-      <label></label><!--두번째 닫기버튼-->
-    </div><!--업로드 팝업페이지 끝-->
+    <a href="videoUploadgo.do">영상업로드</a>
   </div><!--ca-main-title end-->
 
   <!--          영상 리스트 내역          -->
