@@ -17,12 +17,13 @@
 </head>
 <body>
 <!--                    analysis                  -->
+
 <div class="ca-analysis">
     <div class="ca-main-title">
         <span>채널 분석</span>
     </div>
     <div class="ca-analysis-content">
-        <h3>runa님의 현재 구독자수는 4명입니다.</h3>
+        <h3>${channel.aka}님의 현재 구독자수는 ${channel.subscribers}명입니다.</h3>
         <div class="ca-analysis-box">
             <input type="radio" name="tabmenu" id="subscriber" checked />
             <label for="subscriber">구독자수</label>
@@ -32,21 +33,21 @@
             <label for="views">총 조회수</label>
             <!--구독자 수-->
             <div class="conbox subscriber">
-                <span>구독자수</span>
+                <span>구독자수: ${channel.subscribers}</span>
                 <div class="chart-container">
                     <canvas id="subscriber-chart"></canvas>
                 </div>
             </div>
             <!--즐겨찾기 시청자수-->
             <div class="conbox bookmark">
-                <span>즐겨찾기 시청자수</span>
+                <span>즐겨찾기 시청자수: ${channel.bookmarkers}</span>
                 <div class="chart-container">
                     <canvas id="bookmark-chart"></canvas>
                 </div>
             </div>
             <!--총 조회수-->
             <div class="conbox views">
-                <span>총 조회수</span>
+                <span>총 조회수: ${totalviews}</span>
                 <div class="chart-container">
                     <canvas id="views-chart"></canvas>
                 </div>

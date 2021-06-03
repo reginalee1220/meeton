@@ -111,9 +111,15 @@ public class AdminChannelController {
 
 
         }else if(state.equals("analysis")){ // analysis Page
+            // 채널분석
+            Channel channel = adChannel.getChannel(userid);
+            System.out.println("channel: " + channel);
+            model.addAttribute("channel", channel);
 
-        }else if(state.equals("subscribe")){
-
+            // 총 조회수
+            int totalviews = adChannel.getViews(userid);
+            System.out.println("totalviews: " + totalviews );
+            model.addAttribute("totalviews",totalviews);
         }
 
 
