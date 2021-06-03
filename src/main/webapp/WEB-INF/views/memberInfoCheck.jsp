@@ -15,8 +15,8 @@
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 
     <!-- css -->
-    <link rel="stylesheet" href="/css/default/import.css">
-    <link rel="stylesheet" href="/css/user/userinfoCheck.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/default/import.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/user/userinfoCheck.css">
 
     <!-- js -->
     <script src="http://code.jquery.com/jquery-latest.js"></script>
