@@ -1,11 +1,14 @@
 .ca-upload-page{
     width: 100%;
     height: 100%;
+    padding: 100px 200px;
 }
 .ca-upload-info{
+    border: 1px solid #d9dddf;
     display: flex;
     justify-content: space-between;
     gap: 10px;
+    padding: 10px;
 }
 input[type="submit"]{
     display: block;
@@ -28,6 +31,7 @@ input[type="submit"]:hover{
 }
 .ca-upload-box{
     width: 100%;
+    height: 30%;
     border: 1px solid #d9dddf;
     padding: 10px;
     position: relative;
@@ -43,7 +47,7 @@ input[type="submit"]:hover{
 .ca-upload-desc{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     width: 100%;
     gap: 10px;
 }
@@ -68,6 +72,15 @@ textarea{
     font-size: 14px;
     color: #a0a0a0;
     margin: 0 15px 0 5px;
+}
+.ca-t{
+    height: 100px;
+}
+.ca-d{
+    height: 200px;
+}
+.ca-v{
+    height: 75px;
 }
 /*ca-upload-video*/
 .ca-upload-video{

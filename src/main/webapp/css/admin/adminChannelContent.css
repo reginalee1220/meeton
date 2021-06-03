@@ -13,8 +13,24 @@
     font-size: 13px;
     color: #a0a0a0;
 }
-.ca-main-title a{
+.ca-uploadgo{
     float: right;
+    display: inline-block;
+    width: 120px;
+    height: 40px;
+    font-size: 14px;
+    color: #a0a0a0;
+    background-color: #f8fafc;
+    border: 1px solid #d9dddf;
+    border-radius: 2px;
+    cursor: pointer;
+    line-height: 40px;
+    vertical-align: middle;
+    text-align: center;
+}
+.ca-uploadgo:hover{
+    color: #4BA9E1;
+    border: 1px solid #4BA9E1;
 }
 /*필터 이미지*/
 .ca-content-filter-img{

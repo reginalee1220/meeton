@@ -18,7 +18,7 @@
 <div class="ca-content">
   <div class="ca-main-title">
     <span>채널 콘텐츠</span>
-    <a href="videoUploadgo.do">영상업로드</a>
+    <a class="ca-uploadgo" href="videoUploadgo.do">영상업로드</a>
   </div><!--ca-main-title end-->
 
   <!--          영상 리스트 내역          -->
