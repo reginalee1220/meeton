@@ -202,12 +202,12 @@ public class UserController {
 //        String join_phone2 = st02.nextToken(); // 두번째 전번 저장
 //        String join_phone3 = st02.nextToken();// 세번째 전번 저장
 
-        String email = editm.getEmail();
-        String domain = editm.getDomain();
+//        String email = editm.getEmail();
+//        String domain = editm.getDomain();
 
         model.addAttribute("editm", editm);
-        model.addAttribute("email",email);
-        model.addAttribute("domain", domain);
+//        model.addAttribute("email",email);
+//        model.addAttribute("domain", domain);
 
         return "memberInfoCheck";
     }
@@ -291,18 +291,18 @@ public class UserController {
     }
 
     // 회원탈퇴 view
-    @RequestMapping("/withdrawal.do")
+    @RequestMapping(value = "/withdrawal.do")
     public String withdrawal(HttpSession session, Model dm) throws Exception{
         String userid = (String) session.getAttribute("userid");
         User delUser = userService.userCheck(userid);
-        dm.addAttribute("userid", userid);
-        dm.addAttribute("name", delUser.getName());
+        dm.addAttribute("del_userid", userid);
+        dm.addAttribute("del_name", delUser.getName());
 
         return "withdrawal";
     }
     
     // 회원탈퇴 완료
-    @RequestMapping(value = "/user_del_ok", method = RequestMethod.POST)
+    @RequestMapping(value = "/user_del_ok.do", method = RequestMethod.POST)
     public String user_del_ok(@RequestParam("passwd") String passwd,
                               HttpSession session) throws Exception{
 
@@ -312,6 +312,7 @@ public class UserController {
         if (!user.getPasswd().equals(passwd)){
 
             return "user/deleteResult";
+
         } else {        // 비번이 같을 경우
             String up = session.getServletContext().getRealPath("upload");
             String fname = user.getProfile();

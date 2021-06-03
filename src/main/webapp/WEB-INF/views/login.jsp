@@ -18,12 +18,15 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/user/login.css">
 
     <!-- js -->
-    <script src="https://apis.google.com/js/platform.js" async defer></script><!-- 구글 API -->
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+<%--    <script src="https://apis.google.com/js/platform.js" async defer></script><!-- 구글 API -->--%>
     <script src="<%=request.getContextPath()%>/js/user/login.js"></script>
 
 </head>
 <body>
 <!-- header -->
+<%@ include file="header.jsp"%>
+
 <div class="top_title">
     <div class="top_inner">
         <h1>MEETON 회원가입</h1>

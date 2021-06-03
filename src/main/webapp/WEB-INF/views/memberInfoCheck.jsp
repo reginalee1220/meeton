@@ -673,6 +673,7 @@
 
 <c:if test="${sessionScope.userid != null }">
 <!-- header -->
+<%@ include file="header.jsp"%>
 
 <div class="wrap"><!-- wrap 시작 -->
     <div class="userinfo_top">
@@ -715,7 +716,7 @@
                                 <div class="upload_profile">
                                     <div class="proview"><!-- 현재 프로필 -->
                                         <span>
-                                            <img src="./imgUpload/${user.profile}"/>
+                                            <img src="<%=request.getContextPath() %>/imgUpload/${user.profile}"/>
 
                                         </span>
                                     </div>

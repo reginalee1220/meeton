@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="/css/user/withdrawal.css">
 
     <!-- js -->
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="/js/user/delete.js"></script>
 
 </head>

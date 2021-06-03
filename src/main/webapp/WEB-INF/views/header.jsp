@@ -16,6 +16,7 @@
     <script src="/js/main/base.js"></script>
 </head>
 <body>
+<c:if test="${sessionScope.userid != null}">
 <header>
     <div class="header-bar">
         <div class="header-logo">
@@ -31,6 +32,7 @@
                 </div>
             </form>
         </div>
+        <form method="post" action="logout.do">
         <ul class="header-nav">
             <li><a href="#">
                 <img width="16px" src="image/bookmark-icon.png" />
@@ -94,12 +96,15 @@
                         <span>내 정보</span></a>
                     </li>
                     <li><a href="#">
-                        <span>로그아웃</span></a>
+                        <input type="submit" value="로그아웃" class="input_button" />
+                        </a>
                     </li>
                 </ul>
             </li>
         </ul>
+        </form>
     </div>
 </header>
+</c:if>
 </body>
 </html>
