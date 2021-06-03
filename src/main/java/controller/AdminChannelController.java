@@ -127,7 +127,7 @@ public class AdminChannelController {
     }
 
     // 영상 업로드 하기
-    @RequestMapping(value = "/videoUpload.do", method = RequestMethod.POST)
+    @RequestMapping(headers = ("content-type=multipart/*"), value = "/videoUpload.do", method = RequestMethod.POST)
     public String upload(@RequestParam("videofile1") MultipartFile mf1,
                          @RequestParam("thumbnail1") MultipartFile mf2,
                          Video video,
@@ -140,7 +140,7 @@ public class AdminChannelController {
         int size1 = (int) mf1.getSize();               // 첨부파일 크기 (사용자가 올린) 단위: byte
         int size2 = (int) mf2.getSize();               // 첨부파일 크기 (사용자가 올린) 단위: byte
 
-        String path = request.getRealPath("videoUpload");  // videoUpload 절대경로 구하기
+        String path = request.getRealPath("/videoUpload");  // videoUpload 절대경로 구하기
 
         System.out.println("mf=" + mf1);
         System.out.println("filename=" + filename1);
@@ -183,7 +183,7 @@ public class AdminChannelController {
         file2[0] = st2.nextToken();      // 파일명
         file2[1] = st2.nextToken();		// 확장자
 
-        if(size2 > 100000){                   // 사이즈가 초과되면 업로드 되지 못하도록 막는다
+        if(size2 > 10000000){                   // 사이즈가 초과되면 업로드 되지 못하도록 막는다
             result=1;
             model.addAttribute("result", result);
             return "videoUploadResult";

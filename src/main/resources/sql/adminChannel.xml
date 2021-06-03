@@ -38,7 +38,7 @@
     </select>
     
     <insert id="adminChannel.ac_insertVideo" parameterType="video">
-        insert into video (channelnum, userid,title,description,thumbnail,visibility,register,videofile) values
-            (#{channelnum},#{userid},#{title},#{description},#{thumbnail,jdbcType=VARCHAR},#{visibility},#{sysdate()},#{videofile,jdbcType=VARCHAR})
+        insert into video (videonum,channelnum, userid,title,description,thumbnail,visibility,register,videofile) values
+            (100,#{channelnum},#{userid},#{title},#{description},#{thumbnail,jdbcType=VARCHAR},#{visibility},sysdate(),#{videofile,jdbcType=VARCHAR})
     </insert>
 </mapper>
