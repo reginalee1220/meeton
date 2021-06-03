@@ -93,7 +93,7 @@
                 </a>
                 <ul class="header-submenu">
                     <li></li>
-                    <li><a href="#">
+                    <li><a href="/channel.do?userid=${userid}">
                         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAABfklEQVRIS+3WwVHDMBAF0C81AFQAJVACVECoAFIBOWsPwIzXZ1IBoQLSAZRACaSD0IDFiJE8sq3E0oZMLvEp4/H6aSX5RwoHutSBXIhhZr5XSlljzJtk8CK4qqqFUurOgwsimpbixXAPDV4xXgT30B+vnkg6z4YT6JUHPwEU41lwCiWiLwcz8yWAYnwU3oaGBZbgW+EcVIpvhEtQCZ6EJWgpPoB3QUvwDpwIh2cieipNJb/bXd1jVNsJmRZ22QvgtYf8J+xePSWihfvRwnVdT6y17/uElVK3xphlBw5h0DTNqdb6ww+g03FVVTOt9U1q6q21SyKaR+vcTnXTNNda63UInQEcFdk+zMwvAB5G1ntORLP+GhPRYBMnPydmTsHh3grAd28AFwDOAbiuzvYFDzYcM7fTGrpL3YsHK+n4CLu/xuNUJ2chZ3Oto+OMJKrjmhURuc+tc23a1anclg6gzefRjkN8AphINV/nYvTvbJbV8Y5YVvnoYS/rLYKHfgEf/DEu8krAWQAAAABJRU5ErkJggg=="/>
                         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAABOElEQVRIS+2VQXaCMBCGJ/hgW3sBIyew3sCucWFX1J2eTHctK7sw63oEPAHQC7RrfE18QeKDEGCgj13ZhUz+bzL5JyEw8EcG1gc0YHWIxpfU+pQJ2Q5//nhxfzDJoQAF8adcNMRCWgFlcXK+AcQMAFCQRoAubju/Cyl/SUcnLKQWYBJXdb/N4SBGQJO4OlgspALAiHeBlABdxLGQO0C3ou3wR6zX87XfJgvfAV7wFebOyOKYT1stXGw0L0hEYRwyn87leCAAOTN/kjVlJUuVidrB8i1aCMvaAcBUuxpiwvn2uHZP8r++TsW2Arz3JAYCtObeiZlP3b8B8trqZ6Jn3H8H/wD98LC1xcaZXCRfqgfMa1WJEZCwV1qycwWQ+Z5Y+wZrmtkCEiL4RvVFbR/0yrxhUaf7pg/8Cv/ZGihMEctZAAAAAElFTkSuQmCC"/>
                         <span>내 채널</span></a>
