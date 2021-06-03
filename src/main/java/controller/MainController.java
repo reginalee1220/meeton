@@ -63,11 +63,8 @@ public class MainController {
 
 
 
-    @RequestMapping("call")
-    public String call(Model model){
-        Date d = new Date();
-        model.addAttribute("dt", d);
-
-        return "result";
+    @RequestMapping("reject.do")
+    public String reject(){
+        return "reject";
     }
 }

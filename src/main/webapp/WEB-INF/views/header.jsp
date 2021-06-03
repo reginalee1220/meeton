@@ -18,12 +18,12 @@
 <header>
     <div class="header-bar">
         <div class="header-logo">
-            <a href="#"><img src="/images/logo/LOGO.png" /></a>
+            <a href="main.do"><img src="/images/logo/LOGO.png" /></a>
         </div>
         <div class="header-search">
-            <form id="header-form">
+            <form id="header-form" action="search.do" method="post">
                 <div class="header-search-bar">
-                    <input type="text" placeholder="검색어를 입력하세요" />
+                    <input type="text" placeholder="검색어를 입력하세요" name="search" />
                     <a href="#" onClick="document.getElementById('header-form').submit();">
                         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAABcUlEQVRIS72VzW2DQBCF3yDka1yCU0HsDuwSUkHSgcnRzIUDK19xB04H7iDuIHSQuIPkjMREI+2iVcyC/zA3fvZ9b2aZt4SBLxpYH0HAer2eiMhSROYAptZISUR7ItqsVqvvU8y1AowxBYBllwARFWmavvVBjgB5nqvLJ10oIu8qxMyl3htjpiKSENGLq4iZZ51G/Jee818Acyf8X0BBAPYAHgBsmDkJQZoKtOd1XX/ZD2chcSdkIZ96H0XRY2hPGoDnvtOR7zTP861tV3BNA/B63+u+pYoytBd+BaILmfms2TDGdK67H+DKFh2YedL2J91vkwf/Te2kuoj4AbDoGbQPAOOTB831z48KAFsr0ESFzahXr99lVVWLLMvU1NF1cdgpWJPW5lYQ0hnXdV0nnoi6OwDYRVFUaDRkWTaO41jjW8OxFXLWULW1oA9yNUChPoSIntM03TkzNwE4yGg0mvvi+vxmgN7zoO/ou/T94BX8AaHpzxlcYgIzAAAAAElFTkSuQmCC"/>
                     </a>
@@ -31,14 +31,33 @@
             </form>
         </div>
         <ul class="header-nav">
+            <!-- 즐겨찾기 -->
+            <c:if test="${userid != null}"><!--로그인 했으면 -->
             <li><a href="bookmark.do">
                 <img width="16px" src="/images/main/bookmark-icon.png" />
                 <span class="header-desc">즐겨찾기</span></a>
             </li>
-            <li><a href="adminChannel.do?state=content">
+            </c:if>
+            <c:if test="${userid == null}"><!--로그인 안 했으면 -->
+            <li><a href="reject.do">
+                <img width="16px" src="/images/main/bookmark-icon.png" />
+                <span class="header-desc">즐겨찾기</span></a>
+            </li>
+            </c:if>
+
+            <!--업로드하기-->
+            <c:if test="${userid != null}"><!--로그인 했으면 -->
+            <li><a href="adminChannel.do?state=upload">
                 <img width="28px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAABgklEQVRIS+2WX07CQBDGv2laXuUG9gbiCfQmegP1sVkSl4RJX/EG3kC5gZxAvAHeAJ9pOmZIt0HSkG0XQRPmcdOZ386386eEIxkdiYsT+GDK/w2pmXkA4I6I0q6pi8gCwJMxZr4rRp1xnudpWZbvAPpdoRt+yyiKLrMs00s0Wg1mZgvgsfpqFgC/Ul8ReRgOh5PNONbavrV2qWeNYGNM57dnZqlgI2OMJrM2Zr4FkLqzVmBmfgOgGc2MMddNqjSBx+PxMxHdAKgv86vg1Wo16fV6LyLiLnkQ8BTAOQDtFGd+YK10EVHntYmIFosGmhPRvTsnok9XwRtSN72EH3ir0ncVeh3wf4NV6qIo6ilGRBMiuhCRDxGppY7jeLFXqbe1bdlOUxFJ9aKtiysQPNJ2SpLktep9DedXXKFgN6WCB4jP/A4amUSko7GTuSnlvSSqtag79KwT8afTVxRFA6+1WG2QgbZJ6I+Atp33j8AesmwVovPebUVp+PgEDlXQ2/9oUn8DlXgZLmjnDEsAAAAASUVORK5CYII="/>
                 <span class="header-desc">업로드하기</span></a>
             </li>
+            </c:if>
+            <c:if test="${userid == null}"><!--로그인 했으면 -->
+            <li><a href="reject.do">
+                <img width="28px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAABgklEQVRIS+2WX07CQBDGv2laXuUG9gbiCfQmegP1sVkSl4RJX/EG3kC5gZxAvAHeAJ9pOmZIt0HSkG0XQRPmcdOZ386386eEIxkdiYsT+GDK/w2pmXkA4I6I0q6pi8gCwJMxZr4rRp1xnudpWZbvAPpdoRt+yyiKLrMs00s0Wg1mZgvgsfpqFgC/Ul8ReRgOh5PNONbavrV2qWeNYGNM57dnZqlgI2OMJrM2Zr4FkLqzVmBmfgOgGc2MMddNqjSBx+PxMxHdAKgv86vg1Wo16fV6LyLiLnkQ8BTAOQDtFGd+YK10EVHntYmIFosGmhPRvTsnok9XwRtSN72EH3ir0ncVeh3wf4NV6qIo6ilGRBMiuhCRDxGppY7jeLFXqbe1bdlOUxFJ9aKtiysQPNJ2SpLktep9DedXXKFgN6WCB4jP/A4amUSko7GTuSnlvSSqtag79KwT8afTVxRFA6+1WG2QgbZJ6I+Atp33j8AesmwVovPebUVp+PgEDlXQ2/9oUn8DlXgZLmjnDEsAAAAASUVORK5CYII="/>
+                <span class="header-desc">업로드하기</span></a>
+            </li>
+            </c:if>
 <%--            <li class="header-alarm"><a href="#">--%>
 <%--                <img width="24px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAB6klEQVRIS+2W0VECMRCGd4/hWUvQCpQK1A6gArUC8ZFLGM8hgUe1ArEC6UCsQKxAStDnDFlnmZxzhrvLHTDDOOO+wSX77b+bbBZhR4Y74sJa4CRJ9pvN5jkHbYx5SpLks66A2mAHfQOAAwebG2NadeGVwQ54BQAXGWgqdA4AY2PMQ9UAKoEHg8FpFEXPALAfSOmntbbT7/enodQHwVprVviYOiKid1ZHRDP+DxGPOQuIeJSBXQohxmXwUrDWmp1yPdm+AKBb5NAFeA8Ae259SwixDC7PQmBO2QlvtNaehVLoSvLiMjGN4/isNthTeyuESEJ14+9aa153E1JdqDjrIIqiw16vxyc3aKPR6MBa++EWFgZcBl6mmQ+TlJJrXdmUUjN32F6FEKe1aqy1TutbuLkokip7g4oB4B8crPXfS7XXJjepMWcnt32uHC6/NyNiJ47jSTC/mQXD4bBNRPyopLYC/wX2Ln9htFWC8AX4TegXONtriehaSslNf21TSnUR8S6v1xeCAYC7T+2RJhslEfH7vex6/iNTBl5bad7GUjBvUEqNETGdp7YCJ6K5lJIHih8LTiBbIec4qQXOHj7fV5VBYSPF/jVxzoIzlh9oLcXpZr7vi8Wizb8bjcak6pCwkeJt1XwtxduAfwMZ1QYu9Imb3QAAAABJRU5ErkJggg=="/>--%>
 <%--                <img width="24px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAACBklEQVRIS+1WXVLCMBDelOEdTyCcQHsC5QZyAvEE4iNsGeuQDI/qCYQT4A3EE8gNxBPY9wyNs52kk9YUyo9THswTNJv99vt2k10GFS1WES44gcMwbIRhGBUFRfv1ev2a9qWU0022rv1fwEKIcwCYSSl91wEN+gEATR3YssjW+AKADiIubCIZYG34BgANAFggom+MNeAtAHQtULO9BICJlPLZDlYIQd9PASDyPM/v9/v0P1kZYM75gjF2pvduEHFCv0ej0aXneTMd0LqyiOI47gyHwzkZCSEoyBd9IEMkBeac9xhjj9roARFDx+GytZgGLYQgP/d0UCl1FwTBU4axJcsXIib509JTPndZvsmr5XuJiK0UWEtJuaVlR0uSXeyCyhibDwaDdl61OI7blIpEalsOKeUJFciebE2sCWtdmN92GhNgzvmEMUb30pY5zc0ujB21klS4UmoaBEHXMDaSviPipVZhZ5mtQF3+km+VA1OJ04tFd633R4wzGIVNQghxUKnzdfIPnCpSidS5LrXHNQbq6e18S8y81cb7AUGNSyd4prj00/ZZov1tq0IkpWzZvToDnGsW2zpfa2+agzE6DmCrYZh56iCslVJLagy2s+Mab4torquBfA43SbU149wAZ/ynU8smQGdxlT00Ho+bq9XqiuxrtdqrPbaW9bE147KON9lVBvwDZwIoLtov/y0AAAAASUVORK5CYII="/>--%>
@@ -66,6 +85,7 @@
 <%--                </ul>--%>
 
 <%--            </li>--%>
+            <!-- 메뉴 -->
             <c:if test="${userid != null}"><!--로그인 했으면 -->
             <li><a href="#">
                 <span class="header-nickname">${userid}</span>
