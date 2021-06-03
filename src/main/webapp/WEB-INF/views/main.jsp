@@ -618,11 +618,7 @@
   </div><!--main-chart main-tab2 end-->
 </div><!--main-tab-content end-->
 
-<footer>
-  메인 테스트 입니다. 수정해야 합니다. 마지막에<br>
-
-  <a href="call">날짜 호출</a>
-</footer>
+<%@include file="footer.jsp"%>
 </body>
 </html>
 
