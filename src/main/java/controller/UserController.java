@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.portlet.ModelAndView;
 import scala.util.parsing.combinator.testing.Str;
 import scala.util.parsing.json.JSONObject;
 import service.UserService;
@@ -32,7 +33,7 @@ public class UserController {
     // ID중복검사 ajax 함수로 처리 부분
     @RequestMapping(value = "/user_idCheck.do", method = RequestMethod.POST)
     public String user_idCheck(@RequestParam("userid") String userid, Model model) throws Exception{
-
+        System.out.println(userid);
         int result = userService.checkUserId(userid);
         model.addAttribute("result", result);
 
@@ -178,9 +179,9 @@ public class UserController {
 
     // 닉네임 중복 검사 ajax 함수로 처리 부분
     @RequestMapping(value = "/user_akaCheck.do", method = RequestMethod.POST)
-    public String user_akaCheck(@RequestParam("userid") String userid, Model model) throws Exception{
+    public String user_akaCheck(@RequestParam("aka") String aka, Model model) throws Exception{
 
-        int result = userService.checkUserId(userid);
+        int result = userService.checkUserAka(aka);
         model.addAttribute("result", result);
 
         return "user/akaCheckResult";
@@ -213,8 +214,10 @@ public class UserController {
     }
 
     // 회원정보 수정 (fileupload)
-    @RequestMapping(value = "/memberInfoCheck_ok.do", method = RequestMethod.POST)
+    @RequestMapping(value = "/memberInfoCheck_ok.do", method = RequestMethod.POST,
+            headers = ("content-type=multipart/*"))
     public String memberInfoCheck_ok(@RequestParam("userUp_profile") MultipartFile userUp_profile,
+
                                      User user,
                                      HttpServletRequest request,
                                      HttpSession session,
@@ -237,7 +240,7 @@ public class UserController {
             file[0] = st.nextToken();
             file[1] = st.nextToken();   // 확장자
 
-            if (size > 100000){
+            if (size > 10000000){
                 result = 1;
                 model.addAttribute("result", result);
 
@@ -284,7 +287,7 @@ public class UserController {
         model.addAttribute("name", user.getName());
         model.addAttribute("profile", user.getProfile());
 
-        return "main";
+        return "memberInfoCheck";
 
     }
 

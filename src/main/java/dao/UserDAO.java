@@ -26,7 +26,7 @@ public class UserDAO {
     // 닉네임 중복 체크
     public int checkUserAka(String aka) throws Exception{
         int re = -1;    // 사용가능한 닉네임
-        User user = (User) sst.selectOne("login_check", aka);
+        User user = (User) sst.selectOne("aka_check", aka);
         if (user != null)
             re = 1;     // 중복 닉네임
 
@@ -43,6 +43,12 @@ public class UserDAO {
     public User userCheck(String userid) throws Exception{
 
         return (User) sst.selectOne("login_check", userid);
+    }
+
+    // 닉네임 인증 체크
+    public User akaCheck(String aka) throws Exception{
+
+        return (User) sst.selectOne("aka_check", aka);
     }
 
     // 비번 검색

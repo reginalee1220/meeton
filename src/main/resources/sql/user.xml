@@ -6,7 +6,7 @@
 
     <!-- 비번 검색 -->
     <select id="pwd_find" resultType="user" parameterType="user">
-        select * from user where userid=#{userid} and name = #{name }
+        select * from user where userid = #{userid} and name = #{name}
     </select>
 
     <!-- 회원저장 -->
@@ -14,16 +14,19 @@
         insert into user (userid,
                           passwd,
                             name,
+                            aka,
                             phone,
                             email,domain,
                             zip,address1,address2,
                             year,month,day,
+
                             joindate,
                             state)
         values (
                 #{userid},
                 #{passwd},
                 #{name},
+                #{aka},
                 #{phone},
                 #{email},
                 #{domain},
@@ -44,13 +47,20 @@
 
     </select>
 
+    <!-- 닉네임 인증 -->
+    <select id="aka_check" parameterType="String" resultType="user">
+        select * from user where aka=#{aka} and state=1
+
+    </select>
+
     <!-- 회원수정 -->
     <update id="user_edit" parameterType="user">
-    update user set passwd=#{passwd}, name=#{name}, aka=#{aka},
-                    zip=#{zip}, address1=#{address1}, address2=#{address2},
+    update user set passwd=#{passwd}, aka=#{aka},
+                    zip = #{zip}, address1 = #{address1}, address2 = #{address2},
                     phone=#{phone},
-                    email=#{email}, domain =#{domain},
-                    profile=#{profile, jdbcType=VARCHAR2}
+                    email=#{email},
+                    domain = #{domain},
+                    profile=#{profile}
                     where userid=#{userid}
     </update>
 

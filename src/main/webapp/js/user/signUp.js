@@ -76,31 +76,32 @@ function post_check(){
 
 // 아이디 중복 체크
 function id_check(){
-    //$("#idMsg").hide();//idcheck span 아이디 영역을 숨긴다.
-    var userid=$("#userid").val();
+    $("#idMsgError").hide();//idcheck span 아이디 영역을 숨긴다.
+    var userid = $("#userid").val();
     //1.입력글자 길이 체크
     if($.trim($("#userid").val()).length < 5){
         var newtext='영문 소문자/숫자 5~20자리로만 사용 가능합니다.';
-        $("#idMsg").text('');
-        $("#idMsg").show();
-        $("#idMsg").append(newtext);//span 아이디 영역에 경고문자 추가
+        $("#idMsgError").text('');
+        $("#idMsgError").show();
+        $("#idMsgError").append(newtext);//span 아이디 영역에 경고문자 추가
         $("#userid").val("").focus();
         return false;
     };
     if($.trim($("#userid").val()).length >20){
         var newtext='영문 소문자/숫자 5~20자리로만 사용 가능합니다.';
-        $("#idMsg").text('');
-        $("#idMsg").show();
-        $("#idMsg").append(newtext);//span 아이디 영역에 경고문자 추가
+        $("#idMsgError").text('');
+        $("#idMsgError").show();
+        $("#idMsgError").append(newtext);//span 아이디 영역에 경고문자 추가
         $("#userid").val("").focus();
         return false;
     };
+
     //입력아이디 유효성 검사
     if(!(validate_userid(userid))){
         var newtext='영문 소문자/숫자 5~20자리로만 사용 가능합니다.';
-        $("#idMsg").text('');//문자 초기화
-        $("#idMsg").show();//span 아이디 영역을 보이게 한다.
-        $("#idMsg").append(newtext);
+        $("#idMsgError").text('');//문자 초기화
+        $("#idMsgError").show();//span 아이디 영역을 보이게 한다.
+        $("#idMsgError").append(newtext);
         $("#userid").val("").focus();
         return false;
     };
@@ -114,7 +115,7 @@ function id_check(){
         url:"user_idCheck.do",
         data: {"userid":userid},
         success: function (data) {
-            alert("return success="+data);
+            // alert("return success=" + data);
             if(data==1){	//중복 ID
                 var newtext='중복 아이디입니다.';
                 $("#idMsg").text('');
@@ -140,8 +141,7 @@ function id_check(){
 // 아이디 중복 체크 끝
 
 // 정규식 표현식
-function validate_userid(userid)
-{
+function validate_userid(userid) {
     var pattern= new RegExp(/^[a-z0-9_]+$/);
     //영문 소문자,숫자 ,_가능,정규표현식
     return pattern.test(userid);

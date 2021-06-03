@@ -303,6 +303,7 @@ fieldset{border:none;} /* 더미 숨기기 */
 }
 .userinfo_section .user_check .user_pw .mem_world .pw_de .info_word{
     width: 100%;
+    margin-bottom: 7px;
 }
 .userinfo_section .user_check .user_pw .mem_world .pw_de .info_word > span{
     font-size:12px;
@@ -503,7 +504,7 @@ fieldset{border:none;} /* 더미 숨기기 */
     font-size:17px;
     color:#878787;
 }
-/* 핸드폰번호 수정  */
+/* 이메일 수정  */
 .userinfo_section .user_check .user_email .mem_world{
     display: flex;
     /* align-content:center; 줄이 여러개일 때 한 줄에 대한 세로축 높이가 똑같을 때 사용 */
@@ -528,7 +529,7 @@ fieldset{border:none;} /* 더미 숨기기 */
     font-size: 15px;
     color: #878787;
 }
-/* 핸드폰번호 입력 */
+
 .userinfo_section .user_check .user_email .mem_world .em_de{
     width: 70%;
     padding-left:50px;
@@ -554,7 +555,7 @@ fieldset{border:none;} /* 더미 숨기기 */
     padding-left:1em; font-family: inherit; background-color:#fff; border: 1px solid #f0f3f6; border-radius: 5px; /* iSO 둥근모서리 제거 */ outline-style: none; -webkit-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -moz-appearance: none; /* 브라우저별 기본 스타일링 제거 */ appearance: none;
 }
 .em_de > .domain > input[type="text"]{
-    width:130px;
+    width: 130px;
     height: 40px;
     padding-left:1em; font-family: inherit; background-color:#fff; border: 1px solid #f0f3f6; border-radius: 5px; /* iSO 둥근모서리 제거 */ outline-style: none; -webkit-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -moz-appearance: none; /* 브라우저별 기본 스타일링 제거 */ appearance: none;
 }
@@ -566,7 +567,7 @@ fieldset{border:none;} /* 더미 숨기기 */
 /* focus */
 .email input[type="text"]:focus{
     width:150px;
-    height:40px;
+    height: 40px;
     line-height : normal; padding-left:1em; font-family: inherit; background-color:#fff;/* iSO 둥근모서리 제거 */ /* outline-style: none; */ border: solid 2px #9efdb5;border-radius: 5px;  -webkit-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -moz-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -webkit-transition: 0.5s; transition: 0.5s; appearance: none;
 }
 .em_de > .domain > input[type="text"]:focus{
@@ -574,7 +575,7 @@ fieldset{border:none;} /* 더미 숨기기 */
     height: 40px;
     line-height : normal; padding-left:1em; font-family: inherit; background-color:#fff;/* iSO 둥근모서리 제거 */ /* outline-style: none; */ border: solid 2px #9efdb5;border-radius: 5px;  -webkit-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -moz-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -webkit-transition: 0.5s; transition: 0.5s; appearance: none;
 }
-.em_de > .selectd:focus{
+.em_de > select:focus {
     width:130px;
     height: 40px;
     line-height : normal; padding-left:1em; font-family: inherit; background-color:#fff;/* iSO 둥근모서리 제거 */ /* outline-style: none; */ border: solid 2px #9efdb5;border-radius: 5px;  -webkit-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -moz-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -webkit-transition: 0.5s; transition: 0.5s; appearance: none;

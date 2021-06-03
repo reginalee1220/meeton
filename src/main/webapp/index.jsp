@@ -9,7 +9,7 @@
 <%--  <%--%>
 <%--	response.sendRedirect("main.do");--%>
 <%--  %>--%>
-<%session.setAttribute("userid","coco");%>
+<%session.setAttribute("userid","wlsghldnjs123");%>
   location.href="memberInfoCheck.do";
 </script>
 

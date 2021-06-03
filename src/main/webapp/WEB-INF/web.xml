@@ -51,5 +51,11 @@
         <filter-name>encodingFilter</filter-name>
         <url-pattern>*.do</url-pattern>
     </filter-mapping>
+    <!-- 추가  -->
+<!--    <filter-mapping>-->
+<!--        <filter-name>MultipartFilter</filter-name>-->
+<!--        <url-pattern>/*</url-pattern>-->
+<!--    </filter-mapping>-->
+
 
 </web-app>

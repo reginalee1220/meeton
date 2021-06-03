@@ -38,6 +38,629 @@
 
     <script src="./js/user/userInfoCheck.js"></script>
 
+    <style>
+        /* userInfoCheck.css layout */
+        *{margin:0; padding:0; box-sizing: border-box; font-family: 'Noto Sans KR', sans-serif;}
+        ul, ol, li {list-style: none;}
+        a {color: #333; text-decoration: none; line-height: 1;}
+        a:hover, a:focus, a:active {text-decoration:none;}
+        /*===========================================================================*/
+        /* ------- 메인 레이아웃 ------- */
+        /* 전체 layout */
+        .wrap{width:100%; height:auto; box-sizing: border-box;}
+        .null {display: none;} /* 더미 숨기기 */
+        legend{display: none;} /* 더미 숨기기 */
+        fieldset{border:none;} /* 더미 숨기기 */
+        /* 유효성 검사 메세지 */
+        .text_red {font-size: 13px; line-height: 14px; margin:10px 0 10px 60px; color: #bc3838; text-align: left;}
+        .text_purple {font-size: 13px; line-height: 14px;  margin:10px 0 10px 120px; color: #53afdc; text-align: left;}
+        /*===========================================================================*/
+        /* ------- 타이틀 ------- */
+        .userinfo_top{
+            width: 100%;
+            background-color: #fafbfc;
+        }
+        .userinfo_inner{
+            max-width: 970px;
+            margin: 0 auto;
+        }
+        .userinfo_inner > h2{
+            padding-top:70px;
+            font-size: 30px;
+            font-weight: bold;
+            color:#4e4e4e;
+        }
+        /*===========================================================================*/
+        /* ------- 네비게이션 ------- */
+        .userinfo_top .katego{
+            width: 100%;
+            background-color: #fafbfc;
+            border-bottom: 1px solid #d8d8d8;
+        }
+        .userinfo_top .katego .userinfo_nav{
+            width: 970px;
+            height: 100px;
+            margin: 0 auto;
+            padding-top:65px;
+        }
+        .userinfo_top .katego .userinfo_nav > ul > li {
+            display: inline;
+            width: 120px;
+            height: 35px;
+            margin-right: 10px;
+        }
+        .userinfo_top .katego .userinfo_nav > ul > li.my_info > button {
+            width: 120px;
+            height: 35px;
+            color:#53afdc;
+            font-size:15px;
+        }
+        .userinfo_top .katego .userinfo_nav > ul > li > button {
+            width: 120px;
+            height: 35px;
+            background: #fff;
+            border:#fff;
+            color:#4e4e4e;
+            font-size:15px;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .userinfo_top .katego .userinfo_nav > ul > li > button:hover {
+            width: 120px;
+            height: 35px;
+            color:#53afdc;
+            font-size:15px;
+            border-bottom: 1px solid #53afdc;
+        }
+        /*===========================================================================*/
+        /* ------- 정보수정폼 ------- */
+        .userinfo_section{
+            width: 970px;
+            height: auto;
+            margin:0 auto;
+        }
+        .userinfo_section h6{
+            font-size:13px;
+            color:#878787;
+            padding-top:20px;
+        }
+
+        .userinfo_section .user_check{
+            padding-top:95px;
+        }
+        /* ------- 프로필 ------- */
+        .userinfo_section .user_check .user_profile{
+            width: 100%;
+        }
+        .userinfo_section .user_check .user_profile > .mem_edat > span{
+            vertical-align: middle;
+            font-size:17px;
+            color:#878787;
+        }
+        /* 프로필 수정 업로드 */
+        .userinfo_section .user_check .user_profile .mem_world{
+            display: flex;
+            /* align-content:center; 줄이 여러개일 때 한 줄에 대한 세로축 높이가 똑같을 때 사용 */
+            align-items:center; /* 한줄에대한 높이가 다를 때 세로축 */
+            flex-direction:row; /* 기본값 */
+            justify-content:flex-start; /* 가록 축 정렬에 대한 설정값 */
+            flex-wrap: wrap;
+            width: 100%;
+            border-top:1px solid #e9e9e9;
+            border-bottom: 1px solid #e9e9e9;
+            margin-top:15px;
+        }
+        .userinfo_section .user_check .user_profile .mem_world .text_tit{
+            width: 30%;
+            padding-top:58px;
+            padding-bottom: 58px;
+            text-align: center;
+            background: #f8f8f8;
+            border-right: 1px solid #e9e9e9;
+        }
+        .userinfo_section .user_check .user_profile .mem_world .text_tit > span {
+            font-size: 15px;
+            color: #878787;
+        }
+        /* 프로필 프리뷰 & 업로드 */
+        .userinfo_section .user_check .user_profile .upload_profile {
+            display: flex;
+            /* align-content:center; 줄이 여러개일 때 한 줄에 대한 세로축 높이가 똑같을 때 사용 */
+            align-items:center; /* 한줄에대한 높이가 다를 때 세로축 */
+            flex-direction:row; /* 기본값 */
+            justify-content:flex-start; /* 가록 축 정렬에 대한 설정값 */
+            flex-wrap: wrap;
+            width: 70%;
+        }
+        /* 프로필 이미지 프리뷰 */
+        .userinfo_section .user_check .user_profile .upload_profile .proview{
+            width: 100px;
+            height: 100px;
+            border: 2px solid transparent;
+            border-radius: 5px;
+            background-image:
+                    linear-gradient(#a0ffb4, #a0ffb4),
+                    linear-gradient(to top, #4ba9e1, #a0ffb4);
+            background-origin: border-box;/*이미지 시작 위치*/
+            background-clip: content-box, border-box; /*이미지 잘릴 위치*/
+            overflow: hidden;
+            margin: 0 20px 0 50px;
+        }
+        .userinfo_section .user_check .user_profile .upload_profile .proview img{
+            width:100%;
+        }
+        /* 프로필 업로드 버튼 */
+        .userinfo_section .user_check .user_profile .upload_profile .img_upload{
+            width: 70%;
+        }
+        .userinfo_section .user_check .user_profile .upload_profile .img_upload input[type="file"]{
+            padding-left:1em; font-family: inherit; background-color:#fff;border-radius: 5px; /* iSO 둥근모서리 제거 */ outline-style: none; -webkit-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -moz-appearance: none; /* 브라우저별 기본 스타일링 제거 */ appearance: none;
+        }
+
+        /*===========================================================================*/
+        /* ------- 닉네임 ------- */
+        .userinfo_section .user_check .user_aka{
+            width: 100%;
+            margin-top: 30px;
+        }
+        .userinfo_section .user_check .user_aka > .mem_edat > span{
+            vertical-align: middle;
+            font-size:17px;
+            color:#878787;
+        }
+        /* 닉네임 수정  */
+        .userinfo_section .user_check .user_aka .mem_world{
+            display: flex;
+            /* align-content:center; 줄이 여러개일 때 한 줄에 대한 세로축 높이가 똑같을 때 사용 */
+            align-items:center; /* 한줄에대한 높이가 다를 때 세로축 */
+            flex-direction:row; /* 기본값 */
+            justify-content:flex-start; /* 가록 축 정렬에 대한 설정값 */
+            flex-wrap: wrap;
+            width: 100%;
+            border-top:1px solid #e9e9e9;
+            border-bottom: 1px solid #e9e9e9;
+            margin-top:15px;
+
+        }
+        .userinfo_section .user_check .user_aka .mem_world .text_tit{
+            width: 30%;
+            padding-top:58px;
+            padding-bottom: 58px;
+            text-align: center;
+            background: #f8f8f8;
+            border-right: 1px solid #e9e9e9;
+        }
+        .userinfo_section .user_check .user_aka .mem_world .text_tit > span {
+            font-size: 15px;
+            color: #878787;
+        }
+        /* 닉네임 & 중복확인체크 */
+        .userinfo_section .user_check .user_aka .mem_world .aka_upl{
+            width: 70%;
+        }
+        .userinfo_section .user_check .user_aka .mem_world .aka_upl .test{
+            display: flex;
+            /* align-content:center; 줄이 여러개일 때 한 줄에 대한 세로축 높이가 똑같을 때 사용 */
+            align-items:center; /* 한줄에대한 높이가 다를 때 세로축 */
+            flex-direction:row; /* 기본값 */
+            justify-content:flex-start; /* 가록 축 정렬에 대한 설정값 */
+            flex-wrap: wrap;
+            width: 70%;
+
+        }
+        .userinfo_section .user_check .user_aka .mem_world .aka_upl .test .proview{
+            width: 40%;
+            margin: 0 20px 0 50px;
+
+        }
+        .test > .proview input[type="text"]{
+            width: 210px;
+            height: 40px;
+            padding-left:1em; font-family: inherit; background-color:#fff; border: 1px solid #f0f3f6; border-radius: 5px; /* iSO 둥근모서리 제거 */ outline-style: none; -webkit-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -moz-appearance: none; /* 브라우저별 기본 스타일링 제거 */ appearance: none;
+        }
+        /* focus */
+        .test > .proview input[type="text"]:focus{
+            width:210px;
+            height:40px;
+            line-height : normal; padding-left:1em; font-family: inherit; background-color:#fff;/* iSO 둥근모서리 제거 */ /* outline-style: none; */ border: solid 2px #9efdb5;border-radius: 5px;  -webkit-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -moz-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -webkit-transition: 0.5s; transition: 0.5s; appearance: none;
+        }
+        /* 중복체크 */
+        .userinfo_section .user_check .user_aka .mem_world .aka_upl .test .btn_check{
+            width:30%;
+            margin-left:30px;
+        }
+        /* 중복 버튼 */
+        .userinfo_section .user_check .user_aka .mem_world .aka_upl .btn_check button{
+            width: 150px;
+            height: 45px;
+            border-radius: 10px;
+            border:1px solid #d7d7dd;
+            background-color: #fff;
+            font-size: 13px;
+            color: #666666;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.5s;
+
+        }
+        .userinfo_section .user_check .user_aka .mem_world .aka_upl .btn_check button a{
+            color: #666666;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .userinfo_section .user_check .user_aka .mem_world .aka_upl .btn_check button:hover{
+            width: 150px;
+            height: 45px;
+            background:linear-gradient(312deg, rgba(76,168,223,1) 0%, rgba(160,255,180,1) 100%);
+            border-radius: 10px;
+            box-shadow: 3px 3px 3px 1px rgba(76, 76, 76, .2);
+            border:1px solid #f2f2f3;
+            color: #fff;
+        }
+        .userinfo_section .user_check .user_aka .mem_world .aka_upl .btn_check button a:hover{
+            color: #fff;
+            text-align: center;
+        }
+        /*===========================================================================*/
+        /* ------- 비밀번호 ------- */
+        .userinfo_section .user_check .user_pw{
+            width: 100%;
+            margin-top: 30px;
+        }
+        .userinfo_section .user_check .user_pw > .mem_edat > span{
+            vertical-align: middle;
+            font-size:17px;
+            color:#878787;
+        }
+        /* 비밀번호 수정  */
+        .userinfo_section .user_check .user_pw .mem_world{
+            display: flex;
+            /* align-content:center; 줄이 여러개일 때 한 줄에 대한 세로축 높이가 똑같을 때 사용 */
+            align-items:center; /* 한줄에대한 높이가 다를 때 세로축 */
+            flex-direction:row; /* 기본값 */
+            justify-content:flex-start; /* 가록 축 정렬에 대한 설정값 */
+            flex-wrap: wrap;
+            width: 100%;
+            border-top:1px solid #e9e9e9;
+            border-bottom: 1px solid #e9e9e9;
+            margin-top:15px;
+        }
+        .userinfo_section .user_check .user_pw .mem_world .text_tit{
+            width: 30%;
+            padding-top:58px;
+            padding-bottom: 150px;
+            text-align: center;
+            background: #f8f8f8;
+            border-right: 1px solid #e9e9e9;
+        }
+        .userinfo_section .user_check .user_pw .mem_world .text_tit > span {
+            font-size: 15px;
+            color: #878787;
+        }
+        /* 비밀번호 입력 */
+        .userinfo_section .user_check .user_pw .mem_world .pw_de{
+            width: 70%;
+            padding-left:50px;
+        }
+        .userinfo_section .user_check .user_pw .mem_world .pw_de .info_word{
+            width: 100%;
+            margin-bottom: 7px;
+        }
+        .userinfo_section .user_check .user_pw .mem_world .pw_de .info_word > span{
+            font-size:12px;
+            color: #878787;
+        }
+        .pw_de .info_word input[type="password"]{
+            width: 250px;
+            height: 40px;
+            padding-left:1em; font-family: inherit; background-color:#fff; border: 1px solid #f0f3f6; border-radius: 5px; /* iSO 둥근모서리 제거 */ outline-style: none; -webkit-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -moz-appearance: none; /* 브라우저별 기본 스타일링 제거 */ appearance: none;
+        }
+        .pw_de .info_word:nth-child(3){
+            padding-bottom: 20px;
+        }
+        /* focus */
+        .info_word input[type="password"]:focus{
+            width:250px;
+            height:40px;
+            line-height : normal; padding-left:1em; font-family: inherit; background-color:#fff;/* iSO 둥근모서리 제거 */ /* outline-style: none; */ border: solid 2px #9efdb5;border-radius: 5px;  -webkit-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -moz-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -webkit-transition: 0.5s; transition: 0.5s; appearance: none;
+        }
+        /*===========================================================================*/
+        /* ------- 주소 ------- */
+        .userinfo_section .user_check .user_ads{
+            width: 100%;
+            margin-top: 30px;
+        }
+        .userinfo_section .user_check .user_ads > .mem_edat > span{
+            vertical-align: middle;
+            font-size:17px;
+            color:#878787;
+        }
+        /* 주소 수정  */
+        .userinfo_section .user_check .user_ads .mem_world{
+            display: flex;
+            /* align-content:center; 줄이 여러개일 때 한 줄에 대한 세로축 높이가 똑같을 때 사용 */
+            align-items:center; /* 한줄에대한 높이가 다를 때 세로축 */
+            flex-direction:row; /* 기본값 */
+            justify-content:flex-start; /* 가록 축 정렬에 대한 설정값 */
+            flex-wrap: wrap;
+            width: 100%;
+            border-top:1px solid #e9e9e9;
+            border-bottom: 1px solid #e9e9e9;
+            margin-top:15px;
+        }
+        .userinfo_section .user_check .user_ads .mem_world .text_tit{
+            width: 30%;
+            padding-top:58px;
+            padding-bottom: 150px;
+            text-align: center;
+            background: #f8f8f8;
+            border-right: 1px solid #e9e9e9;
+        }
+        .userinfo_section .user_check .user_ads .mem_world .text_tit > span {
+            font-size: 15px;
+            color: #878787;
+        }
+        /* 주소 입력 */
+        .userinfo_section .user_check .user_ads .mem_world .ads_de{
+            width: 70%;
+            padding-left:50px;
+        }
+        .userinfo_section .user_check .user_ads .mem_world .ads_de .info_word{
+            display: flex;
+            width: 100%;
+        }
+        /* 우편번호 검색 버튼 */
+        .ads_de .info_word .btn_ZIPcheck button{
+            width: 150px;
+            height: 45px;
+            border-radius: 10px;
+            border:1px solid #d7d7dd;
+            background-color: #fff;
+            font-size:15px;
+            color: #666666;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.5s;
+            margin-left: 20px;
+        }
+        .ads_de .info_word .btn_ZIPcheck button a{
+            color: #666666;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .ads_de .info_word .btn_ZIPcheck button:hover{
+            width: 150px;
+            height: 45px;
+            background:linear-gradient(312deg, rgba(76,168,223,1) 0%, rgba(160,255,180,1) 100%);
+            border-radius: 10px;
+            box-shadow: 3px 3px 3px 1px rgba(76, 76, 76, .2);
+            border:1px solid #f2f2f3;
+            color: #fff;
+        }
+        .ads_de .info_word .btn_ZIPcheck button a:hover{
+            color: #fff;
+            text-align: center;
+        }
+        .userinfo_section .user_check .user_ads .mem_world .ads_de .address1{
+            width: 100%;
+            margin-top:10px;
+            margin-bottom: 10px;
+        }
+        /* 우편번호 input 요소 */
+        .zip_wd > input[type="text"]{
+            width:210px;
+            height: 40px;
+            padding-left:1em; font-family: inherit; background-color:#fff; border: 1px solid #f0f3f6; border-radius: 5px; /* iSO 둥근모서리 제거 */ outline-style: none; -webkit-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -moz-appearance: none; /* 브라우저별 기본 스타일링 제거 */ appearance: none;
+        }
+        .address1 > input[type="text"]{
+            width:450px;
+            height: 40px;
+            padding-left:1em; font-family: inherit; background-color:#fff; border: 1px solid #f0f3f6; border-radius: 5px; /* iSO 둥근모서리 제거 */ outline-style: none; -webkit-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -moz-appearance: none; /* 브라우저별 기본 스타일링 제거 */ appearance: none;
+        }
+        .address2 > input[type="text"]{
+            width:450px;
+            height: 40px;
+            padding-left:1em; font-family: inherit; background-color:#fff; border: 1px solid #f0f3f6; border-radius: 5px; /* iSO 둥근모서리 제거 */ outline-style: none; -webkit-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -moz-appearance: none; /* 브라우저별 기본 스타일링 제거 */ appearance: none;
+        }
+        /* focus */
+        .info_word input[type="text"]:focus{
+            width:210px;
+            height:40px;
+            line-height : normal; padding-left:1em; font-family: inherit; background-color:#fff;/* iSO 둥근모서리 제거 */ /* outline-style: none; */ border: solid 2px #9efdb5;border-radius: 5px;  -webkit-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -moz-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -webkit-transition: 0.5s; transition: 0.5s; appearance: none;
+        }
+        .address1 > input[type="text"]:focus{
+            width:450px;
+            height:40px;
+            line-height : normal; padding-left:1em; font-family: inherit; background-color:#fff;/* iSO 둥근모서리 제거 */ /* outline-style: none; */ border: solid 2px #9efdb5;border-radius: 5px;  -webkit-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -moz-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -webkit-transition: 0.5s; transition: 0.5s; appearance: none;
+        }
+        .address2 > input[type="text"]:focus{
+            width:450px;
+            height:40px;
+            line-height : normal; padding-left:1em; font-family: inherit; background-color:#fff;/* iSO 둥근모서리 제거 */ /* outline-style: none; */ border: solid 2px #9efdb5;border-radius: 5px;  -webkit-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -moz-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -webkit-transition: 0.5s; transition: 0.5s; appearance: none;
+        }
+        /*===========================================================================*/
+        /* ------- 핸드폰번호 ------- */
+        .userinfo_section .user_check .user_phone{
+            width: 100%;
+            margin-top: 30px;
+        }
+        .userinfo_section .user_check .user_phone > .mem_edat > span{
+            vertical-align: middle;
+            font-size:17px;
+            color:#878787;
+        }
+        /* 핸드폰번호 수정  */
+        .userinfo_section .user_check .user_phone .mem_world{
+            display: flex;
+            /* align-content:center; 줄이 여러개일 때 한 줄에 대한 세로축 높이가 똑같을 때 사용 */
+            align-items:center; /* 한줄에대한 높이가 다를 때 세로축 */
+            flex-direction:row; /* 기본값 */
+            justify-content:flex-start; /* 가록 축 정렬에 대한 설정값 */
+            flex-wrap: wrap;
+            width: 100%;
+            border-top:1px solid #e9e9e9;
+            border-bottom: 1px solid #e9e9e9;
+            margin-top:15px;
+        }
+        .userinfo_section .user_check .user_phone .mem_world .text_tit{
+            width: 30%;
+            padding-top:50px;
+            padding-bottom: 50px;
+            text-align: center;
+            background: #f8f8f8;
+            border-right: 1px solid #e9e9e9;
+        }
+        .userinfo_section .user_check .user_phone .mem_world .text_tit > span {
+            font-size: 15px;
+            color: #878787;
+        }
+        /* 핸드폰번호 입력 */
+        .userinfo_section .user_check .user_phone .mem_world .ph_de{
+            width: 70%;
+            padding-left:50px;
+            padding-bottom: 20px;
+        }
+        .userinfo_section .user_check .user_phone .mem_world .ph_de .info_word{
+            width: 100%;
+        }
+        .info_word .ph_wd input[type="tel"]{
+            width:450px;
+            height: 40px;
+            padding-left:1em; font-family: inherit; background-color:#fff; border: 1px solid #f0f3f6; border-radius: 5px; /* iSO 둥근모서리 제거 */ outline-style: none; -webkit-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -moz-appearance: none; /* 브라우저별 기본 스타일링 제거 */ appearance: none;
+        }
+        /* focus */
+        .info_word .ph_wd input[type="tel"]:focus{
+            width:450px;
+            height:40px;
+            line-height : normal; padding-left:1em; font-family: inherit; background-color:#fff;/* iSO 둥근모서리 제거 */ /* outline-style: none; */ border: solid 2px #9efdb5;border-radius: 5px;  -webkit-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -moz-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -webkit-transition: 0.5s; transition: 0.5s; appearance: none;
+        }
+        /*===========================================================================*/
+        /* ------- 이메일 ------- */
+        .userinfo_section .user_check .user_email{
+            width: 100%;
+            margin-top: 30px;
+        }
+        .userinfo_section .user_check .user_email > .mem_edat > span{
+            vertical-align: middle;
+            font-size:17px;
+            color:#878787;
+        }
+        /* 이메일 수정  */
+        .userinfo_section .user_check .user_email .mem_world{
+            display: flex;
+            /* align-content:center; 줄이 여러개일 때 한 줄에 대한 세로축 높이가 똑같을 때 사용 */
+            align-items:center; /* 한줄에대한 높이가 다를 때 세로축 */
+            flex-direction:row; /* 기본값 */
+            justify-content:flex-start; /* 가록 축 정렬에 대한 설정값 */
+            flex-wrap: wrap;
+            width: 100%;
+            border-top:1px solid #e9e9e9;
+            border-bottom: 1px solid #e9e9e9;
+            margin-top:15px;
+        }
+        .userinfo_section .user_check .user_email .mem_world .text_tit{
+            width: 30%;
+            padding-top:50px;
+            padding-bottom: 50px;
+            text-align: center;
+            background: #f8f8f8;
+            border-right: 1px solid #e9e9e9;
+        }
+        .userinfo_section .user_check .user_email .mem_world .text_tit > span {
+            font-size: 15px;
+            color: #878787;
+        }
+
+        .userinfo_section .user_check .user_email .mem_world .em_de{
+            width: 70%;
+            padding-left:50px;
+            padding-bottom: 20px;
+        }
+        .userinfo_section .user_check .user_email .mem_world .em_de .info_word{
+            display: flex;
+            /* align-content:center; 줄이 여러개일 때 한 줄에 대한 세로축 높이가 똑같을 때 사용 */
+            align-items:center; /* 한줄에대한 높이가 다를 때 세로축 */
+            flex-direction:row; /* 기본값 */
+            justify-content:flex-start; /* 가록 축 정렬에 대한 설정값 */
+            flex-wrap: wrap;
+            width: 100%;
+        }
+        .userinfo_section .user_check .user_email .mem_world .em_de .info_word .domain{
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+
+        .email input[type="text"]{
+            width:150px;
+            height: 40px;
+            padding-left:1em; font-family: inherit; background-color:#fff; border: 1px solid #f0f3f6; border-radius: 5px; /* iSO 둥근모서리 제거 */ outline-style: none; -webkit-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -moz-appearance: none; /* 브라우저별 기본 스타일링 제거 */ appearance: none;
+        }
+        .em_de > .domain > input[type="text"]{
+            width: 130px;
+            height: 40px;
+            padding-left:1em; font-family: inherit; background-color:#fff; border: 1px solid #f0f3f6; border-radius: 5px; /* iSO 둥근모서리 제거 */ outline-style: none; -webkit-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -moz-appearance: none; /* 브라우저별 기본 스타일링 제거 */ appearance: none;
+        }
+        .em_de > .selectd{
+            width:130px;
+            height: 40px;
+            padding-left:1em; font-family: inherit; background-color:#fff; border: 1px solid #f0f3f6; border-radius: 5px; /* iSO 둥근모서리 제거 */ outline-style: none; -webkit-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -moz-appearance: none; /* 브라우저별 기본 스타일링 제거 */ appearance: none;
+        }
+        /* focus */
+        .email input[type="text"]:focus{
+            width:150px;
+            height: 40px;
+            line-height : normal; padding-left:1em; font-family: inherit; background-color:#fff;/* iSO 둥근모서리 제거 */ /* outline-style: none; */ border: solid 2px #9efdb5;border-radius: 5px;  -webkit-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -moz-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -webkit-transition: 0.5s; transition: 0.5s; appearance: none;
+        }
+        .em_de > .domain > input[type="text"]:focus{
+            width:130px;
+            height: 40px;
+            line-height : normal; padding-left:1em; font-family: inherit; background-color:#fff;/* iSO 둥근모서리 제거 */ /* outline-style: none; */ border: solid 2px #9efdb5;border-radius: 5px;  -webkit-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -moz-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -webkit-transition: 0.5s; transition: 0.5s; appearance: none;
+        }
+        .em_de > select:focus {
+            width:130px;
+            height: 40px;
+            line-height : normal; padding-left:1em; font-family: inherit; background-color:#fff;/* iSO 둥근모서리 제거 */ /* outline-style: none; */ border: solid 2px #9efdb5;border-radius: 5px;  -webkit-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -moz-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -webkit-transition: 0.5s; transition: 0.5s; appearance: none;
+        }
+
+
+
+
+
+
+
+        /* ======= 회원수정 ======= */
+        .complete{
+            width:970px;
+            padding:100px 0 100px 0 ;
+        }
+        .complete button{
+            margin-left:350px;
+            width:183px;
+            height:50px;
+            border-radius: 10px;
+            border:1px solid #d7d7dd;
+            background-color: #fff;
+            font-size: 13px;
+            color: #666666;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.5s;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        .complete button:hover{
+            width:183px;
+            height:50px;
+            background:linear-gradient(312deg, rgba(76,168,223,1) 0%, rgba(160,255,180,1) 100%);
+            box-shadow: 3px 3px 3px 1px rgba(76, 76, 76, .2);
+            border-radius: 10px;
+            border:1px solid #d7d7dd;
+            font-size:13px; color:#ffffff;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+    </style>
+
 
 </head>
 <body>
@@ -73,7 +696,7 @@
             <h6>회원가입 시 입력하신 정보를 확인, 수정할 수 있습니다.</h6>
             <div class="user_check" ><!-- user_check -->
                 <form id="memberInfoCheck" method="post" action="/memberInfoCheck_ok.do"
-                      onsubmit="return edit_check()" enctype="multipart/form-data"><!-- 전체 form 요소 시작 -->
+                      onsubmit="return check()" enctype="multipart/form-data"><!-- 전체 form 요소 시작 -->
                         <!-- 이진파일을 업로드 할려면 enctype 속성을 지정 -->
                     <fieldset>
                         <legend>회원정보 수정 폼</legend>
@@ -92,13 +715,13 @@
                                 <div class="upload_profile">
                                     <div class="proview"><!-- 현재 프로필 -->
                                         <span>
-<%--                                            <img src="/images/profile/profile-img.jpeg"/>--%>
-                                            ${user.profile}
+                                            <img src="./imgUpload/${user.profile}"/>
+
                                         </span>
                                     </div>
                                     <div class="img_upload">
                                         <input type="file" name="userUp_profile" />
-                                        <button type="button">이미지 업로드</button>
+<%--                                        <button type="button">이미지 업로드</button>--%>
                                     </div>
                                 </div>
                             </div>
@@ -123,11 +746,11 @@
                                             <input id="aka" type="text" name="aka" value="${editm.name}" />
                                         </div>
                                         <div class="btn_check">
-                                            <button type="button" value="닉네임 중복 확인" id="akaCheck">닉네임 중복 확인</button>
+                                            <button type="button" value="닉네임 중복 확인" id="akaCheck" onclick="aka_Check()" >닉네임 중복 확인</button>
                                         </div>
                                     </div>
                                     <!-- 닉네임 입력 메세지 : 중복 닉네임 입니다.-->
-                                    <div id="akaError" class="text_red">중복 닉네임 입니다.</div>
+                                    <div id="akaError" class="text_red"></div>
                                 </div>
                             </div>
 
@@ -215,7 +838,7 @@
                                     <div class="info_word"><!-- 핸드폰번호 -->
                                         <div class="ph_wd">
                                             <label for="phone"></label>
-                                            <input id="phone" type="tel" name="phone" value="${phone}" placeholder="ex) 010-0000-0000" />
+                                            <input id="phone" type="tel" name="phone" value="${editm.phone}" placeholder="ex) 010-0000-0000" />
                                         </div>
                                     </div><!-- // 핸드폰번호 -->
                                 </div>
@@ -237,13 +860,13 @@
                                 <div class="em_de">
                                     <div class="info_word"><!-- 이메일 -->
                                         <div class="email">
-                                            <input id="email" type="text" name="email" value="${email}" />
+                                            <input id="email" type="text" name="email" value="${editm.email}" />
                                             <span>
                                                 @
                                             </span>
                                         </div>
                                         <div class="domain">
-                                            <input id="domain" type="text" name="domain" value="${domain}">
+                                            <input id="domain" type="text" name="domain" value="${editm.domain}">
                                         </div>
                                         <div class="selectd">
                                             <select id="mail_list" name="mail_list" onchange="domain_list()" class="sel" aria-label="이메일 입력">
