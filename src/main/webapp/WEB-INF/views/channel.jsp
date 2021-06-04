@@ -55,7 +55,7 @@
             </div><!-- // direct_msg -->
             <div class="kategorie"><!-- kategorie -->
                 <ul class="kategorie_title">
-                    <a href="videoPage.do"><li class="upload_video">업로드 영상보기</li></a>
+<%--                    <a href="videoPage.do"><li class="upload_video">업로드 영상보기</li></a>--%>
                     <a href="videoPage.do" class="allVideo"><li class="all_video">전체영상</li></a>
                 </ul>
             </div><!-- // kategorie -->
@@ -124,7 +124,7 @@
                                 <i class='bx bx-play-circle' ></i>
                             </box-icon>
                         </span>
-                    <span class="text">다시보기</span>
+                    <a href="videoPage.do?channelnum=${channel.channelnum}"><span class="text">다시보기</span></a>
                 </a>
             </div><!-- // vod_title -->
             <div class="vod_preview"><!-- vod_preview -->

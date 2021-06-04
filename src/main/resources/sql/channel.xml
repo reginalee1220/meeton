@@ -14,4 +14,12 @@
     <select id="c_getVideo" parameterType="String" resultType="video">
         select * from video where userid=#{userid} and visibility=1 order by register limit 3
     </select>
+    <!--총영상개수 구하기-->
+    <select id="c_getTotalVideo" parameterType="int" resultType="int">
+        select count(videonum) from video where channelnum = #{channelNum}
+    </select>
+    <!--페이징 영상 리스트 불러오기-->
+    <select id="c_getVideoList" parameterType="PagingDTO" resultType="video">
+        select * from video where channelnum = #{channelnum} order by register desc limit #{start}, #{limit}
+    </select>
 </mapper>
