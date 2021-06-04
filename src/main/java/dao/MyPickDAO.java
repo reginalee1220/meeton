@@ -2,13 +2,10 @@ package dao;
 
 import model.Favorite;
 import model.HistoryDTO;
-import model.Video;
-import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import javax.inject.Inject;
 import java.util.List;
 
 @Repository

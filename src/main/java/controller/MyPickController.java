@@ -2,7 +2,6 @@ package controller;
 
 import model.Favorite;
 import model.HistoryDTO;
-import model.MyPlayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

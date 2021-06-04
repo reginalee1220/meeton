@@ -3,7 +3,6 @@ package service;
 import dao.MyPickDAO;
 import model.Favorite;
 import model.HistoryDTO;
-import model.Video;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
