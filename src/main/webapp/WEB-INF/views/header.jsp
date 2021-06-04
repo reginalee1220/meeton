@@ -58,39 +58,39 @@
                 <span class="header-desc">업로드하기</span></a>
             </li>
             </c:if>
-<%--            <li class="header-alarm"><a href="#">--%>
-<%--                <img width="24px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAB6klEQVRIS+2W0VECMRCGd4/hWUvQCpQK1A6gArUC8ZFLGM8hgUe1ArEC6UCsQKxAStDnDFlnmZxzhrvLHTDDOOO+wSX77b+bbBZhR4Y74sJa4CRJ9pvN5jkHbYx5SpLks66A2mAHfQOAAwebG2NadeGVwQ54BQAXGWgqdA4AY2PMQ9UAKoEHg8FpFEXPALAfSOmntbbT7/enodQHwVprVviYOiKid1ZHRDP+DxGPOQuIeJSBXQohxmXwUrDWmp1yPdm+AKBb5NAFeA8Ae259SwixDC7PQmBO2QlvtNaehVLoSvLiMjGN4/isNthTeyuESEJ14+9aa153E1JdqDjrIIqiw16vxyc3aKPR6MBa++EWFgZcBl6mmQ+TlJJrXdmUUjN32F6FEKe1aqy1TutbuLkokip7g4oB4B8crPXfS7XXJjepMWcnt32uHC6/NyNiJ47jSTC/mQXD4bBNRPyopLYC/wX2Ln9htFWC8AX4TegXONtriehaSslNf21TSnUR8S6v1xeCAYC7T+2RJhslEfH7vex6/iNTBl5bad7GUjBvUEqNETGdp7YCJ6K5lJIHih8LTiBbIec4qQXOHj7fV5VBYSPF/jVxzoIzlh9oLcXpZr7vi8Wizb8bjcak6pCwkeJt1XwtxduAfwMZ1QYu9Imb3QAAAABJRU5ErkJggg=="/>--%>
-<%--                <img width="24px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAACBklEQVRIS+1WXVLCMBDelOEdTyCcQHsC5QZyAvEE4iNsGeuQDI/qCYQT4A3EE8gNxBPY9wyNs52kk9YUyo9THswTNJv99vt2k10GFS1WES44gcMwbIRhGBUFRfv1ev2a9qWU0022rv1fwEKIcwCYSSl91wEN+gEATR3YssjW+AKADiIubCIZYG34BgANAFggom+MNeAtAHQtULO9BICJlPLZDlYIQd9PASDyPM/v9/v0P1kZYM75gjF2pvduEHFCv0ej0aXneTMd0LqyiOI47gyHwzkZCSEoyBd9IEMkBeac9xhjj9roARFDx+GytZgGLYQgP/d0UCl1FwTBU4axJcsXIib509JTPndZvsmr5XuJiK0UWEtJuaVlR0uSXeyCyhibDwaDdl61OI7blIpEalsOKeUJFciebE2sCWtdmN92GhNgzvmEMUb30pY5zc0ujB21klS4UmoaBEHXMDaSviPipVZhZ5mtQF3+km+VA1OJ04tFd633R4wzGIVNQghxUKnzdfIPnCpSidS5LrXHNQbq6e18S8y81cb7AUGNSyd4prj00/ZZov1tq0IkpWzZvToDnGsW2zpfa2+agzE6DmCrYZh56iCslVJLagy2s+Mab4torquBfA43SbU149wAZ/ynU8smQGdxlT00Ho+bq9XqiuxrtdqrPbaW9bE147KON9lVBvwDZwIoLtov/y0AAAAASUVORK5CYII="/>--%>
-<%--                <span class="header-desc">알림</span></a>--%>
-<%--                <ul class="header-submenu alarm">--%>
-<%--                    <li></li>--%>
-<%--                    <li><a href="#">--%>
-<%--                    </a>--%>
-<%--                    </li>--%>
-<%--                    <li><a href="#">--%>
-<%--                    </a>--%>
-<%--                    </li>--%>
-<%--                    <li><a href="#">--%>
-<%--                    </a>--%>
-<%--                    </li>--%>
-<%--                    <li><a href="#">--%>
-<%--                    </a>--%>
-<%--                    </li>--%>
-<%--                    <li><a href="#">--%>
-<%--                    </a>--%>
-<%--                    </li>--%>
-<%--                    <li><a href="#">--%>
-<%--                    </a>--%>
-<%--                    </li>--%>
-<%--                </ul>--%>
+            <%--            <li class="header-alarm"><a href="#">--%>
+            <%--                <img width="24px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAB6klEQVRIS+2W0VECMRCGd4/hWUvQCpQK1A6gArUC8ZFLGM8hgUe1ArEC6UCsQKxAStDnDFlnmZxzhrvLHTDDOOO+wSX77b+bbBZhR4Y74sJa4CRJ9pvN5jkHbYx5SpLks66A2mAHfQOAAwebG2NadeGVwQ54BQAXGWgqdA4AY2PMQ9UAKoEHg8FpFEXPALAfSOmntbbT7/enodQHwVprVviYOiKid1ZHRDP+DxGPOQuIeJSBXQohxmXwUrDWmp1yPdm+AKBb5NAFeA8Ae259SwixDC7PQmBO2QlvtNaehVLoSvLiMjGN4/isNthTeyuESEJ14+9aa153E1JdqDjrIIqiw16vxyc3aKPR6MBa++EWFgZcBl6mmQ+TlJJrXdmUUjN32F6FEKe1aqy1TutbuLkokip7g4oB4B8crPXfS7XXJjepMWcnt32uHC6/NyNiJ47jSTC/mQXD4bBNRPyopLYC/wX2Ln9htFWC8AX4TegXONtriehaSslNf21TSnUR8S6v1xeCAYC7T+2RJhslEfH7vex6/iNTBl5bad7GUjBvUEqNETGdp7YCJ6K5lJIHih8LTiBbIec4qQXOHj7fV5VBYSPF/jVxzoIzlh9oLcXpZr7vi8Wizb8bjcak6pCwkeJt1XwtxduAfwMZ1QYu9Imb3QAAAABJRU5ErkJggg=="/>--%>
+            <%--                <img width="24px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAACBklEQVRIS+1WXVLCMBDelOEdTyCcQHsC5QZyAvEE4iNsGeuQDI/qCYQT4A3EE8gNxBPY9wyNs52kk9YUyo9THswTNJv99vt2k10GFS1WES44gcMwbIRhGBUFRfv1ev2a9qWU0022rv1fwEKIcwCYSSl91wEN+gEATR3YssjW+AKADiIubCIZYG34BgANAFggom+MNeAtAHQtULO9BICJlPLZDlYIQd9PASDyPM/v9/v0P1kZYM75gjF2pvduEHFCv0ej0aXneTMd0LqyiOI47gyHwzkZCSEoyBd9IEMkBeac9xhjj9roARFDx+GytZgGLYQgP/d0UCl1FwTBU4axJcsXIib509JTPndZvsmr5XuJiK0UWEtJuaVlR0uSXeyCyhibDwaDdl61OI7blIpEalsOKeUJFciebE2sCWtdmN92GhNgzvmEMUb30pY5zc0ujB21klS4UmoaBEHXMDaSviPipVZhZ5mtQF3+km+VA1OJ04tFd633R4wzGIVNQghxUKnzdfIPnCpSidS5LrXHNQbq6e18S8y81cb7AUGNSyd4prj00/ZZov1tq0IkpWzZvToDnGsW2zpfa2+agzE6DmCrYZh56iCslVJLagy2s+Mab4torquBfA43SbU149wAZ/ynU8smQGdxlT00Ho+bq9XqiuxrtdqrPbaW9bE147KON9lVBvwDZwIoLtov/y0AAAAASUVORK5CYII="/>--%>
+            <%--                <span class="header-desc">알림</span></a>--%>
+            <%--                <ul class="header-submenu alarm">--%>
+            <%--                    <li></li>--%>
+            <%--                    <li><a href="#">--%>
+            <%--                    </a>--%>
+            <%--                    </li>--%>
+            <%--                    <li><a href="#">--%>
+            <%--                    </a>--%>
+            <%--                    </li>--%>
+            <%--                    <li><a href="#">--%>
+            <%--                    </a>--%>
+            <%--                    </li>--%>
+            <%--                    <li><a href="#">--%>
+            <%--                    </a>--%>
+            <%--                    </li>--%>
+            <%--                    <li><a href="#">--%>
+            <%--                    </a>--%>
+            <%--                    </li>--%>
+            <%--                    <li><a href="#">--%>
+            <%--                    </a>--%>
+            <%--                    </li>--%>
+            <%--                </ul>--%>
 
-<%--            </li>--%>
+            <%--            </li>--%>
             <!-- 메뉴 -->
             <c:if test="${userid != null}"><!--로그인 했으면 -->
             <li><a href="#">
                 <span class="header-nickname">${userid}</span>
                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAABtElEQVRIS+2VS1LCQBCGu4cCl3ICQk4gnkDcWYAlbHisLE4gnkA8gXgC3UHYgCVQ7sQTiCeAcAJYisW0NbFiBchjwMRsmF1qev5v+k9PN0JIC0Piwh78b86Hb3W+M44vFviAyOJBpE3EZ7EYVbsFdSb0fzPOaXqdAG6CgJqaCHDbKyn1FfBZc5yMMDYCgMOA4PMl56mXijpZAYuPbEuvAcJdEGBCrA6KiUdL9quYbFvvAsGFr3CEp35RyVs1N6paFNnXggk7/LJ8Ho3xpFlUjhmLjXNtmudAHT+yZoCF51Kiu67l+I6zmi7+x+Vf4ERwPygrNTsNR7Bh+ScbAYKyE5xAjx7w1LrFrlabm7nmOE2Mve4CRs5PexV16HTWs2VmWnoDEa62gVsbxc5g431r0xEAHcnB8aNfSqS8Yj0zFgKZ9jiFxN69xMQ+IT8eFFXRAV2XFFgoSPVygut+WWl4QTdapteBjDYZIuCJXRwBvQ1KybSXhlRVr4u4DJKVASADl7baFLMbJOsDIBCwUeXWQWIzAAID/wySiNEcorFl2qk7uV1ga6tlspGJ2YNlXPIlJjSrvwHI+Y4ffXiqRgAAAABJRU5ErkJggg=="/>
-                </a>
+            </a>
                 <ul class="header-submenu">
                     <li></li>
                     <li><a href="/channel.do?userid=${userid}">
@@ -130,7 +130,7 @@
             <li><a href="login.do">
                 <span class="header-nickname">로그인</span>
                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAABtElEQVRIS+2VS1LCQBCGu4cCl3ICQk4gnkDcWYAlbHisLE4gnkA8gXgC3UHYgCVQ7sQTiCeAcAJYisW0NbFiBchjwMRsmF1qev5v+k9PN0JIC0Piwh78b86Hb3W+M44vFviAyOJBpE3EZ7EYVbsFdSb0fzPOaXqdAG6CgJqaCHDbKyn1FfBZc5yMMDYCgMOA4PMl56mXijpZAYuPbEuvAcJdEGBCrA6KiUdL9quYbFvvAsGFr3CEp35RyVs1N6paFNnXggk7/LJ8Ho3xpFlUjhmLjXNtmudAHT+yZoCF51Kiu67l+I6zmi7+x+Vf4ERwPygrNTsNR7Bh+ScbAYKyE5xAjx7w1LrFrlabm7nmOE2Mve4CRs5PexV16HTWs2VmWnoDEa62gVsbxc5g431r0xEAHcnB8aNfSqS8Yj0zFgKZ9jiFxN69xMQ+IT8eFFXRAV2XFFgoSPVygut+WWl4QTdapteBjDYZIuCJXRwBvQ1KybSXhlRVr4u4DJKVASADl7baFLMbJOsDIBCwUeXWQWIzAAID/wySiNEcorFl2qk7uV1ga6tlspGJ2YNlXPIlJjSrvwHI+Y4ffXiqRgAAAABJRU5ErkJggg=="/>
-                </a>
+            </a>
             </li>
             </c:if>
         </ul>

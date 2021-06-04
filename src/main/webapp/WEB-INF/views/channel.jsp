@@ -55,7 +55,7 @@
             </div><!-- // direct_msg -->
             <div class="kategorie"><!-- kategorie -->
                 <ul class="kategorie_title">
-                    <a href="videoPage.do"><li class="upload_video">업로드 영상보기</li></a>
+<%--                    <a href="videoPage.do"><li class="upload_video">업로드 영상보기</li></a>--%>
                     <a href="videoPage.do" class="allVideo"><li class="all_video">전체영상</li></a>
                 </ul>
             </div><!-- // kategorie -->
@@ -85,15 +85,15 @@
                 </div>
                 <div class="btn_subscript chBTN"><!-- 구독 -->
                     <ul class="btn_subs_list">
-                        <a href="purchase.do?aka=${channel.aka}">
-                        <li>
-                            <box-icon name='donate-heart' >
-                                <i class='bx bx-donate-heart' ></i>
-                            </box-icon>
-                        </li>
-                        <li>
-                            <span>${channel.subscribers}</span><!--구독자 수-->
-                        </li>
+                        <a href="purchase.do">
+                            <li>
+                                <box-icon name='donate-heart' >
+                                    <i class='bx bx-donate-heart' ></i>
+                                </box-icon>
+                            </li>
+                            <li>
+                                <span>${channel.subscribers}</span><!--구독자 수-->
+                            </li>
                         </a>
                     </ul>
                 </div>
@@ -110,11 +110,11 @@
             </div><!-- // 멀티채팅 -->
         </div><!-- // channel_em_chat 채널 이메일 & 멀티채팅 버튼 -->
         <c:if test="${user.userid.equals(sessionScope.userid)}">
-        <div class="channel_adminSET"><!-- 채널 관리 -->
-            <a href="adminChannel.do?state=dashboard">
-                <button type="button">채널 관리</button>
-            </a>
-        </div><!-- // 채널 관리 -->
+            <div class="channel_adminSET"><!-- 채널 관리 -->
+                <a href="adminChannel.do?state=dashboard">
+                    <button type="button">채널 관리</button>
+                </a>
+            </div><!-- // 채널 관리 -->
         </c:if>
         <section class="vod"><!-- vod -->
             <div class="vod_title"><!-- vod_title -->
@@ -124,67 +124,67 @@
                                 <i class='bx bx-play-circle' ></i>
                             </box-icon>
                         </span>
-                    <span class="text">다시보기</span>
+                    <a href="videoPage.do?channelnum=${channel.channelnum}"><span class="text">다시보기</span></a>
                 </a>
             </div><!-- // vod_title -->
             <div class="vod_preview"><!-- vod_preview -->
                 <c:forEach var="v" items="${video}" begin="0" end="0">
-                <div class="preview_B"><!-- preview_B -->
-                    <div class="video_pview"><!-- video_pview -->
-                        <div class="main_video_img"><!-- main_video_img -->
-                            <a href="/videoPage.do?videoNum=${v.videonum}"><!--해당 영상으로 이동-->
-                                <video muted="muted" poster="./videoUpload/${v.thumbnail} " preload="metadata" controls ><!-- controls : 동영상 체크  -->
-                                    <source src="./videoUpload/${v.videofile}" type="video/mp4" />
-                                    <source src="./videoUpload/${v.videofile}" type="video/webm" />
-                                    <source src="./videoUpload/${v.videofile}" type="video/ogg" />
-                                </video>
-                            </a>
-                            <div class="main_video_desc"><!-- main_video_desc -->
-                                <div class="video_name">
-                                    ${v.title}<!--영상이름-->
-                                </div>
-                                <div class="video_data">
-                                    <div class="play_sq">
-                                        <i class='bx bx-play' style='color:#4ba9e1' ></i>
-                                        <span>${v.views}</span><!--조회수-->
+                    <div class="preview_B"><!-- preview_B -->
+                        <div class="video_pview"><!-- video_pview -->
+                            <div class="main_video_img"><!-- main_video_img -->
+                                <a href="/videoPage.do?videoNum=${v.videonum}"><!--해당 영상으로 이동-->
+                                    <video muted="muted" poster="./videoUpload/${v.thumbnail} " preload="metadata" controls ><!-- controls : 동영상 체크  -->
+                                        <source src="./videoUpload/${v.videofile}" type="video/mp4" />
+                                        <source src="./videoUpload/${v.videofile}" type="video/webm" />
+                                        <source src="./videoUpload/${v.videofile}" type="video/ogg" />
+                                    </video>
+                                </a>
+                                <div class="main_video_desc"><!-- main_video_desc -->
+                                    <div class="video_name">
+                                        ${v.title}<!--영상이름-->
                                     </div>
-                                    <div class="data_sq">
-                                        ${v.register}<!--업로드일자-->
+                                    <div class="video_data">
+                                        <div class="play_sq">
+                                            <i class='bx bx-play' style='color:#4ba9e1' ></i>
+                                            <span>${v.views}</span><!--조회수-->
+                                        </div>
+                                        <div class="data_sq">
+                                            ${v.register}<!--업로드일자-->
+                                        </div>
                                     </div>
-                                </div>
-                            </div><!-- // main_video_desc -->
-                        </div><!-- // main_video_img -->
-                    </div><!-- // video_pview-->
-                </div><!-- // preview_B -->
+                                </div><!-- // main_video_desc -->
+                            </div><!-- // main_video_img -->
+                        </div><!-- // video_pview-->
+                    </div><!-- // preview_B -->
                 </c:forEach>
 
                 <div class="preview_s"><!-- preview_s -->
                     <c:forEach var="v" items="${video}" begin="1" end="2" step="1">
-                    <div class="video_pview"><!-- video_pview -->
-                        <div class="main_video_img"><!-- main_video_img -->
-                            <a href="video">
-                                <video muted="muted" poster="./videoUpload/${v.thumbnail} " preload="metadata" controls ><!-- controls : 동영상 체크  -->
-                                    <source src="./videoUpload/${v.videofile}" type="video/mp4" />
-                                    <source src="./videoUpload/${v.videofile}" type="video/webm" />
-                                    <source src="./videoUpload/${v.videofile}" type="video/ogg" />
-                                </video>
-                            </a>
-                            <div class="main_video_desc"><!-- main_video_desc -->
-                                <div class="video_name">
-                                    ${v.title}<!--영상이름-->
-                                </div>
-                                <div class="video_data">
-                                    <div class="play_sq">
-                                        <i class='bx bx-play' style='color:#4ba9e1' ></i>
-                                         <span>${v.views}</span><!--조회수-->
+                        <div class="video_pview"><!-- video_pview -->
+                            <div class="main_video_img"><!-- main_video_img -->
+                                <a href="video">
+                                    <video muted="muted" poster="./videoUpload/${v.thumbnail} " preload="metadata" controls ><!-- controls : 동영상 체크  -->
+                                        <source src="./videoUpload/${v.videofile}" type="video/mp4" />
+                                        <source src="./videoUpload/${v.videofile}" type="video/webm" />
+                                        <source src="./videoUpload/${v.videofile}" type="video/ogg" />
+                                    </video>
+                                </a>
+                                <div class="main_video_desc"><!-- main_video_desc -->
+                                    <div class="video_name">
+                                        ${v.title}<!--영상이름-->
                                     </div>
-                                    <div class="data_sq">
-                                          ${v.register}<!--업로드일자-->
+                                    <div class="video_data">
+                                        <div class="play_sq">
+                                            <i class='bx bx-play' style='color:#4ba9e1' ></i>
+                                            <span>${v.views}</span><!--조회수-->
+                                        </div>
+                                        <div class="data_sq">
+                                            ${v.register}<!--업로드일자-->
+                                        </div>
                                     </div>
-                                </div>
-                            </div><!-- // main_video_desc -->
-                        </div><!-- // main_video_img -->
-                    </div><!-- // video_pview-->
+                                </div><!-- // main_video_desc -->
+                            </div><!-- // main_video_img -->
+                        </div><!-- // video_pview-->
                     </c:forEach>
                 </div><!-- // preview_s -->
 

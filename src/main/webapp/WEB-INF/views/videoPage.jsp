@@ -1,8 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<c:set var="path" value="${pageContext.request.contextPath}" />
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +23,7 @@
 
 </heade>
 <body>
-<header>헤드자리</header>
+<%@include file="header.jsp"%>
 <div id="channel_wrap" class="channel">
     <!-- side_wrap -->
     <div class="side_wrap">
@@ -52,8 +50,8 @@
             </div><!-- // direct_msg -->
             <div class="kategorie"><!-- kategorie -->
                 <ul class="kategorie_title">
-                    <a href="${path}/videoPage.do"><li class="upload_video">업로드 영상보기</li></a>
-                    <a href="${path}/videoPage.do" class="allVideo"><li class="all_video">전체영상</li></a>
+                    <a href="/videoPage.do"><li class="upload_video">업로드 영상보기</li></a>
+                    <a href="/videoPage.do" class="allVideo"><li class="all_video">전체영상</li></a>
                 </ul>
             </div><!-- // kategorie -->
         </div><!-- //side_inner -->
@@ -103,594 +101,123 @@
                 </div><!-- // video_page_desc -->
             </section><!-- // video_page_info -->
             <section class="upload_video_board"><!-- upload_video_board -->
+                <!-- 비디오 이동 -->
                 <div class="upload_list"><!-- upload_list -->
-                    <div class="chUp"><!-- chUp -->
-                        <div class="chUp_video">
-                            <a href="#">
-                                <video muted="muted" poster=" " preload="metadata" controls ><!-- controls : 동영상 체크  -->
-                                    <source src="./images/video/testvideo.mp4" type="video/mp4" />
-                                    <source src="./images/video/testvideo.mp4" type="video/webm" />
-                                    <source src="./images/video/testvideo.mp4" type="video/ogg" />
-                                </video>
-                            </a>
-                            <div class="video_time">22:00</div>
-                        </div>
-                        <div class="chUp_desc">
-                            <div class="chUp_video_name">
-                                <a href="#">방송제목</a>
+                    <c:if test="${videoList != null}">
+                    <c:forEach var="v" items="${videoList}" >
+                        <div class="chUp"><!-- chUp -->
+                            <div class="chUp_video">
+                                <a href="/video.do?videonum=${v.videonum}">
+                                    <video muted="muted" poster="${v.thumbnail}" preload="metadata" controls ><!-- controls : 동영상 체크  -->
+                                        <source src="/videoUpload/${v.videofile}" type="video/mp4" />
+                                        <source src="/videoUpload/${v.videofile}" type="video/webm" />
+                                        <source src="/videoUpload/${v.videofile}" type="video/ogg" />
+                                    </video>
+                                </a>
+                                    <%--                                <div class="video_time">${v.videotime}</div>--%>
                             </div>
-                            <ul class="chUp_video_data">
-                                <li class="chUp_playSq">
+                            <div class="chUp_desc">
+                                <div class="chUp_video_name">
+                                    <a href="#">${v.title}</a>
+                                </div>
+                                <ul class="chUp_video_data">
+                                    <li class="chUp_playSq">
                                         <span class="cds_ifc cnp">
                                             <i class='bx bx-play' style='color:#4ba9e1' ></i>
                                         </span>
-                                    158,079
-                                </li>
-                                <li class="chUp_time">
-                                    2021.11.15
-                                </li>
-                            </ul>
-                        </div>
-                    </div><!-- // chUp -->
-                    <div class="chUp"><!-- chUp -->
-                        <div class="chUp_video">
-                            <a href="#">
-                                <video muted="muted" poster=" " preload="metadata" controls ><!-- controls : 동영상 체크  -->
-                                    <source src="./images/video/testvideo.mp4" type="video/mp4" />
-                                    <source src="./images/video/testvideo.mp4" type="video/webm" />
-                                    <source src="./images/video/testvideo.mp4" type="video/ogg" />
-                                </video>
-                            </a>
-                            <div class="video_time">22:00</div>
-                        </div>
-                        <div class="chUp_desc">
-                            <div class="chUp_video_name">
-                                <a href="#">방송제목</a>
+                                            ${v.views}
+                                    </li>
+                                    <li class="chUp_time">
+                                            ${v.register}
+                                    </li>
+                                </ul>
                             </div>
-                            <ul class="chUp_video_data">
-                                <li class="chUp_playSq">
-                                        <span class="cds_ifc cnp">
-                                            <i class='bx bx-play' style='color:#4ba9e1' ></i>
-                                        </span>
-                                    158,079
-                                </li>
-                                <li class="chUp_time">
-                                    2021.11.15
-                                </li>
-                            </ul>
-                        </div>
-                    </div><!-- // chUp -->
-                    <div class="chUp"><!-- chUp -->
-                        <div class="chUp_video">
-                            <a href="#">
-                                <video muted="muted" poster=" " preload="metadata" controls ><!-- controls : 동영상 체크  -->
-                                    <source src="./images/video/testvideo.mp4" type="video/mp4" />
-                                    <source src="./images/video/testvideo.mp4" type="video/webm" />
-                                    <source src="./images/video/testvideo.mp4" type="video/ogg" />
-                                </video>
-                            </a>
-                            <div class="video_time">22:00</div>
-                        </div>
-                        <div class="chUp_desc">
-                            <div class="chUp_video_name">
-                                <a href="#">방송제목</a>
-                            </div>
-                            <ul class="chUp_video_data">
-                                <li class="chUp_playSq">
-                                        <span class="cds_ifc cnp">
-                                            <i class='bx bx-play' style='color:#4ba9e1' ></i>
-                                        </span>
-                                    158,079
-                                </li>
-                                <li class="chUp_time">
-                                    2021.11.15
-                                </li>
-                            </ul>
-                        </div>
-                    </div><!-- // chUp -->
-                    <div class="chUp"><!-- chUp -->
-                        <div class="chUp_video">
-                            <a href="#">
-                                <video muted="muted" poster=" " preload="metadata" controls ><!-- controls : 동영상 체크  -->
-                                    <source src="./images/video/testvideo.mp4" type="video/mp4" />
-                                    <source src="./images/video/testvideo.mp4" type="video/webm" />
-                                    <source src="./images/video/testvideo.mp4" type="video/ogg" />
-                                </video>
-                            </a>
-                            <div class="video_time">22:00</div>
-                        </div>
-                        <div class="chUp_desc">
-                            <div class="chUp_video_name">
-                                <a href="#">방송제목</a>
-                            </div>
-                            <ul class="chUp_video_data">
-                                <li class="chUp_playSq">
-                                        <span class="cds_ifc cnp">
-                                            <i class='bx bx-play' style='color:#4ba9e1' ></i>
-                                        </span>
-                                    158,079
-                                </li>
-                                <li class="chUp_time">
-                                    2021.11.15
-                                </li>
-                            </ul>
-                        </div>
-                    </div><!-- // chUp -->
-                    <!-- --- -->
-                    <div class="chUp"><!-- chUp -->
-                        <div class="chUp_video">
-                            <a href="#">
-                                <video muted="muted" poster=" " preload="metadata" controls ><!-- controls : 동영상 체크  -->
-                                    <source src="./images/video/testvideo.mp4" type="video/mp4" />
-                                    <source src="./images/video/testvideo.mp4" type="video/webm" />
-                                    <source src="./images/video/testvideo.mp4" type="video/ogg" />
-                                </video>
-                            </a>
-                            <div class="video_time">22:00</div>
-                        </div>
-                        <div class="chUp_desc">
-                            <div class="chUp_video_name">
-                                <a href="#">방송제목</a>
-                            </div>
-                            <ul class="chUp_video_data">
-                                <li class="chUp_playSq">
-                                        <span class="cds_ifc cnp">
-                                            <i class='bx bx-play' style='color:#4ba9e1' ></i>
-                                        </span>
-                                    158,079
-                                </li>
-                                <li class="chUp_time">
-                                    2021.11.15
-                                </li>
-                            </ul>
-                        </div>
-                    </div><!-- // chUp -->
-                    <div class="chUp"><!-- chUp -->
-                        <div class="chUp_video">
-                            <a href="#">
-                                <video muted="muted" poster=" " preload="metadata" controls ><!-- controls : 동영상 체크  -->
-                                    <source src="./images/video/testvideo.mp4" type="video/mp4" />
-                                    <source src="./images/video/testvideo.mp4" type="video/webm" />
-                                    <source src="./images/video/testvideo.mp4" type="video/ogg" />
-                                </video>
-                            </a>
-                            <div class="video_time">22:00</div>
-                        </div>
-                        <div class="chUp_desc">
-                            <div class="chUp_video_name">
-                                <a href="#">방송제목</a>
-                            </div>
-                            <ul class="chUp_video_data">
-                                <li class="chUp_playSq">
-                                        <span class="cds_ifc cnp">
-                                            <i class='bx bx-play' style='color:#4ba9e1' ></i>
-                                        </span>
-                                    158,079
-                                </li>
-                                <li class="chUp_time">
-                                    2021.11.15
-                                </li>
-                            </ul>
-                        </div>
-                    </div><!-- // chUp -->
-                    <div class="chUp"><!-- chUp -->
-                        <div class="chUp_video">
-                            <a href="#">
-                                <video muted="muted" poster=" " preload="metadata" controls ><!-- controls : 동영상 체크  -->
-                                    <source src="./images/video/testvideo.mp4" type="video/mp4" />
-                                    <source src="./images/video/testvideo.mp4" type="video/webm" />
-                                    <source src="./images/video/testvideo.mp4" type="video/ogg" />
-                                </video>
-                            </a>
-                            <div class="video_time">22:00</div>
-                        </div>
-                        <div class="chUp_desc">
-                            <div class="chUp_video_name">
-                                <a href="#">방송제목</a>
-                            </div>
-                            <ul class="chUp_video_data">
-                                <li class="chUp_playSq">
-                                        <span class="cds_ifc cnp">
-                                            <i class='bx bx-play' style='color:#4ba9e1' ></i>
-                                        </span>
-                                    158,079
-                                </li>
-                                <li class="chUp_time">
-                                    2021.11.15
-                                </li>
-                            </ul>
-                        </div>
-                    </div><!-- // chUp -->
-                    <div class="chUp"><!-- chUp -->
-                        <div class="chUp_video">
-                            <a href="#">
-                                <video muted="muted" poster=" " preload="metadata" controls ><!-- controls : 동영상 체크  -->
-                                    <source src="./images/video/testvideo.mp4" type="video/mp4" />
-                                    <source src="./images/video/testvideo.mp4" type="video/webm" />
-                                    <source src="./images/video/testvideo.mp4" type="video/ogg" />
-                                </video>
-                            </a>
-                            <div class="video_time">22:00</div>
-                        </div>
-                        <div class="chUp_desc">
-                            <div class="chUp_video_name">
-                                <a href="#">방송제목</a>
-                            </div>
-                            <ul class="chUp_video_data">
-                                <li class="chUp_playSq">
-                                        <span class="cds_ifc cnp">
-                                            <i class='bx bx-play' style='color:#4ba9e1' ></i>
-                                        </span>
-                                    158,079
-                                </li>
-                                <li class="chUp_time">
-                                    2021.11.15
-                                </li>
-                            </ul>
-                        </div>
-                    </div><!-- // chUp -->
-                    <!-- --- -->
-                    <div class="chUp"><!-- chUp -->
-                        <div class="chUp_video">
-                            <a href="#">
-                                <video muted="muted" poster=" " preload="metadata" controls ><!-- controls : 동영상 체크  -->
-                                    <source src="./images/video/testvideo.mp4" type="video/mp4" />
-                                    <source src="./images/video/testvideo.mp4" type="video/webm" />
-                                    <source src="./images/video/testvideo.mp4" type="video/ogg" />
-                                </video>
-                            </a>
-                            <div class="video_time">22:00</div>
-                        </div>
-                        <div class="chUp_desc">
-                            <div class="chUp_video_name">
-                                <a href="#">방송제목</a>
-                            </div>
-                            <ul class="chUp_video_data">
-                                <li class="chUp_playSq">
-                                        <span class="cds_ifc cnp">
-                                            <i class='bx bx-play' style='color:#4ba9e1' ></i>
-                                        </span>
-                                    158,079
-                                </li>
-                                <li class="chUp_time">
-                                    2021.11.15
-                                </li>
-                            </ul>
-                        </div>
-                    </div><!-- // chUp -->
-                    <div class="chUp"><!-- chUp -->
-                        <div class="chUp_video">
-                            <a href="#">
-                                <video muted="muted" poster=" " preload="metadata" controls ><!-- controls : 동영상 체크  -->
-                                    <source src="./images/video/testvideo.mp4" type="video/mp4" />
-                                    <source src="./images/video/testvideo.mp4" type="video/webm" />
-                                    <source src="./images/video/testvideo.mp4" type="video/ogg" />
-                                </video>
-                            </a>
-                            <div class="video_time">22:00</div>
-                        </div>
-                        <div class="chUp_desc">
-                            <div class="chUp_video_name">
-                                <a href="#">방송제목</a>
-                            </div>
-                            <ul class="chUp_video_data">
-                                <li class="chUp_playSq">
-                                        <span class="cds_ifc cnp">
-                                            <i class='bx bx-play' style='color:#4ba9e1' ></i>
-                                        </span>
-                                    158,079
-                                </li>
-                                <li class="chUp_time">
-                                    2021.11.15
-                                </li>
-                            </ul>
-                        </div>
-                    </div><!-- // chUp -->
-                    <div class="chUp"><!-- chUp -->
-                        <div class="chUp_video">
-                            <a href="#">
-                                <video muted="muted" poster=" " preload="metadata" controls ><!-- controls : 동영상 체크  -->
-                                    <source src="./images/video/testvideo.mp4" type="video/mp4" />
-                                    <source src="./images/video/testvideo.mp4" type="video/webm" />
-                                    <source src="./images/video/testvideo.mp4" type="video/ogg" />
-                                </video>
-                            </a>
-                            <div class="video_time">22:00</div>
-                        </div>
-                        <div class="chUp_desc">
-                            <div class="chUp_video_name">
-                                <a href="#">방송제목</a>
-                            </div>
-                            <ul class="chUp_video_data">
-                                <li class="chUp_playSq">
-                                        <span class="cds_ifc cnp">
-                                            <i class='bx bx-play' style='color:#4ba9e1' ></i>
-                                        </span>
-                                    158,079
-                                </li>
-                                <li class="chUp_time">
-                                    2021.11.15
-                                </li>
-                            </ul>
-                        </div>
-                    </div><!-- // chUp -->
-                    <div class="chUp"><!-- chUp -->
-                        <div class="chUp_video">
-                            <a href="#">
-                                <video muted="muted" poster=" " preload="metadata" controls ><!-- controls : 동영상 체크  -->
-                                    <source src="./images/video/testvideo.mp4" type="video/mp4" />
-                                    <source src="./images/video/testvideo.mp4" type="video/webm" />
-                                    <source src="./images/video/testvideo.mp4" type="video/ogg" />
-                                </video>
-                            </a>
-                            <div class="video_time">22:00</div>
-                        </div>
-                        <div class="chUp_desc">
-                            <div class="chUp_video_name">
-                                <a href="#">방송제목</a>
-                            </div>
-                            <ul class="chUp_video_data">
-                                <li class="chUp_playSq">
-                                        <span class="cds_ifc cnp">
-                                            <i class='bx bx-play' style='color:#4ba9e1' ></i>
-                                        </span>
-                                    158,079
-                                </li>
-                                <li class="chUp_time">
-                                    2021.11.15
-                                </li>
-                            </ul>
-                        </div>
-                    </div><!-- // chUp -->
-                    <!-- --- -->
-                    <div class="chUp"><!-- chUp -->
-                        <div class="chUp_video">
-                            <a href="#">
-                                <video muted="muted" poster=" " preload="metadata" controls ><!-- controls : 동영상 체크  -->
-                                    <source src="./images/video/testvideo.mp4" type="video/mp4" />
-                                    <source src="./images/video/testvideo.mp4" type="video/webm" />
-                                    <source src="./images/video/testvideo.mp4" type="video/ogg" />
-                                </video>
-                            </a>
-                            <div class="video_time">22:00</div>
-                        </div>
-                        <div class="chUp_desc">
-                            <div class="chUp_video_name">
-                                <a href="#">방송제목</a>
-                            </div>
-                            <ul class="chUp_video_data">
-                                <li class="chUp_playSq">
-                                        <span class="cds_ifc cnp">
-                                            <i class='bx bx-play' style='color:#4ba9e1' ></i>
-                                        </span>
-                                    158,079
-                                </li>
-                                <li class="chUp_time">
-                                    2021.11.15
-                                </li>
-                            </ul>
-                        </div>
-                    </div><!-- // chUp -->
-                    <div class="chUp"><!-- chUp -->
-                        <div class="chUp_video">
-                            <a href="#">
-                                <video muted="muted" poster=" " preload="metadata" controls ><!-- controls : 동영상 체크  -->
-                                    <source src="./images/video/testvideo.mp4" type="video/mp4" />
-                                    <source src="./images/video/testvideo.mp4" type="video/webm" />
-                                    <source src="./images/video/testvideo.mp4" type="video/ogg" />
-                                </video>
-                            </a>
-                            <div class="video_time">22:00</div>
-                        </div>
-                        <div class="chUp_desc">
-                            <div class="chUp_video_name">
-                                <a href="#">방송제목</a>
-                            </div>
-                            <ul class="chUp_video_data">
-                                <li class="chUp_playSq">
-                                        <span class="cds_ifc cnp">
-                                            <i class='bx bx-play' style='color:#4ba9e1' ></i>
-                                        </span>
-                                    158,079
-                                </li>
-                                <li class="chUp_time">
-                                    2021.11.15
-                                </li>
-                            </ul>
-                        </div>
-                    </div><!-- // chUp -->
-                    <div class="chUp"><!-- chUp -->
-                        <div class="chUp_video">
-                            <a href="#">
-                                <video muted="muted" poster=" " preload="metadata" controls ><!-- controls : 동영상 체크  -->
-                                    <source src="./images/video/testvideo.mp4" type="video/mp4" />
-                                    <source src="./images/video/testvideo.mp4" type="video/webm" />
-                                    <source src="./images/video/testvideo.mp4" type="video/ogg" />
-                                </video>
-                            </a>
-                            <div class="video_time">22:00</div>
-                        </div>
-                        <div class="chUp_desc">
-                            <div class="chUp_video_name">
-                                <a href="#">방송제목</a>
-                            </div>
-                            <ul class="chUp_video_data">
-                                <li class="chUp_playSq">
-                                        <span class="cds_ifc cnp">
-                                            <i class='bx bx-play' style='color:#4ba9e1' ></i>
-                                        </span>
-                                    158,079
-                                </li>
-                                <li class="chUp_time">
-                                    2021.11.15
-                                </li>
-                            </ul>
-                        </div>
-                    </div><!-- // chUp -->
-                    <div class="chUp"><!-- chUp -->
-                        <div class="chUp_video">
-                            <a href="#">
-                                <video muted="muted" poster=" " preload="metadata" controls ><!-- controls : 동영상 체크  -->
-                                    <source src="./images/video/testvideo.mp4" type="video/mp4" />
-                                    <source src="./images/video/testvideo.mp4" type="video/webm" />
-                                    <source src="./images/video/testvideo.mp4" type="video/ogg" />
-                                </video>
-                            </a>
-                            <div class="video_time">22:00</div>
-                        </div>
-                        <div class="chUp_desc">
-                            <div class="chUp_video_name">
-                                <a href="#">방송제목</a>
-                            </div>
-                            <ul class="chUp_video_data">
-                                <li class="chUp_playSq">
-                                        <span class="cds_ifc cnp">
-                                            <i class='bx bx-play' style='color:#4ba9e1' ></i>
-                                        </span>
-                                    158,079
-                                </li>
-                                <li class="chUp_time">
-                                    2021.11.15
-                                </li>
-                            </ul>
-                        </div>
-                    </div><!-- // chUp -->
-                    <!-- --- -->
-                    <div class="chUp"><!-- chUp -->
-                        <div class="chUp_video">
-                            <a href="#">
-                                <video muted="muted" poster=" " preload="metadata" controls ><!-- controls : 동영상 체크  -->
-                                    <source src="./images/video/testvideo.mp4" type="video/mp4" />
-                                    <source src="./images/video/testvideo.mp4" type="video/webm" />
-                                    <source src="./images/video/testvideo.mp4" type="video/ogg" />
-                                </video>
-                            </a>
-                            <div class="video_time">22:00</div>
-                        </div>
-                        <div class="chUp_desc">
-                            <div class="chUp_video_name">
-                                <a href="#">방송제목</a>
-                            </div>
-                            <ul class="chUp_video_data">
-                                <li class="chUp_playSq">
-                                        <span class="cds_ifc cnp">
-                                            <i class='bx bx-play' style='color:#4ba9e1' ></i>
-                                        </span>
-                                    158,079
-                                </li>
-                                <li class="chUp_time">
-                                    2021.11.15
-                                </li>
-                            </ul>
-                        </div>
-                    </div><!-- // chUp -->
-                    <div class="chUp"><!-- chUp -->
-                        <div class="chUp_video">
-                            <a href="#">
-                                <video muted="muted" poster=" " preload="metadata" controls ><!-- controls : 동영상 체크  -->
-                                    <source src="./images/video/testvideo.mp4" type="video/mp4" />
-                                    <source src="./images/video/testvideo.mp4" type="video/webm" />
-                                    <source src="./images/video/testvideo.mp4" type="video/ogg" />
-                                </video>
-                            </a>
-                            <div class="video_time">22:00</div>
-                        </div>
-                        <div class="chUp_desc">
-                            <div class="chUp_video_name">
-                                <a href="#">방송제목</a>
-                            </div>
-                            <ul class="chUp_video_data">
-                                <li class="chUp_playSq">
-                                        <span class="cds_ifc cnp">
-                                            <i class='bx bx-play' style='color:#4ba9e1' ></i>
-                                        </span>
-                                    158,079
-                                </li>
-                                <li class="chUp_time">
-                                    2021.11.15
-                                </li>
-                            </ul>
-                        </div>
-                    </div><!-- // chUp -->
-                    <div class="chUp"><!-- chUp -->
-                        <div class="chUp_video">
-                            <a href="#">
-                                <video muted="muted" poster=" " preload="metadata" controls ><!-- controls : 동영상 체크  -->
-                                    <source src="./images/video/testvideo.mp4" type="video/mp4" />
-                                    <source src="./images/video/testvideo.mp4" type="video/webm" />
-                                    <source src="./images/video/testvideo.mp4" type="video/ogg" />
-                                </video>
-                            </a>
-                            <div class="video_time">22:00</div>
-                        </div>
-                        <div class="chUp_desc">
-                            <div class="chUp_video_name">
-                                <a href="#">방송제목</a>
-                            </div>
-                            <ul class="chUp_video_data">
-                                <li class="chUp_playSq">
-                                        <span class="cds_ifc cnp">
-                                            <i class='bx bx-play' style='color:#4ba9e1' ></i>
-                                        </span>
-                                    158,079
-                                </li>
-                                <li class="chUp_time">
-                                    2021.11.15
-                                </li>
-                            </ul>
-                        </div>
-                    </div><!-- // chUp -->
-                    <div class="chUp"><!-- chUp -->
-                        <div class="chUp_video">
-                            <a href="#">
-                                <video muted="muted" poster=" " preload="metadata" controls ><!-- controls : 동영상 체크  -->
-                                    <source src="./images/video/testvideo.mp4" type="video/mp4" />
-                                    <source src="./images/video/testvideo.mp4" type="video/webm" />
-                                    <source src="./images/video/testvideo.mp4" type="video/ogg" />
-                                </video>
-                            </a>
-                            <div class="video_time">22:00</div>
-                        </div>
-                        <div class="chUp_desc">
-                            <div class="chUp_video_name">
-                                <a href="#">방송제목</a>
-                            </div>
-                            <ul class="chUp_video_data">
-                                <li class="chUp_playSq">
-                                        <span class="cds_ifc cnp">
-                                            <i class='bx bx-play' style='color:#4ba9e1' ></i>
-                                        </span>
-                                    158,079
-                                </li>
-                                <li class="chUp_time">
-                                    2021.11.15
-                                </li>
-                            </ul>
-                        </div>
-                    </div><!-- // chUp -->
+                        </div><!-- // chUp -->
+                    </c:forEach>
+                    </c:if>
+                    <c:if test="${videoList == null}">
+                        업로드한 영상이 없습니다.
+                    </c:if>
                 </div><!-- // upload_list -->
             </section><!-- // upload_video_board -->
+
             <div class="board_paging"><!-- board_paging -->
-                1
+                <ul class="pagination">
+<%--                    <!--첫페이지로 이동 -->--%>
+                    <a href="videoPage.do?page=1">   <<  </a>
+<%--                    <!--이전블럭 이동 -->--%>
+                    <c:if test="${startpage > 5}">
+                        <a href="videoPage.do?page=${startpage - 5}">이전</a>
+                    </c:if>
+
+                    <!--번호 -->
+                    <c:forEach var="a" begin="${startpage}" end="${endpage}" >
+                        <c:if test="${a == page }">
+                            ${a}
+                        </c:if>
+                        <c:if test="${a == page }">
+                            <a href="videoPage.do?page=${a}"> ${a} </a>
+                        </c:if>
+
+                    </c:forEach>
+                    <!--다음블럭 이동 -->
+                    <c:if test="${endpagee < maxpage}">
+                        <a href="videoPage.do?page=${startpage + 10}">다음</a>
+                    </c:if>
+                    <!--마지막 페이지 이동 -->
+                    <a href="videoPage.do?page=${maxpage}">   >>  </a>
+
+                    <%--                    <c:if test="${not empty keyword}">--%>
+                    <%--                        <c:if test="${pp.startPage > pp.pagePerBlk }">--%>
+                    <%--                            <li><a href="${path }/list/pageNum/${pp.startPage - 1}?search=${search}&keyword=${keyword}">이전</a></li>--%>
+                    <%--                        </c:if>--%>
+                    <%--                        <c:forEach var="i" begin="${pp.startPage}" end="${pp.endPage}">--%>
+                    <%--                            <li <c:if test="${pp.currentPage==i}">class="active"</c:if>><a--%>
+                    <%--                                    href="${path }/list/pageNum/${i}?search=${search}&keyword=${keyword}">${i}</a></li>--%>
+                    <%--                        </c:forEach>--%>
+                    <%--                        <c:if test="${pp.endPage < pp.totalPage}">--%>
+                    <%--                            <li><a href="${path }/list/pageNum/${pp.endPage + 1}?search=${search}&keyword=${keyword}">다음</a></li>--%>
+                    <%--                        </c:if>--%>
+                    <%--                    </c:if>--%>
+                    <%--                    <c:if test="${empty keyword}">--%>
+                    <%--                        <c:if test="${pp.startPage > pp.pagePerBlk }">--%>
+                    <%--                            <li><a href="${path }/list/pageNum/${pp.startPage - 1}">이전</a></li>--%>
+                    <%--                        </c:if>--%>
+                    <%--                        <c:forEach var="i" begin="${pp.startPage}" end="${pp.endPage}">--%>
+                    <%--                            <li <c:if test="${pp.currentPage==i}">class="active"</c:if>><a--%>
+                    <%--                                    href="${path }/list/pageNum/${i}">${i}</a></li>--%>
+                    <%--                        </c:forEach>--%>
+                    <%--                        <c:if test="${pp.endPage < pp.totalPage}">--%>
+                    <%--                            <li><a href="${path }/list/pageNum/${pp.endPage + 1}">다음</a></li>--%>
+                    <%--                        </c:if>--%>
+                    <%--                    </c:if>--%>
+                </ul>
             </div><!-- // board_paging -->
-            <div class="board_search"><!-- board_search -->
-                <div class="select_box active"><!-- select-box active -->
-                    <label for="select_box"></label>
-                    <select id="select_box" name="select_box" aria-label="제목+내용">
-                        <option value="00" selected="selected">제목+내용</option>
-                        <option value="1">제목</option>
-                        <option value="2">내용</option>
-                    </select>
-                </div><!-- // select-box active -->
-                <div class="search_box">
-                    <div class="search_text">
-                        <input type="text" id="search_board" name="search_board" />
-                    </div>
-                    <div class="search_Btn">
-                        <input type="submit" value="검색">
-                    </div>
-                </div>
-            </div><!-- // board_search -->
+            <%--            <form action="${path}/video/pageNum/1">--%>
+            <%--                <div class="board_search"><!-- board_search -->--%>
+            <%--                    <div class="select_box active"><!-- select-box active -->--%>
+            <%--                        <label for="select_box"></label>--%>
+            <%--                        <select id="select_box" name="search" aria-label="제목+내용">--%>
+            <%--                            <option value="subject"--%>
+            <%--                                    <c:if test="${search=='subject'}">selected="selected" </c:if>>제목</option>--%>
+            <%--                            <option value="content"--%>
+            <%--                                    <c:if test="${search=='content'}">selected="selected" </c:if>>내용</option>--%>
+            <%--                            <option value="writer"--%>
+            <%--                                    <c:if test="${search=='writer'}">selected="selected" </c:if>>작성자</option>--%>
+            <%--                            <option value="subcon"--%>
+            <%--                                    <c:if test="${search=='subcon'}">selected="selected" </c:if>>제목+내용</option>--%>
+            <%--                        </select>--%>
+            <%--                    </div><!-- // select-box active -->--%>
+            <%--                    <div class="search_box">--%>
+            <%--                        <div class="search_text">--%>
+            <%--                            <input type="text" id="search_board" name="keyword" />--%>
+            <%--                        </div>--%>
+            <%--                        <div class="search_Btn">--%>
+            <%--                            <input type="submit" value="검색">--%>
+            <%--                        </div>--%>
+            <%--                    </div>--%>
+            <%--                </div><!-- // board_search -->--%>
+            <%--            </form>--%>
         </form>
     </div><!-- // main_wrap -->
 </div><!-- channel_wrap -->
