@@ -6,11 +6,11 @@
 <body>
 <script>
 
-<%--  <%--%>
-<%--	response.sendRedirect("main.do");--%>
-<%--  %>--%>
-<%session.setAttribute("userid","xkfxhl111");%>
-  location.href="memberInfoCheck.do";
+<%--&lt;%&ndash;  &lt;%&ndash;%>--%>
+<%--&lt;%&ndash;	response.sendRedirect("main.do");&ndash;%&gt;--%>
+<%--&lt;%&ndash;  %>&ndash;%&gt;--%>
+<%--<%session.setAttribute("userid","xkfxhl111");%>--%>
+  location.href="main.do";
 </script>
 
 </body>
