@@ -54,7 +54,7 @@ fieldset{border:none;} /* 더미 숨기기 */
 .userinfo_top .katego .userinfo_nav > ul > li > button {
     width: 120px;
     height: 35px;
-    background: #fafbfc;
+    background: #fff;
     border:#fff;
     color:#4e4e4e;
     font-size:15px;

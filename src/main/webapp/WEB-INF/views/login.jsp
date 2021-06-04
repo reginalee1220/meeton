@@ -8,16 +8,25 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-signin-client_id" content="782094082285-7afs1ko8fgkammjnvdqnrdb5a725j0oo.apps.googleusercontent.com">
     <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0, user-scalable=yes, target-densitydpi=medium-dpi" />
     <title>로그인</title>
+
+    <!-- css -->
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/default/import.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/user/login.css">
 
+    <!-- js -->
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+<%--    <script src="https://apis.google.com/js/platform.js" async defer></script><!-- 구글 API -->--%>
     <script src="<%=request.getContextPath()%>/js/user/login.js"></script>
+
 </head>
 <body>
 <!-- header -->
+<%@ include file="header.jsp"%>
+
 <div class="top_title">
     <div class="top_inner">
         <h1>MEETON 회원가입</h1>
@@ -33,7 +42,8 @@
                     <h3>MEETON 입니다.</h3>
                     <p>기존회원이시면 아이디와 비밀번호를 입력해주세요.</p>
                 </div>
-                <form id="loginForm" method="post" action="<%=request.getContextPath() %>/Login.do"><!-- 전체 form 요소 시작 -->
+                <form id="loginForm" method="post" action="/user_login_ok.do"
+                        onsubmit="return check()"><!-- 전체 form 요소 시작 -->
                     <fieldset>
                         <legend>Login Form</legend>
                         <div class="user_infoen"><!-- user_infoen -->
@@ -82,7 +92,7 @@
                                 <ul>
                                     <li class="member_title">비밀번호를 잊으셨나요?</li>
                                     <li class="pw_searchBt">
-                                        <button type="button" id="pwSearch" value="비밀번호 찾기">비밀번호 찾기</button>
+                                        <button type="button" id="pwSearch" value="비밀번호 찾기" onclick="pwd_find()">비밀번호 찾기</button>
                                     </li>
                                 </ul>
                             </div>
@@ -97,6 +107,9 @@
                                         <li>Google 계정 로그인</li>
                                     </ul>
                                 </button>
+                                <!-- Google 로그인 버튼 추가 -->
+<%--                                <div class="g-signin2" data-onsuccess="onSignIn" id="googleBtn"></div>--%>
+
                             </div>
                             <div class="naver_btn">
                                 <button type="button" value="네이버계정">
@@ -122,7 +135,7 @@
                     <span>회원이 아니신가요? </span>
                 </div>
                 <div class="signup_btn">
-                    <button type="button" value="회원가입" onClick="location.href='<%=request.getContextPath()%>/signUp.do' ">회원가입</button>
+                    <button type="button" value="회원가입" onclick="location='signUp.do'">회원가입</button>
                 </div>
             </div>
         </div>

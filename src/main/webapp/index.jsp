@@ -5,8 +5,12 @@
 </head>
 <body>
 <script>
-<%session.setAttribute("userid","runa");%>
-  location.href="main.do";
+
+<%--  <%--%>
+<%--	response.sendRedirect("main.do");--%>
+<%--  %>--%>
+<%session.setAttribute("userid","xkfxhl111");%>
+  location.href="memberInfoCheck.do";
 </script>
 
 </body>

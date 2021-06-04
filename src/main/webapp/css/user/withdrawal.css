@@ -1,0 +1,137 @@
+/* purchasedList.css layout */
+*{margin:0; padding:0; box-sizing: border-box; font-family: 'Noto Sans KR', sans-serif;}
+ul, ol, li {list-style: none;}
+a {color: #333; text-decoration: none; line-height: 1;}
+a:hover, a:focus, a:active {text-decoration:none;}
+/*===========================================================================*/
+/* ------- 메인 레이아웃 ------- */
+/* 전체 layout */
+.wrap{width:100%; height:auto; box-sizing: border-box;}
+.null {display: none;} /* 더미 숨기기 */
+legend{display: none;} /* 더미 숨기기 */
+fieldset{border:none;} /* 더미 숨기기 */
+/*===========================================================================*/
+/* ------- 타이틀 ------- */
+.userinfo_top{
+    width: 100%;
+    background-color: #fafbfc;
+}
+.userinfo_inner{
+    max-width: 970px;
+    margin: 0 auto;
+}
+.userinfo_inner > h2{
+    padding-top:70px;
+    font-size: 30px;
+    font-weight: bold;
+    color:#4e4e4e;
+}
+/*===========================================================================*/
+/* ------- 네비게이션 ------- */
+.userinfo_top .katego{
+    width: 100%;
+    background-color: #fafbfc;
+    border-bottom: 1px solid #d8d8d8;
+}
+.userinfo_top .katego .userinfo_nav{
+    width: 970px;
+    height: 100px;
+    margin: 0 auto;
+    padding-top:65px;
+}
+.userinfo_top .katego .userinfo_nav > ul > li {
+    display: inline;
+    width: 120px;
+    height: 35px;
+    margin-right: 10px;
+}
+.userinfo_top .katego .userinfo_nav > ul > li.withdrawal > button {
+    width: 120px;
+    height: 35px;
+    color:#53afdc;
+    font-size:15px;
+}
+.userinfo_top .katego .userinfo_nav > ul > li > button {
+    width: 120px;
+    height: 35px;
+    background: #fff;
+    border:#fff;
+    color:#4e4e4e;
+    font-size:15px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.userinfo_top .katego .userinfo_nav > ul > li > button:hover {
+    width: 120px;
+    height: 35px;
+    color:#53afdc;
+    font-size:15px;
+    border-bottom: 1px solid #53afdc;
+}
+/*===========================================================================*/
+/* ------- 결제내역 리스트 ------- */
+.with{
+    width: 970px;
+    margin: 0 auto;
+
+}
+.with h6{
+    font-size:13px;
+    color:#878787;
+    padding-top:20px;
+}
+.with .delete_member{
+    display: flex;
+    width: 100%;
+    height: auto;
+    margin-top:130px;
+}
+/* ------- 회원탈퇴 ------- */
+.name_word input[type="password"]{
+    width:600px;
+    height:45px;
+    padding-left:1em; font-family: inherit; background-color:#fff; border: 2px solid #f0f3f6; border-radius: 5px; /* iSO 둥근모서리 제거 */ outline-style: none; -webkit-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -moz-appearance: none; /* 브라우저별 기본 스타일링 제거 */ appearance: none;
+}
+/* focus */
+.name_word input[type="password"]:focus{
+    width:600px;
+    height:45px;
+    line-height : normal; padding-left:1em; font-family: inherit; background-color:#fff;/* iSO 둥근모서리 제거 */ /* outline-style: none; */ border: solid 2px #9efdb5;border-radius: 5px;  -webkit-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -moz-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -webkit-transition: 0.5s; transition: 0.5s; appearance: none;
+}
+
+/* 버튼 */
+.with .delete_member .complete{
+    width:20%;
+    margin-left: 20px;
+}
+/* 중복 버튼 */
+.with .delete_member .complete button{
+    width: 150px;
+    height: 45px;
+    border-radius: 10px;
+    border:1px solid #d7d7dd;
+    background-color: #fff;
+    font-size: 13px;
+    color: #666666;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.with .delete_member .complete button a{
+    color: #666666;
+    text-align: center;
+    transition: 0.3s;
+}
+.with .delete_member .complete button:hover{
+    width: 150px;
+    height: 45px;
+    background:linear-gradient(312deg, rgba(76,168,223,1) 0%, rgba(160,255,180,1) 100%);
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px 1px rgba(76, 76, 76, .2);
+    border:1px solid #f2f2f3;
+    color: #fff;
+}
+.with .delete_member .complete button a:hover{
+    color: #fff;
+    text-align: center;
+}
