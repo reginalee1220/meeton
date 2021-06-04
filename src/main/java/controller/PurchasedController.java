@@ -25,9 +25,9 @@ public class PurchasedController {
 
     // 구독버튼 누르면 popup 창으로 이동
     @RequestMapping("/purchase.do")
-    public String purchase(){
+    public String purchase(String aka, Model model){
 
-
+        model.addAttribute("aka", aka);
         return "purchasingPopUp";
     }
 
@@ -88,7 +88,15 @@ public class PurchasedController {
     // 결제 성공
     @RequestMapping("/success.do")
     public String success(Model model, HttpSession session){
-        return "main";
+
+        return "success";
+    }
+
+    // 결제성공 후 main 넘어가기
+    @RequestMapping("/done.do")
+    public String done(Model model, HttpSession session){
+
+        return "redirect:main.do";
     }
 
 

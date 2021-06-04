@@ -85,7 +85,7 @@
                 </div>
                 <div class="btn_subscript chBTN"><!-- 구독 -->
                     <ul class="btn_subs_list">
-                        <a href="purchase.do">
+                        <a href="purchase.do?aka=${channel.aka}">
                         <li>
                             <box-icon name='donate-heart' >
                                 <i class='bx bx-donate-heart' ></i>

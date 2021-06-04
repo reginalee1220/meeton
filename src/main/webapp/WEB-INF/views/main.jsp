@@ -1,7 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<% String contextPath = request.getContextPath(); %>
 <!DOCTYPE html>
 <html lang="kr">
 <head>
@@ -9,13 +8,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>meeton</title>
 
-  <link rel="stylesheet" href="<%=request.getContextPath() %>/css/default/import.css ">
-  <link rel="stylesheet" href="<%=request.getContextPath() %>/css/main/main.css" >
+  <link rel="stylesheet" href="./css/default/import.css ">
+  <link rel="stylesheet" href="./css/main/main.css" >
   <script src="http://code.jquery.com/jquery-latest.js"></script>
   <script src="./js/main/main.js"></script>
 </head>
 <body>
-<%= session.getAttribute("userid")%>
 <%@include file="header.jsp"%>
 <!--                        main-my                   -->
 <div class="main-my">

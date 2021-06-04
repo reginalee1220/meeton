@@ -88,13 +88,13 @@
 </head>
 <body>
 <div class="payPopUp">
-    <h3> 채널 구독 결제 화면입니다.</h3>
+    <h3> ${aka}채널 구독 결제 화면입니다.</h3>
     <div>
         <div class="title">결제정보 </div>
         <table>
             <tr>
                 <td>주문상품</td>
-                <td>채널 1달 구독권</td>
+                <td>${aka}채널 1달 구독권</td>
             </tr>
             <tr>
                 <td>상품금액</td>
