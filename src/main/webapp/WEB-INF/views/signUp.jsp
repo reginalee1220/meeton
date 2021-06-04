@@ -138,7 +138,7 @@
                         </div><!-- // frg -->
 
                         <!-- 이름 입력 메세지 : Name(이름)을 입력해주세요.-->
-                        <div id="nameError" class="text_red">이름</div>
+                        <div id="nameError" class="text_red"></div>
 
                     </div><!-- // form_group -->
 
@@ -151,12 +151,12 @@
                                     <label for="phone">휴대폰번호</label>
                                 </div>
                                 <div class="info_word">
-                                    <input id="phone" type="tel" name="phone" placeholder="‘-’없이 입력하세요.">
+                                    <input id="phone" type="tel" name="phone" placeholder="예)010-0000-0000">
                                 </div>
                             </div><!-- // mem_info -->
-                            <div class="btn_check">
-                                <button type="button" value="인증번호전송" id="phCheck">인증번호 전송</button>
-                            </div>
+<%--                            <div class="btn_check">--%>
+<%--                                <button type="button" value="인증번호전송" id="phCheck">인증번호 전송</button>--%>
+<%--                            </div>--%>
                         </div><!-- // frg -->
 
                         <!-- 핸드폰번호 입력 메세지 : 핸드폰번호를 입력 해주세요. -->
@@ -165,27 +165,27 @@
                     </div><!-- // form_group -->
 
                     <!-- 핸드폰번호 인증번호 입력 -->
-                    <div class="form_group"><!-- form_group -->
-                        <div class="frg"><!-- frg -->
-                            <div class="mem_info"><!-- mem_info -->
-                                <div class="info_name">
-                                    <label for="phoneAuth"></label>
-                                </div>
-                                <div class="info_word">
-                                    <input id="phoneAuth" type="tel" name="phoneAuth" placeholder="인증번호를 입력하세요.">
-                                </div>
-                            </div><!-- // mem_info -->
-                            <div class="btn_check">
-                                <button type="button" value="인증번호입력" id="authCheck">인증번호 입력</button>
-                            </div>
-                        </div><!-- // frg -->
+<%--                    <div class="form_group"><!-- form_group -->--%>
+<%--                        <div class="frg"><!-- frg -->--%>
+<%--                            <div class="mem_info"><!-- mem_info -->--%>
+<%--                                <div class="info_name">--%>
+<%--                                    <label for="phoneAuth"></label>--%>
+<%--                                </div>--%>
+<%--                                <div class="info_word">--%>
+<%--                                    <input id="phoneAuth" type="tel" name="phoneAuth" placeholder="인증번호를 입력하세요.">--%>
+<%--                                </div>--%>
+<%--                            </div><!-- // mem_info -->--%>
+<%--                            <div class="btn_check">--%>
+<%--                                <button type="button" value="인증번호입력" id="authCheck">인증번호 입력</button>--%>
+<%--                            </div>--%>
+<%--                        </div><!-- // frg -->--%>
 
-                        <!-- 핸드폰번호 입력 메세지 : 인증번호를 입력 해주세요. -->
-                        <div id="authMsg" class="text_red"></div>
-                        <!-- 핸드폰번호 입력 메세지 : 인증번호 성공 -->
-                        <div id="authPass" class="text_purple">인증번호 성공</div>
+<%--                        <!-- 핸드폰번호 입력 메세지 : 인증번호를 입력 해주세요. -->--%>
+<%--                        <div id="authMsg" class="text_red"></div>--%>
+<%--                        <!-- 핸드폰번호 입력 메세지 : 인증번호 성공 -->--%>
+<%--                        <div id="authPass" class="text_purple"></div>--%>
 
-                    </div><!-- // form_group -->
+<%--                    </div><!-- // form_group -->--%>
 
                     <!-- 이메일 입력 -->
                     <div class="form_group"><!-- form_group -->
@@ -216,15 +216,15 @@
                                     </div>
                                 </div>
                             </div><!-- // mem_info -->
-                            <div class="btn_check">
-                                <button type="button" value="이메일인증번호" id="emailCheck">인증번호 전송</button>
-                            </div>
+<%--                            <div class="btn_check">--%>
+<%--                                <button type="button" value="이메일인증번호" id="emailCheck">인증번호 전송</button>--%>
+<%--                            </div>--%>
                         </div><!-- // frg -->
 
                         <!-- 이메일 입력 메세지 : 이메일을 입력 해주세요. -->
                         <div id="emailMsg" class="text_red"></div>
                         <!-- 이메일 인증 완료 메세지 : 이메일 인증이 완료 되었습니다. -->
-                        <div id="emailPass" class="text_purple">인증번호 성공</div>
+                        <div id="emailPass" class="text_purple"></div>
 
                     </div><!-- // form_group -->
 
@@ -268,7 +268,7 @@
                         </div><!-- // frg -->
 
                         <!-- 주소 입력 메세지 : 주소를 입력 해주세요. -->
-                        <div id="address_msg" class="text_red">주소를 입력 해주세요.</div>
+                        <div id="address_msg" class="text_red"></div>
 
                     </div><!-- // form_group -->
 
@@ -313,9 +313,9 @@
                         <!-- 생일 입력 메세지 : 년도4자리를 입력 해주세요. -->
                         <div id="birtYearMsg" class="text_red"></div>
                         <!-- 생일 입력 메세지 : 월을 선택 해주세요. -->
-                        <div id="birthMonthMsg" class="text_purple">인증번호 성공</div>
+                        <div id="birthMonthMsg" class="text_purple"></div>
                         <!-- 생일 입력 메세지 : 일을 입력 해주세요. -->
-                        <div id="birthDayMsg" class="text_purple">인증번호 성공</div>
+                        <div id="birthDayMsg" class="text_purple"></div>
 
                     </div><!-- // form_group -->
 

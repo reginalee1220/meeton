@@ -1,28 +1,19 @@
 package controller;
 
-import com.fasterxml.jackson.core.JsonFactory;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import model.User;
 import org.apache.commons.mail.HtmlEmail;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.portlet.ModelAndView;
-import scala.util.parsing.combinator.testing.Str;
-import scala.util.parsing.json.JSONObject;
 import service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.File;
-import java.io.IOException;
 import java.io.PrintWriter;
-import java.security.GeneralSecurityException;
-import java.util.Collections;
 import java.util.StringTokenizer;
 
 @Controller
