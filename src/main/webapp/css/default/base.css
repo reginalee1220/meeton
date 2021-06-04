@@ -1,3 +1,10 @@
+/* base.css(모든 문서에 활용) */
+
+/* 웹폰트 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+@import url('http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800');
+/*===========================================================================*/
+
 *{
     margin: 0;
     border: 0;
@@ -68,14 +75,12 @@ header{
     margin: 5px;
 }
 .header-nav{
-    width: 200px;
+    width: 235px;
     height: 100%;
     display: inline-flex;
     align-items: center;
     flex-wrap: nowrap;
-    flex-direction: row;
-    justify-content: flex-end;
-    gap: 10px;
+    justify-content: space-between;
 }
 .header-nav > li{
     width: 30px;
@@ -108,7 +113,6 @@ header{
     top: 59px;
     right: 0;
     width: 170px;
-    z-index: 20;
 }
 .header-submenu.alarm{
     position: absolute;
@@ -146,28 +150,26 @@ header{
     border-radius: 0 0 10px 10px;
     background-color: #f7f7f7;
 }
-.header-submenu > li > a{
-    width: 100%;
-    display: inline-block;
-}
 .header-submenu > li img{
     vertical-align: middle;
     width: 20px;
 }
-.header-submenu > li img:nth-child(2){
-    display: none;
-}
-.header-submenu > li:hover img:first-child{
-    display: none;
-}
-.header-submenu > li:hover img:nth-child(2){
-    display: inline-block;
-}
 .header-submenu > li span{
     font-size: 13px;
     color: #a0a0a0;
-    margin-left: 20px;
 }
-.header-submenu > li:hover span{
-    color: #4BA9E1;
+
+/* footer */
+footer{
+    width: 100%;
+    height: 150px;
+    display: flex;
+    align-items: center;
+}
+div{
+    color: #a0a0a0;
+    font-size: 14px;
+    width: 100%;
+    height: 20px;
+    text-align: center;
 }

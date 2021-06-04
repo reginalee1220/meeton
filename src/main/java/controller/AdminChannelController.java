@@ -111,9 +111,15 @@ public class AdminChannelController {
 
 
         }else if(state.equals("analysis")){ // analysis Page
+            // 채널분석
+            Channel channel = adChannel.getChannel(userid);
+            System.out.println("channel: " + channel);
+            model.addAttribute("channel", channel);
 
-        }else if(state.equals("subscribe")){
-
+            // 총 조회수
+            int totalviews = adChannel.getViews(userid);
+            System.out.println("totalviews: " + totalviews );
+            model.addAttribute("totalviews",totalviews);
         }
 
 
@@ -167,15 +173,15 @@ public class AdminChannelController {
             model.addAttribute("result", result);
             return "videoUploadResult";
         }else if(!file1[1].equals("mp4") &&   // 동영상 확장자가 아니면 업로드 되지 못하도록 막는다
-                 !file1[1].equals("webm") &&
-                 !file1[1].equals("ogg") ){
+                !file1[1].equals("webm") &&
+                !file1[1].equals("ogg") ){
             result=2;
             model.addAttribute("result", result);
             return "videoUploadResult";
         }
         if (size1 > 0) {    // 첨부파일이 있으면
             mf1.transferTo(new File(path + "/" + filename1));  // 첨부파일을 업로드 해라
-                                    // 절대경로값
+            // 절대경로값
         }
 
         /* thumbnail 파일 */
