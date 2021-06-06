@@ -1,0 +1,88 @@
+.cl{
+    width: 100%;
+    border-bottom: 1px solid #d9dddf;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    padding: 10px 0;
+}
+.cl_profile{
+    width: 10%;
+    position: relative;
+}
+.cl_img-border{
+    width: 45px;
+    height: 45px;
+    margin-top:20px;
+    border: 1px solid #d9dddf;
+    border-radius: 50%;
+    overflow: hidden;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.cl_img-border a{
+    vertical-align: middle;
+}
+.cl_img-border img{
+    width: 100%;
+}
+.cl_subject{
+    width: 90%;
+    padding: 0 10px;
+}
+.cl_sub_top{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.cl_info{
+    width: 50% ;
+}
+.cl_info_name{
+    color:#656565;
+    font-size: 15px;
+    font-weight: bold;
+}
+.cl_info_date{
+    color: #656565;
+    font-size: 13px;
+}
+.cl_likes{
+    width: 5% ;
+}
+.cl_likes{
+    vertical-align: middle;
+}
+.cl_sub_bottom{
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+}
+.cl_content{
+    width: 90%;
+}
+.cl_content *{
+    font-size: 15px;
+}
+.cl_edit{
+    width: 10%;
+}
+.edit1{
+    width: 50px;
+    height: 30px;
+    border: 1px solid #d9dddf;
+    background-color: #fff;
+    color:#656565;
+    cursor: pointer;
+}
+.edit2{
+    width: 50px;
+    height: 30px;
+    border: 1px solid #d9dddf;
+    background-color: #fff;
+    color:#656565;
+    cursor: pointer;
+}

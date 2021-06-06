@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<c:set var="path" value="${pageContext.request.contextPath}" />
+<c:set var="path" value="${pageContext.request.contextPath}"/>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,23 +9,60 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0, user-scalable=yes, target-densitydpi=medium-dpi" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0, user-scalable=yes, target-densitydpi=medium-dpi"/>
     <title>영상보기</title>
     <!-- css -->
     <link rel="stylesheet" type="text/css" href="./css/default/import.css">
-    <link rel="stylesheet" type="text/css" href="./css/channel/video.css" />
+    <link rel="stylesheet" type="text/css" href="./css/channel/video.css"/>
 
     <!-- js -->
-    <!-- <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script> -->
-    <script src="./js/channel/more.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+<%--    <script src="./js/channel/more.js"></script>--%>
 
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <script type="text/javascript">
 
+        $(function () {
+            // ***현재문서가 실행되었을 때 댓글 불러오기
+            $('#cm_list').load('cmList.do?videonum=${video.videonum}') //load : 현재문서가 브라우저가 로딩될때 실행되는 함수
+            <%--$('#cm_count').load('"cmCount.do?videonum=${video.videonum}')--%>
+
+            // ***여기는 새로운 댓글이 달렸을 때 비동기적으로 처리
+            $('#repInsert').click(function() {
+                var content = $('#content').val();
+                if (!content) {  //frm.replytext 에 값이 없으면
+                    alert('댓글 입력후에 클릭하시오');
+                    $('#content').focus();
+                    return false;
+                }
+                var frmData = $('form').serialize();  // serialize : form 태그 안에 있는 모든 값을 전달(아래 코드와 같은 역할)
+
+                // 전달할곳, 전달될 데이터, 콜백함수(댓글 비동기처리)
+                $.post('cmInsert.do', frmData,
+                    //콜백함수
+                    function(data) {
+                        $('#cm_list').html(data);
+                        content.value = '';
+                    }
+                );
+
+                // // 전달할곳, 전달될 데이터, 콜백함수(댓글 수 올리기 비동기 처리)
+                // $.post('cmCount.do', frmData,
+                //     //콜백함수
+                //     function(data) {
+                //         $('#cm_count').html(data);
+                //     }
+                // );
+            });
+
+        });
+    </script>
 </head>
 <body>
+
 <div class="head"><!-- head -->
-    헤더
 </div><!-- // head -->
 <div id="video" class="video_wrap"><!-- video -->
     <main class="video_main_inner"><!-- video_main_inner -->
@@ -34,10 +71,11 @@
                 <div class="video_play_view"><!-- video_play_view -->
                     <div class="video_play">
                         <!-- <video muted="muted" poster=" " preload="metadata" controls ></video> -->
-                        <video class="background_video" preload="auto" autoplay="autoplay" loop="loop" muted="muted" volume="0" controls><!-- controls : 동영상 체크  -->
-                            <source src="./images/video/testvideo.mp4" type="video/mp4" />
-                            <source src="./images/video/testvideo.mp4" type="video/webm" />
-                            <source src="./images/video/testvideo.mp4" type="video/ogg" />
+                        <video class="background_video" controls preload="auto" muted="muted">
+                            <!-- controls : 동영상 체크  -->
+                            <source src="./images/video/testvideo.mp4" type="video/mp4"/>
+                            <source src="./images/video/testvideo.mp4" type="video/webm"/>
+                            <source src="./images/video/testvideo.mp4" type="video/ogg"/>
                         </video>
                     </div>
                 </div><!-- // video_play_view -->
@@ -46,38 +84,42 @@
                         <div class="info_ppt"><!--  채널정보, 영상 제목 -->
                             <div class="channel_profile"><!-- channel_profile -->
                                 <a href="#">
-                                    <span><img src="/images/profile/profile-img.jpeg" /></span>
+                                    <span><img src="/images/profile/profile-img.jpeg"/></span>
                                 </a>
                             </div><!-- // channel_profile -->
                             <div class="aka_videoName"><!-- aka_videoName -->
                                 <ul class="an">
-                                    <a href="#"><li class="aka">채널이름</li></a>
-                                    <a href="#"><li class="videoName">영상제목</li></a>
+                                    <a href="#">
+                                        <li class="aka">채널이름</li>
+                                    </a>
+                                    <a href="#">
+                                        <li class="videoName">${video.title}</li>
+                                    </a>
                                 </ul>
                             </div><!-- // aka_videoName -->
                         </div><!-- //  채널정보, 영상 제목 -->
                         <div class="behavior"><!-- 유저행동 -->
                             <button type="button" id="btnLater" class="beBTN"><!-- 나중에 볼 영상 -->
-                                <box-icon name='time' class="bx_box" >
-                                    <i class='bx bx-time' ></i>
+                                <box-icon name='time' class="bx_box">
+                                    <i class='bx bx-time'></i>
                                     <span class="tooltip">나중에 볼 영상</span>
                                 </box-icon>
                             </button>
                             <button type="button" id="btnSubs" class="beBTN"><!-- 구독 여부 -->
-                                <box-icon name='donate-heart' class="bx_box" >
-                                    <i class='bx bx-donate-heart' ></i>
+                                <box-icon name='donate-heart' class="bx_box">
+                                    <i class='bx bx-donate-heart'></i>
                                     <span class="tooltip">구독</span>
                                 </box-icon>
                             </button>
                             <button type="button" id="btnBmk" class="beBTN"><!-- 즐겨찾기 여부 -->
-                                <box-icon name='star' class="bx_box" >
+                                <box-icon name='star' class="bx_box">
                                     <i class='bx bx-star'></i>
                                     <span class="tooltip">즐겨찾기</span>
                                 </box-icon>
                             </button>
                             <button type="button" id="btnLike" class="beBTN"><!-- 좋아요 -->
-                                <box-icon name='like' class="bx_box" >
-                                    <i class='bx bx-like' ></i>
+                                <box-icon name='like' class="bx_box">
+                                    <i class='bx bx-like'></i>
                                     <span class="tooltip">좋아요</span>
                                 </box-icon>
                             </button>
@@ -91,19 +133,19 @@
                             <li class="up">
                                     <span class="cds_ifc cnl">
                                         <i class='bx bx-like'></i>
-                                        100
+                                        ${video.likes}
                                     </span>
                             </li>
                             <li class="cm">
                                     <span class="cds_ifc cnc">
-                                        <i class='bx bx-comment-detail' ></i>
-                                        22
+                                        <i class='bx bx-comment-detail'></i>
+                                        ${video.comments}
                                     </span>
                             </li>
                             <li class="playsq">
                                     <span class="cds_ifc cnp">
-                                        <i class='bx bx-play' style='color:#4ba9e1' ></i>
-                                        158,079
+                                        <i class='bx bx-play' style='color:#4ba9e1'></i>
+                                        ${video.views}
                                     </span>
                             </li>
                         </ul>
@@ -115,208 +157,41 @@
                     <div class="cm_input"><!-- cm_input -->
                         <div class="cm_squ"><!-- comment_squ -->
                             <span>댓글</span>
-                            <span class="comq">77</span>
+                            <span class="comq" id="cm_count"></span>
                         </div><!-- // comment_squ -->
 
                         <div class="cm_form"><!-- cm_form -->
                             <div class="channel_profile"><!-- channel_profile -->
-                                <a href="#">
-                                    <span><img src="/images/profile/coco.jpg" /></span>
-                                </a>
+                                <div class="img-border">
+                                    <img src=""/>
+                                </div>
                             </div><!-- // channel_profile -->
                             <div class="cm_fm"><!-- 댓글 입력 & 등록버튼 -->
-                                <div class="cm_fm_in">
-                                    <label for="comment"></label>
-                                    <input id="comment" class="cm_cont" type="text" name="comment" placeholder="댓글 입력..." >
-                                </div>
-                                <div class="cmt_btn">
-                                    <button id="btn_insert_cmt" >등록</button>
-                                </div>
+                                <form name="frm" id="frm">
+                                    <input type="hidden" name="videonum" value="${video.videonum}">
+                                    <input type="hidden" name="userid" value="${sessionScope.userid}">
+                                    <textarea rows="3" cols="50" name="content" id="content"></textarea>
+                                    <input class="frm_submit" type="submit" value="확인" id="repInsert">
+                                </form>
                             </div><!-- // 댓글 입력 & 등록버튼 -->
                         </div><!-- // cm_form -->
 
                     </div><!-- // cm_input -->
-
-                    <div class="cm_list"><!-- cm_list -->
-                        <div class="cm_line"><!-- cm_line -->
-                            <div class="cm_inf"><!-- cm_inf -->
-                                <div class="channel_profile"><!-- channel_profile -->
-                                    <a href="#">
-                                        <span><img src="/images/profile/coco.jpg" /></span>
-                                    </a>
-                                </div><!-- // channel_profile -->
-                                <div class="cm_inf_conwrap"><!-- 댓글정보 , 댓글좋아요, 댓글신고, 댓글고정 -->
-                                    <div class="cm_inf_con"><!-- cm_inf_con -->
-                                        <a href="#"><span class="cm_aka">댓글닉네임</span></a>
-                                        <a href="#"><span class="cm_id">(dkdlel123)</span></a>
-                                        <a href="#"><span class="cm_ymd">2021-11-15</span></a>
-                                        <a href="#"><span class="cm_time">13:15:30</span></a>
-                                    </div><!-- // cm_inf_con -->
-
-                                    <div class="cm_up_more"><!-- cm_up_more -->
-                                        <div class="cm_up"><!-- cm_up -->
-                                            <button type="button">
-                                                <i class='bx bx-like'></i>
-                                            </button>
-                                            <span class="cds_ifc cnl">
-                                                    7
-                                                </span>
-                                        </div><!-- // cm_up -->
-
-                                        <div class="cm_more"><!-- cm_more -->
-                                            <span id="toc-toggle" class="cm_more_btn" onclick="openCloseToc()">
-                                                    <i class='bx bx-dots-vertical-rounded' ></i>
-                                                </span>
-                                            <ul id="toc-content">
-                                                <li>댓글신고</li>
-                                                <li>댓글고정</li>
-                                            </ul>
-                                        </div><!-- // cm_more -->
-                                    </div><!-- // cm_up_more -->
-
-                                </div><!-- // 댓글정보 , 댓글좋아요, 댓글신고, 댓글고정 -->
-
-                            </div><!-- // cm_inf -->
-
-                            <div class="cm_inResult"><!-- 댓글 내용 -->
-                                <span>댓글 내용 입니다.</span>
-                            </div><!-- // 댓글 내용 -->
-
-                            <div class="re_btn"><!-- 답글쓰기 버튼 -->
-                                <button type="button" >
-                                    답글쓰기
-                                </button>
-                            </div><!-- // 답글쓰기 버튼 -->
+                    <div id="cm_list" class="cm_list"><!-- cm_list -->
 
 
-                            <!-- 답글쓰기 눌렀을때 추가 되는 댓글 영역 -->
-                            <!-- <div class="board_cmt_list" id="cmtMore" style="display:none;"></div>
-                            <div style="text-align: center; display:none; margin: 20px 0px;" id="div_cmt_back">
-                                <span class="cmt_back_guide" id="cmt_back_guide" style="display: none; position: absolute;"></span>
-                                <a href='javascript:void(0);' id='btn_cmt_back' style='position: relative;'>
-                                    <img src="/home/img/ico_cmt_back_before.png" id="imgBack" style="cursor:pointer; width: 20px;">
-                                </a>
-                            </div> -->
-
-                        </div><!-- // cm_line -->
-
-                        <div class="cm_line"><!-- cm_line -->
-                            <div class="cm_inf"><!-- cm_inf -->
-                                <div class="channel_profile"><!-- channel_profile -->
-                                    <a href="#">
-                                        <span><img src="/images/profile/coco.jpg" /></span>
-                                    </a>
-                                </div><!-- // channel_profile -->
-                                <div class="cm_inf_conwrap"><!-- 댓글정보 , 댓글좋아요, 댓글신고, 댓글고정 -->
-                                    <div class="cm_inf_con"><!-- cm_inf_con -->
-                                        <a href="#"><span class="cm_aka">댓글닉네임</span></a>
-                                        <a href="#"><span class="cm_id">(dkdlel123)</span></a>
-                                        <a href="#"><span class="cm_ymd">2021-11-15</span></a>
-                                        <a href="#"><span class="cm_time">13:15:30</span></a>
-                                    </div><!-- // cm_inf_con -->
-
-                                    <div class="cm_up_more"><!-- cm_up_more -->
-                                        <div class="cm_up"><!-- cm_up -->
-                                            <button type="button">
-                                                <i class='bx bx-like'></i>
-                                            </button>
-                                            <span class="cds_ifc cnl">
-                                                    7
-                                                </span>
-                                        </div><!-- // cm_up -->
-
-                                        <div class="cm_more"><!-- cm_more -->
-                                            <i class='bx bx-dots-vertical-rounded' ></i>
-                                        </div><!-- // cm_more -->
-                                    </div><!-- // cm_up_more -->
-
-                                </div><!-- // 댓글정보 , 댓글좋아요, 댓글신고, 댓글고정 -->
-
-                            </div><!-- // cm_inf -->
-
-                            <div class="cm_inResult"><!-- 댓글 내용 -->
-                                <span>댓글 내용 입니다.</span>
-                            </div><!-- // 댓글 내용 -->
-
-                            <div class="re_btn"><!-- 답글쓰기 버튼 -->
-                                <button type="button" >
-                                    답글쓰기
-                                </button>
-                            </div><!-- // 답글쓰기 버튼 -->
-
-
-                            <!-- 답글쓰기 눌렀을때 추가 되는 댓글 영역 -->
-                            <!-- <div class="board_cmt_list" id="cmtMore" style="display:none;"></div>
-                            <div style="text-align: center; display:none; margin: 20px 0px;" id="div_cmt_back">
-                                <span class="cmt_back_guide" id="cmt_back_guide" style="display: none; position: absolute;"></span>
-                                <a href='javascript:void(0);' id='btn_cmt_back' style='position: relative;'>
-                                    <img src="/home/img/ico_cmt_back_before.png" id="imgBack" style="cursor:pointer; width: 20px;">
-                                </a>
-                            </div> -->
-
-                        </div><!-- // cm_line -->
-
-                        <div class="cm_line"><!-- cm_line -->
-                            <div class="cm_inf"><!-- cm_inf -->
-                                <div class="channel_profile"><!-- channel_profile -->
-                                    <a href="#">
-                                        <span><img src="/images/profile/coco.jpg" /></span>
-                                    </a>
-                                </div><!-- // channel_profile -->
-                                <div class="cm_inf_conwrap"><!-- 댓글정보 , 댓글좋아요, 댓글신고, 댓글고정 -->
-                                    <div class="cm_inf_con"><!-- cm_inf_con -->
-                                        <a href="#"><span class="cm_aka">댓글닉네임</span></a>
-                                        <a href="#"><span class="cm_id">(dkdlel123)</span></a>
-                                        <a href="#"><span class="cm_ymd">2021-11-15</span></a>
-                                        <a href="#"><span class="cm_time">13:15:30</span></a>
-                                    </div><!-- // cm_inf_con -->
-
-                                    <div class="cm_up_more"><!-- cm_up_more -->
-                                        <div class="cm_up"><!-- cm_up -->
-                                            <button type="button">
-                                                <i class='bx bx-like'></i>
-                                            </button>
-                                            <span class="cds_ifc cnl">
-                                                    7
-                                                </span>
-                                        </div><!-- // cm_up -->
-
-                                        <div class="cm_more"><!-- cm_more -->
-                                            <i class='bx bx-dots-vertical-rounded' ></i>
-                                        </div><!-- // cm_more -->
-                                    </div><!-- // cm_up_more -->
-
-                                </div><!-- // 댓글정보 , 댓글좋아요, 댓글신고, 댓글고정 -->
-
-                            </div><!-- // cm_inf -->
-
-                            <div class="cm_inResult"><!-- 댓글 내용 -->
-                                <span>댓글 내용 입니다.</span>
-                            </div><!-- // 댓글 내용 -->
-
-                            <div class="re_btn"><!-- 답글쓰기 버튼 -->
-                                <button type="button" >
-                                    답글쓰기
-                                </button>
-                            </div><!-- // 답글쓰기 버튼 -->
-
-
-                            <!-- 답글쓰기 눌렀을때 추가 되는 댓글 영역 -->
-                            <!-- <div class="board_cmt_list" id="cmtMore" style="display:none;"></div>
-                            <div style="text-align: center; display:none; margin: 20px 0px;" id="div_cmt_back">
-                                <span class="cmt_back_guide" id="cmt_back_guide" style="display: none; position: absolute;"></span>
-                                <a href='javascript:void(0);' id='btn_cmt_back' style='position: relative;'>
-                                    <img src="/home/img/ico_cmt_back_before.png" id="imgBack" style="cursor:pointer; width: 20px;">
-                                </a>
-                            </div> -->
-
-                        </div><!-- // cm_line -->
 
                     </div><!-- // cm_list -->
 
                 </div><!-- // video_comment -->
             </form>
         </section><!-- // video_contents -->
+
+
+
+
+
+
 
         <div class="side_video_list"><!-- side_video_list -->
             <div class="side_tl_cse"><!-- side_tl_cse -->
@@ -325,10 +200,10 @@
                 </div><!-- // title-->
                 <div class="close_re"><!-- close_re -->
                     <div class="list_refresh">
-                        <box-icon name='refresh' ><i class='bx bx-refresh' ></i></box-icon>
+                        <box-icon name='refresh'><i class='bx bx-refresh'></i></box-icon>
                     </div>
                     <div class="list_close">
-                        <box-icon name='x' ><i class='bx bx-x' ></i></box-icon>
+                        <box-icon name='x'><i class='bx bx-x'></i></box-icon>
                     </div>
                 </div><!-- // close_re -->
 
@@ -339,10 +214,11 @@
                     <div class="svideo"><!-- svideo -->
                         <div class="video_play">
                             <!-- <video muted="muted" poster=" " preload="metadata" controls ></video> -->
-                            <video class="background_video" preload="auto" autoplay="autoplay" loop="loop" muted="muted" volume="0" controls><!-- controls : 동영상 체크  -->
-                                <source src="./images/video/testvideo.mp4" type="video/mp4" />
-                                <source src="./images/video/testvideo.mp4" type="video/webm" />
-                                <source src="./images/video/testvideo.mp4" type="video/ogg" />
+                            <video class="background_video" preload="auto" autoplay="autoplay" loop="loop" muted="muted"
+                                   volume="0" controls><!-- controls : 동영상 체크  -->
+                                <source src="./images/video/testvideo.mp4" type="video/mp4"/>
+                                <source src="./images/video/testvideo.mp4" type="video/webm"/>
+                                <source src="./images/video/testvideo.mp4" type="video/ogg"/>
                             </video>
                         </div>
                     </div><!-- // svideo -->
@@ -355,7 +231,7 @@
                         </div>
                         <div class="svideo_data">
                                 <span class="cds_ifc cnp">
-                                    <i class='bx bx-play' style='color:#4ba9e1' ></i>
+                                    <i class='bx bx-play' style='color:#4ba9e1'></i>
                                     <span>1.270</span>
                                 </span>
                             <span>
@@ -369,10 +245,11 @@
                     <div class="svideo"><!-- svideo -->
                         <div class="video_play">
                             <!-- <video muted="muted" poster=" " preload="metadata" controls ></video> -->
-                            <video class="background_video" preload="auto" autoplay="autoplay" loop="loop" muted="muted" volume="0" controls><!-- controls : 동영상 체크  -->
-                                <source src="./images/video/testvideo.mp4" type="video/mp4" />
-                                <source src="./images/video/testvideo.mp4" type="video/webm" />
-                                <source src="./images/video/testvideo.mp4" type="video/ogg" />
+                            <video class="background_video" preload="auto" autoplay="autoplay" loop="loop" muted="muted"
+                                   volume="0" controls><!-- controls : 동영상 체크  -->
+                                <source src="./images/video/testvideo.mp4" type="video/mp4"/>
+                                <source src="./images/video/testvideo.mp4" type="video/webm"/>
+                                <source src="./images/video/testvideo.mp4" type="video/ogg"/>
                             </video>
                         </div>
                     </div><!-- // svideo -->
@@ -385,7 +262,7 @@
                         </div>
                         <div class="svideo_data">
                                 <span class="cds_ifc cnp">
-                                    <i class='bx bx-play' style='color:#4ba9e1' ></i>
+                                    <i class='bx bx-play' style='color:#4ba9e1'></i>
                                     <span>1.270</span>
                                 </span>
                             <span>
@@ -399,10 +276,11 @@
                     <div class="svideo"><!-- svideo -->
                         <div class="video_play">
                             <!-- <video muted="muted" poster=" " preload="metadata" controls ></video> -->
-                            <video class="background_video" preload="auto" autoplay="autoplay" loop="loop" muted="muted" volume="0" controls><!-- controls : 동영상 체크  -->
-                                <source src="./images/video/testvideo.mp4" type="video/mp4" />
-                                <source src="./images/video/testvideo.mp4" type="video/webm" />
-                                <source src="./images/video/testvideo.mp4" type="video/ogg" />
+                            <video class="background_video" preload="auto" autoplay="autoplay" loop="loop" muted="muted"
+                                   volume="0" controls><!-- controls : 동영상 체크  -->
+                                <source src="./images/video/testvideo.mp4" type="video/mp4"/>
+                                <source src="./images/video/testvideo.mp4" type="video/webm"/>
+                                <source src="./images/video/testvideo.mp4" type="video/ogg"/>
                             </video>
                         </div>
                     </div><!-- // svideo -->
@@ -415,7 +293,7 @@
                         </div>
                         <div class="svideo_data">
                                 <span class="cds_ifc cnp">
-                                    <i class='bx bx-play' style='color:#4ba9e1' ></i>
+                                    <i class='bx bx-play' style='color:#4ba9e1'></i>
                                     <span>1.270</span>
                                 </span>
                             <span>
@@ -424,8 +302,6 @@
                         </div>
                     </div><!-- // video_desc -->
                 </div><!-- // next_video -->
-
-
 
 
             </section><!-- // video_list -->

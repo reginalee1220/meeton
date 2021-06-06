@@ -1,9 +1,6 @@
 package dao;
 
-import model.Channel;
-import model.PagingDTO;
-import model.User;
-import model.Video;
+import model.*;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -38,6 +35,36 @@ public class ChannelDAO {
         return sst.selectList("channel.c_getVideoList",p);
     }
 
+    //해당 비디오 정보 불러오기
+    public Video getThisVideo(int videonum){
+        return sst.selectOne("channel.c_getThisVideo",videonum);
+    }
 
+    //댓글리스트 불러오기
+    public List<Comment> getcmList(int videonum){
+        return sst.selectList("channel.c_getcmList",videonum);
+    }
 
+    //댓글 삽입하기
+    public void cmInsert(Comment comment){
+        sst.insert("channel.c_cmInsert",comment);
+    }
+
+    //video의 comments 수 올리기
+    public void cmIncrease(int videonum){
+        sst.update("channel.c_cmincrease",videonum);
+    }
+    //video의 댓글 개수 구하기
+    public int getcmcount(int videonum){
+        return sst.selectOne("channel.c_cmcount",videonum);
+    }
+
+    //댓글 수정하기
+    public void cmUpdate(Comment comment){
+        sst.update("channel.c_cmUpdate",comment);
+    }
+    //댓글 삭제하기
+    public void cmDelete(Comment comment){
+        sst.delete("channel.c_cmDelete", comment);
+    }
 }

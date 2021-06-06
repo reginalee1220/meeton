@@ -206,55 +206,63 @@ a:hover, a:focus, a:active {text-decoration:none;}
     font-weight: 700;
 }
 /* ------- 댓글입력 ------- */
-.video_contents .video_comment .cm_input .cm_form{
-    display: flex;
-    align-items:baseline; /* 한줄에대한 높이가 다를 때 세로축 */
-    flex-direction:row; /* 기본값 */
-    justify-content:flex-start; /* 가록 축 정렬에 대한 설정값 */
-    flex-wrap: wrap;
+.cm_form{
     width: 100%;
-    padding-top:20px;
-    padding-left: 13px;
-    position: relative;
+    height: 120px;
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+
 }
 /* 프로필 */
-.video_contents .video_comment .cm_input .cm_form .channel_profile{
-    width: 53px;
-    height: 53px;
-    border: 2px solid transparent;
+.channel_profile{
+    height: 100%;
+    width: 10%;
+    position: relative;
+}
+.img-border{
+    width: 60px;
+    height: 60px;
+    margin-top:20px;
+    border: 1px solid #d9dddf;
     border-radius: 50%;
-    background-image:
-            linear-gradient(#a0ffb4, #a0ffb4),
-            linear-gradient(to top, #4ba9e1, #a0ffb4);
-    background-origin: border-box;/*이미지 시작 위치*/
-    background-clip: content-box, border-box; /*이미지 잘릴 위치*/
     overflow: hidden;
     position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%,-50%);
 }
-.video_contents .video_comment .cm_input .cm_form .channel_profile img{
-    width:100%;
+.img-border img{
+    width: 100%;
 }
 /* 댓글입력 */
-.video_contents .video_comment .cm_input .cm_form .cm_fm{
-    width: 1170px;
-    height: 180px;
-    margin-left: 70px;
-    background: #fff;
-    border-radius: 5px;
-    border:1px solid #d9dddf;
-    position: absolute;
+.cm_fm{
+    height: 100%;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
 }
 /* 댓글 input */
-.video_contents .video_comment .cm_input .cm_form .cm_fm .cm_fm_in{
-    width: 1120px;
-    height: 120px;
-    margin: 0 auto;
-    padding-top:20px;
-    /* margin-bottom: 50px; */
+.cm_fm textarea{
+    border:1px solid #d9dddf;
+    width: 90%;
+    height: 100%;
+    padding: 10px;
+}
+.frm_submit{
+    width: 10%;
+    height: 30px;
+    border: 1px solid #d9dddf;
+    color: #d9dddf;
+    padding: 10px;
+    position: absolute;
+    bottom: 0;
+    right: 10px;
 }
 /* === form input 요소 === */
 /* 댓글 input 요소 */
-.cm_fm_in input[type="text"]{
+textarea {
     width: 1120px;
     line-height : normal;
     padding-left:1em;
@@ -269,11 +277,11 @@ a:hover, a:focus, a:active {text-decoration:none;}
 }
 
 /* 댓글 버튼 */
-.video_contents .video_comment .cm_input .cm_form .cm_fm .cmt_btn{
+.cm_form .cm_fm .cmt_btn{
     width: 1120px;
     margin: 0 auto;
 }
-.video_contents .video_comment .cm_input .cm_form .cm_fm .cmt_btn button{
+#repInsert{
     width: 65px;
     height: 35px;
     float: right;
@@ -285,7 +293,7 @@ a:hover, a:focus, a:active {text-decoration:none;}
     transition: 0.7s;
     cursor: pointer;
 }
-.video_contents .video_comment .cm_input .cm_form .cm_fm .cmt_btn button:hover{
+#repInsert:hover{
     background: #d8d8d8;
     font-size:13px;
     color: #fff;

@@ -22,4 +22,43 @@
     <select id="c_getVideoList" parameterType="PagingDTO" resultType="video">
         select * from video where channelnum = #{channelnum} order by register desc limit #{start}, #{limit}
     </select>
+
+    <!--해당 비디오 정보 불러오기 -->
+    <select id="c_getThisVideo" parameterType="int" resultType="video">
+        select * from video where videonum=#{videonum}
+    </select>
+
+    <!--댓글리스트 불러오기-->
+    <select id="c_getcmList" parameterType="int" resultType="comment">
+        select * from comment where videonum=#{videonum} order by register desc;
+    </select>
+
+    <!--댓글 삽입하기 -->
+    <insert id="c_cmInsert" parameterType="comment">
+        <selectKey keyProperty="commentnum" order="BEFORE" resultType="int">
+            select COALESCE(max(commentnum),0) + 1 from comment
+            <!-- comment에서 commentnum 최대값을 구하고 + 1 ( 만약 값이 null이면 0을 변환 후 +1) -->
+        </selectKey>
+        insert into comment (commentnum, videonum, userid, content, lev, seq)
+            value(#{commentnum},#{videonum},#{userid},#{content},0,0);
+    </insert>
+
+    <!--video의 comments 수 올리기-->
+    <update id="c_cmincrease" parameterType="int">
+        update video set comments = comments+1 where videonum=#{videonum}
+    </update>
+    <!--video의 댓글 개수 구하기 -->
+    <select id="c_cmcount" parameterType="int" resultType="int">
+        select comments from video where videonum=#{videonum}
+    </select>
+
+    <!--댓글 수정하기 -->
+    <update id="c_cmUpdate" parameterType="comment">
+        update comment set content=#{content} where commentnum=#{commentnum}
+    </update>
+
+    <!--댓글 삭제하기-->
+    <delete id="c_cmDelete" parameterType="comment">
+        delete from comment where commentnum=#{commentnum}
+    </delete>
 </mapper>

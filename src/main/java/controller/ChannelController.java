@@ -1,12 +1,10 @@
 package controller;
 
-import model.Channel;
-import model.PagingDTO;
-import model.User;
-import model.Video;
+import model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import service.ChannelService;
 
@@ -40,7 +38,7 @@ public class ChannelController {
 
     }
 
-    // videoPage : 비디오 게시글
+    // videoPage : 비디오 리스트
     @RequestMapping("videoPage.do")
     public String videoPage(Model model,
                             PagingDTO p,
@@ -95,5 +93,76 @@ public class ChannelController {
 
         return "videoPage";
     }
+
+    // video : 해당 비디오 게시글
+    @RequestMapping("video.do")
+    public String video(Model model, int videonum, HttpSession session, HttpServletRequest request) {
+        System.out.println("video");
+        System.out.println(videonum);
+
+        Video thisVideo = chService.getThisVideo(videonum);
+
+        model.addAttribute("video",thisVideo);
+
+        return "video";
+    }
+
+    @RequestMapping("cmList.do")
+    public String cmList(Model model, int videonum, HttpSession session, HttpServletRequest request) {
+        System.out.println("cmList");
+        System.out.println(videonum);
+
+        Video video = chService.getThisVideo(videonum);
+        //댓글리스트 불러오기
+        List<Comment> cmList = chService.getcmList(videonum);
+
+        System.out.println("cmList: "+ cmList);
+
+        model.addAttribute("video",video);
+        model.addAttribute("cmList",cmList);
+
+        return "cmList";
+    }
+
+    @RequestMapping("cmInsert.do")
+    public String cmInsert(Model model, Comment comment, int videonum) {
+        System.out.println("cmInsert");
+
+        //댓글 삽입하기
+        chService.cmInsert(comment);
+        //video의 comments 수 올리기
+        chService.cmIncrease(videonum);
+
+        return "redirect:cmList.do";
+    }
+
+//    @RequestMapping("cmCount.do")
+//    public String cmCount(Model model, int videonum) {
+//        System.out.println("cmCount");
+//
+//        //video의 댓글 개수 구하기
+//        int comments = chService.getcmcount(videonum);
+//        System.out.println(comments);
+//        model.addAttribute("comments",comments);
+//
+//        return "cmCount";
+//    }
+    @RequestMapping("cmUpdate.do")
+    public String cmUpdate(Comment comment, Model model) {
+        System.out.println("cmUpdate");
+        chService.cmUpdate(comment);
+        String mav = "redirect:cmList.do?videonum="+comment.getVideonum();
+        System.out.println(mav);
+        return mav;
+    }
+
+    @RequestMapping("cmDelete.do")
+    public String cmDelete(Comment comment, Model model) {
+        chService.cmDelete(comment);
+        String mav = "redirect:cmList.do?videonum="+comment.getVideonum();
+        System.out.println(mav);
+        return mav;
+    }
+
 
 }

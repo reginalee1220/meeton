@@ -20,7 +20,93 @@
 
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-
+<style>
+    .kc{
+        border-top: 1px solid #dadada;
+        padding: 20px 0;
+        width: 100%;
+        height: 500px;
+    }
+    .kc-title{
+        height: 50px;
+        padding: 15px;
+    }
+    .kc-title a{
+        font-size: 14px;
+        color: #b3b6be;
+    }
+    .kc-previewbox{
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+        gap: 10px;
+        height: 470px;
+    }
+    .kc-bigbox{
+        width: 60%;
+        height: 450px;
+        position: relative;
+        overflow: hidden;
+    }
+    .kc-bigbox img{
+        display: block;
+        border: 1px solid #dadada;
+        width: 100%;
+        height: 100%;
+    }
+    .kc-desc1{
+        width: 100%;
+        height: 50px;
+        position: absolute;
+        bottom: -50px;
+        transition: all 0.5s;
+        background: rgba(0,0,0,0.5);
+        padding: 15px;
+    }
+    .kc-desc1 span{
+        color: #fff;
+        font-size: 13px;
+    }
+    .kc-bigbox > a:hover + .kc-desc1{
+        bottom: 10%;
+    }
+    .kc-smallbox{
+        width: 40%;
+        height: 450px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 10px;
+    }
+    .kc-smallbox img{
+        display: block;
+        border: 1px solid #dadada;
+        width: 100%;
+        height: 100%;
+    }
+    .kc-samllbox2{
+        height: 220px;
+        position: relative;
+        overflow: hidden;
+    }
+    .kc-desc2{
+        width: 100%;
+        height: 50px;
+        position: absolute;
+        bottom: -50px;
+        transition: all 0.5s;
+        background: rgba(0,0,0,0.5);
+        padding: 15px;
+    }
+    .kc-desc2 span{
+        color: #fff;
+        font-size: 13px;
+    }
+    .kc-samllbox2 > a:hover + .kc-desc2{
+        bottom: 10%;
+    }
+</style>
 </heade>
 <body>
 <%@ include file="header.jsp" %>
@@ -103,11 +189,11 @@
             <div class="channelEmail"><!-- channelEmail -->
                 <span>${user.email}@${user.domain}</span>
             </div><!-- // channelEmail -->
-            <div class="ch_chatting"><!-- 멀티채팅 -->
-                <a href="#">
-                    <button type="button">채널 채팅 시작하기</button>
-                </a>
-            </div><!-- // 멀티채팅 -->
+<%--            <div class="ch_chatting"><!-- 멀티채팅 -->--%>
+<%--                <a href="#">--%>
+<%--                    <button type="button">채널 채팅 시작하기</button>--%>
+<%--                </a>--%>
+<%--            </div><!-- // 멀티채팅 -->--%>
         </div><!-- // channel_em_chat 채널 이메일 & 멀티채팅 버튼 -->
         <c:if test="${user.userid.equals(sessionScope.userid)}">
             <div class="channel_adminSET"><!-- 채널 관리 -->
@@ -116,80 +202,114 @@
                 </a>
             </div><!-- // 채널 관리 -->
         </c:if>
-        <section class="vod"><!-- vod -->
-            <div class="vod_title"><!-- vod_title -->
-                <a href="#">
-                        <span>
-                            <box-icon name='play-circle' >
-                                <i class='bx bx-play-circle' ></i>
-                            </box-icon>
-                        </span>
-                    <a href="videoPage.do?channelnum=${channel.channelnum}"><span class="text">다시보기</span></a>
-                </a>
-            </div><!-- // vod_title -->
-            <div class="vod_preview"><!-- vod_preview -->
-                <c:forEach var="v" items="${video}" begin="0" end="0">
-                    <div class="preview_B"><!-- preview_B -->
-                        <div class="video_pview"><!-- video_pview -->
-                            <div class="main_video_img"><!-- main_video_img -->
-                                <a href="/videoPage.do?videoNum=${v.videonum}"><!--해당 영상으로 이동-->
-                                    <video muted="muted" poster="./videoUpload/${v.thumbnail} " preload="metadata" controls ><!-- controls : 동영상 체크  -->
-                                        <source src="./videoUpload/${v.videofile}" type="video/mp4" />
-                                        <source src="./videoUpload/${v.videofile}" type="video/webm" />
-                                        <source src="./videoUpload/${v.videofile}" type="video/ogg" />
-                                    </video>
-                                </a>
-                                <div class="main_video_desc"><!-- main_video_desc -->
-                                    <div class="video_name">
-                                        ${v.title}<!--영상이름-->
-                                    </div>
-                                    <div class="video_data">
-                                        <div class="play_sq">
-                                            <i class='bx bx-play' style='color:#4ba9e1' ></i>
-                                            <span>${v.views}</span><!--조회수-->
-                                        </div>
-                                        <div class="data_sq">
-                                            ${v.register}<!--업로드일자-->
-                                        </div>
-                                    </div>
-                                </div><!-- // main_video_desc -->
-                            </div><!-- // main_video_img -->
-                        </div><!-- // video_pview-->
-                    </div><!-- // preview_B -->
+        <div class="kc">
+            <div class="kc-title"><!--다시보기 title-->
+                <a href="/videoPage.do"><i class='bx bx-play-circle' ></i>다시보기</a>
+            </div>
+            <div class="kc-previewbox"><!--preview box-->
+                <c:forEach var="cv" items="${video}" begin="0" end="0">
+                <div class="kc-bigbox"><!--big preview-->
+                    <a href="video.do?videonum=${cv.videonum}">
+                        <img src="./videoUpload/${cv.thumbnail}">
+                    </a>
+                    <div class="kc-desc1">
+                        <span>${cv.title}</span>
+                        <span>${cv.views}</span>
+                        <span>${cv.likes}</span>
+                    </div>
+                </div><!--kc-bigbox end -->
                 </c:forEach>
-
-                <div class="preview_s"><!-- preview_s -->
-                    <c:forEach var="v" items="${video}" begin="1" end="2" step="1">
-                        <div class="video_pview"><!-- video_pview -->
-                            <div class="main_video_img"><!-- main_video_img -->
-                                <a href="video">
-                                    <video muted="muted" poster="./videoUpload/${v.thumbnail} " preload="metadata" controls ><!-- controls : 동영상 체크  -->
-                                        <source src="./videoUpload/${v.videofile}" type="video/mp4" />
-                                        <source src="./videoUpload/${v.videofile}" type="video/webm" />
-                                        <source src="./videoUpload/${v.videofile}" type="video/ogg" />
-                                    </video>
-                                </a>
-                                <div class="main_video_desc"><!-- main_video_desc -->
-                                    <div class="video_name">
-                                        ${v.title}<!--영상이름-->
-                                    </div>
-                                    <div class="video_data">
-                                        <div class="play_sq">
-                                            <i class='bx bx-play' style='color:#4ba9e1' ></i>
-                                            <span>${v.views}</span><!--조회수-->
-                                        </div>
-                                        <div class="data_sq">
-                                            ${v.register}<!--업로드일자-->
-                                        </div>
-                                    </div>
-                                </div><!-- // main_video_desc -->
-                            </div><!-- // main_video_img -->
-                        </div><!-- // video_pview-->
+                <div class="kc-smallbox"><!--small preview-->
+                    <c:forEach var="cv" items="${video}" begin="1" end="2">
+                    <div class="kc-samllbox2">
+                        <a href="video.do?videonum=${cv.videonum}">
+                            <img src="./videoUpload/${cv.thumbnail}">
+                        </a>
+                        <div class="kc-desc2">
+                            <span>${cv.title}</span>
+                            <span>${cv.views}</span>
+                            <span>${cv.likes}</span>
+                        </div>
+                    </div>
                     </c:forEach>
-                </div><!-- // preview_s -->
+                </div><!--kc-smallbox end -->
+            </div><!--kc-previewbox end -->
+        </div>
 
-            </div><!-- //vod_preview -->
-        </section><!-- // vod -->
+<%--        <section class="vod"><!-- vod -->--%>
+<%--            <div class="vod_title"><!-- vod_title -->--%>
+<%--                <a href="#">--%>
+<%--                        <span>--%>
+<%--                            <box-icon name='play-circle' >--%>
+<%--                                <i class='bx bx-play-circle' ></i>--%>
+<%--                            </box-icon>--%>
+<%--                        </span>--%>
+<%--                    <a href="videoPage.do?channelnum=${channel.channelnum}"><span class="text">다시보기</span></a>--%>
+<%--                </a>--%>
+<%--            </div><!-- // vod_title -->--%>
+<%--            <div class="vod_preview"><!-- vod_preview -->--%>
+<%--                <c:forEach var="v" items="${video}" begin="0" end="0">--%>
+<%--                    <div class="preview_B"><!-- preview_B -->--%>
+<%--                        <div class="video_pview"><!-- video_pview -->--%>
+<%--                            <div class="main_video_img"><!-- main_video_img -->--%>
+<%--                                <a href="/videoPage.do?videoNum=${v.videonum}"><!--해당 영상으로 이동-->--%>
+<%--                                    <video muted="muted" poster="./videoUpload/${v.thumbnail} " preload="metadata" controls ><!-- controls : 동영상 체크  -->--%>
+<%--                                        <source src="./videoUpload/${v.videofile}" type="video/mp4" />--%>
+<%--                                        <source src="./videoUpload/${v.videofile}" type="video/webm" />--%>
+<%--                                        <source src="./videoUpload/${v.videofile}" type="video/ogg" />--%>
+<%--                                    </video>--%>
+<%--                                </a>--%>
+<%--                                <div class="main_video_desc"><!-- main_video_desc -->--%>
+<%--                                    <div class="video_name">--%>
+<%--                                        ${v.title}<!--영상이름-->--%>
+<%--                                    </div>--%>
+<%--                                    <div class="video_data">--%>
+<%--                                        <div class="play_sq">--%>
+<%--                                            <i class='bx bx-play' style='color:#4ba9e1' ></i>--%>
+<%--                                            <span>${v.views}</span><!--조회수-->--%>
+<%--                                        </div>--%>
+<%--                                        <div class="data_sq">--%>
+<%--                                            ${v.register}<!--업로드일자-->--%>
+<%--                                        </div>--%>
+<%--                                    </div>--%>
+<%--                                </div><!-- // main_video_desc -->--%>
+<%--                            </div><!-- // main_video_img -->--%>
+<%--                        </div><!-- // video_pview-->--%>
+<%--                    </div><!-- // preview_B -->--%>
+<%--                </c:forEach>--%>
+
+<%--                <div class="preview_s"><!-- preview_s -->--%>
+<%--                    <c:forEach var="v" items="${video}" begin="1" end="2" step="1">--%>
+<%--                        <div class="video_pview"><!-- video_pview -->--%>
+<%--                            <div class="main_video_img"><!-- main_video_img -->--%>
+<%--                                <a href="video">--%>
+<%--                                    <video muted="muted" poster="./videoUpload/${v.thumbnail} " preload="metadata" controls ><!-- controls : 동영상 체크  -->--%>
+<%--                                        <source src="./videoUpload/${v.videofile}" type="video/mp4" />--%>
+<%--                                        <source src="./videoUpload/${v.videofile}" type="video/webm" />--%>
+<%--                                        <source src="./videoUpload/${v.videofile}" type="video/ogg" />--%>
+<%--                                    </video>--%>
+<%--                                </a>--%>
+<%--                                <div class="main_video_desc"><!-- main_video_desc -->--%>
+<%--                                    <div class="video_name">--%>
+<%--                                        ${v.title}<!--영상이름-->--%>
+<%--                                    </div>--%>
+<%--                                    <div class="video_data">--%>
+<%--                                        <div class="play_sq">--%>
+<%--                                            <i class='bx bx-play' style='color:#4ba9e1' ></i>--%>
+<%--                                            <span>${v.views}</span><!--조회수-->--%>
+<%--                                        </div>--%>
+<%--                                        <div class="data_sq">--%>
+<%--                                            ${v.register}<!--업로드일자-->--%>
+<%--                                        </div>--%>
+<%--                                    </div>--%>
+<%--                                </div><!-- // main_video_desc -->--%>
+<%--                            </div><!-- // main_video_img -->--%>
+<%--                        </div><!-- // video_pview-->--%>
+<%--                    </c:forEach>--%>
+<%--                </div><!-- // preview_s -->--%>
+
+<%--            </div><!-- //vod_preview -->--%>
+<%--        </section><!-- // vod -->--%>
     </div><!-- // main_wrap -->
 </div><!-- channel_wrap -->
 </body>
