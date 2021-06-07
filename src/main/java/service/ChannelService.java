@@ -1,6 +1,5 @@
 package service;
 
-import com.sun.xml.internal.ws.api.ha.StickyFeature;
 import dao.ChannelDAO;
 import model.*;
 import org.springframework.beans.factory.annotation.Autowired;
