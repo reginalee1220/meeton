@@ -19,8 +19,8 @@
         select count(videonum) from video where channelnum = #{channelNum}
     </select>
     <!--페이징 영상 리스트 불러오기-->
-    <select id="c_getVideoList" parameterType="PagingDTO" resultType="video">
-        select * from video where channelnum = #{channelnum} order by register desc limit #{start}, #{limit}
+    <select id="c_getVideoList" parameterType="video" resultType="video">
+        select * from video where channelnum = #{channelnum} order by register desc limit #{start}, #{end}
     </select>
 
     <!--해당 비디오 정보 불러오기 -->

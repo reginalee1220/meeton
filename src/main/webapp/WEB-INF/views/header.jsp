@@ -14,16 +14,16 @@
     <script src="/js/main/base.js"></script>
 </head>
 <body>
-<c:set var="userid" value="${sessionScope.userid}" />
 <header>
     <div class="header-bar">
         <div class="header-logo">
             <a href="main.do"><img src="/images/logo/LOGO.png" /></a>
         </div>
         <div class="header-search">
+            <!--검색-->
             <form id="header-form" action="search.do" method="post">
                 <div class="header-search-bar">
-                    <input type="text" placeholder="검색어를 입력하세요" name="search" />
+                    <input type="text" placeholder="검색어를 입력하세요" name="keyword" />
                     <a href="#" onClick="document.getElementById('header-form').submit();">
                         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAABcUlEQVRIS72VzW2DQBCF3yDka1yCU0HsDuwSUkHSgcnRzIUDK19xB04H7iDuIHSQuIPkjMREI+2iVcyC/zA3fvZ9b2aZt4SBLxpYH0HAer2eiMhSROYAptZISUR7ItqsVqvvU8y1AowxBYBllwARFWmavvVBjgB5nqvLJ10oIu8qxMyl3htjpiKSENGLq4iZZ51G/Jee818Acyf8X0BBAPYAHgBsmDkJQZoKtOd1XX/ZD2chcSdkIZ96H0XRY2hPGoDnvtOR7zTP861tV3BNA/B63+u+pYoytBd+BaILmfms2TDGdK67H+DKFh2YedL2J91vkwf/Te2kuoj4AbDoGbQPAOOTB831z48KAFsr0ESFzahXr99lVVWLLMvU1NF1cdgpWJPW5lYQ0hnXdV0nnoi6OwDYRVFUaDRkWTaO41jjW8OxFXLWULW1oA9yNUChPoSIntM03TkzNwE4yGg0mvvi+vxmgN7zoO/ou/T94BX8AaHpzxlcYgIzAAAAAElFTkSuQmCC"/>
                     </a>
@@ -32,13 +32,13 @@
         </div>
         <ul class="header-nav">
             <!-- 즐겨찾기 -->
-            <c:if test="${userid != null}"><!--로그인 했으면 -->
+            <c:if test="${sessionScope.userid != null}"><!--로그인 했으면 -->
             <li><a href="bookmark.do">
                 <img width="16px" src="/images/main/bookmark-icon.png" />
                 <span class="header-desc">즐겨찾기</span></a>
             </li>
             </c:if>
-            <c:if test="${userid == null}"><!--로그인 안 했으면 -->
+            <c:if test="${sessionScope.userid == null}"><!--로그인 안 했으면 -->
             <li><a href="reject.do">
                 <img width="16px" src="/images/main/bookmark-icon.png" />
                 <span class="header-desc">즐겨찾기</span></a>
@@ -46,13 +46,13 @@
             </c:if>
 
             <!--업로드하기-->
-            <c:if test="${userid != null}"><!--로그인 했으면 -->
+            <c:if test="${sessionScope.userid != null}"><!--로그인 했으면 -->
             <li><a href="adminChannel.do?state=content">
                 <img width="28px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAABgklEQVRIS+2WX07CQBDGv2laXuUG9gbiCfQmegP1sVkSl4RJX/EG3kC5gZxAvAHeAJ9pOmZIt0HSkG0XQRPmcdOZ386386eEIxkdiYsT+GDK/w2pmXkA4I6I0q6pi8gCwJMxZr4rRp1xnudpWZbvAPpdoRt+yyiKLrMs00s0Wg1mZgvgsfpqFgC/Ul8ReRgOh5PNONbavrV2qWeNYGNM57dnZqlgI2OMJrM2Zr4FkLqzVmBmfgOgGc2MMddNqjSBx+PxMxHdAKgv86vg1Wo16fV6LyLiLnkQ8BTAOQDtFGd+YK10EVHntYmIFosGmhPRvTsnok9XwRtSN72EH3ir0ncVeh3wf4NV6qIo6ilGRBMiuhCRDxGppY7jeLFXqbe1bdlOUxFJ9aKtiysQPNJ2SpLktep9DedXXKFgN6WCB4jP/A4amUSko7GTuSnlvSSqtag79KwT8afTVxRFA6+1WG2QgbZJ6I+Atp33j8AesmwVovPebUVp+PgEDlXQ2/9oUn8DlXgZLmjnDEsAAAAASUVORK5CYII="/>
                 <span class="header-desc">업로드하기</span></a>
             </li>
             </c:if>
-            <c:if test="${userid == null}"><!--로그인 했으면 -->
+            <c:if test="${sessionScope.userid == null}"><!--로그인 했으면 -->
             <li><a href="reject.do">
                 <img width="28px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAABgklEQVRIS+2WX07CQBDGv2laXuUG9gbiCfQmegP1sVkSl4RJX/EG3kC5gZxAvAHeAJ9pOmZIt0HSkG0XQRPmcdOZ386386eEIxkdiYsT+GDK/w2pmXkA4I6I0q6pi8gCwJMxZr4rRp1xnudpWZbvAPpdoRt+yyiKLrMs00s0Wg1mZgvgsfpqFgC/Ul8ReRgOh5PNONbavrV2qWeNYGNM57dnZqlgI2OMJrM2Zr4FkLqzVmBmfgOgGc2MMddNqjSBx+PxMxHdAKgv86vg1Wo16fV6LyLiLnkQ8BTAOQDtFGd+YK10EVHntYmIFosGmhPRvTsnok9XwRtSN72EH3ir0ncVeh3wf4NV6qIo6ilGRBMiuhCRDxGppY7jeLFXqbe1bdlOUxFJ9aKtiysQPNJ2SpLktep9DedXXKFgN6WCB4jP/A4amUSko7GTuSnlvSSqtag79KwT8afTVxRFA6+1WG2QgbZJ6I+Atp33j8AesmwVovPebUVp+PgEDlXQ2/9oUn8DlXgZLmjnDEsAAAAASUVORK5CYII="/>
                 <span class="header-desc">업로드하기</span></a>
@@ -86,14 +86,14 @@
 
             <%--            </li>--%>
             <!-- 메뉴 -->
-            <c:if test="${userid != null}"><!--로그인 했으면 -->
+            <c:if test="${sessionScope.userid != null}"><!--로그인 했으면 -->
             <li><a href="#">
-                <span class="header-nickname">${userid}</span>
+                <span class="header-nickname">${sessionScope.userid}</span>
                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAABtElEQVRIS+2VS1LCQBCGu4cCl3ICQk4gnkDcWYAlbHisLE4gnkA8gXgC3UHYgCVQ7sQTiCeAcAJYisW0NbFiBchjwMRsmF1qev5v+k9PN0JIC0Piwh78b86Hb3W+M44vFviAyOJBpE3EZ7EYVbsFdSb0fzPOaXqdAG6CgJqaCHDbKyn1FfBZc5yMMDYCgMOA4PMl56mXijpZAYuPbEuvAcJdEGBCrA6KiUdL9quYbFvvAsGFr3CEp35RyVs1N6paFNnXggk7/LJ8Ho3xpFlUjhmLjXNtmudAHT+yZoCF51Kiu67l+I6zmi7+x+Vf4ERwPygrNTsNR7Bh+ScbAYKyE5xAjx7w1LrFrlabm7nmOE2Mve4CRs5PexV16HTWs2VmWnoDEa62gVsbxc5g431r0xEAHcnB8aNfSqS8Yj0zFgKZ9jiFxN69xMQ+IT8eFFXRAV2XFFgoSPVygut+WWl4QTdapteBjDYZIuCJXRwBvQ1KybSXhlRVr4u4DJKVASADl7baFLMbJOsDIBCwUeXWQWIzAAID/wySiNEcorFl2qk7uV1ga6tlspGJ2YNlXPIlJjSrvwHI+Y4ffXiqRgAAAABJRU5ErkJggg=="/>
             </a>
                 <ul class="header-submenu">
                     <li></li>
-                    <li><a href="/channel.do?userid=${userid}">
+                    <li><a href="/channel.do?userid=${sessionScope.userid}">
                         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAABfklEQVRIS+3WwVHDMBAF0C81AFQAJVACVECoAFIBOWsPwIzXZ1IBoQLSAZRACaSD0IDFiJE8sq3E0oZMLvEp4/H6aSX5RwoHutSBXIhhZr5XSlljzJtk8CK4qqqFUurOgwsimpbixXAPDV4xXgT30B+vnkg6z4YT6JUHPwEU41lwCiWiLwcz8yWAYnwU3oaGBZbgW+EcVIpvhEtQCZ6EJWgpPoB3QUvwDpwIh2cieipNJb/bXd1jVNsJmRZ22QvgtYf8J+xePSWihfvRwnVdT6y17/uElVK3xphlBw5h0DTNqdb6ww+g03FVVTOt9U1q6q21SyKaR+vcTnXTNNda63UInQEcFdk+zMwvAB5G1ntORLP+GhPRYBMnPydmTsHh3grAd28AFwDOAbiuzvYFDzYcM7fTGrpL3YsHK+n4CLu/xuNUJ2chZ3Oto+OMJKrjmhURuc+tc23a1anclg6gzefRjkN8AphINV/nYvTvbJbV8Y5YVvnoYS/rLYKHfgEf/DEu8krAWQAAAABJRU5ErkJggg=="/>
                         <span>내 채널</span></a>
                     </li>
@@ -120,7 +120,7 @@
                 </ul>
             </li>
             </c:if>
-            <c:if test="${userid == null}"><!--로그인 안 했으면 -->
+            <c:if test="${sessionScope.userid == null}"><!--로그인 안 했으면 -->
             <li><a href="login.do">
                 <span class="header-nickname">로그인</span>
                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAABtElEQVRIS+2VS1LCQBCGu4cCl3ICQk4gnkDcWYAlbHisLE4gnkA8gXgC3UHYgCVQ7sQTiCeAcAJYisW0NbFiBchjwMRsmF1qev5v+k9PN0JIC0Piwh78b86Hb3W+M44vFviAyOJBpE3EZ7EYVbsFdSb0fzPOaXqdAG6CgJqaCHDbKyn1FfBZc5yMMDYCgMOA4PMl56mXijpZAYuPbEuvAcJdEGBCrA6KiUdL9quYbFvvAsGFr3CEp35RyVs1N6paFNnXggk7/LJ8Ho3xpFlUjhmLjXNtmudAHT+yZoCF51Kiu67l+I6zmi7+x+Vf4ERwPygrNTsNR7Bh+ScbAYKyE5xAjx7w1LrFrlabm7nmOE2Mve4CRs5PexV16HTWs2VmWnoDEa62gVsbxc5g431r0xEAHcnB8aNfSqS8Yj0zFgKZ9jiFxN69xMQ+IT8eFFXRAV2XFFgoSPVygut+WWl4QTdapteBjDYZIuCJXRwBvQ1KybSXhlRVr4u4DJKVASADl7baFLMbJOsDIBCwUeXWQWIzAAID/wySiNEcorFl2qk7uV1ga6tlspGJ2YNlXPIlJjSrvwHI+Y4ffXiqRgAAAABJRU5ErkJggg=="/>

@@ -204,7 +204,7 @@
         </c:if>
         <div class="kc">
             <div class="kc-title"><!--다시보기 title-->
-                <a href="/videoPage.do"><i class='bx bx-play-circle' ></i>다시보기</a>
+                <a href="videoPage.do?channelnum=${channel.channelnum}"><i class='bx bx-play-circle' ></i>다시보기</a>
             </div>
             <div class="kc-previewbox"><!--preview box-->
                 <c:forEach var="cv" items="${video}" begin="0" end="0">

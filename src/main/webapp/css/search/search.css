@@ -108,10 +108,10 @@ a:hover, a:focus, a:active {text-decoration:none;}
     display:flex;
     /* align-content:center; 줄이 여러개일 때 한 줄에 대한 세로축 높이가 똑같을 때 사용 */
     align-items:flex-start; /* 한줄에대한 높이가 다를 때 세로축 */
-    flex-direction:column; /* 기본값 */
+    flex-direction: row; /* 기본값 */
     justify-content: flex-start; /* 가록 축 정렬에 대한 설정값 */
     flex-wrap: wrap;
-    width: 579px;
+    width: 1160px;
     height: auto;
 }
 /* 동영상 썸네일 + 동영상 설명 */
@@ -122,7 +122,7 @@ a:hover, a:focus, a:active {text-decoration:none;}
     flex-direction:row; /* 기본값 */
     justify-content:space-between; /* 가록 축 정렬에 대한 설정값 */
     flex-wrap: nowrap;
-    width: 100%;
+    width: 570px;
     margin-bottom: 21px;
 }
 /* 동영상썸네일 */
@@ -185,4 +185,24 @@ a:hover, a:focus, a:active {text-decoration:none;}
 .search_wrap .search_list .search_video_view .desc .desc_inner .play_like_date .date{
     margin-left:13px;
     font-size:13px;
+}
+.nav{
+    text-align: center;
+    margin: 20px;
+    padding: 10px;
+}
+.nav > span{
+    font-size: 14px;
+    color:#4ba9e1;
+    font-weight: bold;
+}
+.nav > a > span{
+    font-size: 14px;
+    color:#343434;
+}
+.no_result{
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+    color:#343434;
 }

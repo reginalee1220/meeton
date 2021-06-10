@@ -31,8 +31,8 @@ public class ChannelDAO {
         return sst.selectOne("channel.c_getTotalVideo",channelNum);
     }
     // 페이징 영상 리스트 불러오기
-    public List<Video> getVideoList(PagingDTO p){
-        return sst.selectList("channel.c_getVideoList",p);
+    public List<Video> getVideoList(Video video){
+        return sst.selectList("channel.c_getVideoList", video);
     }
 
     //해당 비디오 정보 불러오기
