@@ -5,7 +5,11 @@
 </head>
 <body>
 <script>
-<%--  <% session.setAttribute("userid","runa");%>--%>
+
+  <%--&lt;%&ndash;  &lt;%&ndash;%>--%>
+  <%--&lt;%&ndash;	response.sendRedirect("main.do");&ndash;%&gt;--%>
+  <%--&lt;%&ndash;  %>&ndash;%&gt;--%>
+  <%session.setAttribute("userid","runa");%>
   location.href="main.do";
 </script>
 

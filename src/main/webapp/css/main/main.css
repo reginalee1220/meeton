@@ -276,7 +276,11 @@ video[poster]{
     float: left;
     margin-bottom: 25px;
     margin-right: 25px;
-    border:1px solid red;
+    overflow: hidden;
+    /*border:1px solid red;*/
+}
+.main-video-img-ver2 img{
+    width: 100%;
 }
 .main-video-time {
     position: absolute;
@@ -477,6 +481,7 @@ video[poster]{
     transition: 0.7s;
     cursor: pointer;
 }
+/* 프로필 */
 .main_chbmk_wrap .my_chbmk .chbmk_item .profile_img{
     margin: 10px auto;
     width: 66px;

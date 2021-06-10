@@ -114,7 +114,7 @@ header{
     right: 0;
     width: 170px;
 }
-.header-submenu.alarm{
+.header-submenu .alarm{
     position: absolute;
     top: 59px;
     right: 93px;
@@ -158,4 +158,3 @@ header{
     font-size: 13px;
     color: #a0a0a0;
 }
-

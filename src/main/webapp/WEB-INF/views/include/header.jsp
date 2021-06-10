@@ -11,11 +11,12 @@
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 
     <!-- css -->
-    <link rel="stylesheet" href="../../css/headmd.css">
+    <link rel="stylesheet" type="text/css" href="../../../css/default/base.css">
 
     <!-- js -->
     <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script src="../../js/main/base.js"></script>
+    <script src="../../../js/main/base.js"></script>
+
 </head>
 <body>
 
@@ -23,7 +24,7 @@
 
     <div class="header-bar">
         <div class="header-logo">
-            <a href="main.do"><img src="../../images/logo/LOGO.png" /></a>
+            <a href="main.do"><img src="../../../images/logo/LOGO.png" /></a>
         </div>
         <div class="header-search">
             <form id="header-form" action="search.do" method="post">
@@ -39,13 +40,13 @@
             <!-- 즐겨찾기 -->
             <c:if test="${userid != null}"><!--로그인 했으면 -->
             <li><a href="bookmark.do">
-                <img width="16px" src="../../images/main/bookmark-icon.png" />
+                <img width="16px" src="../../../images/main/bookmark-icon.png" />
                 <span class="header-desc">즐겨찾기</span></a>
             </li>
             </c:if>
             <c:if test="${userid == null}"><!--로그인 안 했으면 -->
             <li><a href="reject.do">
-                <img width="16px" src="../../images/main/bookmark-icon.png" />
+                <img width="16px" src="../../../images/main/bookmark-icon.png" />
                 <span class="header-desc">즐겨찾기</span></a>
             </li>
             </c:if>
