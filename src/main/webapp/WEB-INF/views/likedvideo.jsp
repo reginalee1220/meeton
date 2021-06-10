@@ -11,9 +11,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0, user-scalable=yes, target-densitydpi=medium-dpi" />
     <title>좋아요 한 영상</title>
     <!-- css -->
-    <link rel="stylesheet" type="text/css" href="/css/default/import.css">
-    <link rel="stylesheet" type="text/css" href="/css/mypick/likedvideo.css">
-    <link rel="stylesheet" type="text/css" href="/css/default/sidebar.css">
+    <link rel="stylesheet" type="text/css" href="../../css/default/reset.css">
+    <link rel="stylesheet" type="text/css" href="../../css/mypick/likedvideo.css">
+    <link rel="stylesheet" type="text/css" href="../../css/default/sidebar.css">
 
     <!-- js -->
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
@@ -27,7 +27,7 @@
 <body>
 <%= session.getAttribute("userid") %>
 <!-- header -->
-<%@ include file="header.jsp"%>
+<%--<%@ include file="header.jsp"%>--%>
 
 <div class="sidebar">
     <div class="menu_content">

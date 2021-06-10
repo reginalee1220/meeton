@@ -11,9 +11,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0, user-scalable=yes, target-densitydpi=medium-dpi" />
     <title>최근에 본 영상</title>
     <!-- css -->
-    <link rel="stylesheet" type="text/css" href="/css/default/import.css">
-    <link rel="stylesheet" type="text/css" href="<%= request.getContextPath()%>/css/mypick/history.css">
-    <link rel="stylesheet" type="text/css" href="/css/default/sidebar.css">
+    <link rel="stylesheet" type="text/css" href="../../css/default/reset.css">
+    <link rel="stylesheet" type="text/css" href="../../css/mypick/history.css">
+    <link rel="stylesheet" type="text/css" href="../../css/default/sidebar.css">
 
     <!-- js -->
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>

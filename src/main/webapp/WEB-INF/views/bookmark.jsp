@@ -11,12 +11,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0, user-scalable=yes, target-densitydpi=medium-dpi" />
     <title>즐겨찾기</title>
     <!-- css -->
-    <link rel="stylesheet" type="text/css" href="/css/default/import.css">
-    <link rel="stylesheet" type="text/css" href="/css/mypick/bookmark.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/default/reset.css">
+    <link rel="stylesheet" type="text/css" href="../../css/mypick/bookmark.css" />
 
     <!-- js -->
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src="<%= request.getContextPath() %>/js/mypick/jquery.bxslider.js"></script>
+    <script src="/js/mypick/jquery.bxslider.js"></script>
 
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
