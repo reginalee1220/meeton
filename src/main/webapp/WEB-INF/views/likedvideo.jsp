@@ -13,7 +13,7 @@
     <!-- css -->
     <link rel="stylesheet" type="text/css" href="../../css/default/reset.css">
     <link rel="stylesheet" type="text/css" href="../../css/mypick/likedvideo.css">
-    <link rel="stylesheet" type="text/css" href="../../css/default/sidebar.css">
+    <link rel="stylesheet" type="text/css" href="../../css/main/main.css">
 
     <!-- js -->
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
@@ -27,9 +27,10 @@
 <body>
 <%= session.getAttribute("userid") %>
 <!-- header -->
-<%--<%@ include file="header.jsp"%>--%>
+<%@ include file="header.jsp"%>
 
 <div class="sidebar">
+
     <div class="menu_content">
         <div class="menu">
             <div class="menu_name">메뉴</div>
@@ -43,32 +44,54 @@
             <span class="tooltip">Search</span>
         </li>
         <li><!-- home -->
-            <a href="#" class="nav-home">
+            <a href="main.do" class="nav-home">
                 <i class='bx bx-home' ></i>
-                <span class="links_name">Home</span>
+                <span class="links_name">홈</span>
             </a>
-            <span class="tooltip">홈</span>
+            <span class="tooltip">Home</span>
         </li><!-- //home -->
-        <li><!-- MY -->
-            <a href="#" class="nav-my">
+        <c:if test="${userid != null}"><!--로그인 했으면 -->
+        <li><!-- 즐겨찾기 -->
+            <a href="bookmark.do" class="nav-my">
                 <i class='bx bx-star' ></i>
                 <span class="links_name">MY</span>
             </a>
-            <span class="tooltip">MY</span>
-        </li><!-- //MY -->
-        <li><!-- PlayList -->
-            <a href="#" class="nav-my">
-                <i class='bx bx-list-check'></i>
-                <span class="links_name">PlayList</span>
+            <span class="tooltip">즐겨찾기</span>
+        </li><!-- // 즐겨찾기 -->
+        </c:if>
+        <c:if test="${userid == null}"><!--로그인 안 했으면 -->
+        <li><!-- 즐겨찾기 -->
+            <a href="reject.do" class="nav-my">
+                <i class='bx bx-star' ></i>
+                <span class="links_name">MY</span>
             </a>
-            <span class="tooltip">시청기록</span>
-        </li><!-- //MY -->
+            <span class="tooltip">즐겨찾기</span>
+        </li><!-- //즐겨찾기 -->
+        </c:if>
+        <c:if test="${userid != null}"><!--로그인 했으면 -->
+        <li><!-- 마이 플레이 리스트 -->
+            <a href="bookmark.do" class="nav-my">
+                <i class='bx bxs-user-detail'></i>
+                <span class="links_name">History</span>
+            </a>
+            <span class="tooltip">내 영상기록</span>
+        </li><!-- //마이 플레이 리스트 -->
+        </c:if>
+        <c:if test="${userid == null}"><!--로그인 안 했으면 -->
+        <li><!-- 마이 플레이 리스트 -->
+            <a href="reject.do" class="nav-my">
+                <i class='bx bxs-user-detail'></i>
+                <span class="links_name">History</span>
+            </a>
+            <span class="tooltip">내 영상기록</span>
+        </li><!-- //마이 플레이 리스트 -->
+        </c:if>
         <li><!-- 구독 -->
-            <a href="#" class="nav-subs">
+            <a href="purchasedList.do" class="nav-subs">
                 <i class='bx bx-movie-play' ></i>
-                <span class="links_name">Subscription</span>
+                <span class="links_name">구독</span>
             </a>
-            <span class="tooltip">구독</span>
+            <span class="tooltip">구독리스트</span>
         </li><!-- //구독 -->
     </ul>
 </div>
@@ -84,13 +107,13 @@
         <div class="btn_video_nav" id="video_nav"><!-- btn_video_nav -->
             <ul class="tablist">
                 <li class="history" id="on_likedvideo">
-                    <a href="history.html">최근에 본 영상</a>
+                    <a href="history.jsp">최근에 본 영상</a>
                 </li>
                 <li class="watchlater">
-                    <a href="watchlater.html">나중에 볼 영상</a>
+                    <a href="watchlater.jsp">나중에 볼 영상</a>
                 </li>
                 <li class="likedvideo" >
-                    <a href="likedvideo.html">좋아요 한 영상</a>  <!-- 현재 페이지 -->
+                    <a href="likedvideo.jsp">좋아요 한 영상</a>  <!-- 현재 페이지 -->
                 </li>
             </ul>
         </div><!-- // btn_video_nav -->

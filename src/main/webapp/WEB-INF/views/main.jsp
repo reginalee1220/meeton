@@ -123,7 +123,7 @@
                 <div class="chbmk_item">
                     <a href="channel.do?channelnum=${f.channelnum}">
                         <div class="profile_img">
-                            <img src="./upload/${f.profile}" alt="${f.profile}" /><!--프로필-->
+                            <img src="./imgUpload/${f.profile}" alt="${f.profile}" /><!--프로필-->
                         </div>
                         <div class="chbmk_mybox_name">${f.aka}</div><!--채널이름-->
                     </a>

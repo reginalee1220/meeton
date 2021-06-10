@@ -13,6 +13,7 @@
     <!-- css -->
     <link rel="stylesheet" type="text/css" href="../../css/default/reset.css">
     <link rel="stylesheet" type="text/css" href="../../css/mypick/bookmark.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/main/slidebar.css">
 
     <!-- js -->
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
@@ -24,7 +25,77 @@
 </head>
 <body>
 <%= session.getAttribute("userid") %>
-<div id="mypick"><!-- mypick -->
+<%@include file="header.jsp"%>
+
+<div class="sidebar">
+
+    <div class="menu_content">
+        <div class="menu">
+            <div class="menu_name">메뉴</div>
+        </div>
+        <i class='bx bx-menu' id="btn" ></i>
+    </div>
+    <ul class="nav_list">
+        <li>
+            <i class='bx bx-search' ></i>
+            <!-- <input type="text" placeholder="Search..."> -->
+            <span class="tooltip">Search</span>
+        </li>
+        <li><!-- home -->
+            <a href="main.do" class="nav-home">
+                <i class='bx bx-home' ></i>
+                <span class="links_name">홈</span>
+            </a>
+            <span class="tooltip">Home</span>
+        </li><!-- //home -->
+        <c:if test="${userid != null}"><!--로그인 했으면 -->
+        <li><!-- 즐겨찾기 -->
+            <a href="bookmark.do" class="nav-my">
+                <i class='bx bx-star' ></i>
+                <span class="links_name">MY</span>
+            </a>
+            <span class="tooltip">즐겨찾기</span>
+        </li><!-- // 즐겨찾기 -->
+        </c:if>
+        <c:if test="${userid == null}"><!--로그인 안 했으면 -->
+        <li><!-- 즐겨찾기 -->
+            <a href="reject.do" class="nav-my">
+                <i class='bx bx-star' ></i>
+                <span class="links_name">MY</span>
+            </a>
+            <span class="tooltip">즐겨찾기</span>
+        </li><!-- //즐겨찾기 -->
+        </c:if>
+        <c:if test="${userid != null}"><!--로그인 했으면 -->
+        <li><!-- 마이 플레이 리스트 -->
+            <a href="bookmark.do" class="nav-my">
+                <i class='bx bxs-user-detail'></i>
+                <span class="links_name">History</span>
+            </a>
+            <span class="tooltip">내 영상기록</span>
+        </li><!-- //마이 플레이 리스트 -->
+        </c:if>
+        <c:if test="${userid == null}"><!--로그인 안 했으면 -->
+        <li><!-- 마이 플레이 리스트 -->
+            <a href="reject.do" class="nav-my">
+                <i class='bx bxs-user-detail'></i>
+                <span class="links_name">History</span>
+            </a>
+            <span class="tooltip">내 영상기록</span>
+        </li><!-- //마이 플레이 리스트 -->
+        </c:if>
+        <li><!-- 구독 -->
+            <a href="purchasedList.do" class="nav-subs">
+                <i class='bx bx-movie-play' ></i>
+                <span class="links_name">구독</span>
+            </a>
+            <span class="tooltip">구독리스트</span>
+        </li><!-- //구독 -->
+    </ul>
+</div>
+
+<div class="home_content"><!-- home_content -->
+    <div id="mypick"><!-- mypick -->
     <div class="bookmark_title"><!-- bookmark_title -->
         <div class="bookmark_title_inner">
             <h2>즐겨찾기</h2>
@@ -92,6 +163,27 @@
 
 
 </div><!-- // mypick -->
+</div><!-- // home_content -->
+
+<script type="text/javascript">
+    let btn = document.querySelector("#btn");
+    let sidebar = document.querySelector(".sidebar");
+    let searchBtn = document.querySelector(".bx-search");
+
+    btn.onclick = function() {
+        sidebar.classList.toggle("active");
+        if(btn.classList.contains("bx-menu")){
+            btn.classList.replace("bx-menu" , "bx-menu-alt-left");
+        }else{
+            btn.classList.replace("bx-menu-alt-left", "bx-menu");
+        }
+    }
+
+    searchBtn.onclick = function() {
+        sidebar.classList.toggle("active");
+    }
+
+</script>
 
 </body>
 </html>
