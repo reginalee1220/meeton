@@ -180,20 +180,47 @@ img {border: 0 none; font-size: 0;line-height: 0;}
     width: 20%;
     height: 110px;
 }
-.myplaylist_wrap .video_list .video_view .main_video .main_video_img img{
+/* ------- 비디오 ------- */
+.main_video_img .video_play_view{
+    width: 190px;
+    height: 110px;
+
+}
+.main_video_img > .video_play_view .video_play{
+    width: 190px;
+    height: 110px;
+    overflow: hidden;
+    position: absolute;
+    /*border:1px solid red;*/
+
+}
+.main_video_img > .video_play_view .video_play .background_video{
+     /*z-index: -1;*/
+    width: 100%;
+    /* background: #4ba9e1; */
+    position: absolute;
+}
+@media screen and (max-aspect-ratio: 190/120) {
+    .background_video {
+        width: auto;
+        height: 100vh;
+    }
+}
+/* .myplaylist_wrap .video_list .video_view .main_video .main_video_img img{
     width: 190px;
     height: 100%;
-}
-.myplaylist_wrap .video_list .video_view .main_video .main_video_time {
+} */
+/* time 위치 크기 수정 - 최근에 본 영상 , 나중에 볼 영상, 좋아요 한 영상 수정해야함 */
+.myplaylist_wrap .video_list .video_view .main_video .main_video_img > .main_video_time {
     position: absolute;
-    right: 42px;
-    bottom: 6px;
-    width: 55px;
+    right: 40px;
+    bottom: 10px;
+    width: 60px;
     background-color: #2b2b2b;
     text-align: center;
     font-size: 12px;
     color: #ffffff;
-    line-height: 2;
+    /*line-height: 2;*/
     opacity: 0.7;
 }
 /* 동영상설명 */
@@ -214,11 +241,14 @@ img {border: 0 none; font-size: 0;line-height: 0;}
     color:#4ba9e1;
 }
 .myplaylist_wrap .video_list .video_view .main_video .desc .desc_inner .play_like{
+    display: flex;
     padding-top:10px;
     font-size:13px;
 }
-.myplaylist_wrap .video_list .video_view .main_video .desc .desc_inner .play_like .cnp{
+.myplaylist_wrap .video_list > .video_view .main_video .desc .desc_inner .play_like > .cnp{
     margin-right:10px;
+    width: 100px;
+    /*border:1px solid blue;*/
 }
 .myplaylist_wrap .video_list .video_view .main_video .desc .desc_inner .play_like .cnp .bx{
     font-size:20px;
