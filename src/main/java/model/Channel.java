@@ -2,9 +2,9 @@ package model;
 
 public class Channel {
     private int channelnum;
-	private String userid;
-	private String aka;
-	private int subscribers;
+    private String userid;
+    private String aka;
+    private int subscribers;
     private int bookmarkers;
 
     public int getChannelnum() {

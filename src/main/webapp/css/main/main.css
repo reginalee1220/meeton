@@ -1,0 +1,590 @@
+/* main.css */
+*{ box-sizing: border-box; text-decoration: none;}
+/* ------- 메인 타이틀 공통 ------- */
+.main-chart-desc{ margin: 0 auto; padding: 20px 0; width: 1200px; height: 60px;}
+.main-chart-desc > span { color: #4ba9e1; font-size: 22px; font-weight: bold;}
+/*===========================================================================*/
+/* ------- 채널 즐겨찾기/구독 슬라이드 ------- */
+.main-my{
+    background-color: #f5f6f7;
+    width: 100%;
+    height: 500px;
+    padding-top:80px;
+}
+/* ------- 사용하지 않는 코드 (수정 전) 수정 후 코드는 맨 아래 위치 ------- */
+.main-my-bar{
+    margin: 0 auto;
+    margin-top: 20px;
+    width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    bordeR:1px solid red;
+}
+/*slide button*/
+.main-my-slide-button{
+    display: inline-block;
+    width : 60px;
+    height: 60px;
+    border: 1px solid #d9d9d9 ;
+    border-radius: 50%;
+    background-color: #fff;
+    cursor: pointer;
+}
+.main-my-slide-button img{
+    width: 60px;
+}
+/*slide*/
+.main-my-slide{
+    width: 1060px;
+    height: 210px;
+    list-style: none;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.main-mybox{
+    display: inline-block;
+    width: 250px;
+    background-color: #fff;
+    border: 1px solid #d9d9d9;
+    border-radius: 10px;
+    padding: 20px 0;
+    margin: 0 5px;
+    transition: all 0.5s;
+}
+.main-mybox:hover{
+    box-shadow: 2px 5px 5px 1px rgba(91, 91, 91, .1);
+}
+.main-mybox a{
+    text-decoration: none;
+}
+.main-mybox-profile{
+    margin: 10px auto;
+    width: 60px;
+    height: 60px;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    background-image:
+            linear-gradient(#fff, #fff),
+            linear-gradient(to right, #4ba9e1, #a0ffb4);
+    background-origin: border-box;/*이미지 시작 위치*/
+    background-clip: content-box, border-box; /*이미지 잘릴 위치*/
+}
+.main-mybox-name{
+    margin: 0 auto;
+    width: 100%;
+    font-size: 14px;
+    font-weight: bold;
+    color: #2c2c2c;
+    text-align: center;
+}
+.main-mybox-desc{
+    margin-top: 40px;
+    width: 100%;
+    font-size: 14px;
+    color: #4e4e4e;
+    text-align: center;
+    border:1px solid red;
+}
+/* ------- // 사용하지 않는 코드 (수정 전) ------- */
+
+/*===========================================================================*/
+/* ------- 영상/채널 차트 ------- */
+/*  main-tab-content layout */
+.main-tab-content{
+    width: 100%;
+}
+/* ------- 네비게이션 -------  */
+.main-nav{
+    width: 100%;
+    position: relative;
+    border-top: 1px solid #d9d9d9;
+    border-bottom: 1px solid #d9d9d9;
+    background-color: #ffffff;
+}
+.main-nav-bar{
+    width: 1200px;
+    height: 47px;
+    margin: 0 auto;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 41px;
+    background-color: #ffffff;
+}
+.main-nav-bar input[type="radio"]{
+    display: none;
+}
+.main-nav-bar input[type="radio"] + label{
+    display: inline-block;
+    width: 80px;
+    height: 45px;
+    margin: 0 10px;
+    font-size: 15px;
+    font-weight: bold;
+    color: #2c2c2c;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+.main-nav-bar input[type="radio"]:checked + label{
+    color: #4ba9e1;
+}
+.main-nav-bar input[type="radio"] + label > span{
+    display: inline-block;
+    width: 0;
+    position: absolute;
+    bottom: 0;
+    transform: translateX(-85%);
+    height: 2px;
+    background: linear-gradient(to right bottom, #4ba9e1, #a0ffb4);
+    transition: all 0.5s;
+}
+.main-nav-bar input[type="radio"]:checked + label > span{
+    display: inline-block;
+    width: 80px;
+}
+/*===========================================================================*/
+/* -------  영상 100차트 main-chart 공통 ------- */
+.main-chart{
+    width: 100%;
+    display:none;
+    background-color: #ffffff;
+}
+.active{
+    display : block;
+}
+/*===========================================================================*/
+/*------- 영상 TOP3 ------- */
+.main-video-top{
+    width: 100%;
+    height: 470px;
+    margin: 0 auto;
+    background-color: #f9f9f9 ;
+}
+.main-video-popgroup{
+    width: 1200px;
+    margin: 0 auto;
+    padding: 30px 0;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+/* ------- TOP1~3 -------*/
+.main-video-box-ver1{
+    border: 1px solid #e5e5e5;
+    width: 380px;
+    background-color: #ffffff;
+}
+/* 비디오 */
+.main-video-img-ver1{
+    width: 100%;
+    height: 210px;
+    overflow: hidden;
+    position: relative;
+}
+.background_video{
+    /* z-index: -1; */
+    width: 380px;
+    position: absolute;
+}
+@media screen and (max-aspect-ratio: 380/210) {
+    .background_video {
+        background-color: #2c2c2c;
+        width: auto;
+        height: 100vh;
+    }
+}
+.main-video-img-ver1 video{
+    width: 100%;
+    height:100%;
+    border-bottom: 1px solid #e5e5e5;
+    padding: 10px;
+}
+video[poster]{
+    height:100%;
+    width:100%;
+}
+.main-video-desc-ver1{
+    border-bottom: 1px solid #f5f5f5;
+    margin: 0 auto;
+    width: 85%;
+    height: 100px;
+    padding: 20px 0;
+}
+.main-video-rank-ver1{
+    width: 35px;
+    float: left;
+    line-height: 40px;
+    color: #2c2c2c;
+    font-size: 45px;
+}
+.main-video-info-ver1{
+    float: left;
+    list-style: none;
+}
+.main-video-info-ver1 li{
+    display: inline-block;
+    color: #a0a0a0;
+    font-size: 13px;
+}
+.main-video-info-ver1 li::after{
+    content: "|";
+    float: right;
+    padding: 0 10px;
+}
+.main-video-info-ver1 li:first-child {
+    display: block;
+}
+.main-video-info-ver1 li:first-child a{
+    color: #4e4e4e;
+    font-size: 17px;
+    font-weight: bold;
+}
+.main-video-info-ver1 li:last-child a{
+    color: #a0a0a0;
+    font-size: 13px;
+}
+.main-video-info-ver1 li:first-child::after{ content: ""; }
+.main-video-info-ver1 li:last-child::after{ content: ""; }
+/* 재생수 & 좋아요수 아이콘 */
+.main-video-viewlike-ver1{ margin: 0 auto; width: 85%; height: 40px; line-height: 35px; vertical-align: center;}
+.main-video-viewlike-ver1 img{ width: 13px; vertical-align: middle; margin-right: 10px;}
+.main-video-viewlike-ver1 span{ padding-left: 30px; color: #a0a0a0; font-size: 13px;}
+.cnp .bx{font-size:23px; vertical-align:-4px; background: linear-gradient(to right, #a0ffb4, #4ca8df); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.bch .bx{ margin-right:3px; font-size:14px;}
+/*===========================================================================*/
+/* ------- 나머지 리스트 -------*/
+.main-video-bottom{
+    margin: 0 auto;
+    padding: 30px 0;
+    width: 1200px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.main-video-box-ver2{
+    width: 480px;
+    display: flex;
+}
+.main-video-img-ver2{
+    position: relative;
+    width: 230px;
+    height: 130px;
+    float: left;
+    margin-bottom: 25px;
+    margin-right: 25px;
+    border:1px solid red;
+}
+.main-video-time {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    width: 40px;
+    background-color: #4d4d4d;
+    text-align: center;
+    font-size: 12px;
+    color: #ffffff;
+}
+.main-video-rank-ver2{
+    width: 45px;
+    float: left;
+    margin-top: 15px;
+    line-height: 30px;
+    color: #2c2c2c;
+    font-size: 35px;
+}
+.main-video-desc-ver2{
+    margin-top: 15px;
+    float: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+.main-video-info-ver2{
+    list-style: none;
+}
+.main-video-info-ver2 li{
+    display: inline-block;
+    color: #a0a0a0;
+    font-size: 13px;
+}
+.main-video-info-ver2 li > a{
+    color: #a0a0a0;
+    font-size: 13px;
+}
+.main-video-info-ver2 li::after{
+    content: "|";
+    float: right;
+    padding: 0 10px;
+}
+.main-video-info-ver2 li:first-child{
+    display: block;
+}
+.main-video-info-ver2 li:first-child > a{
+    color: #4e4e4e;
+    font-size: 15px;
+    font-weight: bold;
+}
+.main-video-info-ver2 li:first-child::after{ content: ""; }
+.main-video-info-ver2 li:last-child::after{ content: ""; }
+.main-video-viewlike-ver2{
+    height: 40px;
+    line-height: 35px;
+    vertical-align: center;
+}
+.main-video-viewlike-ver2 img{
+    width: 13px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+.main-video-viewlike-ver2 span{
+    padding-right: 15px;
+    color: #a0a0a0;
+    font-size: 14px;
+}
+/* 재생수 & 좋아요수 아이콘 */
+.main-video-viewlike-ver1{ margin: 0 auto; width: 85%; height: 40px; line-height: 35px; vertical-align: center;}
+.main-video-viewlike-ver1 img{ width: 13px; vertical-align: middle; margin-right: 10px;}
+.main-video-viewlike-ver1 span{ padding-left: 30px; color: #a0a0a0; font-size: 13px;}
+.cnp .bx{font-size:23px; vertical-align:-4px; background: linear-gradient(to right, #a0ffb4, #4ca8df); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.bch .bx{ margin-right:3px; font-size:14px;}
+/*===========================================================================*/
+/* ------- 인기채널차ㅏ트 -------*/
+/*  main-channel-chart  */
+.main-channel-popgroup{
+    margin: 0 auto;
+    width: 1200px;
+    padding: 30px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.main-channel-box{
+    width: 230px;
+    border: 1px solid #e6e6e6;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+.main-channel-img{
+    width: 100%;
+    height: 120px;
+    background-origin: border-box;/*이미지 시작 위치*/
+    background-clip: content-box, border-box; /*이미지 잘릴 위치*/
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.main-channel-img img{
+    width: 100%;
+}
+.main-channel-name{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding-top:30px;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    color: #fff;
+    text-align: center;
+    transition: 0.7s;
+}
+.main-channel-name:hover{
+    z-index:10;
+    width:100%;
+    background-color:rgba(0, 0, 0, 0.65);
+}
+.main-channel-desc{
+    width: 100%;
+    height: 90px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.main-channel-rank{
+    width: 45px;
+    height: 45px;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    background-image:
+            linear-gradient(#fff, #fff),
+            linear-gradient(to right, #4ba9e1, #a0ffb4);
+    background-origin: border-box;/*이미지 시작 위치*/
+    background-clip: content-box, border-box; /*이미지 잘릴 위치*/
+    font-size: 30px;
+    color: #2c2c2c;
+    text-align: center;
+    line-height: 40px;
+}
+.main-channel-subsc{
+    width: 130px;
+    font-size: 15px;
+    color: #a0a0a0;
+    text-align: center;
+    line-height: 45px;
+}
+
+
+/*===========================================================================*/
+/*===========================================================================*/
+/* ------- 슬라이드 컨텐츠 ------- */
+.main_chbmk_wrap{
+    position: relative;
+    *zoom: 1;
+    -ms-touch-action: pan-y;
+    touch-action: pan-y;
+    width: 1200px;
+    height: 350px;
+    margin:0 auto;
+    padding-bottom: 80px;
+    background-color:#f5f6f7;
+    border:1px solid orange;
+}
+/* .bx-wrapper img {max-width:100%; display: block;} */
+/*===========================================================================*/
+/* ------- 즐겨찾기 구독 채널 리스트 슬라이드 ------- */
+.main_chbmk_wrap .my_chbmk{
+    display: flex;
+    /* align-content:center; 줄이 여러개일 때 한 줄에 대한 세로축 높이가 똑같을 때 사용 */
+    align-items:flex-start; /* 한줄에대한 높이가 다를 때 세로축 */
+    flex-direction: row; /* 기본값 */
+    justify-content:flex-start; /* 가록 축 정렬에 대한 설정값 */
+    flex-wrap:wrap;
+    margin:0 auto;
+    width: 1200px;
+    height:270px;
+    padding-top:10px;
+    padding-left:0px;
+    overflow: hidden;
+    /* border:1px solid blue; */
+}
+.main_chbmk_wrap .my_chbmk .chbmk_item{
+    width: 250px;
+    height: 210px;
+    padding-top:8px;
+    text-align: center;
+    border-radius: 10px;
+    background:#ffffff;
+    border: 1px solid #d9d9d9;
+    transition: 0.7s;
+    cursor: pointer;
+}
+.main_chbmk_wrap .my_chbmk .chbmk_item .profile_img{
+    margin: 10px auto;
+    width: 66px;
+    height: 66px;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    background-image:
+            linear-gradient(#fff, #fff),
+            linear-gradient(to top, #4ba9e1, #a0ffb4);
+    background-origin: border-box;/*이미지 시작 위치*/
+    background-clip: content-box, border-box; /*이미지 잘릴 위치*/
+    box-shadow: 2px 2px 7px 2px rgba(91, 91, 91, .1);
+    overflow: hidden;
+
+}
+.main_chbmk_wrap .my_chbmk .chbmk_item .profile_img img{
+    width:100%;
+}
+.main_chbmk_wrap .my_chbmk .chbmk_item a{
+    font-size: 14px;
+    font-weight: 500;
+    color:#343434;
+    padding-top:13px;
+    transition: 1s;
+}
+.main_chbmk_wrap .my_chbmk .chbmk_item .chbmk_mybox_desc{
+    font-size: 13px;
+    color:#6b6b6b;
+    padding-top:39px;
+    font-family:'Noto Sans KR', sans-serif;
+}
+.main_chbmk_wrap .my_chbmk .chbmk_item:hover{
+    box-shadow: 2px 2px 7px 2px rgba(91, 91, 91, .2);
+}
+.main_chbmk_wrap .my_chbmk .chbmk_item .chbmk_mybox_name:hover{
+    color:#4ca9de;
+}
+/*.bx-viewport {fix other elements on the page moving (on Chrome) -webkit-transform: translatez(0);}*/
+/** THEME
+
+===================================*/
+/* 이전 다음 버튼 */
+/* DIRECTION CONTROLS (NEXT / PREV) */
+.my_chbmk .bx-prev {
+    width: 70px;
+    height: 70px;
+    left:523px;
+    background: url("../../images/next-prev/prev.png") no-repeat 0 0;
+}
+.my_chbmk .bx-prev:hover,
+.my_chbmk .bx-prev:focus {
+    transform:scale(1.1);
+    -webkit-transform:scale(1.1);
+    -moz-transform:scale(1.1);
+    -o-transform:scale(1.1);
+    -webkit-transition:.3s;
+    -moz-transition:.3s;
+    -ms-transition:.3s;
+    background-position: 0 0;
+}
+.my_chbmk .bx-next {
+    width: 70px;
+    height: 70px;
+    right:523px;
+    background: url("../../images/next-prev/next.png") no-repeat 0 0;
+}
+.my_chbmk .bx-next:hover,
+.my_chbmk .bx-next:focus {
+    transform:scale(1.1);
+    -webkit-transform:scale(1.1);
+    -moz-transform:scale(1.1);
+    -o-transform:scale(1.1);
+    -webkit-transition:.3s;
+    -moz-transition:.3s;
+    -ms-transition:.3s;
+    background-position: 0 0;
+}
+.my_chbmk .bx-controls-direction a {
+    position: absolute;
+    top:80%;
+    margin-top: -16px;
+    outline: 0;
+    width: 66px;
+    height: 66px;
+    text-indent: -9999px;
+    z-index: 9999;
+}
+.my_chbmk .bx-controls-direction a.disabled {
+    display: none;
+}
+
+/* AUTO CONTROLS (START / STOP) */
+.my_chbmk .bx-pager2,
+.my_chbmk .bx-controls-auto {position: absolute;  bottom: -30px;  width: 100%;}
+.my_chbmk .bx-controls-auto {text-align: center;}
+/*.my_chbmk .bx-controls-auto .bx-start {display: block;text-indent: -9999px; width: 10px; height: 11px; outline: 0; background: url('images/controls.png') -86px -11px no-repeat;margin: 0 3px;}*/
+.my_chbmk .bx-controls-auto .bx-start:hover,.bx-wrapper .bx-controls-auto .bx-start.active, .bx-wrapper .bx-controls-auto .bx-start:focus {background-position: -86px 0;}
+/*.my_chbmk .bx-controls-auto .bx-stop {display: block; text-indent: -9999px; width: 9px; height: 11px; outline: 0; background: url('images/controls.png') -86px -44px no-repeat;margin: 0 3px;}*/
+.my_chbmk .bx-controls-auto .bx-stop:hover, .bx-wrapper .bx-controls-auto .bx-stop.active, .bx-wrapper .bx-controls-auto .bx-stop:focus {background-position: -86px -33px;}
+
+/* PAGER WITH AUTO-CONTROLS HYBRID LAYOUT */
+.my_chbmk .bx-controls.bx-has-controls-auto.bx-has-pager .bx-pager2 {text-align: left; width: 80%;}
+.my_chbmk .bx-controls.bx-has-controls-auto.bx-has-pager .bx-controls-auto { right: 0; width: 35px;}
+
+/* IMAGE CAPTIONS */
+.my_chbmk .bx-caption {position: absolute; bottom: 0; left: 0; background: #666; background: rgba(80, 80, 80, 0.75);width: 100%;}
+.my_chbmk .bx-caption span {color: #fff; font-family: Arial; display: block;font-size: .85em;padding: 10px;}
+
+
+
+
