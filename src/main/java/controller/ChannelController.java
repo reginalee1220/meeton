@@ -40,56 +40,55 @@ public class ChannelController {
 
     // videoPage : 비디오 리스트
     @RequestMapping("videoPage.do")
-    public String videoPage(Model model,
-                            PagingDTO p,
-                            int channelnum,
-                            HttpSession session, HttpServletRequest request) {
+    public String videoPage(Video video, Model model, HttpSession session, HttpServletRequest request) {
         System.out.println("videoPage");
-        int page = 1;     //page 초기값
-        int limit = 20;    //한 화면에 몇개의 데이터를 넣을 것인가
+        System.out.println("channelnum: " + video.getChannelnum()); // 데이터 뽑아올 채널 num 출력
+
+        //************************ Page 화면 구성하기 ************************//
+        int page = 1;                         // page 초기화
+        int limit = 20;                       // 한 화면에 몇개의 데이터를 넣을 것인가
         if (request.getParameter("page") != null) {  // 만약 페이지 값을 전달 받으면
             page = Integer.parseInt(request.getParameter("page"));
         }
+
+        // 뽑아올 데이터 시작점과 개수 정해주기
         int start = ((page - 1) * limit + 1) - 1;
-        int end = page * limit;
+        int end = limit;
+        video.setStart(start);            // 시작점
+        video.setEnd(end);                // 가져올 데이터 개수
+        System.out.println("start: "+ video.getStart());
+        System.out.println("end: "+ video.getEnd());
 
-        p.setPage(page);
-        p.setStart(start);
-        p.setStart(end);
-        p.setChannelnum(channelnum);
-        System.out.println("channelnum: " + channelnum);
-        p.setLimit(limit);
-
-        int count = chService.getTotalVideo(channelnum);
-        System.out.println("count: " + count);
-
-        // PagingDTO를 DAO클래스에게 전달한다.
-                List<Video>  list = chService.getVideoList(p);
-
+        // video를 매개로 데어터 리스트 구해오기
+        List<Video>  list = chService.getVideoList(video); // video에 담긴 값 : channelnum, start, end
         System.out.println("list: " + list);
 
 
-        // 총 페이지 수.
-        int maxpage = (int) ((double) count / limit + 0.95); // 0.95를 더해서 올림
+        //************************ Page nav 구성하기 ************************//
+        // 총 데이터 갯수 구하기
+        int count = chService.getTotalVideo(video.getChannelnum());
+        System.out.println("count: " + count);
 
-        // 현재 페이지에 보여줄 시작 페이지 수(1, 11, 21 등...)
-        int startpage =(int) ((page - 1) / limit) * limit + 1;
-        // 현재 페이지에 보여줄 마지막 페이지 수.(10, 20, 30 등...)
-        int endpage = startpage + limit - 1;
+        // 총 nav 페이지 수.
+        int maxpage = count/limit + ((count % limit == 0)? 0:1);
 
-        if (endpage > count) {
-            endpage = count;
-        }
+        // 현재 페이지에 보여줄 nav 시작 페이지 수(1, 6, 11 등...)
+        int startpage = (int) ((page - 1) / 5) * 5 + 1;
+        // 현재 페이지에 보여줄 nav 마지막 페이지 수.(5, 10, 15 등...)
+        int endpage = startpage + 5 - 1;
+        if (endpage > count) { endpage = count;}
         System.out.println("startpage: " + startpage);
         System.out.println("endpage: " + endpage);
 
+
+        //************************ model로 값 넘겨주기 ************************//
         model.addAttribute("page", page);
         model.addAttribute("startpage", startpage);
         model.addAttribute("endpage", endpage);
         model.addAttribute("maxpage", maxpage);
         model.addAttribute("count", count);
         model.addAttribute("videoList", list);
-        model.addAttribute("channelNum",channelnum);
+        model.addAttribute("channelNum",video.getChannelnum());
 
         return "videoPage";
     }

@@ -15,7 +15,6 @@
         <typeAlias alias="user" type="model.User" />
         <typeAlias alias="video" type="model.Video" />
         <typeAlias alias="mainDTO" type="model.MainDTO" />
-        <typeAlias alias="PagingDTO" type="model.PagingDTO" />
     </typeAliases>
 
 <!--    <mappers>-->

@@ -11,13 +11,13 @@
                                   where favorite.userid = #{userid}) r on user.userid = r.userid
     </select>
 
-    <!--    Main Video 100 목록-->
+    <!--    Main Video 10 목록-->
     <select id="videoList" resultType="video">
         select videonum, channelnum, userid, title, description, thumbnail, visibility,
                (TIMESTAMPDIFF(HOUR, register, CURDATE())) register , views, likes, videofile, videotime
         from video
         where register between date_sub(sysdate(), INTERVAL 7 day) and sysdate()
-        order by views desc limit 100
+        order by views desc limit 10
     </select>
 
     <!--Main channel 10 목록 -->

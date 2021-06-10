@@ -19,6 +19,14 @@ public class Video {
     private String videofile;
     private Time videotime;
 
+    // paging
+    private int page;
+    private int start;
+    private int end;
+
+    // search
+    private String keyword;
+
     public int getVideonum() {
         return videonum;
     }
@@ -129,5 +137,37 @@ public class Video {
 
     public void setVideotime(Time videotime) {
         this.videotime = videotime;
+    }
+
+    public int getPage() {
+        return page;
+    }
+
+    public void setPage(int page) {
+        this.page = page;
+    }
+
+    public int getStart() {
+        return start;
+    }
+
+    public void setStart(int start) {
+        this.start = start;
+    }
+
+    public int getEnd() {
+        return end;
+    }
+
+    public void setEnd(int end) {
+        this.end = end;
+    }
+
+    public String getKeyword() {
+        return keyword;
+    }
+
+    public void setKeyword(String keyword) {
+        this.keyword = keyword;
     }
 }

@@ -33,8 +33,8 @@ public class ChannelService {
     }
 
     // 페이징 영상 리스트 불러오기
-    public List<Video> getVideoList(PagingDTO p){
-        return dao.getVideoList(p);
+    public List<Video> getVideoList(Video video){
+        return dao.getVideoList(video);
     }
 
     //해당 비디오 정보 불러오기

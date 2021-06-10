@@ -5,30 +5,198 @@
 <html lang="kr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>meeton</title>
-
     <!--Boxicons CDN Link-->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-
-    <!-- css -->
-    <link rel="stylesheet" href="../../css/headmd.css">
-
-    <!-- js -->
+    <style>
+        *{
+            margin: 0;
+            border: 0;
+            padding: 0;
+            box-sizing: border-box;
+            list-style: none;
+            text-decoration: none;
+            color: #2c2c2c;
+        }
+        /*  header  */
+        header{
+            width: 100%;
+            height: 60px;
+            border-bottom: 1px solid #f0f0f0;
+            box-shadow: 0 3px 20px 5px #f0f0f0;
+        }
+        .header-bar{
+            margin: 0 auto;
+            width: 1200px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            position: relative;
+        }
+        .header-logo{
+            width: 130px;
+            height: 100%;
+            line-height: 90px;
+        }
+        .header-logo img{
+            width: 100%;
+        }
+        .header-search{
+            width: 450px;
+            height: 100%;
+            position: relative
+        }
+        .header-search-bar{
+            border: 1px solid #a0a0a0;
+            border-radius: 3px;
+            width: 450px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .header-search-bar > input[type="text"]{
+            width: 90%;
+            height: 100%;
+            padding-left: 10px;
+            background-color: #f7f8fa;
+            color: #a0a0a0;
+            float: left;
+            overflow: hidden;
+            outline: 0;
+        }
+        .header-search-bar a{
+            width: 10%;
+            height: 100%;
+            background-color: #f7f8fa;
+        }
+        .header-search-bar a img{
+            width: 25px;
+            margin: 5px;
+        }
+        .header-nav{
+            width: 200px;
+            height: 100%;
+            display: inline-flex;
+            align-items: center;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+        }
+        .header-nav > li{
+            width: 30px;
+        }
+        .header-nav > li img{
+            vertical-align: middle;
+        }
+        .header-alarm img:nth-child(2){
+            display: none;
+        }
+        .header-nav > li:first-child{
+            padding-left: 5px;
+        }
+        .header-nav > li:last-child{
+            width: 100px;
+        }
+        .header-desc{
+            display: none;
+        }
+        .header-nickname{
+            color: #4ba9e1;
+            font-size: 14px;
+        }
+        .header-nickname + img{
+            width: 7px;
+        }
+        .header-submenu{
+            display: none;
+            position: absolute;
+            top: 59px;
+            right: 0;
+            width: 170px;
+        }
+        .header-submenu.alarm{
+            position: absolute;
+            top: 59px;
+            right: 93px;
+            width: 170px;
+        }
+        .header-submenu > li{
+            width: 100%;
+            height: 43px;
+            padding: 10px 20px;
+            background-color: #fff;
+            border-top: 1px solid #a0a0a0;
+            border-left: 1px solid #a0a0a0;
+            border-right: 1px solid #a0a0a0;
+        }
+        .header-submenu > li:first-child{
+            position: absolute;
+            top: -10px;
+            right: 30px;
+            border-top: 1px solid #a0a0a0;
+            border-left: 1px solid #a0a0a0;
+            border-right: none;
+            transform: rotate(+45deg);
+            width: 20px;
+            height: 20px;
+            padding: 0;
+            background-color: #fff;
+        }
+        .header-submenu > li:nth-child(2){
+            border-radius: 10px 10px 0px 0px;
+        }
+        .header-submenu > li:last-child{
+            border-bottom: 1px solid #a0a0a0;
+            border-radius: 0 0 10px 10px;
+            background-color: #f7f7f7;
+        }
+        .header-submenu > li img{
+            vertical-align: middle;
+            width: 20px;
+        }
+        .header-submenu > li span{
+            font-size: 13px;
+            color: #a0a0a0;
+        }
+    </style>
     <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script src="../../js/main/base.js"></script>
+    <script>
+        $(function(){
+            var state = 0;
+            $('.header-nav > li').click(function(){
+                if(state == 0){
+                    $('.header-submenu').hide();
+                    $(this).children('.header-submenu').toggle();
+                    state = 1 ;
+                }else if(state == 1){
+                    $('.header-submenu').hide();
+                    state = 0 ;
+                }
+            });
+            $(document).mouseup(function(e) {
+                if ($(e.target).parents('.header-nav >li > ul').length == 0) {
+                    $('.header-submenu').hide();
+                }
+            });
+        });
+    </script>
 </head>
 <body>
-
 <header>
-
     <div class="header-bar">
         <div class="header-logo">
-            <a href="main.do"><img src="../../images/logo/LOGO.png" /></a>
+            <a href="main.do"><img src="/images/logo/LOGO.png" /></a>
         </div>
         <div class="header-search">
+            <!--검색-->
             <form id="header-form" action="search.do" method="post">
                 <div class="header-search-bar">
-                    <input type="text" placeholder="검색어를 입력하세요" name="search" />
+                    <input type="text" placeholder="검색어를 입력하세요" name="keyword" />
                     <a href="#" onClick="document.getElementById('header-form').submit();">
                         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAABcUlEQVRIS72VzW2DQBCF3yDka1yCU0HsDuwSUkHSgcnRzIUDK19xB04H7iDuIHSQuIPkjMREI+2iVcyC/zA3fvZ9b2aZt4SBLxpYH0HAer2eiMhSROYAptZISUR7ItqsVqvvU8y1AowxBYBllwARFWmavvVBjgB5nqvLJ10oIu8qxMyl3htjpiKSENGLq4iZZ51G/Jee818Acyf8X0BBAPYAHgBsmDkJQZoKtOd1XX/ZD2chcSdkIZ96H0XRY2hPGoDnvtOR7zTP861tV3BNA/B63+u+pYoytBd+BaILmfms2TDGdK67H+DKFh2YedL2J91vkwf/Te2kuoj4AbDoGbQPAOOTB831z48KAFsr0ESFzahXr99lVVWLLMvU1NF1cdgpWJPW5lYQ0hnXdV0nnoi6OwDYRVFUaDRkWTaO41jjW8OxFXLWULW1oA9yNUChPoSIntM03TkzNwE4yGg0mvvi+vxmgN7zoO/ou/T94BX8AaHpzxlcYgIzAAAAAElFTkSuQmCC"/>
                     </a>
@@ -37,27 +205,27 @@
         </div>
         <ul class="header-nav">
             <!-- 즐겨찾기 -->
-            <c:if test="${userid != null}"><!--로그인 했으면 -->
+            <c:if test="${sessionScope.userid != null}"><!--로그인 했으면 -->
             <li><a href="bookmark.do">
-                <img width="16px" src="../../images/main/bookmark-icon.png" />
+                <img width="16px" src="/images/main/bookmark-icon.png" />
                 <span class="header-desc">즐겨찾기</span></a>
             </li>
             </c:if>
-            <c:if test="${userid == null}"><!--로그인 안 했으면 -->
+            <c:if test="${sessionScope.userid == null}"><!--로그인 안 했으면 -->
             <li><a href="reject.do">
-                <img width="16px" src="../../images/main/bookmark-icon.png" />
+                <img width="16px" src="/images/main/bookmark-icon.png" />
                 <span class="header-desc">즐겨찾기</span></a>
             </li>
             </c:if>
 
             <!--업로드하기-->
-            <c:if test="${userid != null}"><!--로그인 했으면 -->
+            <c:if test="${sessionScope.userid != null}"><!--로그인 했으면 -->
             <li><a href="adminChannel.do?state=content">
                 <img width="28px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAABgklEQVRIS+2WX07CQBDGv2laXuUG9gbiCfQmegP1sVkSl4RJX/EG3kC5gZxAvAHeAJ9pOmZIt0HSkG0XQRPmcdOZ386386eEIxkdiYsT+GDK/w2pmXkA4I6I0q6pi8gCwJMxZr4rRp1xnudpWZbvAPpdoRt+yyiKLrMs00s0Wg1mZgvgsfpqFgC/Ul8ReRgOh5PNONbavrV2qWeNYGNM57dnZqlgI2OMJrM2Zr4FkLqzVmBmfgOgGc2MMddNqjSBx+PxMxHdAKgv86vg1Wo16fV6LyLiLnkQ8BTAOQDtFGd+YK10EVHntYmIFosGmhPRvTsnok9XwRtSN72EH3ir0ncVeh3wf4NV6qIo6ilGRBMiuhCRDxGppY7jeLFXqbe1bdlOUxFJ9aKtiysQPNJ2SpLktep9DedXXKFgN6WCB4jP/A4amUSko7GTuSnlvSSqtag79KwT8afTVxRFA6+1WG2QgbZJ6I+Atp33j8AesmwVovPebUVp+PgEDlXQ2/9oUn8DlXgZLmjnDEsAAAAASUVORK5CYII="/>
                 <span class="header-desc">업로드하기</span></a>
             </li>
             </c:if>
-            <c:if test="${userid == null}"><!--로그인 했으면 -->
+            <c:if test="${sessionScope.userid == null}"><!--로그인 했으면 -->
             <li><a href="reject.do">
                 <img width="28px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAABgklEQVRIS+2WX07CQBDGv2laXuUG9gbiCfQmegP1sVkSl4RJX/EG3kC5gZxAvAHeAJ9pOmZIt0HSkG0XQRPmcdOZ386386eEIxkdiYsT+GDK/w2pmXkA4I6I0q6pi8gCwJMxZr4rRp1xnudpWZbvAPpdoRt+yyiKLrMs00s0Wg1mZgvgsfpqFgC/Ul8ReRgOh5PNONbavrV2qWeNYGNM57dnZqlgI2OMJrM2Zr4FkLqzVmBmfgOgGc2MMddNqjSBx+PxMxHdAKgv86vg1Wo16fV6LyLiLnkQ8BTAOQDtFGd+YK10EVHntYmIFosGmhPRvTsnok9XwRtSN72EH3ir0ncVeh3wf4NV6qIo6ilGRBMiuhCRDxGppY7jeLFXqbe1bdlOUxFJ9aKtiysQPNJ2SpLktep9DedXXKFgN6WCB4jP/A4amUSko7GTuSnlvSSqtag79KwT8afTVxRFA6+1WG2QgbZJ6I+Atp33j8AesmwVovPebUVp+PgEDlXQ2/9oUn8DlXgZLmjnDEsAAAAASUVORK5CYII="/>
                 <span class="header-desc">업로드하기</span></a>
@@ -91,14 +259,14 @@
 
             <%--            </li>--%>
             <!-- 메뉴 -->
-            <c:if test="${userid != null}"><!--로그인 했으면 -->
+            <c:if test="${sessionScope.userid != null}"><!--로그인 했으면 -->
             <li><a href="#">
-                <span class="header-nickname">${userid}</span>
+                <span class="header-nickname">${sessionScope.userid}</span>
                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAABtElEQVRIS+2VS1LCQBCGu4cCl3ICQk4gnkDcWYAlbHisLE4gnkA8gXgC3UHYgCVQ7sQTiCeAcAJYisW0NbFiBchjwMRsmF1qev5v+k9PN0JIC0Piwh78b86Hb3W+M44vFviAyOJBpE3EZ7EYVbsFdSb0fzPOaXqdAG6CgJqaCHDbKyn1FfBZc5yMMDYCgMOA4PMl56mXijpZAYuPbEuvAcJdEGBCrA6KiUdL9quYbFvvAsGFr3CEp35RyVs1N6paFNnXggk7/LJ8Ho3xpFlUjhmLjXNtmudAHT+yZoCF51Kiu67l+I6zmi7+x+Vf4ERwPygrNTsNR7Bh+ScbAYKyE5xAjx7w1LrFrlabm7nmOE2Mve4CRs5PexV16HTWs2VmWnoDEa62gVsbxc5g431r0xEAHcnB8aNfSqS8Yj0zFgKZ9jiFxN69xMQ+IT8eFFXRAV2XFFgoSPVygut+WWl4QTdapteBjDYZIuCJXRwBvQ1KybSXhlRVr4u4DJKVASADl7baFLMbJOsDIBCwUeXWQWIzAAID/wySiNEcorFl2qk7uV1ga6tlspGJ2YNlXPIlJjSrvwHI+Y4ffXiqRgAAAABJRU5ErkJggg=="/>
             </a>
                 <ul class="header-submenu">
                     <li></li>
-                    <li><a href="/channel.do?userid=${userid}">
+                    <li><a href="/channel.do?userid=${sessionScope.userid}">
                         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAABfklEQVRIS+3WwVHDMBAF0C81AFQAJVACVECoAFIBOWsPwIzXZ1IBoQLSAZRACaSD0IDFiJE8sq3E0oZMLvEp4/H6aSX5RwoHutSBXIhhZr5XSlljzJtk8CK4qqqFUurOgwsimpbixXAPDV4xXgT30B+vnkg6z4YT6JUHPwEU41lwCiWiLwcz8yWAYnwU3oaGBZbgW+EcVIpvhEtQCZ6EJWgpPoB3QUvwDpwIh2cieipNJb/bXd1jVNsJmRZ22QvgtYf8J+xePSWihfvRwnVdT6y17/uElVK3xphlBw5h0DTNqdb6ww+g03FVVTOt9U1q6q21SyKaR+vcTnXTNNda63UInQEcFdk+zMwvAB5G1ntORLP+GhPRYBMnPydmTsHh3grAd28AFwDOAbiuzvYFDzYcM7fTGrpL3YsHK+n4CLu/xuNUJ2chZ3Oto+OMJKrjmhURuc+tc23a1anclg6gzefRjkN8AphINV/nYvTvbJbV8Y5YVvnoYS/rLYKHfgEf/DEu8krAWQAAAABJRU5ErkJggg=="/>
                         <span>내 채널</span></a>
                     </li>
@@ -125,7 +293,7 @@
                 </ul>
             </li>
             </c:if>
-            <c:if test="${userid == null}"><!--로그인 안 했으면 -->
+            <c:if test="${sessionScope.userid == null}"><!--로그인 안 했으면 -->
             <li><a href="login.do">
                 <span class="header-nickname">로그인</span>
                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAABtElEQVRIS+2VS1LCQBCGu4cCl3ICQk4gnkDcWYAlbHisLE4gnkA8gXgC3UHYgCVQ7sQTiCeAcAJYisW0NbFiBchjwMRsmF1qev5v+k9PN0JIC0Piwh78b86Hb3W+M44vFviAyOJBpE3EZ7EYVbsFdSb0fzPOaXqdAG6CgJqaCHDbKyn1FfBZc5yMMDYCgMOA4PMl56mXijpZAYuPbEuvAcJdEGBCrA6KiUdL9quYbFvvAsGFr3CEp35RyVs1N6paFNnXggk7/LJ8Ho3xpFlUjhmLjXNtmudAHT+yZoCF51Kiu67l+I6zmi7+x+Vf4ERwPygrNTsNR7Bh+ScbAYKyE5xAjx7w1LrFrlabm7nmOE2Mve4CRs5PexV16HTWs2VmWnoDEa62gVsbxc5g431r0xEAHcnB8aNfSqS8Yj0zFgKZ9jiFxN69xMQ+IT8eFFXRAV2XFFgoSPVygut+WWl4QTdapteBjDYZIuCJXRwBvQ1KybSXhlRVr4u4DJKVASADl7baFLMbJOsDIBCwUeXWQWIzAAID/wySiNEcorFl2qk7uV1ga6tlspGJ2YNlXPIlJjSrvwHI+Y4ffXiqRgAAAABJRU5ErkJggg=="/>

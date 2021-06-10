@@ -2,7 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="search">
+    <!--서치된 video 리스트 구하기-->
+    <select id="sc_getSearchList" parameterType="video" resultType="video">
+        select * from video where title like CONCAT('%',#{keyword},'%')
+                              OR  description like CONCAT('%',#{keyword},'%')
+        order by register desc limit #{start}, #{end}
+    </select>
 
+    <!--서치된 video 갯수 구하기 -->
+    <select id="sc_getTotal" parameterType="video" resultType="int">
+        select count(*) from video where title like CONCAT('%',#{keyword},'%')
+                                      OR description like CONCAT('%',#{keyword},'%')
+
+
+    </select>
 
 
 </mapper>

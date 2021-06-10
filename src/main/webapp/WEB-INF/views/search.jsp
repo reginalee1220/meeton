@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,8 +24,9 @@
 <div id="search_results"><!-- search_results -->
     <div class="search_title"><!-- search_title -->
         <div class="search_title_inner">
-            <span class="searchResults_keywords">검색결과 페이지</span>
+            <span class="searchResults_keywords">${keyword}</span>
             <span class="searchResults_fix">검색결과</span>
+            <span class="searchResults_fix">총 ${count}</span>
         </div>
     </div><!-- // search_title -->
     <main class="my_content"><!-- my_content -->
@@ -40,223 +43,63 @@
                 </div>
             </div><!-- // btn_search_bmk -->
             <section class="search_wrap"><!-- search_wrap -->
+                <c:if test="${not empty searchList}"><!--검색결과가 있으면 -->
                 <div class="search_list"><!-- search_list -->
                     <div class="search_video_view left"><!-- search_video_left -->
+                        <c:forEach var="sl" items="${searchList}">
                         <div class="main_video"><!-- main_video -->
                             <div class="main_video_img"><!-- main_video_img -->
-                                <a href="#">
-                                    <img src="/images/search/videobackground.png" />
+                                <a href="video.do?videonum=${sl.videonum}">
+                                    <img src="./videoUpload/${sl.thumbnail}" />
                                 </a>
-                                <div class="main_video_time">22:00</div>
                             </div>
                             <div class="desc"><!-- desc -->
                                 <ul class="desc_inner">
                                     <li class="vd_text">
-                                        <a href="#" data-event="clickTitle" data-clickcode="#" data-move_uri="#">
-                                            영상 제목
+                                        <a href="video.do?videonum=${sl.videonum}" data-event="clickTitle" data-clickcode="#" data-move_uri="#">
+                                            ${sl.title}<!--영상제목-->
                                         </a>
                                     </li>
                                     <li class="ch_txt">
-                                        <a href="#" data-event="clickChannel" data-clickcode="#" data-move_uri="#">
-                                            영상 채널명
+                                        <a href="channel.do?userid=${sl.userid}" data-event="clickChannel" data-clickcode="#" data-move_uri="#">
+                                            ${sl.userid}<!--영상 채널명-->
                                         </a>
                                     </li>
                                     <li class="play_like_date">
                                             <span class="cds_ifc cnp"> <!-- 재생수 -->
                                                 <i class='bx bx-play' style='color:#4ba9e1' ></i>
-                                                158,079
+                                                ${sl.views}
                                             </span>
                                         <span class="cds_ifc bch"> <!-- 좋아요 -->
                                                 <i class='bx bxs-heart' style='color:#e14b4b'  ></i>
-                                                    1,405
+                                                ${sl.likes}
                                             </span>
                                         <span class="cds_ifc date"> <!-- 날짜 -->
-                                                    | 1개월전
-                                            </span>
+                                            <fmt:parseDate value="${sl.register}" var="date" pattern="yyyy-MM-dd HH:mm:ss" /><!--string을 date로형 변환-->
+                                            <fmt:formatDate value="${date}" pattern="yyyy.MM.dd" /><!--pattern 값으로 변경 출력 -->
+                                        </span>
                                     </li>
                                 </ul>
                             </div><!-- // desc -->
                         </div><!-- // main_video -->
-                        <div class="main_video"><!-- main_video -->
-                            <div class="main_video_img"><!-- main_video_img -->
-                                <a href="#">
-                                    <img src="/images/search/videobackground.png" />
-                                </a>
-                                <div class="main_video_time">22:00</div>
-                            </div>
-                            <div class="desc"><!-- desc -->
-                                <ul class="desc_inner">
-                                    <li class="vd_text">
-                                        <a href="#" data-event="clickTitle" data-clickcode="#" data-move_uri="#">
-                                            영상 제목
-                                        </a>
-                                    </li>
-                                    <li class="ch_txt">
-                                        <a href="#" data-event="clickChannel" data-clickcode="#" data-move_uri="#">
-                                            영상 채널명
-                                        </a>
-                                    </li>
-                                    <li class="play_like_date">
-                                            <span class="cds_ifc cnp"> <!-- 재생수 -->
-                                                <i class='bx bx-play' style='color:#4ba9e1' ></i>
-                                                158,079
-                                            </span>
-                                        <span class="cds_ifc bch"> <!-- 좋아요 -->
-                                                <i class='bx bxs-heart' style='color:#e14b4b'  ></i>
-                                                    1,405
-                                            </span>
-                                        <span class="cds_ifc date"> <!-- 날짜 -->
-                                                    | 1개월전
-                                            </span>
-                                    </li>
-                                </ul>
-                            </div><!-- // desc -->
-                        </div><!-- // main_video -->
-                        <div class="main_video"><!-- main_video -->
-                            <div class="main_video_img"><!-- main_video_img -->
-                                <a href="#">
-                                    <img src="/images/search/videobackground.png" />
-                                </a>
-                                <div class="main_video_time">22:00</div>
-                            </div>
-                            <div class="desc"><!-- desc -->
-                                <ul class="desc_inner">
-                                    <li class="vd_text">
-                                        <a href="#" data-event="clickTitle" data-clickcode="#" data-move_uri="#">
-                                            영상 제목
-                                        </a>
-                                    </li>
-                                    <li class="ch_txt">
-                                        <a href="#" data-event="clickChannel" data-clickcode="#" data-move_uri="#">
-                                            영상 채널명
-                                        </a>
-                                    </li>
-                                    <li class="play_like_date">
-                                            <span class="cds_ifc cnp"> <!-- 재생수 -->
-                                                <i class='bx bx-play' style='color:#4ba9e1' ></i>
-                                                158,079
-                                            </span>
-                                        <span class="cds_ifc bch"> <!-- 좋아요 -->
-                                                <i class='bx bxs-heart' style='color:#e14b4b'  ></i>
-                                                    1,405
-                                            </span>
-                                        <span class="cds_ifc date"> <!-- 날짜 -->
-                                                    | 1개월전
-                                            </span>
-                                    </li>
-                                </ul>
-                            </div><!-- // desc -->
-                        </div><!-- // main_video -->
+                        </c:forEach>
                     </div><!-- // search_video_left -->
-                    <div class="search_video_view right"><!-- search_video_left -->
-                        <div class="main_video"><!-- main_video -->
-                            <div class="main_video_img"><!-- main_video_img -->
-                                <a href="#">
-                                    <img src="/images/search/videobackground.png" />
-                                </a>
-                                <div class="main_video_time">22:00</div>
-                            </div>
-                            <div class="desc"><!-- desc -->
-                                <ul class="desc_inner">
-                                    <li class="vd_text">
-                                        <a href="#" data-event="clickTitle" data-clickcode="#" data-move_uri="#">
-                                            영상 제목
-                                        </a>
-                                    </li>
-                                    <li class="ch_txt">
-                                        <a href="#" data-event="clickChannel" data-clickcode="#" data-move_uri="#">
-                                            영상 채널명
-                                        </a>
-                                    </li>
-                                    <li class="play_like_date">
-                                            <span class="cds_ifc cnp"> <!-- 재생수 -->
-                                                <i class='bx bx-play' style='color:#4ba9e1' ></i>
-                                                158,079
-                                            </span>
-                                        <span class="cds_ifc bch"> <!-- 좋아요 -->
-                                                <i class='bx bxs-heart' style='color:#e14b4b'  ></i>
-                                                    1,405
-                                            </span>
-                                        <span class="cds_ifc date"> <!-- 날짜 -->
-                                                    | 1개월전
-                                            </span>
-                                    </li>
-                                </ul>
-                            </div><!-- // desc -->
-                        </div><!-- // main_video -->
-                        <div class="main_video"><!-- main_video -->
-                            <div class="main_video_img"><!-- main_video_img -->
-                                <a href="#">
-                                    <img src="/images/search/videobackground.png" />
-                                </a>
-                                <div class="main_video_time">22:00</div>
-                            </div>
-                            <div class="desc"><!-- desc -->
-                                <ul class="desc_inner">
-                                    <li class="vd_text">
-                                        <a href="#" data-event="clickTitle" data-clickcode="#" data-move_uri="#">
-                                            영상 제목
-                                        </a>
-                                    </li>
-                                    <li class="ch_txt">
-                                        <a href="#" data-event="clickChannel" data-clickcode="#" data-move_uri="#">
-                                            영상 채널명
-                                        </a>
-                                    </li>
-                                    <li class="play_like_date">
-                                            <span class="cds_ifc cnp"> <!-- 재생수 -->
-                                                <i class='bx bx-play' style='color:#4ba9e1' ></i>
-                                                158,079
-                                            </span>
-                                        <span class="cds_ifc bch"> <!-- 좋아요 -->
-                                                <i class='bx bxs-heart' style='color:#e14b4b'  ></i>
-                                                    1,405
-                                            </span>
-                                        <span class="cds_ifc date"> <!-- 날짜 -->
-                                                    | 1개월전
-                                            </span>
-                                    </li>
-                                </ul>
-                            </div><!-- // desc -->
-                        </div><!-- // main_video -->
-                        <div class="main_video"><!-- main_video -->
-                            <div class="main_video_img"><!-- main_video_img -->
-                                <a href="#">
-                                    <img src="/images/search/videobackground.png" />
-                                </a>
-                                <div class="main_video_time">22:00</div>
-                            </div>
-                            <div class="desc"><!-- desc -->
-                                <ul class="desc_inner">
-                                    <li class="vd_text">
-                                        <a href="#" data-event="clickTitle" data-clickcode="#" data-move_uri="#">
-                                            영상 제목
-                                        </a>
-                                    </li>
-                                    <li class="ch_txt">
-                                        <a href="#" data-event="clickChannel" data-clickcode="#" data-move_uri="#">
-                                            영상 채널명
-                                        </a>
-                                    </li>
-                                    <li class="play_like_date">
-                                            <span class="cds_ifc cnp"> <!-- 재생수 -->
-                                                <i class='bx bx-play' style='color:#4ba9e1' ></i>
-                                                158,079
-                                            </span>
-                                        <span class="cds_ifc bch"> <!-- 좋아요 -->
-                                                <i class='bx bxs-heart' style='color:#e14b4b'  ></i>
-                                                    1,405
-                                            </span>
-                                        <span class="cds_ifc date"> <!-- 날짜 -->
-                                                    | 1개월전
-                                            </span>
-                                    </li>
-                                </ul>
-                            </div><!-- // desc -->
-                        </div><!-- // main_video -->
-                    </div><!-- // search_video_left -->
-
                 </div><!-- // search_list -->
+                <div class="nav"><!--nav-->
+                    <c:forEach var="navNum" begin="${startpage}" end="${endpage}" >
+                        <c:if test="${navNum == page }">
+                           <span> ${navNum} </span>
+                        </c:if>
+                        <c:if test="${navNum != page }">
+                            <a href="search.do?page=${navNum}&keyword=${keyword}"> <span> ${navNum} </span> </a>
+                        </c:if>
+                    </c:forEach>
+                </div><!--// nav-->
+                </c:if>
+
+                <c:if test="${empty searchList}"><!--검색결과가 없으면 -->
+                   <div class="no_result"> 검색결과가 없습니다. </div>
+                </c:if>
             </section><!-- // search_wrap -->
         </form>
     </main><!-- // my_content -->
