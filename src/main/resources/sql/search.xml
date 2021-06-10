@@ -5,17 +5,15 @@
     <!--서치된 video 리스트 구하기-->
     <select id="sc_getSearchList" parameterType="video" resultType="video">
         select * from video where title like CONCAT('%',#{keyword},'%')
+                              OR  description like CONCAT('%',#{keyword},'%')
         order by register desc limit #{start}, #{end}
     </select>
 
     <!--서치된 video 갯수 구하기 -->
     <select id="sc_getTotal" parameterType="video" resultType="int">
-        select count(*) from video
-        <where>
-            <if test="keyword != null">
-                title like CONCAT('%',#{keyword},'%')
-            </if>
-        </where>
+        select count(*) from video where title like CONCAT('%',#{keyword},'%')
+                                      OR description like CONCAT('%',#{keyword},'%')
+
 
     </select>
 
