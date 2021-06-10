@@ -6,8 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0, user-scalable=yes, target-densitydpi=medium-dpi"/>
+    <meta name="viewport" ontent="width=device-width, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0" />
     <title>영상보기</title>
     <link rel="stylesheet" type="text/css" href="./css/channel/comment.css"/>
     <script src="http://code.jquery.com/jquery-latest.js"></script>
@@ -37,7 +36,7 @@
                 </span>
             </div><!--cl_edit end -->
         </div><!--cl_sub_top end -->
-        <div class="cl_sub_bottom">
+        <div class="cl_sub_bottom"><!-- edit1 ajax / edit2 css -->
             <div class="cl_content" id="td_${cl.commentnum}">${cl.content}</div>
             <c:if test="${sessionScope.userid == cl.userid}">
             <div class="cl_edit" id="btn_${cl.commentnum}">

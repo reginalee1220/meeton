@@ -9,7 +9,11 @@
     <title>meeton</title>
     <!--Boxicons CDN Link-->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- css -->
     <link rel="stylesheet" href="./css/admin/videoupload.css">
+
+    <!-- js -->
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="./js/adminChannel/adminChannel.js"></script>
 </head>

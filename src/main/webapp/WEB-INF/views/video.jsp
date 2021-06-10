@@ -12,16 +12,17 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0, user-scalable=yes, target-densitydpi=medium-dpi"/>
     <title>영상보기</title>
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
     <!-- css -->
-    <link rel="stylesheet" type="text/css" href="./css/default/import.css">
+    <link rel="stylesheet" type="text/css" href="./css/default/reset.css">
     <link rel="stylesheet" type="text/css" href="./css/channel/video.css"/>
 
     <!-- js -->
     <script src="http://code.jquery.com/jquery-latest.js"></script>
 <%--    <script src="./js/channel/more.js"></script>--%>
-
-    <!-- Boxicons CDN Link -->
-    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <!-- 외부 자바스크립트 파일 연동 오류 -->
     <script type="text/javascript">
 
         $(function () {
@@ -61,7 +62,7 @@
     </script>
 </head>
 <body>
-
+<%@include file="header.jsp"%>
 <div class="head"><!-- head -->
 </div><!-- // head -->
 <div id="video" class="video_wrap"><!-- video -->
@@ -167,7 +168,7 @@
                                 </div>
                             </div><!-- // channel_profile -->
                             <div class="cm_fm"><!-- 댓글 입력 & 등록버튼 -->
-                                <form name="frm" id="frm">
+                                <form name="frm" id="frm"><!-- name id 유지 -->
                                     <input type="hidden" name="videonum" value="${video.videonum}">
                                     <input type="hidden" name="userid" value="${sessionScope.userid}">
                                     <textarea rows="3" cols="50" name="content" id="content"></textarea>

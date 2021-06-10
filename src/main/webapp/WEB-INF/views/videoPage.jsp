@@ -12,7 +12,7 @@
     <title>업로드 영상 보드</title>
 
     <!-- css -->
-    <link rel="stylesheet" type="text/css" href="./css/default/import.css">
+    <link rel="stylesheet" type="text/css" href="./css/default/reset.css">
     <link rel="stylesheet" type="text/css" href="./css/channel/videoPage.css">
 
     <!-- js -->

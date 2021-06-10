@@ -1,6 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <html lang="kr">
 <head>
@@ -9,15 +10,19 @@
     <title>meeton</title>
     <!--Boxicons CDN Link-->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+
     <link rel="stylesheet" href="./css/admin/adminChannelAnalysis.css">
+
+
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <!--char.js-->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="./js/adminChannel/adminChannel.js"></script>
 </head>
 <body>
-<!--                    analysis                  -->
 
+<!-- analysis -->
 <div class="ca-analysis">
     <div class="ca-main-title">
         <span>채널 분석</span>
