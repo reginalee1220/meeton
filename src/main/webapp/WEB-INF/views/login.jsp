@@ -25,7 +25,7 @@
 </head>
 <body>
 <!-- header -->
-<%@ include file="header.jsp"%>
+<%--<%@ include file="header.jsp"%>--%>
 
 <div class="top_title">
     <div class="top_inner">

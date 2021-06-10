@@ -39,7 +39,7 @@
 </head>
 <body>
 <!-- header -->
-<%@ include file="header.jsp" %>
+<%--<%@ include file="header.jsp" %>--%>
 <div class="wrap"><!-- wrap 시작 -->
     <div class="top_title">
         <div class="top_inner">

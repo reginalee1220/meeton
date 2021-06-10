@@ -12,12 +12,12 @@
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 
     <!-- css -->
-    <link rel="stylesheet" href="/css/default/import.css">
-    <link rel="stylesheet" href="/css/user/withdrawal.css">
+    <link rel="stylesheet" href="../../css/default/import.css">
+    <link rel="stylesheet" href="../../css/user/withdrawal.css">
 
     <!-- js -->
     <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script src="/js/user/delete.js"></script>
+    <script src="../../js/user/delete.js"></script>
 
 </head>
 <body>
