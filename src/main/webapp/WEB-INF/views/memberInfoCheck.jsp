@@ -15,7 +15,7 @@
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 
     <!-- css -->
-    <link rel="stylesheet" href="../../css/default/import.css">
+    <link rel="stylesheet" href="../../css/default/reset.css">
     <link rel="stylesheet" href="../../css/user/userInfoCheck.css">
 
     <!-- js -->
@@ -50,7 +50,7 @@
 
 <c:if test="${sessionScope.userid != null }">
 <!-- header -->
-<%--<%@ include file="header.jsp"%>--%>
+<%@ include file="header.jsp"%>
 
 <div class="wrap"><!-- wrap 시작 -->
     <div class="userinfo_top">
@@ -61,7 +61,7 @@
         <div class="katego"><!-- katego -->
             <nav class="userinfo_nav">
                 <ul class="nav_list">
-                    <li class="my_info"><button type="button" value="정보수정" onclick="location='memberinfoCheck.do'" > 내 정보 관리</button></li>
+                    <li class="my_info"><button type="button" value="정보수정" onclick="location='memberInfoCheck.do'" > 내 정보 관리</button></li>
                     <li class="purchasedList"><button type="button" value="구독결제리스트" onclick="location='purchasedList.do'"  >구독 결제 리스트</button></li>
                     <li class="withdrawal"><button type="button" value="회원탈퇴" onclick="location='withdrawal.do'"   >회원탈퇴</button></li>
                 </ul>
@@ -93,7 +93,7 @@
                                 <div class="upload_profile">
                                     <div class="proview"><!-- 현재 프로필 -->
                                         <span>
-                                            <img src="<%=request.getContextPath() %>/imgUpload/${user.profile}"/>
+                                            <img src="../../imgUpload/${user.profile}" alt="${user.profile}"/><!-- 프로필 -->
 
                                         </span>
                                     </div>

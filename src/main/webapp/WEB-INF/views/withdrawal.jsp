@@ -12,7 +12,7 @@
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 
     <!-- css -->
-    <link rel="stylesheet" href="../../css/default/import.css">
+    <link rel="stylesheet" href="../../css/default/reset.css">
     <link rel="stylesheet" href="../../css/user/withdrawal.css">
 
     <!-- js -->
@@ -22,7 +22,7 @@
 </head>
 <body>
 <!-- header -->
-<%--<%@ include file="/header.jsp" %>--%>
+<%@ include file="header.jsp" %>
 <div class="wrap"><!-- wrap 시작 -->
     <div class="userinfo_top">
         <div class="userinfo_inner">
@@ -32,7 +32,7 @@
         <div class="katego"><!-- katego -->
             <nav class="userinfo_nav">
                 <ul class="nav_list">
-                    <li class="my_info"><button type="button" value="정보수정" onclick="location='memberinfoCheck.do'" > 내 정보 관리</button></li>
+                    <li class="my_info"><button type="button" value="정보수정" onclick="location='memberInfoCheck.do'" > 내 정보 관리</button></li>
                     <li class="purchasedList"><button type="button" value="구독결제리스트" onclick="location='purchasedList.do'"  >구독 결제 리스트</button></li>
                     <li class="withdrawal"><button type="button" value="회원탈퇴" onclick="location='withdrawal.do'"   >회원탈퇴</button></li>
                 </ul>

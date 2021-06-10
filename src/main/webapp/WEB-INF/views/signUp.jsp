@@ -12,8 +12,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0, user-scalable=yes, target-densitydpi=medium-dpi" />
     <title>회원가입</title>
     <!-- css -->
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/default/import.css">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/user/signUp.css">
+    <link rel="stylesheet" href="../../css/default/reset.css">
+    <link rel="stylesheet" href="../../css/user/signUp.css">
 
     <!-- js -->
     <script src="http://code.jquery.com/jquery-latest.js"></script>
@@ -39,7 +39,7 @@
 </head>
 <body>
 <!-- header -->
-<%--<%@ include file="header.jsp" %>--%>
+<%@ include file="header.jsp" %>
 <div class="wrap"><!-- wrap 시작 -->
     <div class="top_title">
         <div class="top_inner">
