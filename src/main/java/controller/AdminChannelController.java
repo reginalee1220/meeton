@@ -27,9 +27,10 @@ public class AdminChannelController {
     private AdminChannelService adChannel;
 
     @RequestMapping("/adminChannel.do")
-    public String adminChannel(String state, String pageNum,
+    public String adminChannel(String state, Video video,
                                Model model, HttpSession session, HttpServletRequest request){
-        String userid = (String)session.getAttribute("userid");
+        String userid = (String)session.getAttribute("userid");   //  로그인 된(요청한) userid
+        System.out.println(userid);
 
         // 채널 이름, 프로필 가져오기
         User user = adChannel.getUser(userid);
@@ -37,78 +38,78 @@ public class AdminChannelController {
         model.addAttribute("user", user);
 
         if(state.equals("dashboard")){ // dashboard Page
-            // 최신 동영상 실적
-            Video video = adChannel.getVideo(userid);
-            System.out.println("video: " + video);
-            model.addAttribute("video", video);
+            System.out.println("dashboard");
 
-            // 채널분석
+            // 최신 동영상 실적
+            Video latestVideo = adChannel.getLatestVideo(userid);
+            System.out.println("latestVideo: " + latestVideo);
+
+            // 채널 분석
             Channel channel = adChannel.getChannel(userid);
             System.out.println("channel: " + channel);
-            model.addAttribute("channel", channel);
 
             // 총 조회수
-            int totalviews = adChannel.getViews(userid);
-            System.out.println("totalviews: " + totalviews );
-            model.addAttribute("totalviews",totalviews);
+            int totalViews = adChannel.getViews(userid);
+            System.out.println("totalViews: " + totalViews );
 
             // 인기 동영상
-            Video topvideo = adChannel.getTopVideo(userid);
-            System.out.println("topvideo: " + topvideo);
-            model.addAttribute("topvideo", topvideo);
+            Video topVideo = adChannel.getTopVideo(userid);
+            System.out.println("topvideo: " + topVideo);
+
+
+            model.addAttribute("video", latestVideo);
+            model.addAttribute("channel", channel);
+            model.addAttribute("totalviews", totalViews);
+            model.addAttribute("topvideo", topVideo);
 
         }else if(state.equals("content")){ // content Page
-            /* 한번에 출력할 데이터 수, 한번에 보일 nav number 수 */
-            final int rowPerPage = 5;
-            final int navNum = 5;
+            System.out.println("content");
 
-            /* 현재 어떤 페이지 인지 가져오고 없으면 1페이지 넣기 */
-            if (pageNum == null || pageNum.equals("")) { pageNum = "1";}
-            int currentPage = Integer.parseInt(pageNum);
-            System.out.println("currentPage: "+ currentPage);
-            // 총 동영상 갯수 구해오기
-            int total = adChannel.getListCount(userid);
-            if(total == 0){
-                return "adminChannel"; // 업로드한 동영상 없으면 바로 리턴
+            //************************ Page 화면 구성하기 ************************//
+            int page = 1;                         // page 초기화
+            int limit = 20;                       // 한 화면에 몇개의 데이터를 넣을 것인가
+            if (request.getParameter("page") != null) {  // 만약 페이지 값을 전달 받으면
+                page = Integer.parseInt(request.getParameter("page"));
             }
 
-            /* currentPage 일때 보여야할 navNum 구하기 */
-            int navBegin = currentPage - currentPage%navNum + 1;
-            if(currentPage%navNum == 0){ // navNum의 배수일 때
-                navBegin = currentPage - currentPage%navNum - 4;
-            }
-            int navEnd = navBegin + 4;
-            if(total < (navEnd * rowPerPage) ){ // total 값이 navEnd 보다 많을 때
-                navEnd = total/rowPerPage + 1;
-            }
+            // 뽑아올 데이터 시작점과 개수 정해주기
+            int start = ((page - 1) * limit + 1) - 1;
+            int end = limit;
+            video.setStart(start);            // 시작점
+            video.setEnd(end);                // 가져올 데이터 개수
+            System.out.println("start: "+ video.getStart());
+            System.out.println("end: "+ video.getEnd());
 
-            System.out.println("navB: "+ navBegin + " navE: " + navEnd);
-            model.addAttribute("navBegin", navBegin);
-            model.addAttribute("navEnd", navEnd);
-            model.addAttribute("pageNum", currentPage);
+            // video를 매개로 데어터 리스트 구해오기
+            video.setUserid(userid);                              // VideoDTO에 userid 설정
+            List<Video>  list = adChannel.getVideoList(video);    // video에 담긴 값 : userid, start, end
+            System.out.println("list: " + list);
 
-            /* 출력해야할 navNum 갯수 구하기*/
-            int navNumCount;
-            if(total%rowPerPage == 0){ // 총 데이터의 갯수가 rowPerPage의 배수 일 때
-                navNumCount = total/rowPerPage;
-                model.addAttribute("navNumCount",navNumCount);
-            }else if(total%rowPerPage != 0){
-                navNumCount = total/rowPerPage + 1;
-                model.addAttribute("navNumCount",navNumCount);
-            }
+            //************************ Page nav 구성하기 ************************//
+            // 한번에 보여질 page nav 갯수
+            int nav = 5;
 
-            /* 한 개의 navNum에서 출력하는 list의 index 시작값과 끝값 */
-            int startPage = (currentPage - 1) * rowPerPage + 1;
-            int endPage = startPage + rowPerPage - 1;
-            model.addAttribute("startPage",startPage);
-            model.addAttribute("endPage",endPage);
+            // 총 데이터 갯수 구하기
+            int count = adChannel.getListCount(video);
+            System.out.println("count: " + count);
 
-            // 동영상 리스트 가져오기
-            List<Video> acvideoList = new ArrayList<Video>();
-            acvideoList = adChannel.getVideoList(userid);
-            System.out.println("acvideoList: " + acvideoList);
-            model.addAttribute("acvideoList", acvideoList);
+            // 총 nav 페이지 수.
+            int maxpage = count/limit + ((count % limit == 0)? 0:1);
 
+            // 현재 페이지에 보여줄 nav 시작 페이지 수(1, 6, 11 등...)
+            int startpage = (int) ((page - 1) / nav) * nav + 1;
+            // 현재 페이지에 보여줄 nav 마지막 페이지 수.(5, 10, 15 등...)
+            int endpage = startpage + nav - 1;
+            if (endpage > maxpage) { endpage = maxpage; }
+            System.out.println("startpage: " + startpage);
+            System.out.println("endpage: " + endpage);
+
+            //************************ model로 값 넘겨주기 ************************//
+            model.addAttribute("videoList", list);
+            model.addAttribute("page", page);
+            model.addAttribute("count", count);
+            model.addAttribute("startpage", startpage);
+            model.addAttribute("endpage", endpage);
 
         }else if(state.equals("analysis")){ // analysis Page
             // 채널분석

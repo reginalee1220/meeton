@@ -2,40 +2,49 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="adminChannel">
-    <!--채널 이름,프로필 가져오기-->
+
+    <!--채널 이름, 프로필 가져오기-->
     <select id="ac_getUser" parameterType="String" resultType="user">
-        select aka, profile from user where userid=#{userid}
+        select aka, profile from user where userid = #{userid}
     </select>
 
+
+<!--*************************************************** dashboard ***************************************************-->
     <!-- 최신 동영상 실적 -->
-    <select id="ac_getVideo" parameterType="String" resultType="video">
-        select * from video where userid=#{userid} order by register desc limit 1
+    <select id="ac_ac_getLatestVideo" parameterType="String" resultType="video">
+        select * from video where userid = #{userid} order by register desc limit 1
     </select>
 
     <!-- 채널 분석 -->
     <select id="ac_getChannel" parameterType="String" resultType="channel">
-        select * from channel where userid=#{userid}
+        select * from channel where userid = #{userid}
     </select>
 
     <!-- 총 조회수 -->
     <select id="ac_getViews" parameterType="String" resultType="int">
-        select sum(views) from video where userid=#{userid};
+        select sum(views) from video where userid = #{userid};
     </select>
 
     <!-- 인기 동영상 -->
     <select id="ac_getTopVideo" parameterType="String" resultType="video">
-        select * from video where userid=#{userid} order by views desc limit 1
+        select * from video where userid = #{userid} order by views desc limit 1
+    </select>
+
+
+<!--*************************************************** content ***************************************************-->
+    <!-- 동영상 리스트 -->
+    <select id="ac_getVideoList" parameterType="video" resultType="video">
+        select * from video where userid = #{userid} order by register desc limit #{start}, #{end}
     </select>
 
     <!--총 동영상 갯수 구해오기-->
-    <select id="ac_getListCount" parameterType="String" resultType="int">
-        select count(videonum) from video where userid=#{userid}
+    <select id="ac_getListCount" parameterType="video" resultType="int">
+        select count(*) from video where userid = #{userid}
     </select>
 
-    <!-- 동영상 리스트 -->
-    <select id="ac_getVideoList" parameterType="String" resultType="video">
-        select * from video where userid=#{userid} order by register desc
-    </select>
+
+
+
 
     <!--최신동영상 번호-->
     <select id="ac_latestvideo" resultType="int">

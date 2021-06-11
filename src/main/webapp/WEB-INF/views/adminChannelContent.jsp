@@ -41,7 +41,7 @@
         <div class="ca-filter-nav">
             <input class="ca-filter-button" type="button" value="편집"/>
             <input class="ca-filter-button" id="ca-update" type="submit" value="수정"/>
-            <span>동영상</span>
+            <span>${count}개의 동영상</span>
         </div>
       </div>
       <div>
@@ -60,17 +60,14 @@
         <span>좋아요</span>
       </div>
     </li>
-    <c:if test="${acvideoList != null}"><!--업로드한 동영상이 있으면 -->
-    <c:forEach var="vl" items="${acvideoList}" begin="${startPage}" end ="${endPage}" >
+    <!--업로드한 동영상이 있으면 -->
+    <c:if test="${videoList != null}">
+    <c:forEach var="vl" items="${videoList}" >
     <li class="ca-content-list"><!-- 동영상 리스트 -->
       <div class="ca-content-video">
         <input class="ca-filter-chk" type="radio" name="videonum" value="${vl.videonum}"/>
-        <a href="video.do?videonum=${vl.videonum}&page=${pageNum}">
-          <video class="ca-content-video-video" muted="muted" poster="./imgUpload/${vl.thumbnail}" preload="metadata">
-            <source src="./videoUpload/${vl.videofile}" type="video/mp4" />
-            <source src="./videoUpload/${vl.videofile}" type="video/webm" />
-            <source src="./videoUpload/${vl.videofile}" type="video/ogg" />
-          </video>
+        <a href="video.do?videonum=${vl.videonum}&page=${page}">
+          <img src="./videoUpload/${vl.thumbnail}" class="ca-content-video-video" />
         </a>
         <div class="ca-content-video-desc">
           <h5>${vl.title}</h5><!--영상 제목-->
@@ -105,9 +102,12 @@
     </li>
     </c:forEach>
     </c:if>
-    <c:if test="${acvideoList == null}"><!--업로드한 동영상이 없으면 -->
+
+    <!--업로드한 동영상이 없으면 -->
+    <c:if test="${videoList == null}">
     <li>업로드한 동영상이 없습니다.</li>
     </c:if>
+
     <li class="ca-content-list"><!-- 페이징 처리 -->
       <div>
         <span>
@@ -154,7 +154,7 @@
           </a>
         </span>
       </div>
-    </li>
+    </li><!-- 페이징 처리 끝-->
   </ul><!--ca-content-content end-->
   </form>
 </div><!--ca-content end-->

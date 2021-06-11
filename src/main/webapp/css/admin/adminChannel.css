@@ -7,14 +7,15 @@
     text-decoration: none;
     color: #2c2c2c;
 }
+body{
+    background-color: #f8fafc;
+}
 .ca-container{
     width: 100%;
     display: flex;
 }
 /*  ca-sidebar  */
 .ca-sidebar{
-    position: fixed;
-    border-right: 1px solid #f0f0f0;
     width: 15%;
     height: 100vh;
     background-color: #f8fafc;
@@ -98,24 +99,30 @@
 }
 /*  ca-back  */
 .ca-back{
-    width: 100%;
-    position: absolute;
-    bottom: 0;
+    width: 15%;
+    position: fixed;
+    left: 0;
+    top: 94%;
     padding: 10px;
 }
 .ca-back img{
     border-radius: 5px;
     width: 24px;
-    float: right;
+    float: left;
     transition: 0.5s;
 }
 .ca-back img:hover{
     cursor: pointer;
     box-shadow: 0 1px 2px 1px rgba(91, 91, 91, .2);
 }
+.ca-back span{
+    font-size: 14px;
+    color: #a0a0a0;
+    margin: 0 10px;
+}
 /*  ca-main  */
 .ca-main{
-    width: 100%;
+    width: 85%;
     height: 100vh;
 }
 .ca-main-title{

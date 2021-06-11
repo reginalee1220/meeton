@@ -14,14 +14,16 @@ public class AdminChannelDAO {
     @Autowired
     private SqlSessionTemplate sst;
 
-    // 채널 이름 가져오기
+    // 채널 이름, 프로필 가져오기
     public User getUser(String userid){
         return sst.selectOne("adminChannel.ac_getUser", userid);
     }
 
+
+//*************************************************** dashboard ***************************************************//
     // 최신 동영상 실적
-    public Video getVideo(String userid){
-        return sst.selectOne("adminChannel.ac_getVideo",userid);
+    public Video getLatestVideo(String userid){
+        return sst.selectOne("adminChannel.ac_getLatestVideo",userid);
     }
 
     // 채널분석
@@ -39,15 +41,19 @@ public class AdminChannelDAO {
         return sst.selectOne("adminChannel.ac_getTopVideo", userid);
     }
 
-    // 총 동영상 갯수 구해오기
-    public int getListCount(String userid){
-        return sst.selectOne("adminChannel.ac_getListCount",userid);
+
+//*************************************************** content ***************************************************//
+    // 동영상 리스트 가져오기
+    public List<Video> getVideoList(Video video){
+        return sst.selectList("adminChannel.ac_getVideoList", video);
     }
 
-    // 동영상 리스트 가져오기
-    public List<Video> getVideoList(String userid){
-        return sst.selectList("adminChannel.ac_getVideoList", userid);
+    // 총 동영상 갯수 구해오기
+    public int getListCount(Video video){
+        return sst.selectOne("adminChannel.ac_getListCount", video);
     }
+
+
 
     // 동영상 업로드 하기
     public void insertVideo(Video video){

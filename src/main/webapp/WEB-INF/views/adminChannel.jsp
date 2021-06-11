@@ -54,18 +54,10 @@
                     <span>채널분석</span>
                 </a>
             </li>
-<%--            <li>--%>
-<%--                <div class="ca-side-action"></div>--%>
-<%--                <a href="adminChannel.do?state=subscribe">--%>
-<%--                    <img class="image1" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAABWUlEQVRIS+3WzW2DMBQH8GeEOXeDZIN0hGSTMkFzt5BcIcS1GzTdoBs0I5AJqm6QMzamesiWiMuHC46IqnBBSOb99H/G2AQWushCLtwGzDl/iKJog10oy/LEOT9fqyMXidM03QZB8ImYUmqXJMnxDvvqwL3V/+fjwiVKKX1mjL20v4+rzrFGcXk+AsCBMRYbfBas1/1GCPFu/2wsFOq6Pkkpt2bcZDjLsicAeNMJCiHEzhQdQ/GdSbCFmu41OD5QSk17fyWd3OoO9BsAVia5vuOc9qJ/TtyBxkKIjzAMj4SQZnMxlz2n9h/PudVdKGPsgAVxTtv4GOqceAg1STT+is9Syv3YluqU2IJjk3TOhuEEI6Bx8IE6t3pOsr53nRP7xnthANgTQgpfoH2GG4J9mU0d+wx3Aed5vlZKfXkVdbFBGMcgLqVc+8arqiraa/s2DvS+Uw7VWyzxDw0tUS4xdXO1AAAAAElFTkSuQmCC"/>--%>
-<%--                    <img class="image2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAA2UlEQVRIS+2V/Q3CIBTE7zZwEx1BN3ATV7ATOYIdwW7iBs+ceZgWobQpNZrIXxDC7+59AMTKgyvz8VkBMzNFRLKa8AD0F0g1zG+lyMw2AE4kmxBNtQgcfgWwA9CQPD87sp+3Uhf1IDp2IHnXJIJ3APZhb7JABBH3JhE3GJwP4JMjSDjU2a2LaK60vMEnCaTCd9eti2iZhBcFxnLrexLReOU8vgujNTCzI4DLmMPSa1wssou0oStKwFkRzIV9z1Ox1Hn/P4lroMuj/l40sgKLqJnD1b7GnLnVBR6TwIoZpGcjUAAAAABJRU5ErkJggg=="/>--%>
-<%--                    <span>구독현황</span>--%>
-<%--                </a>--%>
-<%--            </li>--%>
         </ul>
         <div class="ca-back">
             <a href="main.do"><!--메인으로 돌아가기 -->
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAABZElEQVRIS+2W0U3DMBCG7yznmW5CN4AVmADYoK/xJVKQcnNQNmAD2g3SDcoGsEAOOYpRCKE9p4QIqX5Koos/23f/70OYaeBMXPhfYGZeIuKF9rQQ8TVN0303PmrHRVEskiR5AYClFtqJWxPRfXiPApdluUbE2xHQ5hdEvHHOPTfPMZMw8wYArkRkJyIr7b/GGH9KfjwQUTEaDABbIrrWgplZzuCDOW6ruCCiJp8hx5MetdcqAPii2IV8+m91XS+MMW9EVP16jpn5DgAe24mjCmloMariGtBqhYhq6Tjntn34QfCJrvTJIqJvdXMUbK3dIOKlNndDcdHgMEn/qGNdKs9z725fhirHrWz+vrjCUls5+dVXXTn561BE3ieRU4DPYiA/6LG5nSZ1rjO4d0lEuZmIBImNawRma318lY91NxF5yrLM+0Mzonqursb99ai1Vmvt/qT2VgvSxI3asWbiYzGzgT8Aukn5HxTmoAsAAAAASUVORK5CYII="/>
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAABZElEQVRIS+2W0U3DMBCG7yznmW5CN4AVmADYoK/xJVKQcnNQNmAD2g3SDcoGsEAOOYpRCKE9p4QIqX5Koos/23f/70OYaeBMXPhfYGZeIuKF9rQQ8TVN0303PmrHRVEskiR5AYClFtqJWxPRfXiPApdluUbE2xHQ5hdEvHHOPTfPMZMw8wYArkRkJyIr7b/GGH9KfjwQUTEaDABbIrrWgplZzuCDOW6ruCCiJp8hx5MetdcqAPii2IV8+m91XS+MMW9EVP16jpn5DgAe24mjCmloMariGtBqhYhq6Tjntn34QfCJrvTJIqJvdXMUbK3dIOKlNndDcdHgMEn/qGNdKs9z725fhirHrWz+vrjCUls5+dVXXTn561BE3ieRU4DPYiA/6LG5nSZ1rjO4d0lEuZmIBImNawRma318lY91NxF5yrLM+0Mzonqursb99ai1Vmvt/qT2VgvSxI3asWbiYzGzgT8Aukn5HxTmoAsAAAAASUVORK5CYII="/> <span>main으로</span>
             </a>
         </div>
     </div><!--ca-sidebar end-->
