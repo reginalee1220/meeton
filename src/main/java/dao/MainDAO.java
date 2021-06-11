@@ -20,7 +20,7 @@ public class MainDAO {
         return sst.selectList("main.favoriteList",userid);
     }
 
-    /*  Main Video 목록  */
+//    /*  Main Video 목록  */
     public List<Video> getVideoList (){
         return sst.selectList("main.videoList");
     }

@@ -14,7 +14,7 @@
     <!--    Main Video 10 목록-->
     <select id="videoList" resultType="video">
         select videonum, channelnum, userid, title, description, thumbnail, visibility,
-               (TIMESTAMPDIFF(HOUR, register, CURDATE())) register , views, likes, videofile, videotime
+               (TIMESTAMPDIFF(HOUR, register, sysdate())) register , views, likes, videofile, videotime
         from video
         where register between date_sub(sysdate(), INTERVAL 7 day) and sysdate()
         order by views desc limit 10

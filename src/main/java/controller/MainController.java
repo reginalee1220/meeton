@@ -30,38 +30,31 @@ public class MainController {
     /* Main 목록 */
     @RequestMapping("/main.do")
     public String main(Model model, HttpServletRequest request, HttpSession session) {
-        /* HttpSession session = request.getSession(); */
 
         // My 구독,즐겨찾기 채널
         List<MainDTO> favoriteList = new ArrayList<MainDTO>();
-        String userid = (String)session.getAttribute("userid");
+        String userid = (String)session.getAttribute("userid"); // 로그인된  userid 구해오기 
         System.out.println("userid : " + userid);
-
-        favoriteList = main.getFavoriteList(userid);
+        favoriteList = main.getFavoriteList(userid);                 // 로그인된  userid 토대로 favoriteList 가져오기
         System.out.println("favoriteList: " + favoriteList);
-        model.addAttribute("favoriteList", favoriteList);
-
 
         // Video 목록
         List<Video> videoList = new ArrayList<Video>();
         videoList = main.getVideoList();
         System.out.println("videoList: " + videoList);
-        model.addAttribute("videoList", videoList);
 
         // channel 목록
         List<Channel> channelList = new ArrayList<Channel>();
         channelList = main.getChannelList();
         System.out.println("channelList: " + channelList);
+
+
+        model.addAttribute("favoriteList", favoriteList);
+        model.addAttribute("videoList", videoList);
         model.addAttribute("channelList", channelList);
 
         return "main";
     }
-
-
-
-
-
-
 
     @RequestMapping("reject.do")
     public String reject(){

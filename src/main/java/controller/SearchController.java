@@ -63,12 +63,12 @@ public class SearchController {
 
 
         //************************ model로 값 넘겨주기 ************************//
-        model.addAttribute("page", page);
-        model.addAttribute("startpage", startpage);
-        model.addAttribute("endpage", endpage);
-        model.addAttribute("count", count);
         model.addAttribute("searchList", searchList);
         model.addAttribute("keyword", video.getKeyword());
+        model.addAttribute("page", page);
+        model.addAttribute("count", count);
+        model.addAttribute("startpage", startpage);
+        model.addAttribute("endpage", endpage);
 
         return "search";
     }

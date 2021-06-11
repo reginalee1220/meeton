@@ -113,6 +113,7 @@ header{
     top: 59px;
     right: 0;
     width: 170px;
+    z-index: 20;
 }
 .header-submenu.alarm{
     position: absolute;

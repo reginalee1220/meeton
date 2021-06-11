@@ -178,12 +178,15 @@
                                 </box-icon>
                             </li>
                             <li>
-                                <span>${channel.subscribers}</span><!--구독자 수-->
+                                <span class="bookmark_click">${channel.subscribers}</span><!--구독자 수-->
                             </li>
                         </a>
                     </ul>
                 </div>
             </div><!-- // 채널 알람,즐겨찾기,구독 버튼 -->
+            <script>
+
+            </script>
         </div><!-- // channel_info  -->
         <div class="channel_em_chat"><!-- channel_em_chat 채널 이메일 & 멀티채팅 버튼 -->
             <div class="channelEmail"><!-- channelEmail -->

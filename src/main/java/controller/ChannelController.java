@@ -17,28 +17,33 @@ public class ChannelController {
     @Autowired
     private ChannelService chService;
 
+    // channel : 해당 채널로 이동
     @RequestMapping("/channel.do")
-    public String channel(String userid,HttpSession session, Model model){
-        // 채널정보가져오기
-        Channel channel = chService.getChannel(userid);
-        System.out.println("channel: " + channel);
+    public String channel(Channel channel, HttpSession session, Model model){
+        System.out.println("channel");
+        System.out.println("넘어온 userid: " + channel.getUserid());
 
-        // 해당 채널 유저정보 가져오기
-        User user = chService.getUser(userid);
-        System.out.println("user: " + user);
+        // 해당 채널 User 정보 가져오기
+        User thisChannelUser = chService.getUser(channel.getUserid());
+        System.out.println("thisChannelUser: " + thisChannelUser);
+
+        // 해당 채널 정보 가져오기
+        Channel thisChannel = chService.getChannel(channel.getUserid());
+        System.out.println("thisChannel: " + thisChannel);
 
         // 해당 채널 최신 동영상 3개 가져오기
-        List<Video> video = chService.getVideo(userid);
-        System.out.println("video: " + video);
+        List<Video> thisChannelVideo = chService.getVideo(channel.getUserid());
+        System.out.println("video: " + thisChannelVideo);
 
-        model.addAttribute("channel",channel);
-        model.addAttribute("user", user);
-        model.addAttribute("video", video);
+        model.addAttribute("user", thisChannelUser);
+        model.addAttribute("channel", thisChannel);
+        model.addAttribute("video", thisChannelVideo);
+
         return "channel";
-
     }
 
-    // videoPage : 비디오 리스트
+
+    // videoPage : 해당 채널 영상 리스트
     @RequestMapping("videoPage.do")
     public String videoPage(Video video, Model model, HttpSession session, HttpServletRequest request) {
         System.out.println("videoPage");
@@ -65,6 +70,9 @@ public class ChannelController {
 
 
         //************************ Page nav 구성하기 ************************//
+        // 한번에 보여질 page nav 갯수
+        int nav = 5;
+
         // 총 데이터 갯수 구하기
         int count = chService.getTotalVideo(video.getChannelnum());
         System.out.println("count: " + count);
@@ -73,91 +81,99 @@ public class ChannelController {
         int maxpage = count/limit + ((count % limit == 0)? 0:1);
 
         // 현재 페이지에 보여줄 nav 시작 페이지 수(1, 6, 11 등...)
-        int startpage = (int) ((page - 1) / 5) * 5 + 1;
+        int startpage = (int) ((page - 1) / nav) * nav + 1;
         // 현재 페이지에 보여줄 nav 마지막 페이지 수.(5, 10, 15 등...)
-        int endpage = startpage + 5 - 1;
-        if (endpage > count) { endpage = count;}
+        int endpage = startpage + nav - 1;
+        if (endpage > maxpage) { endpage = maxpage; }
         System.out.println("startpage: " + startpage);
         System.out.println("endpage: " + endpage);
 
 
         //************************ model로 값 넘겨주기 ************************//
+        model.addAttribute("videoList", list);
+        model.addAttribute("channelNum", video.getChannelnum());
         model.addAttribute("page", page);
+        model.addAttribute("count", count);
         model.addAttribute("startpage", startpage);
         model.addAttribute("endpage", endpage);
-        model.addAttribute("maxpage", maxpage);
-        model.addAttribute("count", count);
-        model.addAttribute("videoList", list);
-        model.addAttribute("channelNum",video.getChannelnum());
+
 
         return "videoPage";
     }
 
-    // video : 해당 비디오 게시글
+    // video : 해당 영상 게시글로 이동
     @RequestMapping("video.do")
-    public String video(Model model, int videonum, HttpSession session, HttpServletRequest request) {
+    public String video(int videonum, Model model, HttpServletRequest request) {
         System.out.println("video");
         System.out.println(videonum);
 
-        Video thisVideo = chService.getThisVideo(videonum);
+        // 해당 영상 조회수 올리기
+        chService.updateViews(videonum);
 
-        model.addAttribute("video",thisVideo);
+        // 해당 영상 정보 불러오기
+        Video thisVideo = chService.getThisVideo(videonum);
+        System.out.println("thisVideo: " + thisVideo);
+
+        model.addAttribute("video", thisVideo);
 
         return "video";
     }
 
+    // cmList : 해당 영상 정보와 게시글의 댓글 불러오기
     @RequestMapping("cmList.do")
-    public String cmList(Model model, int videonum, HttpSession session, HttpServletRequest request) {
+    public String cmList(Model model, int videonum) {
         System.out.println("cmList");
         System.out.println(videonum);
 
-        Video video = chService.getThisVideo(videonum);
-        //댓글리스트 불러오기
+        // 해당 영상 정보 불러오기
+        Video thisVideo = chService.getThisVideo(videonum);
+        System.out.println("thisVideo: " + thisVideo);
+
+        // 해당 영상의 댓글리스트 불러오기
         List<Comment> cmList = chService.getcmList(videonum);
+        System.out.println("cmList: " + cmList);
 
-        System.out.println("cmList: "+ cmList);
-
-        model.addAttribute("video",video);
-        model.addAttribute("cmList",cmList);
+        model.addAttribute("video", thisVideo);
+        model.addAttribute("cmList", cmList);
 
         return "cmList";
     }
 
+    // cmInsert : 댓글 삽입하기
     @RequestMapping("cmInsert.do")
-    public String cmInsert(Model model, Comment comment, int videonum) {
+    public String cmInsert(Comment comment, int videonum) {
         System.out.println("cmInsert");
 
-        //댓글 삽입하기
+        // 댓글 삽입하기
         chService.cmInsert(comment);
-        //video의 comments 수 올리기
+
+        // 해당 video의 comments 수 올리기
         chService.cmIncrease(videonum);
 
         return "redirect:cmList.do";
     }
 
-//    @RequestMapping("cmCount.do")
-//    public String cmCount(Model model, int videonum) {
-//        System.out.println("cmCount");
-//
-//        //video의 댓글 개수 구하기
-//        int comments = chService.getcmcount(videonum);
-//        System.out.println(comments);
-//        model.addAttribute("comments",comments);
-//
-//        return "cmCount";
-//    }
+    // cmUpdate : 댓글 수정하기
     @RequestMapping("cmUpdate.do")
-    public String cmUpdate(Comment comment, Model model) {
+    public String cmUpdate(Comment comment) {
         System.out.println("cmUpdate");
+
+        // 댓글 수정하기
         chService.cmUpdate(comment);
+
         String mav = "redirect:cmList.do?videonum="+comment.getVideonum();
         System.out.println(mav);
         return mav;
     }
 
+    // cmDelete : 댓글 삭제하기
     @RequestMapping("cmDelete.do")
-    public String cmDelete(Comment comment, Model model) {
+    public String cmDelete(Comment comment) {
+        System.out.println("cmDelete");
+
+        // 댓글 삭제하기
         chService.cmDelete(comment);
+
         String mav = "redirect:cmList.do?videonum="+comment.getVideonum();
         System.out.println(mav);
         return mav;

@@ -20,7 +20,7 @@ public class MainService {
         return mainDAO.getFavoriteList(userid);
     }
 
-    /* Main video 목록 */
+//    /* Main video 목록 */
     public List<Video> getVideoList(){
         return mainDAO.getVideoList();
     }
