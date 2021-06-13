@@ -67,8 +67,10 @@ public class SearchController {
         model.addAttribute("keyword", video.getKeyword());
         model.addAttribute("page", page);
         model.addAttribute("count", count);
+        model.addAttribute("maxpage",maxpage);
         model.addAttribute("startpage", startpage);
         model.addAttribute("endpage", endpage);
+        model.addAttribute("nav", nav);
 
         return "search";
     }

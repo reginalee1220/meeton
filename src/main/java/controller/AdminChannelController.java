@@ -26,6 +26,7 @@ public class AdminChannelController {
     @Autowired
     private AdminChannelService adChannel;
 
+    // adminChannel : state 에 따라 불러오는 값이 다름 (state 종류 : dashboard, content, analysis)
     @RequestMapping("/adminChannel.do")
     public String adminChannel(String state, Video video,
                                Model model, HttpSession session, HttpServletRequest request){
@@ -67,7 +68,7 @@ public class AdminChannelController {
 
             //************************ Page 화면 구성하기 ************************//
             int page = 1;                         // page 초기화
-            int limit = 20;                       // 한 화면에 몇개의 데이터를 넣을 것인가
+            int limit = 5;                       // 한 화면에 몇개의 데이터를 넣을 것인가
             if (request.getParameter("page") != null) {  // 만약 페이지 값을 전달 받으면
                 page = Integer.parseInt(request.getParameter("page"));
             }
@@ -95,6 +96,7 @@ public class AdminChannelController {
 
             // 총 nav 페이지 수.
             int maxpage = count/limit + ((count % limit == 0)? 0:1);
+            System.out.println("maxpage: " + maxpage);
 
             // 현재 페이지에 보여줄 nav 시작 페이지 수(1, 6, 11 등...)
             int startpage = (int) ((page - 1) / nav) * nav + 1;
@@ -108,32 +110,38 @@ public class AdminChannelController {
             model.addAttribute("videoList", list);
             model.addAttribute("page", page);
             model.addAttribute("count", count);
+            model.addAttribute("maxpage", maxpage);
             model.addAttribute("startpage", startpage);
             model.addAttribute("endpage", endpage);
+            model.addAttribute("nav", nav);
 
         }else if(state.equals("analysis")){ // analysis Page
+            System.out.println("analysis");
+
             // 채널분석
             Channel channel = adChannel.getChannel(userid);
             System.out.println("channel: " + channel);
-            model.addAttribute("channel", channel);
 
             // 총 조회수
             int totalviews = adChannel.getViews(userid);
             System.out.println("totalviews: " + totalviews );
+
+            model.addAttribute("channel", channel);
             model.addAttribute("totalviews",totalviews);
         }
-
 
         model.addAttribute("state",state);
         return "adminChannel";
     }
+
+    // videoUploadgo : videoUpload 페이지로 이동
     @RequestMapping("/videoUploadgo.do")
     public String videoUploadgo(){
         System.out.println("videoUploadgo");
         return "videoUpload";
     }
 
-    // 영상 업로드 하기
+    // videoUpload : 영상 업로드 하기
     @RequestMapping(headers = ("content-type=multipart/*"), value = "/videoUpload.do", method = RequestMethod.POST)
     public String upload(@RequestParam("videofile1") MultipartFile mf1,
                          @RequestParam("thumbnail1") MultipartFile mf2,
@@ -142,21 +150,24 @@ public class AdminChannelController {
                          HttpSession session,
                          Model model) throws Exception{
         System.out.println("upload");
-        String filename1 = mf1.getOriginalFilename();  // 첨부파일명 (사용자가 올린)
-        String filename2 = mf2.getOriginalFilename();  // 첨부파일명 (사용자가 올린)
+
+        //************************ 첨부파일 받아서 서버에 실제로 업로드 ************************//
+        String filename1 = mf1.getOriginalFilename();  // 첨부파일명 (사용자가 올린) videofile1
+        String filename2 = mf2.getOriginalFilename();  // 첨부파일명 (사용자가 올린) thumbnail1
         int size1 = (int) mf1.getSize();               // 첨부파일 크기 (사용자가 올린) 단위: byte
         int size2 = (int) mf2.getSize();               // 첨부파일 크기 (사용자가 올린) 단위: byte
 
         String path = request.getRealPath("/videoUpload");  // videoUpload 절대경로 구하기
 
+        // videofile1
         System.out.println("mf=" + mf1);
         System.out.println("filename=" + filename1);
         System.out.println("size=" + size1);
-
+        // thumbnail1
         System.out.println("mf=" + mf2);
         System.out.println("filename=" + filename2);
         System.out.println("size=" + size2);
-
+        // 업로드 될 절대경로
         System.out.println("Path=" + path);
 
         int result=0;
@@ -166,10 +177,10 @@ public class AdminChannelController {
 
         /* video 파일 */
         StringTokenizer st = new StringTokenizer(filename1, ".");
-        file1[0] = st.nextToken();      // 파일명
-        file1[1] = st.nextToken();		// 확장자
+        file1[0] = st.nextToken();            // 파일명
+        file1[1] = st.nextToken();		      // 확장자
 
-        if(size1 > 1000000000){                   // 사이즈가 초과되면 업로드 되지 못하도록 막는다
+        if(size1 > 104857600){                // 100MB 사이즈가 초과되면 업로드 되지 못하도록 막는다
             result=1;
             model.addAttribute("result", result);
             return "videoUploadResult";
@@ -187,10 +198,10 @@ public class AdminChannelController {
 
         /* thumbnail 파일 */
         StringTokenizer st2 = new StringTokenizer(filename2, ".");
-        file2[0] = st2.nextToken();      // 파일명
-        file2[1] = st2.nextToken();		// 확장자
+        file2[0] = st2.nextToken();           // 파일명
+        file2[1] = st2.nextToken();		      // 확장자
 
-        if(size2 > 10000000){                   // 사이즈가 초과되면 업로드 되지 못하도록 막는다
+        if(size2 > 1048576){                  // 1MB 사이즈가 초과되면 업로드 되지 못하도록 막는다
             result=1;
             model.addAttribute("result", result);
             return "videoUploadResult";
@@ -206,15 +217,22 @@ public class AdminChannelController {
             // 절대경로값
         }
 
-        /*===============================================================================*/
-        String userid = (String)session.getAttribute("userid");
-        Channel channel = adChannel.getChannel(userid);
-        int videoNo = adChannel.getlatestVideo();
-        videoNo = videoNo+1;
-        String title = request.getParameter("title").trim();
-        String description = request.getParameter("description").trim();
-        String visibility = request.getParameter("visibility").trim();
+        //************************ DB에 반영 (videofile,thumbnail 파일명 DB반영) ************************//
+        String userid = (String)session.getAttribute("userid");             // 로그인 된 (업로드 하는) userid
 
+        // 채널 정보
+        Channel channel = adChannel.getChannel(userid);
+
+        // 최신 동영상 번호 가져오기
+        int videoNo = adChannel.getlatestVideo(userid);
+
+        videoNo = videoNo + 1;                                                    // videoNo 1 증가
+
+        String title = request.getParameter("title").trim();                // 업로드하는 영상 제목
+        String description = request.getParameter("description").trim();    // 업로드하는 영상 설명
+        String visibility = request.getParameter("visibility").trim();      // 업로드하는 영상 공개여부
+
+        // video DTO에 넘어온 값 설정
         video.setChannelnum(channel.getChannelnum());
         video.setUserid(userid);
         video.setVideonum(videoNo);
@@ -224,6 +242,7 @@ public class AdminChannelController {
         video.setVideofile(filename1);
         video.setThumbnail(filename2);
 
+        // video DTO를 매개로 video DB에 업로드 정보 반영
         adChannel.insertVideo(video);
 
         return "redirect:adminChannel.do?state=content";

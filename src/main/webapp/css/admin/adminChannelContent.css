@@ -169,7 +169,19 @@
 .ca-content-content > li:last-child img{
     cursor: pointer;
 }
-
+.current-page{
+    display: inline-block;
+    margin: 0 10px;
+    color: #4BA9E1;
+    font-size: 13px;
+    font-weight: bold;
+}
+.others{
+    display: inline-block;
+    margin: 0 10px;
+    color: #4a4a4a;
+    font-size: 13px;
+}
 
 /*영상업로드 틀*/
 

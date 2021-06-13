@@ -29,10 +29,12 @@
                     <div class="upload-sub">영상제목</div>
                     <input type="text" name="title" />
                 </div><!--영상제목 끝-->
+
                 <div class="upload-box up-d" ><!--영상설명-->
                     <div class="upload-sub">영상설명</div>
                     <textarea name="description" rows="6"></textarea>
                 </div><!--영상설명 끝-->
+
                 <div class="upload-box up-v"><!--공개여부-->
                     <div class="upload-sub">공개여부</div>
                     <input type="radio" name="visibility" id="public" value="1"/>
@@ -50,6 +52,7 @@
                     </div>
                     <input id="ca-video" type="file" name="videofile1" />
                 </div><!--영상업로드 끝-->
+
                 <div class="upload-box up-thumb"><!--썸네일-->
                     <div class="upload-sub">썸네일</div>
                     <img src="" />

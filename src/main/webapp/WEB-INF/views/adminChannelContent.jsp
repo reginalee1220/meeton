@@ -110,46 +110,36 @@
 
     <li class="ca-content-list"><!-- 페이징 처리 -->
       <div>
+        <!--1page로 이동 -->
         <span>
-            <a href="adminChannel.do?state=content&pageNum=${1}">
+            <a href="adminChannel.do?state=content&page=1">
                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAwklEQVRIS+2UsQ3DIBBF7ySgzibxCM4ImSQ915wL9skG8QjOJulBIkJKgSJjfMiWG1Of/vv/A4ew88Gd9eEEVBs+tiLnXEwWiWjWCDNftNYPIhpKURYTLAF+4i8A6ABgICKegzQBcvEY4zuE0DPzZxOARDwBRQmk4iJAi7gYoJQaEfEKAJP3/lbqPb8LcUVSiAiQnKWqJBAxQAppAvxDEPFurX1u8g9ykVSXMaYviVdfUXVVrhg4dpuuMFgdORNUK/oCID+WGStseG4AAAAASUVORK5CYII="/>
             </a>
-          <c:if test="${pageNum != 1}">
-            <a href="adminChannel.do?state=content&pageNum=${pageNum-1}">
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAtklEQVRIS+2TsQ3CMBBF/0mxazaBEcIITELvay4bZQMYATahtyUjSxRWmrvEsUQRt7Heu7xLCJ0PdebjEKiF/y+RiJycc3dmntTxgXVL/sEfAC4AJmYWTWJOVMNzzu+U0igin10EW+FFrr5BC1wVtMJNgmEYnkR0BvCKMV4t3eu9mBK1SFRBmaak2ioxCVokZsFSQkS3EMK8y39QQ0ou7/1ogatfkTad5fmqRBbg8s4hUKt1T/QFxkhmGTtrYfsAAAAASUVORK5CYII="/>
-            </a>
-          </c:if>
-          <c:if test="${pageNum == 1}">
-            <a>
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAtklEQVRIS+2TsQ3CMBBF/0mxazaBEcIITELvay4bZQMYATahtyUjSxRWmrvEsUQRt7Heu7xLCJ0PdebjEKiF/y+RiJycc3dmntTxgXVL/sEfAC4AJmYWTWJOVMNzzu+U0igin10EW+FFrr5BC1wVtMJNgmEYnkR0BvCKMV4t3eu9mBK1SFRBmaak2ioxCVokZsFSQkS3EMK8y39QQ0ou7/1ogatfkTad5fmqRBbg8s4hUKt1T/QFxkhmGTtrYfsAAAAASUVORK5CYII="/>
-            </a>
-          </c:if>
         </span>
-        <c:forEach var="nNc" begin="${navBegin}" end="${navEnd}" varStatus="status">
-            <c:if test="${status.current == pageNum}">
-              <span><a style="font-weight: bold ; color: #4BA9E1;"
-                    href="adminChannel.do?state=content&pagNum=${nNc}">
-                ${nNc}
-              </a></span>
-            </c:if >
-            <c:if test="${status.current != pageNum}">
-              <span><a href="adminChannel.do?state=content&pageNum=${nNc}">
-                ${nNc}
-              </a></span>
-            </c:if >
+        <!--이전블럭으로 이동 -->
+        <c:if test="${startpage > nav}">
+          <a href="adminChannel.do?state=content&page=${startpage - nav}">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAA00lEQVRIS+3TsQ3CMBAF0IsXIKNkBTZgBBiB0rpYcuM9wgZsACMwAiPAAjaylCKKUty3T6Rx6u+8+Ouno52ebieXGvy35lvVcNXe+957/0EPVlUdQhiI6EFEV2aeELwYXqB9BmOMR+fcU4oXwWs0pXQbx/EsRXMOhjVQGNZCIVgTFcPaKArnxR7mAU3MfEHGtM6KxzXfWg0Xw/mLNXEI1sRhWAsvgjfwrzFmsNa+pYMrhhf4nYhOzPySouLfCXmhNFt1YymylWtwTXvQ2VY1VFdN+Aco/l0fa51srQAAAABJRU5ErkJggg=="/>
+          </a>
+        </c:if>
+        <!--페이징 출력 -->
+        <c:forEach var="navNum" begin="${startpage}" end="${endpage}" >
+          <c:if test="${navNum == page }">
+            <a class="current-page">${navNum}</a>
+          </c:if>
+          <c:if test="${navNum != page }">
+            <a class="others" href="adminChannel.do?state=content&page=${navNum}">${navNum}</a>
+          </c:if>
         </c:forEach>
+        <!--다음블럭으로 이동-->
+        <c:if test="${endpage < maxpage}">
+          <a href="adminChannel.do?state=content&page=${startpage + nav}">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAyklEQVRIS+3VwQ1CIQwG4B8W0BEcwRGeG7iB7sGlCTQcXcER3MAVHEUXIIbE00teQlsiFzhDvvQvFIdByw1yMeG/JT+jboqaiPZE9G7avLFJHDUzXwHcAJxCCC8tLoJjjIv3/vnDasVqXARXMKV0d85drLgY7oWr4B64GrbiJtiC94Y/AJaWZ2aCVze8Ga1JqWELqoatqArugYrhnPOhlFLn8w6AqKfrmS7uMTMfATwAnFtu79YnIoa1v5G54glrE5g91iYnPjcs6i/QQ1kfY+LvygAAAABJRU5ErkJggg=="/>
+          </a>
+        </c:if>
+        <!--마지막 page로 이동-->
         <span>
-          <c:if test="${pageNum != navNumCount}">
-          <a href="adminChannel.do?state=content&pageNum=${pageNum+1}">
-              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAsUlEQVRIS+3UsQ0CMQwF0G8p6dkERoAN2Ag3Sc0mjMCNAJtQx5GM0iEKYls6ieKuzv0X/yghrPzRyvnYgGnD/1NRKYVF5MrMr+m2PxaYJhjhAC4AHiJy8iAmgJl3KaWFiPZexASMiaOIGYgiLiCChICc8x3AQVWfvffjr0N3AeMcPOFjYjMQCTcD0XAzUGs9q+rN0vn3LTdXNJDW2uK5xeYJPG9PeIIoYq5oA6INTP97A3pmfBkzm1HfAAAAAElFTkSuQmCC"/>
-          </a>
-          </c:if>
-          <c:if test="${pageNum == navNumCount}">
-          <a>
-              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAsUlEQVRIS+3UsQ0CMQwF0G8p6dkERoAN2Ag3Sc0mjMCNAJtQx5GM0iEKYls6ieKuzv0X/yghrPzRyvnYgGnD/1NRKYVF5MrMr+m2PxaYJhjhAC4AHiJy8iAmgJl3KaWFiPZexASMiaOIGYgiLiCChICc8x3AQVWfvffjr0N3AeMcPOFjYjMQCTcD0XAzUGs9q+rN0vn3LTdXNJDW2uK5xeYJPG9PeIIoYq5oA6INTP97A3pmfBkzm1HfAAAAAElFTkSuQmCC"/>
-          </a>
-          </c:if>
-          <a href="adminChannel.do?state=content&pageNum=${navNumCount}">
+          <a href="adminChannel.do?state=content&page=${maxpage}">
               <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAuUlEQVRIS+2UsQ0DIQxFjQR9NklGSDbIPhRxA3U2yQi5EZJNUgOSI3dRBPgkg645SrD+8/8WNjD5mMn6sAPEhLeNKISAOec7In5qrYYQiO+9981Gmw8sDgA3AHjlnC81iAqAiAdr7WKMObYgKgBblyBqgAQZAuhBhgKcc08AOBHRu5Ry5qEPAfAcauLsTA3oiasBkrgaEGO8EtHjN/P/36yOiCEppWXKqhDX5MqCbbfpyia7ZbsDMcUvbJmsGRiNZuQAAAAASUVORK5CYII="/>
           </a>
         </span>
@@ -158,7 +148,5 @@
   </ul><!--ca-content-content end-->
   </form>
 </div><!--ca-content end-->
-
-
 </body>
 </html>

@@ -155,7 +155,19 @@
                         </c:forEach>
                     </div><!-- // search_video_left -->
                 </div><!-- // search_list -->
+
                 <div class="nav"><!--nav-->
+                    <!--1page로 이동-->
+                    <a href="search.do?page=1&keyword=${keyword}">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAwklEQVRIS+2UsQ3DIBBF7ySgzibxCM4ImSQ915wL9skG8QjOJulBIkJKgSJjfMiWG1Of/vv/A4ew88Gd9eEEVBs+tiLnXEwWiWjWCDNftNYPIhpKURYTLAF+4i8A6ABgICKegzQBcvEY4zuE0DPzZxOARDwBRQmk4iJAi7gYoJQaEfEKAJP3/lbqPb8LcUVSiAiQnKWqJBAxQAppAvxDEPFurX1u8g9ykVSXMaYviVdfUXVVrhg4dpuuMFgdORNUK/oCID+WGStseG4AAAAASUVORK5CYII="/>
+                    </a>
+                    <!--이전블럭으로 이동 -->
+                    <c:if test="${startpage > nav}">
+                        <a href="search.do?page=${startpage - nav}&keyword=${keyword}">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAA00lEQVRIS+3TsQ3CMBAF0IsXIKNkBTZgBBiB0rpYcuM9wgZsACMwAiPAAjaylCKKUty3T6Rx6u+8+Ouno52ebieXGvy35lvVcNXe+957/0EPVlUdQhiI6EFEV2aeELwYXqB9BmOMR+fcU4oXwWs0pXQbx/EsRXMOhjVQGNZCIVgTFcPaKArnxR7mAU3MfEHGtM6KxzXfWg0Xw/mLNXEI1sRhWAsvgjfwrzFmsNa+pYMrhhf4nYhOzPySouLfCXmhNFt1YymylWtwTXvQ2VY1VFdN+Aco/l0fa51srQAAAABJRU5ErkJggg=="/>
+                        </a>
+                    </c:if>
+                    <!--페이징 출력 -->
                     <c:forEach var="navNum" begin="${startpage}" end="${endpage}" >
                         <c:if test="${navNum == page }">
                            <span> ${navNum} </span>
@@ -164,6 +176,16 @@
                             <a href="search.do?page=${navNum}&keyword=${keyword}"> <span> ${navNum} </span> </a>
                         </c:if>
                     </c:forEach>
+                    <!--다음블럭으로 이동-->
+                    <c:if test="${endpage < maxpage}">
+                        <a href="search.do?page=${startpage + nav}&keyword=${keyword}">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAyklEQVRIS+3VwQ1CIQwG4B8W0BEcwRGeG7iB7sGlCTQcXcER3MAVHEUXIIbE00teQlsiFzhDvvQvFIdByw1yMeG/JT+jboqaiPZE9G7avLFJHDUzXwHcAJxCCC8tLoJjjIv3/vnDasVqXARXMKV0d85drLgY7oWr4B64GrbiJtiC94Y/AJaWZ2aCVze8Ga1JqWELqoatqArugYrhnPOhlFLn8w6AqKfrmS7uMTMfATwAnFtu79YnIoa1v5G54glrE5g91iYnPjcs6i/QQ1kfY+LvygAAAABJRU5ErkJggg=="/>
+                        </a>
+                    </c:if>
+                    <!--마지막 page로 이동 -->
+                    <a href="search.do?page=${maxpage}&keyword=${keyword}">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAuUlEQVRIS+2UsQ0DIQxFjQR9NklGSDbIPhRxA3U2yQi5EZJNUgOSI3dRBPgkg645SrD+8/8WNjD5mMn6sAPEhLeNKISAOec7In5qrYYQiO+9981Gmw8sDgA3AHjlnC81iAqAiAdr7WKMObYgKgBblyBqgAQZAuhBhgKcc08AOBHRu5Ry5qEPAfAcauLsTA3oiasBkrgaEGO8EtHjN/P/36yOiCEppWXKqhDX5MqCbbfpyia7ZbsDMcUvbJmsGRiNZuQAAAAASUVORK5CYII="/>
+                    </a>
                 </div><!--// nav-->
                 </c:if>
 

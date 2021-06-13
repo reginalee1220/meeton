@@ -54,15 +54,15 @@ public class AdminChannelDAO {
     }
 
 
+//*************************************************** videoUpload ***************************************************//
+    // 최신동영상 번호 가져오기
+    public int getlatestVideo(String userid){
+return sst.selectOne("adminChannel.ac_latestvideo", userid);
+}
 
-    // 동영상 업로드 하기
+    // video DTO를 매개로 video DB에 업로드 정보 반영
     public void insertVideo(Video video){
         sst.insert("adminChannel.ac_insertVideo", video);
-    }
-
-    // 최신동영상 번호 가져오기
-    public int getlatestVideo(){
-        return sst.selectOne("adminChannel.ac_latestvideo");
     }
 
 }
