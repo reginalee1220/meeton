@@ -2,13 +2,30 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="purchased">
+<!--*************************************************** success.do"***************************************************-->
+    <!--favorite DTO를 매개로 결제한 userid의 purchased에 추가-->
+    <insert id="p_updatePurchased" parameterType="purchased">
+        insert into purchased values ((select * from (select coalesce(max(purchasednum),1) + 1 from purchased ) next),
+                                     sysdate(), #{payment}, #{method}, #{userid})
+    </insert>
 
-    <select id="p_getAka" parameterType="int" resultType="String">
-        select aka from channel where channelnum=#{channelNum}
+    <!--나의 마지막 구매번호-->
+    <select id="p_getMyLatestNum" parameterType="String" resultType="int">
+        select purchasednum from purchased where userid = #{userid} order by purchasednum desc limit 1
     </select>
 
-    <update id="p_updatesub" parameterType="int">
-        update channel set subscribers=subscribers+1 where channelnum=#{channelNum}
-    </update>
+    <!--favorite DTO를 매개로 결제한 userid 의 favorite에 추가-->
+    <insert id="p_updateFavorite" parameterType="favorite">
+        insert into favorite values (#{userid}, #{channelnum}, 'subscript', sysdate(), #{purchasednum} )
+    </insert>
 
+    <!--구독한 채널의 subscribers 수 올려주기-->
+    <update id="p_updateSubscribers" parameterType="int">
+        update channel set subscribers = subscribers + 1;
+    </update>
+<!--*************************************************** done.do"***************************************************-->
+    <!--구독결제한 채널의 userid 가져오기-->
+    <select id="p_getChannelUserid" parameterType="int" resultType="String">
+        select userid from channel where channelnum = #{channelnum}
+    </select>
 </mapper>

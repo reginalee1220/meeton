@@ -7,6 +7,7 @@ public class Purchased {
 	private Timestamp paydate;
 	private int payment;
 	private String method;
+	private String userid;
 
     public int getPurchasednum() {
         return purchasednum;
@@ -38,5 +39,13 @@ public class Purchased {
 
     public void setMethod(String method) {
         this.method = method;
+    }
+
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid;
     }
 }

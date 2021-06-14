@@ -150,6 +150,8 @@ public class AdminChannelController {
                          HttpSession session,
                          Model model) throws Exception{
         System.out.println("upload");
+        String uploadid = (String)session.getAttribute("userid");
+        System.out.println("uploadid: " + uploadid);
 
         //************************ 첨부파일 받아서 서버에 실제로 업로드 ************************//
         String filename1 = mf1.getOriginalFilename();  // 첨부파일명 (사용자가 올린) videofile1
@@ -216,17 +218,13 @@ public class AdminChannelController {
             mf2.transferTo(new File(path + "/" + filename2));  // 첨부파일을 업로드 해라
             // 절대경로값
         }
+        System.out.println("실제 업로드 완료");
 
         //************************ DB에 반영 (videofile,thumbnail 파일명 DB반영) ************************//
         String userid = (String)session.getAttribute("userid");             // 로그인 된 (업로드 하는) userid
 
         // 채널 정보
         Channel channel = adChannel.getChannel(userid);
-
-        // 최신 동영상 번호 가져오기
-        int videoNo = adChannel.getlatestVideo(userid);
-
-        videoNo = videoNo + 1;                                                    // videoNo 1 증가
 
         String title = request.getParameter("title").trim();                // 업로드하는 영상 제목
         String description = request.getParameter("description").trim();    // 업로드하는 영상 설명
@@ -235,7 +233,6 @@ public class AdminChannelController {
         // video DTO에 넘어온 값 설정
         video.setChannelnum(channel.getChannelnum());
         video.setUserid(userid);
-        video.setVideonum(videoNo);
         video.setTitle(title);
         video.setDescription(description);
         video.setVisibility(visibility);
@@ -244,6 +241,8 @@ public class AdminChannelController {
 
         // video DTO를 매개로 video DB에 업로드 정보 반영
         adChannel.insertVideo(video);
+
+        System.out.println("DB 반영 완료");
 
         return "redirect:adminChannel.do?state=content";
     }

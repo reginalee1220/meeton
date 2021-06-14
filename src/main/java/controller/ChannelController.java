@@ -179,18 +179,27 @@ public class ChannelController {
         return mav;
     }
 
-    // mybookmark : 즐겨찾기 시청자 수 올리기
+    // mybookmark : 즐겨찾기 추가 및 시청자 수 올리기
     @RequestMapping("mybookmark.do")
-    public String mybookmark(String userid, Model model){
+    public String mybookmark(String userid, Favorite favorite, Model model, HttpSession session){
         System.out.println("mybookmark");
-        System.out.println(userid);
+        System.out.println(userid);   // 채널주인의 userid
 
         // 해당 채널 즐겨찾기 시청자 수 올리기
         chService.upBookmark(userid);
 
+        // 해당 채널 즐겨찾기 추가한 user의 favorite 에 추가하기
+        String loginUser = (String)session.getAttribute("userid");  // 즐겨찾기한 user의 userid
+        Channel channel = chService.getChannel(userid);                   // 즐겨찾기하는 채널의 정보
+        int channelnum = channel.getChannelnum();
+
+        favorite.setUserid(loginUser);
+        favorite.setChannelnum(channelnum);
+        chService.insertBookmark(favorite);
+
         // 해당 채널 즐겨찾기 시청자 수 가져오기
         int bookmarkers = chService.getBookmarkers(userid);
-        System.out.println(bookmarkers);
+        System.out.println("bookmarkers: " + bookmarkers);
 
         model.addAttribute("bookmarkers", bookmarkers);
 
@@ -204,7 +213,7 @@ public class ChannelController {
 
         // 해당 채널 즐겨찾기 시청자 수 가져오기
         int bookmarkers = chService.getBookmarkers(userid);
-        System.out.println(bookmarkers);
+        System.out.println("bookmarkers: " + bookmarkers);
 
         model.addAttribute("bookmarkers", bookmarkers);
 

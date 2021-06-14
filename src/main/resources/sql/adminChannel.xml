@@ -44,15 +44,11 @@
 
 
 <!--*************************************************** videoUpload ***************************************************-->
-    <!--최신 동영상 번호-->
-    <select id="ac_latestvideo" parameterType="String" resultType="int">
-        select videonum from video where userid = #{userid} order by videonum desc limit 1;
-    </select>
-
     <!--video DTO를 매개로 video DB에 업로드 정보 반영 -->
     <insert id="adminChannel.ac_insertVideo" parameterType="video">
         insert into video (videonum, channelnum, userid, title, description, thumbnail, visibility, register, videofile) values
-            (#{videonum}, #{channelnum}, #{userid}, #{title}, #{description}, #{thumbnail,jdbcType=VARCHAR}, #{visibility}, sysdate(), #{videofile,jdbcType=VARCHAR})
+            ((select * from (select coalesce(max(videonum), 0) + 1 from video ) next),
+             #{channelnum}, #{userid}, #{title}, #{description}, #{thumbnail,jdbcType=VARCHAR}, #{visibility}, sysdate(), #{videofile,jdbcType=VARCHAR})
     </insert>
 
 </mapper>

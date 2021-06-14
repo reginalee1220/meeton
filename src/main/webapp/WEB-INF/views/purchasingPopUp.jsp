@@ -70,10 +70,13 @@
     </style>
     <script>
         $(function(){
-            $('#apibtn').click(function (){
+            var channelnum = $('.apibtn').attr('id');
+            console.log(channelnum);
+
+            $('.apibtn').click(function (){
                 $.ajax({
                     url:'kakaoPay.do',
-                    // dataType:'json',
+                    data: {"channelnum" : channelnum},
                     success:function (data){
                         window.open(data);
                     },
@@ -88,13 +91,13 @@
 </head>
 <body>
 <div class="payPopUp">
-    <h3> ${aka}채널 구독 결제 화면입니다.</h3>
+    <h3> ${channel.aka}채널 구독 결제 화면입니다.</h3>
     <div>
         <div class="title">결제정보 </div>
         <table>
             <tr>
                 <td>주문상품</td>
-                <td>${aka}채널 1달 구독권</td>
+                <td>${channel.aka}채널 1달 구독권</td>
             </tr>
             <tr>
                 <td>상품금액</td>
@@ -111,7 +114,7 @@
         </table>
     </div>
     <div class="paybtn">
-      <input type="button" value="KakaoPay" id="apibtn" >
+      <input type="button" value="KakaoPay" class="apibtn" id="${channel.channelnum}" >
     </div>
 
 </div>

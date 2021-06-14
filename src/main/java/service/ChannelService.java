@@ -89,6 +89,11 @@ public class ChannelService {
         dao.upBookmark(userid);
     }
 
+    // 해당 채널 즐겨찾기 추가한 user의 favorite 에 추가하기
+    public void insertBookmark(Favorite favorite){
+        dao.insertBookmark(favorite);
+    }
+
     // 해당 채널 즐겨찾기 시청자 수 가져오기
     public int getBookmarkers(String userid){
         return dao.getBookmarkers(userid);

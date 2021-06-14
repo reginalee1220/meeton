@@ -88,6 +88,11 @@
         update channel set bookmarkers = bookmarkers + 1 where userid = #{userid}
     </update>
 
+    <!--해당 채널 즐겨찾기 추가한 user의 favorite 에 추가하기 -->
+    <insert id="c_insertBookmark" parameterType="favorite">
+        insert into favorite (userid, channelnum, type, startdate) values (#{userid}, #{channelnum}, 'bookmark', sysdate())
+    </insert>
+
     <!--해당 채널 즐겨찾기 시청자 수 가져오기-->
     <select id="c_getBookmarkers" parameterType="String" resultType="int">
         select bookmarkers from channel where userid = #{userid}

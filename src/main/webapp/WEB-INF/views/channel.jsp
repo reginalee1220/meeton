@@ -178,8 +178,8 @@
                         <i class='bx bxs-bell' ></i>
                     </box-icon>
                 </div>
-                <a class="mybookmark" id="${channel.userid}">
-                <div class="btn_bookmark chBTN"><!-- 즐겨찾기 -->
+                <a class="mybookmark" id="${channel.userid}"><!-- 즐겨찾기 -->
+                <div class="btn_bookmark chBTN">
                     <ul class="btn_bkm_list">
                         <li>
                             <box-icon name='star' >
@@ -190,8 +190,8 @@
                     </ul>
                 </div>
                 </a>
-                <a href="purchase.do">
-                <div class="btn_subscript chBTN"><!-- 구독 -->
+                <a href="purchase.do?channelnum=${channel.channelnum}&aka=${channel.aka}"><!-- 구독 -->
+                <div class="btn_subscript chBTN">
                     <ul class="btn_subs_list">
                         <li>
                             <box-icon name='donate-heart' >
