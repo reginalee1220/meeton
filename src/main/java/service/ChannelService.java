@@ -83,5 +83,14 @@ public class ChannelService {
     }
 
 
+//*************************************************** mybookmark.do" ***************************************************//
+    // 해당 채널 즐겨찾기 시청자 수 올리기
+    public void upBookmark(String userid){
+        dao.upBookmark(userid);
+    }
 
+    // 해당 채널 즐겨찾기 시청자 수 가져오기
+    public int getBookmarkers(String userid){
+        return dao.getBookmarkers(userid);
+    }
 }

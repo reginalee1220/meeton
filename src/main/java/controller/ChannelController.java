@@ -179,5 +179,37 @@ public class ChannelController {
         return mav;
     }
 
+    // mybookmark : 즐겨찾기 시청자 수 올리기
+    @RequestMapping("mybookmark.do")
+    public String mybookmark(String userid, Model model){
+        System.out.println("mybookmark");
+        System.out.println(userid);
+
+        // 해당 채널 즐겨찾기 시청자 수 올리기
+        chService.upBookmark(userid);
+
+        // 해당 채널 즐겨찾기 시청자 수 가져오기
+        int bookmarkers = chService.getBookmarkers(userid);
+        System.out.println(bookmarkers);
+
+        model.addAttribute("bookmarkers", bookmarkers);
+
+        return "bookmarkers";
+    }
+
+    // mybookmarkers : 즐겨찾기 시청자 수 가져오기
+    @RequestMapping("mybookmarkers.do")
+    public String mybookmarkers(String userid, Model model){
+        System.out.println("mybookmarkers");
+
+        // 해당 채널 즐겨찾기 시청자 수 가져오기
+        int bookmarkers = chService.getBookmarkers(userid);
+        System.out.println(bookmarkers);
+
+        model.addAttribute("bookmarkers", bookmarkers);
+
+        return "bookmarkers";
+    }
+
 
 }

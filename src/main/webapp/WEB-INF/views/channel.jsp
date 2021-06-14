@@ -107,6 +107,25 @@
         bottom: 10%;
     }
 </style>
+<script>
+    $(function(){
+        var userid = $('.mybookmark').attr('id');
+        $('.mybookmarknum').load('mybookmarkers.do?userid=' + userid)
+
+        $('.mybookmark').click(function(){
+            $.ajax({
+                url:"mybookmark.do",
+                data: {"userid":userid},
+                success:function(data){
+                    $('.mybookmarknum').html(data);
+                },
+                error:function(data){
+                    alert("즐겨찾기 등록 실패");
+                }
+            });
+        });
+    })
+</script>
 </heade>
 <body>
 <%@ include file="header.jsp" %>
@@ -159,6 +178,7 @@
                         <i class='bx bxs-bell' ></i>
                     </box-icon>
                 </div>
+                <a class="mybookmark" id="${channel.userid}">
                 <div class="btn_bookmark chBTN"><!-- 즐겨찾기 -->
                     <ul class="btn_bkm_list">
                         <li>
@@ -166,23 +186,24 @@
                                 <i class='bx bx-star' ></i>
                             </box-icon>
                         </li>
-                        <li><span>${channel.bookmarkers}</span></li><!--즐겨찾기 수-->
+                        <li><span class="mybookmarknum"></span></li><!--즐겨찾기 수-->
                     </ul>
                 </div>
+                </a>
+                <a href="purchase.do">
                 <div class="btn_subscript chBTN"><!-- 구독 -->
                     <ul class="btn_subs_list">
-                        <a href="purchase.do">
-                            <li>
-                                <box-icon name='donate-heart' >
-                                    <i class='bx bx-donate-heart' ></i>
-                                </box-icon>
-                            </li>
-                            <li>
-                                <span class="bookmark_click">${channel.subscribers}</span><!--구독자 수-->
-                            </li>
-                        </a>
+                        <li>
+                            <box-icon name='donate-heart' >
+                                <i class='bx bx-donate-heart' ></i>
+                            </box-icon>
+                        </li>
+                        <li>
+                            <span class="bookmark_click">${channel.subscribers}</span><!--구독자 수-->
+                        </li>
                     </ul>
                 </div>
+                </a>
             </div><!-- // 채널 알람,즐겨찾기,구독 버튼 -->
             <script>
 
