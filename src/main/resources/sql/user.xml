@@ -9,6 +9,9 @@
         select * from user where userid = #{userid} and name = #{name}
     </select>
 
+    <select id="dd">
+        select * from channel
+    </select>
     <!-- 회원저장 -->
     <insert id="user_signUp" parameterType="user">
         insert into user (userid,
@@ -26,7 +29,7 @@
                 #{userid},
                 #{passwd},
                 #{name},
-                #{aka, jdbcType=VARCHAR},
+                #{userid}, <!--aka-->
                 #{phone},
                 #{email},
                 #{domain},
@@ -41,6 +44,13 @@
                 1
                 )
     </insert>
+
+    <!--채널생성-->
+    <insert id="createChannel" parameterType="user">
+        insert into channel (channelnum, userid, aka)
+            values ( (select * from (select coalesce(max(channelnum), 0) + 1 from channel ) next), #{userid}, #{userid})
+    </insert>
+
 
     <!-- 로그인 인증 -->
     <select id="login_check" parameterType="String" resultType="user">

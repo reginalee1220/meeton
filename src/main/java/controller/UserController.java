@@ -42,22 +42,11 @@ public class UserController {
     @RequestMapping(value = "/user_signup_ok.do", method = RequestMethod.POST)
     public String user_signup_ok(User user, HttpServletRequest request,
                                  Model model) throws Exception{
-
-        String userid = request.getParameter("userid").trim();
-        String passwd = request.getParameter("passwd").trim();
-        String name = request.getParameter("name").trim();
-        String phone = request.getParameter("phone").trim();
-        String email = request.getParameter("email").trim();
-        String domain = request.getParameter("domain").trim();
-        String zip = request.getParameter("zip").trim();
-        String address1 = request.getParameter("address1").trim();
-        String address2 = request.getParameter("address2").trim();
-        String year = request.getParameter("year").trim();
-        String month = request.getParameter("month").trim();
-        String day = request.getParameter("day").trim();
-
+        System.out.println(user.getUserid() + "userid");
 
         userService.insertMember(user);
+        System.out.println("성공");
+        userService.createChannel(user);
 
         return "redirect:login.do";
     }

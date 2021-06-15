@@ -37,6 +37,11 @@ public class UserDAO {
         sst.insert("user_signUp", user);
     }
 
+    // 채널 생성
+    public void createChannel(User user){
+        sst.insert("user.createChannel", user);
+    }
+
     // 로그인 인증 체크
     public User userCheck(String userid) throws Exception{
 

@@ -5,7 +5,7 @@
 <!--*************************************************** success.do ***************************************************-->
     <!--favorite DTO를 매개로 결제한 userid의 purchased에 추가-->
     <insert id="p_updatePurchased" parameterType="purchased">
-        insert into purchased values ((select coalesce(max(purchasednum), 0) + 1 from purchased ),
+        insert into purchased values ((select * from (select coalesce(max(purchasednum), 0) + 1 from purchased ) next),
                                      sysdate(), #{payment}, #{method}, #{userid},(SELECT date_add(sysdate(), INTERVAL 1 MONTH)) )
     </insert>
 

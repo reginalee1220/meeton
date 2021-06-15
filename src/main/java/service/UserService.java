@@ -25,6 +25,11 @@ public class UserService {
         userDao.insertMember(user);
     }
 
+    // 채널 생성
+    public void createChannel(User user){
+        userDao.createChannel(user);
+    }
+
     // 로그인 저장 체크
     public User userCheck(String userid) throws Exception{
         return userDao.userCheck(userid);
