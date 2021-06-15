@@ -27,6 +27,7 @@
 <%@include file="header.jsp"%>
 <!--******************** sidebar ********************-->
 <div class="sidebar">
+
     <div class="menu_content">
         <div class="menu">
             <div class="menu_name">메뉴</div>
@@ -66,7 +67,7 @@
         </c:if>
         <c:if test="${userid != null}"><!--로그인 했으면 -->
         <li><!-- 마이 플레이 리스트 -->
-            <a href="bookmark.do" class="nav-my">
+            <a href="/history.do" class="nav-my">
                 <i class='bx bxs-user-detail'></i>
                 <span class="links_name">History</span>
             </a>

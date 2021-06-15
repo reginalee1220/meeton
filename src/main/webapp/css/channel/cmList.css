@@ -58,11 +58,6 @@
     font-size:13px;
     color:#6e6e6e;
 }
-.cl_info_name{
-    color:#656565;
-    font-size: 15px;
-    font-weight: bold;
-}
 .cm_list .cm_line .cm_inf .cm_inf_conwrap .cm_inf_con .cm_aka{
     color: #323232;
 }
@@ -72,10 +67,6 @@
 }
 .cm_list .cm_line .cm_inf .cm_inf_conwrap .cm_inf_con .cm_ymd,.cm_time{
     margin-right: 10px;
-}
-.cl_info_date{
-    color: #656565;
-    font-size: 13px;
 }
 /* 좋아요&댓글신고고정 */
 .cm_list .cm_line .cm_inf .cm_inf_conwrap .cm_up_more{
@@ -120,26 +111,12 @@
     margin-top:10px;
     margin-bottom: 50px;
     padding-left:70px;
-    font-size:14px;
-    color:#8e8e8e;
-}
-/* ------- 댓글내용 ------- */
-.cm_list .cm_line .cl_content{
-    margin-top:10px;
-    margin-bottom: 50px;
-    padding-left:70px;
-    font-size:14px;
+    font-size:15px;
     color:#8e8e8e;
 }
 /* ===========================================================================*/
 /* ------- 답글쓰기 버튼 ------- */
 .cm_list .cm_line .re_btn{
-    display: flex;
-    /* align-content:center; 줄이 여러개일 때 한 줄에 대한 세로축 높이가 똑같을 때 사용 */
-    align-items:center; /* 한줄에대한 높이가 다를 때 세로축 */
-    flex-direction:row; /* 기본값 */
-    justify-content:space-between; /* 가록 축 정렬에 대한 설정값 */
-    flex-wrap: nowrap;
     padding-left:70px;
 }
 .cm_list .cm_line .re_btn button{
@@ -158,33 +135,3 @@
     font-size:13px;
     color: #fff;
 }
-/* 수정 삭제 댓글 버튼 */
-.cl_edit{
-    width: 10%;
-}
-.edit1{
-    width: 50px;
-    height: 30px;
-    border: 1px solid #d9dddf;
-    background-color: #fff;
-    color:#656565;
-    cursor: pointer;
-    transition: 0.5s;
-}
-.edit2{
-    width: 50px;
-    height: 30px;
-    border: 1px solid #d9dddf;
-    background-color: #fff;
-    color:#656565;
-    cursor: pointer;
-    transition: 0.5s;
-}
-.re_btn input[type="button"]:hover{
-    width: 50px;
-    height: 30px;
-    border: 1px solid #d9dddf;
-    background: #d8d8d8;
-    color: #fff;
-}
-.re_btn input[type="button"]{-webkit-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -moz-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -webkit-transition: 0.5s; transition: 0.5s; appearance: none; }

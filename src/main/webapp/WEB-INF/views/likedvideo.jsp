@@ -13,7 +13,7 @@
     <!-- css -->
     <link rel="stylesheet" type="text/css" href="../../css/default/reset.css">
     <link rel="stylesheet" type="text/css" href="../../css/mypick/likedvideo.css">
-    <link rel="stylesheet" type="text/css" href="../../css/main/main.css">
+    <link rel="stylesheet" type="text/css" href="../../css/main/slidebar.css">
 
     <!-- js -->
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
@@ -25,7 +25,6 @@
 
 </head>
 <body>
-<%= session.getAttribute("userid") %>
 <!-- header -->
 <%@ include file="header.jsp"%>
 
@@ -70,7 +69,7 @@
         </c:if>
         <c:if test="${userid != null}"><!--로그인 했으면 -->
         <li><!-- 마이 플레이 리스트 -->
-            <a href="bookmark.do" class="nav-my">
+            <a href="/history.do" class="nav-my">
                 <i class='bx bxs-user-detail'></i>
                 <span class="links_name">History</span>
             </a>
@@ -97,101 +96,102 @@
 </div>
 
 <div class="home_content"><!-- home_content -->
-<div id="mypick"><!-- mypick -->
-    <div class="likevideo_title"><!-- likevideo_title -->
-        <div class="likevideo_title_inner">
-            <h2>좋아요 한 영상</h2>
-        </div>
-    </div><!-- // likevideo_title -->
-    <main class="my_content"><!-- main_content -->
-        <div class="btn_video_nav" id="video_nav"><!-- btn_video_nav -->
-            <ul class="tablist">
-                <li class="history" id="on_likedvideo">
-                    <a href="history.jsp">최근에 본 영상</a>
-                </li>
-                <li class="watchlater">
-                    <a href="watchlater.jsp">나중에 볼 영상</a>
-                </li>
-                <li class="likedvideo" >
-                    <a href="likedvideo.jsp">좋아요 한 영상</a>  <!-- 현재 페이지 -->
-                </li>
-            </ul>
-        </div><!-- // btn_video_nav -->
-        <section class="myplaylist_wrap"><!-- myplaylist_wrap -->
-            <form>
-                <div class="edit_btn"><!-- edit_btn -->
-                    <input type="button" id="btn_mod_recent" class="btn btn_mod" value="편집">
-                    <div id="btn_success">
-                        <input type="button" id="btn_all_recent" class="btn btn_all" value="전체선택">
-                        <input type="submit" id="btn_delete_recent" class="btn btn_delete" value="삭제">
-                    </div>
-                </div><!-- // edit_btn -->
-                <div class="video_list"><!-- video_list -->
+    <div id="mypick"><!-- mypick -->
+        <div class="likevideo_title"><!-- likevideo_title -->
+            <div class="likevideo_title_inner">
+                <h2>좋아요 한 영상</h2>
+            </div>
+        </div><!-- // likevideo_title -->
+        <main class="my_content"><!-- main_content -->
+            <div class="btn_video_nav" id="video_nav"><!-- btn_video_nav -->
+                <ul class="tablist">
+                    <li class="history" id="on_likedvideo">
+                        <a href="/history.do">최근에 본 영상</a>
+                    </li>
+                    <li class="watchlater">
+                        <a href="/watchlater.do">나중에 볼 영상</a>
+                    </li>
+                    <li class="likedvideo">
+                        <a href="/likedvideo.do">좋아요 한 영상</a>  <!-- 현재 페이지 -->
+                    </li>
+                </ul>
+            </div><!-- // btn_video_nav -->
+            <section class="myplaylist_wrap"><!-- myplaylist_wrap -->
+                <form>
+                    <div class="edit_btn"><!-- edit_btn -->
+                        <input type="button" id="btn_mod_recent" class="btn btn_mod" value="편집">
+                        <div id="btn_success">
+                            <input type="button" id="btn_all_recent" class="btn btn_all" value="전체선택">
+                            <input type="submit" id="btn_delete_recent" class="btn btn_delete" value="삭제">
+                        </div>
+                    </div><!-- // edit_btn -->
+                    <div class="video_list"><!-- video_list -->
 
-                    <c:forEach var="l" items="${my_likedVideoList}">
-                        <div class="video_view"><!-- video_view -->
-                            <div class="my_video_check"><!-- my_video_check -->
-                                <label>
-                                    <input type="checkbox" name="myplaylist" value="영상체크" />
-                                </label>
-                            </div><!-- // my_video_check -->
+                        <c:forEach var="l" items="${my_likedVideoList}">
+                            <div class="video_view"><!-- video_view -->
+                                <div class="my_video_check"><!-- my_video_check -->
+                                    <label>
+                                        <input type="checkbox" name="myplaylist" value="영상체크" />
+                                    </label>
+                                </div><!-- // my_video_check -->
 
-                            <div class="main_video"><!-- main_video -->
-                                <div class="main_video_img"><!-- main_video_img -->
-                                    <div class="video_play_view"><!-- video_play_view -->
-                                        <div class="video_play">
-                                            <!-- <video muted="muted" poster=" " preload="metadata" autoplay="autoplay" loop="loop"  controls ></video> -->
-                                            <video class="background_video" poster="/imgUpload/${l.thumbnail}" preload="metadata" muted="muted" volume="0" controls><!-- controls : 동영상 체크  -->
-                                                <source src="/videoUpload/${l.videofile}" type="video/mp4" />
-                                                <source src="/videoUpload/${l.videofile}" type="video/webm" />
-                                                <source src="/videoUpload/${l.videofile}" type="video/ogg" />
-                                            </video>
-                                        </div>
-                                    </div><!-- // video_play_view -->
-                                    <div class="main_video_time">${l.videotime}</div><!-- 22:00 -->
-                                </div>
-                                <div class="desc"><!-- desc -->
-                                    <ul class="desc_inner">
-                                        <li class="vd_text">
-                                            <a href="${path}video.do?videonum=${l.videonum}" data-event="clickTitle" data-clickcode="#" data-move_uri="#">
-                                                    ${l.title} <!-- 영상 제목 -->
-                                            </a>
-                                        </li>
-                                        <li class="ch_txt">
-                                            <a href="channelnum.do?channelnum=${l.channelnum}" data-event="clickChannel" data-clickcode="#" data-move_uri="#">
-                                                    ${l.userid} <!-- 영상 채널명 -->
-                                            </a>
-                                        </li>
-                                        <li class="play_like">
-                                            <div class="cnp">
-                                            <span class="cds_ifc ">
-                                                <i class='bx bx-play' style='color:#4ba9e1' ></i>
-                                                ${l.views} <!-- 158,079 조회수 -->
-                                            </span>
+                                <div class="main_video"><!-- main_video -->
+                                    <div class="main_video_img"><!-- main_video_img -->
+                                        <div class="video_play_view"><!-- video_play_view -->
+                                            <div class="video_play">
+                                                <!-- <video muted="muted" poster=" " preload="metadata" autoplay="autoplay" loop="loop"  controls ></video> -->
+                                                <video class="background_video" poster="/imgUpload/${l.thumbnail}" preload="metadata" muted="muted" volume="0" controls><!-- controls : 동영상 체크  -->
+                                                    <source src="/videoUpload/${l.videofile}" type="video/mp4" />
+                                                    <source src="/videoUpload/${l.videofile}" type="video/webm" />
+                                                    <source src="/videoUpload/${l.videofile}" type="video/ogg" />
+                                                </video>
                                             </div>
-                                            <div class="bch">
-                                            <span class="cds_ifc ">
-                                                <i class='bx bxs-heart' style='color:#e14b4b'  ></i>
-                                                ${l.likes} <!-- 1,405 좋아요 수 -->
-                                            </span>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div><!-- // desc -->
-                            </div><!-- // main_video -->
+                                        </div><!-- // video_play_view -->
+                                        <div class="main_video_time">${l.videotime}</div><!-- 22:00 -->
+                                    </div>
+                                    <div class="desc"><!-- desc -->
+                                        <ul class="desc_inner">
+                                            <li class="vd_text">
+                                                <a href="${path}video.do?videonum=${l.videonum}" data-event="clickTitle" data-clickcode="#" data-move_uri="#">
+                                                        ${l.title} <!-- 영상 제목 -->
+                                                </a>
+                                            </li>
+                                            <li class="ch_txt">
+                                                <a href="channelnum.do?channelnum=${l.channelnum}" data-event="clickChannel" data-clickcode="#" data-move_uri="#">
+                                                        ${l.userid} <!-- 영상 채널명 -->
+                                                </a>
+                                            </li>
+                                            <li class="play_like">
+                                                <div class="cnp">
+                                                <span class="cds_ifc ">
+                                                    <i class='bx bx-play' style='color:#4ba9e1' ></i>
+                                                    ${l.views} <!-- 158,079 조회수 -->
+                                                </span>
+                                                </div>
+                                                <div class="bch">
+                                                <span class="cds_ifc ">
+                                                    <i class='bx bxs-heart' style='color:#e14b4b'  ></i>
+                                                    ${l.likes} <!-- 1,405 좋아요 수 -->
+                                                </span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div><!-- // desc -->
+                                </div><!-- // main_video -->
 
-                        </div><!-- // video_view -->
-                    </c:forEach>
+                            </div><!-- // video_view -->
+                        </c:forEach>
 
-                </div><!-- // video_list -->
-            </form>
-        </section><!-- // myplaylist_wrap -->
+                    </div><!-- // video_list -->
+                </form>
+            </section><!-- // myplaylist_wrap -->
 
-    </main><!-- // main_content -->
+        </main><!-- // main_content -->
 
 
-</div><!-- // mypick -->
+    </div><!-- // mypick -->
 </div><!-- // home_content -->
+
 <script type="text/javascript">
     let btn = document.querySelector("#btn");
     let sidebar = document.querySelector(".sidebar");

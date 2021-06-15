@@ -15,7 +15,7 @@ a:hover, a:focus, a:active {text-decoration:none;}
 .likevideo_title .likevideo_title_inner{
     width:1200px;
     margin:0 auto;
-    padding-top:123px;
+    padding-top:110px;
 }
 .likevideo_title_inner h2{
     font-size:22px;
@@ -57,16 +57,15 @@ a:hover, a:focus, a:active {text-decoration:none;}
     text-align: center;
     transition: 0.5s;
 }
-.btn_video_nav .tablist li:nth-child(2){
+.btn_video_nav .tablist li:nth-child(3){
     background:linear-gradient(90deg, rgba(76,168,223,1) 0%, rgba(160,255,180,1) 100%);
-    border-right: 1px solid #b3b6be;
+    border-left: 1px solid #b3b6be;
 }
-.btn_video_nav .tablist li:nth-child(2) a{
+.btn_video_nav .tablist li:nth-child(3) a{
     color: #fff;
 }
 .btn_video_nav .tablist li:nth-child(1){
     border-right: 1px solid #b3b6be;
-    transition: 0.5s;
 }
 /* .btn_video_nav .tablist li:nth-child(3){
     background:linear-gradient(90deg, rgba(76,168,223,1) 0%, rgba(160,255,180,1) 100%);

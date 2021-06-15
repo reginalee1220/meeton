@@ -17,7 +17,7 @@ img {border: 0 none; font-size: 0;line-height: 0;}
 .history_title .history_title_inner{
     width:1200px;
     margin:0 auto;
-    padding-top:123px;
+    padding-top:110px;
 }
 .history_title h2{
     font-size:22px;
@@ -195,7 +195,7 @@ img {border: 0 none; font-size: 0;line-height: 0;}
 
 }
 .main_video_img > .video_play_view .video_play .background_video{
-     /*z-index: -1;*/
+    /*z-index: -1;*/
     width: 100%;
     /* background: #4ba9e1; */
     position: absolute;

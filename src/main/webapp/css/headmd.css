@@ -20,6 +20,9 @@ header{
     height: 60px;
     border-bottom: 1px solid #f0f0f0;
     box-shadow: 0 3px 20px 5px #f0f0f0;
+    position: absolute;
+    z-index: 20;
+    background: #ffffff;
 }
 .header-bar{
     margin: 0 auto;

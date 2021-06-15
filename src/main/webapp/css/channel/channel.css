@@ -27,7 +27,8 @@ a:hover, a:focus, a:active {text-decoration:none;}
     height: 1320px;
     background: #f8fafc;
     border:1px solid #f0f0f0;
-    padding-top:120px;
+    padding-top:100px;
+
 }
 .channel .side_wrap .side_inner{
     display: flex;
@@ -124,7 +125,8 @@ a:hover, a:focus, a:active {text-decoration:none;}
     width: 940px;
     height: 1320px;
     background: #ffff;
-    padding-top:120px;
+    padding-top:100px;
+
 }
 /* ==================================================================================== */
 /* ------- 채널 이름 & 채널알람,즐겨찾기,구독 버튼 ------- */
@@ -141,6 +143,11 @@ a:hover, a:focus, a:active {text-decoration:none;}
 }
 /* 채널 이름 */
 .main_wrap .channel_info .channelName{
+    width: 50%;
+    height: auto;
+    color:#2b2b2b;
+}
+.main_wrap .channel_info .channelName h2{
     width: 50%;
     height: auto;
     font-size:30px;
@@ -175,6 +182,15 @@ a:hover, a:focus, a:active {text-decoration:none;}
     box-shadow: 2px 5px 5px 1px rgba(91, 91, 91, .2);
     color:#fff;
 }
+.main_wrap .channel_info .ch_alam_bkm_subs .btn_alam:hover{
+    width: 50px;
+    height: 50px;
+    border:1px solid #e4e4e4;
+    background:linear-gradient(312deg, rgba(76,168,223,1) 0%, rgba(160,255,180,1) 100%);
+    border-radius: 5px;
+    box-shadow: 2px 5px 5px 1px rgba(91, 91, 91, .2);
+    color:#fff;
+}
 /* 알람 */
 .main_wrap .channel_info .ch_alam_bkm_subs .btn_alam{
     width: 50px;
@@ -191,6 +207,10 @@ a:hover, a:focus, a:active {text-decoration:none;}
     margin:0 auto;
     width: 70px;
 }
+.main_wrap .channel_info .ch_alam_bkm_subs .btn_bookmark .btn_bkm_list li{
+    display: inline;
+    vertical-align: middle;
+}
 .main_wrap .channel_info .ch_alam_bkm_subs .btn_bookmark .btn_bkm_list .bx{
     font-size:20px;
     color:#4ca8df;
@@ -202,6 +222,10 @@ a:hover, a:focus, a:active {text-decoration:none;}
     margin:0 auto;
     width: 70px;
     padding-left:7px;
+}
+.main_wrap .channel_info .ch_alam_bkm_subs .btn_subscript .btn_subs_list li{
+    display: inline;
+    vertical-align: middle;
 }
 .main_wrap .channel_info .ch_alam_bkm_subs .btn_subscript .btn_subs_list .bx{
     font-size:20px;
@@ -311,57 +335,87 @@ a:hover, a:focus, a:active {text-decoration:none;}
     flex-wrap: wrap;
     width: 900px;
     height: auto;
+    margin-top:20px;
 }
 /* 빅 프리뷰 */
-.main_wrap .vod .vod_preview .preview_B{
+.preview_B{
     width: 65%;
     height: 500px;
+    padding-top: 7px;
 }
-.main_wrap .vod .vod_preview .preview_B .video_pview{
-    width: 589px;
-    height: 331px;
+.preview_B .video_pview{
+    width: 100%;
+    height: 325px;
     position: relative;
 }
-.main_wrap .vod .vod_preview .preview_B .video_pview .main_video_img{
+/*===========================================================================*/
+/* ------- 비디오 사용하지 않는 비디오태그 ------- */
+.video_play_view{
+    width: 1256px;
+    height: 700px;
+
+}
+.video_play_view .video_play{
+    width: 1256px;
+    height: 100vh;
+    overflow: hidden;
+    position: absolute;
+}
+.video_contents .video_play_view .video_play #background_video{
+    z-index: -1;
+    width: 1256px;
+    position: absolute;
+}
+@media screen and (max-aspect-ratio: 1256/700) {
+    #background_video {
+        width: auto;
+        height: 100vh;
+    }
+}
+/* ------- // 비디오 사용하지 않는 비디오태그 ------- */
+.preview_B .video_pview .main_video_img{
+    width: 100%;
+    height: 325px;
     position: relative;
     overflow: hidden;
 }
-.main_wrap .vod .vod_preview .preview_B .video_pview .main_video_img  > a {
+.preview_B .video_pview .main_video_img a {
     display: block;
-    width: 589px;
-    height: 331px;
+    width: 100%;
+    height: 325px;
     border: 2px solid transparent;
     border-radius: 10px;
 }
-.main_wrap .vod .vod_preview .preview_B .video_pview .main_video_img  > a  > video{
-    width: 100%;
-    height: 331px;
+.preview_B .video_pview .main_video_img a img{
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 100%;
 }
-.main_wrap .vod .vod_preview .preview_B .video_pview .main_video_img .main_video_desc{
+.preview_B .video_pview .main_video_img .main_video_desc{
     position: absolute;
     padding:10px;
-    top:331px;
+    top:325px;
     right: 0;
     /* transition: translate(-50%, -50%); */
     width: 100%;
     transition: 0.5s;
 }
-.main_wrap .vod .vod_preview .preview_B .video_pview .main_video_img .main_video_desc .video_data{
+.preview_B .video_pview .main_video_img .main_video_desc .video_data{
     display: flex;
     align-items:center;
     flex-direction:row;
     justify-content:flex-start;
     flex-wrap: wrap;
 }
-.main_wrap .vod .vod_preview .preview_B .video_pview .main_video_img .main_video_desc .video_data .play_sq{
+.preview_B .video_pview .main_video_img .main_video_desc .video_data .play_sq{
     margin-right: 20px;
 }
-.main_wrap .vod .vod_preview .preview_B .video_pview .main_video_img > a:hover+.main_video_desc{
+.preview_B .video_pview .main_video_img > a:hover+.main_video_desc{
     background: #2b2b2b;
     color: #ffffff;
-    top:200px;
+    top:250px;
 }
-.main_wrap .vod .vod_preview .preview_B .video_pview .main_video_img > a:hover+.main_video_desc *{
+.preview_B .video_pview .main_video_img > a:hover+.main_video_desc *{
     color: #ffffff;
 }
 /* 스몰 프리뷰 */
@@ -375,17 +429,17 @@ a:hover, a:focus, a:active {text-decoration:none;}
     padding-top:8px;
 
 }
-.main_wrap .vod .vod_preview .preview_s .video_pview{
+.preview_s .video_pview{
     width: 280px;
     height: 158px;
     margin-bottom:9px;
     position: relative;
 }
-.main_wrap .vod .vod_preview .preview_s .video_pview .main_video_img{
+.preview_s .video_pview .main_video_img{
     position: relative;
     overflow: hidden;
 }
-.main_wrap .vod .vod_preview .preview_s .video_pview .main_video_img  > a {
+.preview_s .video_pview .main_video_img  > a {
     display: block;
     width: 280px;
     height: 158px;
@@ -393,8 +447,10 @@ a:hover, a:focus, a:active {text-decoration:none;}
     border-radius: 10px;
 
 }
-.main_wrap .vod .vod_preview .preview_s .video_pview .main_video_img  > a  > video{
-    height: 158px;
+.preview_s .video_pview .main_video_img  > a  > img{
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
 }
 .main_wrap .vod .vod_preview .preview_s .video_pview .main_video_img .main_video_desc{
     position: absolute;

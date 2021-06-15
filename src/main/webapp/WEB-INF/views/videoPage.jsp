@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <heade>
@@ -12,32 +13,38 @@
     <title>업로드 영상 보드</title>
 
     <!-- css -->
-    <link rel="stylesheet" type="text/css" href="./css/default/reset.css">
-    <link rel="stylesheet" type="text/css" href="./css/channel/videoPage.css">
+    <link rel="stylesheet" type="text/css" href="../../css/default/reset.css">
+    <link rel="stylesheet" type="text/css" href="../../css/channel/videoPage.css">
 
     <!-- js -->
-
 
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 
 </heade>
 <body>
+<!-- 헤드 -->
 <%@include file="header.jsp"%>
+
 <div id="channel_wrap" class="channel">
     <!-- side_wrap -->
     <div class="side_wrap">
         <div class="side_inner"><!-- side_inner -->
             <div class="channel_profile"><!-- channel_profile -->
                 <div class="profile_img">
-                        <span>
+                    <span>
+                        <c:if test="${user.profile == null }"><!--프로필 없으면-->
                             <img src="data:image/png;base64,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"/>
-                        </span>
+                        </c:if>
+                        <c:if test="${user.profile != null }"><!--프로필 있으면-->
+                            <img src="/imgUpload/${user.profile}">
+                        </c:if>
+                    </span>
                 </div>
                 <div class="channel_name">
                     <dl>
-                        <dt class="channel_aka">채널 닉네임</dt>
-                        <dd class="channel_email">@가입한 아이디</dd>
+                        <dt class="channel_aka">${channel.aka}</dt><!--채널 닉네임-->
+                        <dd class="channel_email">@${channel.userid}</dd><!--가입한 아이디-->
                     </dl>
                 </div>
             </div><!-- // channel_profile -->
@@ -50,8 +57,8 @@
             </div><!-- // direct_msg -->
             <div class="kategorie"><!-- kategorie -->
                 <ul class="kategorie_title">
-                    <a href="/videoPage.do"><li class="upload_video">업로드 영상보기</li></a>
-                    <a href="/videoPage.do" class="allVideo"><li class="all_video">전체영상</li></a>
+                    <a href="videoPage.do"><li class="upload_video">업로드 영상보기</li></a>
+                    <a href="videoPage.do" class="allVideo"><li class="all_video">전체영상</li></a>
                 </ul>
             </div><!-- // kategorie -->
         </div><!-- //side_inner -->
@@ -104,50 +111,47 @@
                 <!-- 비디오 이동 -->
                 <div class="upload_list"><!-- upload_list -->
                     <c:if test="${videoList != null}">
-                    <c:forEach var="v" items="${videoList}" >
-                        <div class="chUp"><!-- chUp -->
-                            <div class="chUp_video">
-                                <a href="/video.do?videonum=${v.videonum}">
-                                    <video muted="muted" poster="${v.thumbnail}" preload="metadata" controls ><!-- controls : 동영상 체크  -->
-                                        <source src="/videoUpload/${v.videofile}" type="video/mp4" />
-                                        <source src="/videoUpload/${v.videofile}" type="video/webm" />
-                                        <source src="/videoUpload/${v.videofile}" type="video/ogg" />
-                                    </video>
-                                </a>
-                                    <%--                                <div class="video_time">${v.videotime}</div>--%>
-                            </div>
-                            <div class="chUp_desc">
-                                <div class="chUp_video_name">
-                                    <a href="#">${v.title}</a>
+                        <c:forEach var="v" items="${videoList}" >
+                            <div class="chUp"><!-- chUp -->
+                                <div class="chUp_video">
+                                    <a href="/video.do?videonum=${v.videonum}">
+                                        <img src="../../videoUpload/${v.thumbnail}" />
+                                    </a>
+                                    <div class="video_time">22:00</div>
                                 </div>
-                                <ul class="chUp_video_data">
-                                    <li class="chUp_playSq">
+                                <div class="chUp_desc">
+                                    <div class="chUp_video_name">
+                                        <a href="/video.do?videonum=${v.videonum}">${v.title}</a>
+                                    </div>
+                                    <ul class="chUp_video_data">
+                                        <li class="chUp_playSq">
                                         <span class="cds_ifc cnp">
                                             <i class='bx bx-play' style='color:#4ba9e1' ></i>
                                         </span>
-                                            ${v.views}
-                                    </li>
-                                    <li class="chUp_time">
-                                            ${v.register}
-                                    </li>
-                                </ul>
-                            </div>
-                        </div><!-- // chUp -->
-                    </c:forEach>
+                                                ${v.views}
+                                        </li>
+                                        <li class="chUp_time">
+                                                ${v.register}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div><!-- // chUp -->
+                        </c:forEach>
                     </c:if>
+
                     <c:if test="${videoList == null}">
-                        업로드한 영상이 없습니다.
+                        <div class="noneList">업로드한 영상이 없습니다.</div>
                     </c:if>
+                    <!-- --- -->
                 </div><!-- // upload_list -->
             </section><!-- // upload_video_board -->
-
             <div class="board_paging"><!-- board_paging -->
                 <ul class="pagination">
-<%--                    <!--첫페이지로 이동 -->--%>
-                    <a href="videoPage.do?page=1">   <<  </a>
-<%--                    <!--이전블럭 이동 -->--%>
+                    <%-- <!--첫페이지로 이동 --> --%>
+                    <a href="videoPage.do?page=1"><li>   <<  </li></a>
+                    <%-- <!--이전블럭 이동 -->--%>
                     <c:if test="${startpage > 5}">
-                        <a href="videoPage.do?page=${startpage - 5}">이전</a>
+                        <a href="videoPage.do?page=${startpage - 5}"><li>이전</li></a>
                     </c:if>
 
                     <!--번호 -->
@@ -156,68 +160,36 @@
                             ${a}
                         </c:if>
                         <c:if test="${a == page }">
-                            <a href="videoPage.do?page=${a}"> ${a} </a>
+                            <a href="videoPage.do?page=${a}" class="listNums"><li> ${a} </li></a>
                         </c:if>
 
                     </c:forEach>
                     <!--다음블럭 이동 -->
                     <c:if test="${endpagee < maxpage}">
-                        <a href="videoPage.do?page=${startpage + 10}">다음</a>
+                        <a href="videoPage.do?page=${startpage + 10}"><li>다음</li></a>
                     </c:if>
                     <!--마지막 페이지 이동 -->
-                    <a href="videoPage.do?page=${maxpage}">   >>  </a>
-
-                    <%--                    <c:if test="${not empty keyword}">--%>
-                    <%--                        <c:if test="${pp.startPage > pp.pagePerBlk }">--%>
-                    <%--                            <li><a href="${path }/list/pageNum/${pp.startPage - 1}?search=${search}&keyword=${keyword}">이전</a></li>--%>
-                    <%--                        </c:if>--%>
-                    <%--                        <c:forEach var="i" begin="${pp.startPage}" end="${pp.endPage}">--%>
-                    <%--                            <li <c:if test="${pp.currentPage==i}">class="active"</c:if>><a--%>
-                    <%--                                    href="${path }/list/pageNum/${i}?search=${search}&keyword=${keyword}">${i}</a></li>--%>
-                    <%--                        </c:forEach>--%>
-                    <%--                        <c:if test="${pp.endPage < pp.totalPage}">--%>
-                    <%--                            <li><a href="${path }/list/pageNum/${pp.endPage + 1}?search=${search}&keyword=${keyword}">다음</a></li>--%>
-                    <%--                        </c:if>--%>
-                    <%--                    </c:if>--%>
-                    <%--                    <c:if test="${empty keyword}">--%>
-                    <%--                        <c:if test="${pp.startPage > pp.pagePerBlk }">--%>
-                    <%--                            <li><a href="${path }/list/pageNum/${pp.startPage - 1}">이전</a></li>--%>
-                    <%--                        </c:if>--%>
-                    <%--                        <c:forEach var="i" begin="${pp.startPage}" end="${pp.endPage}">--%>
-                    <%--                            <li <c:if test="${pp.currentPage==i}">class="active"</c:if>><a--%>
-                    <%--                                    href="${path }/list/pageNum/${i}">${i}</a></li>--%>
-                    <%--                        </c:forEach>--%>
-                    <%--                        <c:if test="${pp.endPage < pp.totalPage}">--%>
-                    <%--                            <li><a href="${path }/list/pageNum/${pp.endPage + 1}">다음</a></li>--%>
-                    <%--                        </c:if>--%>
-                    <%--                    </c:if>--%>
+                    <a href="videoPage.do?page=${maxpage}"><li>   >>  </li></a>
                 </ul>
             </div><!-- // board_paging -->
-            <%--            <form action="${path}/video/pageNum/1">--%>
-            <%--                <div class="board_search"><!-- board_search -->--%>
-            <%--                    <div class="select_box active"><!-- select-box active -->--%>
-            <%--                        <label for="select_box"></label>--%>
-            <%--                        <select id="select_box" name="search" aria-label="제목+내용">--%>
-            <%--                            <option value="subject"--%>
-            <%--                                    <c:if test="${search=='subject'}">selected="selected" </c:if>>제목</option>--%>
-            <%--                            <option value="content"--%>
-            <%--                                    <c:if test="${search=='content'}">selected="selected" </c:if>>내용</option>--%>
-            <%--                            <option value="writer"--%>
-            <%--                                    <c:if test="${search=='writer'}">selected="selected" </c:if>>작성자</option>--%>
-            <%--                            <option value="subcon"--%>
-            <%--                                    <c:if test="${search=='subcon'}">selected="selected" </c:if>>제목+내용</option>--%>
-            <%--                        </select>--%>
-            <%--                    </div><!-- // select-box active -->--%>
-            <%--                    <div class="search_box">--%>
-            <%--                        <div class="search_text">--%>
-            <%--                            <input type="text" id="search_board" name="keyword" />--%>
-            <%--                        </div>--%>
-            <%--                        <div class="search_Btn">--%>
-            <%--                            <input type="submit" value="검색">--%>
-            <%--                        </div>--%>
-            <%--                    </div>--%>
-            <%--                </div><!-- // board_search -->--%>
-            <%--            </form>--%>
+            <div class="board_search"><!-- board_search -->
+                <div class="select_box active"><!-- select-box active -->
+                    <label for="select_box"></label>
+                    <select id="select_box" name="select_box" aria-label="제목+내용">
+                        <option value="00" selected="selected">제목+내용</option>
+                        <option value="1">제목</option>
+                        <option value="2">내용</option>
+                    </select>
+                </div><!-- // select-box active -->
+                <div class="search_box">
+                    <div class="search_text">
+                        <input type="text" id="search_board" name="search_board" />
+                    </div>
+                    <div class="search_Btn">
+                        <input type="submit" value="검색">
+                    </div>
+                </div>
+            </div><!-- // board_search -->
         </form>
     </div><!-- // main_wrap -->
 </div><!-- channel_wrap -->
