@@ -6,6 +6,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class PurchasedDAO {
     @Autowired
@@ -36,5 +38,12 @@ public class PurchasedDAO {
     // 구독결제한 채널의 userid 가져오기
     public String getChannelUserid(int channelnum){
         return sst.selectOne("purchased.p_getChannelUserid", channelnum);
+    }
+
+
+//*************************************************** purchasedList.do ***************************************************//
+    // 해당 userid의 결제 리스트 가져오기
+    public List<Purchased> getPurchasedList(String userid){
+        return sst.selectList("purchased.p_getPurchasedList", userid);
     }
 }

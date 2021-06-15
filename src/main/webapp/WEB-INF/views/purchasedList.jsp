@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,18 +63,36 @@
                                     <li>사용기한</li>
                                 </ul>
                             </div>
-
+                            <!--결제 내역이 있으면-->
+                            <c:if test="${not empty list}">
+                            <c:forEach var="list" items="${list}">
                             <div class="pay_list">
                                 <div class="payon">
                                     <ul>
-                                        <li>2021-11-15</li>
-                                        <li>kakao pay</li>
-                                        <li>35,000</li>
-                                        <li>2021-11-15~2021-12-15</li>
+                                        <li>
+                                            <fmt:parseDate var="date" value="${list.paydate}" pattern="yyyy-MM-dd HH:mm:ss" /><!--string을 date로형 변환-->
+                                            <fmt:formatDate value="${date}" pattern="yyyy-MM-dd" /><!--pattern 값으로 변경 출력 -->
+                                        </li>
+                                        <li>${list.method}</li>
+                                        <li>${list.payment}</li>
+                                        <li>
+                                            <fmt:formatDate value="${date}" pattern="yyyy-MM-dd" /><!--pattern 값으로 변경 출력 -->
+                                            ~
+                                            <fmt:parseDate var="expired" value="${list.expired}" pattern="yyyy-MM-dd HH:mm:ss" /><!--string을 date로형 변환-->
+                                            <fmt:formatDate value="${expired}" pattern="yyyy-MM-dd" /><!--pattern 값으로 변경 출력 -->
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
+                            </c:forEach>
+                            </c:if>
 
+                            <!--결제 내역이 없으면-->
+                            <c:if test="${empty list}">
+                            <div class="pay_list">
+                                결제 내역이 없습니다.
+                            </div>
+                            </c:if>
 
                         </div>
 

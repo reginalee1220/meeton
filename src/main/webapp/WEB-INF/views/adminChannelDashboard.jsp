@@ -23,11 +23,7 @@
     <!--    최신 동영상 실적    -->
     <div class="ca-dash-video">
       <div class="ca-dashboard-subject">최신 동영상 실적</div>
-      <video muted="muted" poster="./imgUpload/${video.thumbnail}" preload="metadata">
-        <source src="./videoUpload/${video.videofile}" type="video/mp4" />
-        <source src="./videoUpload/${video.videofile}" type="video/webm" />
-        <source src="./videoUpload/${video.videofile}" type="video/ogg" />
-      </video>
+      <a href="video.do?videonum=${video.videonum}"><img src="./videoUpload/${video.thumbnail}" /></a>
       <div class="ca-dash-video-desc">
         <div>업로드 날짜</div>
         <div class="ca-dash-video-value">
@@ -39,9 +35,6 @@
         <div>댓글수</div>
         <div class="ca-dash-video-value">${video.comments}</div>
       </div>
-<%--      <div class="ca-dashboard-move">--%>
-<%--        <a href="#">동영상분석으로 이동</a>--%>
-<%--      </div>--%>
     </div><!--ca-dash-video end-->
     <!--    채널 분석    -->
     <div class="ca-dash-channel">
@@ -66,11 +59,7 @@
           <span>인기동영상</span>
           <div class="ca-dash-channel-video">
             <div class="ca-dash-channel-video-img">
-              <video muted="muted" poster="image/LOGO.png" preload="metadata">
-                <source src="image/viverse.mp4" type="video/mp4" />
-                <source src="image/viverse.mp4" type="video/webm" />
-                <source src="image/viverse.mp4" type="video/ogg" />
-              </video>
+              <a href="video.do?videonum=${topvideo.videonum}"><img src="./videoUpload/${topvideo.thumbnail}" /></a>
             </div>
             <div class="ca-dash-channel-video-desc">
               <ul>
@@ -81,8 +70,8 @@
                 </li>
                 <li>
                   <div>
-                    <span><img src="image/views.png" />${topvideo.views}</span><!--조회수-->
-                    <span><img src="image/heart-solid.png" />${topvideo.likes}</span><!--좋아요수-->
+                    <span><img src="./images/main/views.png" />${topvideo.views}</span><!--조회수-->
+                    <span><img src="./images/main/heart-solid.png" />${topvideo.likes}</span><!--좋아요수-->
                   </div>
                 </li>
               </ul>

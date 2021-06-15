@@ -9,7 +9,7 @@
   <%--&lt;%&ndash;  &lt;%&ndash;%>--%>
   <%--&lt;%&ndash;	response.sendRedirect("main.do");&ndash;%&gt;--%>
   <%--&lt;%&ndash;  %>&ndash;%&gt;--%>
-<%--  <%session.setAttribute("userid","runa");%>--%>
+  <%session.setAttribute("userid","sola");%>
   location.href="main.do";
 </script>
 

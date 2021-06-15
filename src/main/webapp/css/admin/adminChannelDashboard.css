@@ -36,7 +36,7 @@
     bottom: 10px;
 }
 /* ca-dash-video */
-.ca-dash-video video{
+.ca-dash-video > a > img{
     display: inline-block;
     margin: 10px 0;
     width: 100%;
@@ -81,10 +81,10 @@
     display: flex;
     justify-content: space-between;
 }
-.ca-dash-channel-video-img video{
+.ca-dash-channel-video-img > a > img{
     display: inline-block;
     margin: 10px 0;
-    width: 100%;
+    width: 85%;
 }
 .ca-dash-channel-video-img div{
     position: absolute;

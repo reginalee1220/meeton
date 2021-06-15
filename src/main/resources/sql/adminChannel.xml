@@ -11,8 +11,8 @@
 
 <!--*************************************************** dashboard ***************************************************-->
     <!-- 최신 동영상 실적 -->
-    <select id="ac_ac_getLatestVideo" parameterType="String" resultType="video">
-        select * from video where userid = #{userid} order by register desc limit 1
+    <select id="ac_getLatestVideo" parameterType="String" resultType="video">
+        select * from video where videonum = (select coalesce(max(videonum), null)  from video where userid= #{userid})
     </select>
 
     <!-- 채널 분석 -->
@@ -27,7 +27,7 @@
 
     <!-- 인기 동영상 -->
     <select id="ac_getTopVideo" parameterType="String" resultType="video">
-        select * from video where userid = #{userid} order by views desc limit 1
+        select * from video where videonum = (select coalesce(max(views), null)  from video where userid= #{userid})
     </select>
 
 

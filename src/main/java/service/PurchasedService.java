@@ -6,6 +6,8 @@ import model.Purchased;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PurchasedService {
     @Autowired
@@ -38,5 +40,14 @@ public class PurchasedService {
     public String getChannelUserid(int channelnum){
         return DAO.getChannelUserid(channelnum);
     }
+
+
+//*************************************************** purchasedList.do ***************************************************//
+    // 해당 userid의 결제 리스트 가져오기
+    public List<Purchased> getPurchasedList(String userid){
+        return DAO.getPurchasedList(userid);
+    }
+
+
 
 }

@@ -1,13 +1,13 @@
 package model;
 
-import java.sql.Timestamp;
 
 public class Purchased {
     private int purchasednum;
-	private Timestamp paydate;
+	private String paydate;
 	private int payment;
 	private String method;
 	private String userid;
+    private String expired;
 
     public int getPurchasednum() {
         return purchasednum;
@@ -17,11 +17,11 @@ public class Purchased {
         this.purchasednum = purchasednum;
     }
 
-    public Timestamp getPaydate() {
+    public String getPaydate() {
         return paydate;
     }
 
-    public void setPaydate(Timestamp paydate) {
+    public void setPaydate(String paydate) {
         this.paydate = paydate;
     }
 
@@ -47,5 +47,13 @@ public class Purchased {
 
     public void setUserid(String userid) {
         this.userid = userid;
+    }
+
+    public String getExpired() {
+        return expired;
+    }
+
+    public void setExpired(String expired) {
+        this.expired = expired;
     }
 }

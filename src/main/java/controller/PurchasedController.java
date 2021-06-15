@@ -15,6 +15,7 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 
 @Controller
 public class PurchasedController {
@@ -91,7 +92,7 @@ public class PurchasedController {
         return "null";
     }
 
-    // success : 결제 성공
+    // success : 결제 성공, purchaseed, favorite 추가
     @RequestMapping("/success.do")
     public String success(HttpSession session, Purchased purchased, Favorite favorite){
         System.out.println("success");
@@ -164,7 +165,19 @@ public class PurchasedController {
 
     // purchasedList : 결제 리스트 불러오기
     @RequestMapping("/purchasedList.do")
-    public String purchasedList(){
+    public String purchasedList(HttpSession session, Model model){
+        System.out.println("purchasedList");
+        String userid = (String) session.getAttribute("userid");  // 로그인한 userid
+        System.out.println("userid: " + userid);
+
+        // 해당 userid의 결제 리스트 가져오기
+        List<Purchased> purchasedList = purchase.getPurchasedList(userid);
+        System.out.println(purchasedList);
+
+
+
+
+        model.addAttribute("list", purchasedList);
 
         return "purchasedList";
     }

@@ -13,6 +13,7 @@ body{
 .ca-container{
     width: 100%;
     display: flex;
+    padding-top: 80px;
 }
 /*  ca-sidebar  */
 .ca-sidebar{
