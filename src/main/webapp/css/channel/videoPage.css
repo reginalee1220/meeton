@@ -19,6 +19,7 @@ a:hover, a:focus, a:active {text-decoration:none;}
     justify-content: flex-start;
     flex-wrap: wrap;
     margin:0 auto;
+    padding-top: 55px;
     width: 1200px;
 }
 /* ------- 채널 소개 ------- */
@@ -331,4 +332,17 @@ a:hover, a:focus, a:active {text-decoration:none;}
     text-align: center;
     font-size:13px;
     cursor: pointer;
+}
+.current-page{
+    display: inline-block;
+    margin: 0 10px;
+    color: #4BA9E1;
+    font-size: 13px;
+    font-weight: bold;
+}
+.others{
+    display: inline-block;
+    margin: 0 10px;
+    color: #4a4a4a;
+    font-size: 13px;
 }

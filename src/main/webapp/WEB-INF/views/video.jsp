@@ -46,14 +46,6 @@
                         content.value = '';
                     }
                 );
-
-                // // 전달할곳, 전달될 데이터, 콜백함수(댓글 수 올리기 비동기 처리)
-                // $.post('cmCount.do', frmData,
-                //     //콜백함수
-                //     function(data) {
-                //         $('#cm_count').html(data);
-                //     }
-                // );
             });
 
         });

@@ -15,7 +15,26 @@
     <link rel="stylesheet" type="text/css" href="./css/channel/channel.css">
 
     <!-- js -->
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script>
+        $(function(){
+            var userid = $('.mybookmark').attr('id');
+            $('.mybookmarknum').load('mybookmarkers.do?userid=' + userid)
 
+            $('.mybookmark').click(function(){
+                $.ajax({
+                    url:"mybookmark.do",
+                    data: {"userid":userid},
+                    success:function(data){
+                        $('.mybookmarknum').html(data);
+                    },
+                    error:function(data){
+                        alert("즐겨찾기 등록 실패");
+                    }
+                });
+            });
+        })
+    </script>
 
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -74,30 +93,33 @@
                         <i class='bx bxs-bell' ></i>
                     </box-icon>
                 </div>
-                <div class="btn_bookmark chBTN"><!-- 즐겨찾기 -->
-                    <ul class="btn_bkm_list">
-                        <li>
-                            <box-icon name='star' >
-                                <i class='bx bx-star' ></i>
-                            </box-icon>
-                        </li>
-                        <li><span>${channel.bookmarkers}</span></li><!--즐겨찾기 수-->
-                    </ul>
-                </div>
-                <div class="btn_subscript chBTN"><!-- 구독 -->
-                    <ul class="btn_subs_list">
-                        <a href="purchase.do">
+                <a class="mybookmark" id="${channel.userid}"><!-- 즐겨찾기 -->
+                    <div class="btn_bookmark chBTN">
+                        <ul class="btn_bkm_list">
+                            <li>
+                                <box-icon name='star' >
+                                    <i class='bx bx-star' ></i>
+                                </box-icon>
+                            </li>
+                            <li><span class="mybookmarknum"></span></li><!--즐겨찾기 수-->
+                        </ul>
+                    </div>
+                </a>
+
+                <a href="purchase.do?channelnum=${channel.channelnum}&aka=${channel.aka}"><!-- 구독 -->
+                    <div class="btn_subscript chBTN">
+                        <ul class="btn_subs_list">
                             <li>
                                 <box-icon name='donate-heart' >
                                     <i class='bx bx-donate-heart' ></i>
                                 </box-icon>
                             </li>
                             <li>
-                                <span>${channel.subscribers}</span><!--구독자 수-->
+                                <span class="bookmark_click">${channel.subscribers}</span><!--구독자 수-->
                             </li>
-                        </a>
-                    </ul>
-                </div>
+                        </ul>
+                    </div>
+                </a>
             </div><!-- // 채널 알람,즐겨찾기,구독 버튼 -->
         </div><!-- // channel_info  -->
         <div class="channel_em_chat"><!-- channel_em_chat 채널 이메일 & 멀티채팅 버튼 -->

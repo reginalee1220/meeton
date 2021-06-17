@@ -88,6 +88,17 @@ public class ChannelController {
         System.out.println("startpage: " + startpage);
         System.out.println("endpage: " + endpage);
 
+        //************************ userid 정보 가져오기 ************************//
+        String userid = (String) session.getAttribute("userid");
+        System.out. println("userid: " + userid);
+
+        // 해당 userid의 user 정보 가져오기
+        User user = chService.getUser(userid);
+        System.out.println("User: " + user);
+
+        // 해당 userid의 channel 정보 가져오기
+        Channel channel = chService.getChannel(userid);
+        System.out.println("channel: " + channel);
 
         //************************ model로 값 넘겨주기 ************************//
         model.addAttribute("videoList", list);
@@ -96,7 +107,8 @@ public class ChannelController {
         model.addAttribute("count", count);
         model.addAttribute("startpage", startpage);
         model.addAttribute("endpage", endpage);
-
+        model.addAttribute("user", user);
+        model.addAttribute("channel", channel);
 
         return "videoPage";
     }
